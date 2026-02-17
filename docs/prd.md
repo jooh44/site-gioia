@@ -2,7 +2,7 @@
 
 ## 1. Executive Summary
 
-A **Gioia e Associados**, boutique jurídica com 33 anos de excelência em **Direito da Saúde** e **Direito do Trabalho**, inicia sua transformação digital para consolidar-se como autoridade máxima em São Paulo. O projeto visa criar uma plataforma de alta performance que reconcilie a tradição institucional com uma estratégia de aquisição digital agressiva e ética.
+A **Gioia e Associados**, boutique jurídica com 34 anos de excelência em **Direito da Saúde** e **Direito do Trabalho**, inicia sua transformação digital para consolidar-se como autoridade máxima em São Paulo. O projeto visa criar uma plataforma de alta performance que reconcilie a tradição institucional com uma estratégia de aquisição digital agressiva e ética.
 
 **Visão:** Ser o santuário jurídico digital definitivo para indivíduos em crise (saúde ou trabalho), oferecendo acolhimento imediato, autoridade inquestionável e triagem eficiente.
 
@@ -10,6 +10,7 @@ A **Gioia e Associados**, boutique jurídica com 33 anos de excelência em **Dir
 
 * **Autoridade de Nicho:** Histórico de "nunca perder um caso litigado contra plano de saúde".
 * **Empatia Digital:** "Quiet Luxury" visual (Bordô/Dourado) e UX focado em usuários sob estresse cognitivo.
+* **Design Mandate:** Estética estritamente quadrada (Square Aesthetic). Nenhuma borda arredondada em componentes UI (botões, cards, tabs, imagens).
 * **Conformidade Ética:** Adesão estrita ao Provimento 205/2021 da OAB (sem promessas de resultado, foco educativo).
 
 **Usuários Alvo:**
@@ -69,7 +70,7 @@ A **Gioia e Associados**, boutique jurídica com 33 anos de excelência em **Dir
 
 1. **Gatilho:** Dúvida sobre legalidade da demissão. Pesquisa "direitos gestante demitida".
 2. **Descoberta:** Encontra artigo detalhado no blog do escritório.
-3. **Validação:** Lê sobre a experiência de 33 anos e casos similares. Sente segurança.
+3. **Validação:** Lê sobre a experiência de 34 anos e casos similares. Sente segurança.
 4. **Ação:** Preenche formulário "Análise de Viabilidade" com resumo do caso.
 5. **Resultado:** Recebe contato agendado para consulta consultiva.
 
@@ -92,7 +93,7 @@ A **Gioia e Associados**, boutique jurídica com 33 anos de excelência em **Dir
 ### FR-03: Visual Law e UI
 
 * **FR-03.1:** O sistema deve renderizar componentes de "Linha do Tempo Processual" responsivos.
-* **FR-03.2:** O sistema deve aplicar o tema "Quiet Luxury" (Bordô [Definir via color-pallete.png], Dourado #d1af66) consistentemente via tokens de design.
+* **FR-03.2:** O sistema deve aplicar o tema "Quiet Luxury" (Bordô, Dourado #d1af66) e o "Square Mandate" (border-radius: 0) consistentemente via tokens de design.
 
 ### FR-04: Segurança e Privacidade
 

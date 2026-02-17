@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Gioia e Associados - Transformação Digital
 
-## Getting Started
+Plataforma de alta performance para a boutique jurídica **Gioia e Associados**, especializada em Direito da Saúde e do Trabalho com 34 anos de história.
 
-First, run the development server:
+## 🏛️ Diretrizes de Projeto (BMAD Greenfield)
+
+Este projeto segue uma estética rigorosa de **"Quiet Luxury"** e um mandado de **"Design Quadrado"**.
+
+### Documentação Crítica
+
+- **Contexto do Projeto:** [project-context.md](./project-context.md) - **LEIA ANTES DE CODAR.**
+- **Visão de Produto:** [docs/prd.md](./docs/prd.md)
+- **Arquitetura Técnica:** [docs/architecture.md](./docs/architecture.md)
+
+## 🚀 Como Iniciar
+
+### Pré-requisitos
+
+- Node.js 18+
+- npm / pnpm
+
+### Instalação
+
+```bash
+npm install
+```
+
+### Desenvolvimento
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+*Desenvolvido com a metodologia BMAD para máxima performance, autoridade e elegância.*
