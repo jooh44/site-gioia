@@ -16,22 +16,13 @@ export default function Home() {
     <main className="flex min-h-screen flex-col font-sans selection:bg-secondary selection:text-secondary-foreground relative">
       <MinimalNavbar />
 
-      {/* 1. HERO SECTION (Zero Zoom - Centered - Logo Top) */}
-      <section className="relative w-full min-h-screen flex flex-col justify-start items-center px-6 md:px-12 lg:px-24 bg-primary text-primary-foreground overflow-hidden pt-16 md:pt-24">
+      {/* 1. HERO SECTION (Split Layout) */}
+      <section className="relative w-full lg:min-h-[100svh] flex flex-col lg:flex-row bg-primary text-primary-foreground overflow-hidden pt-20 md:pt-24 lg:pt-0 pb-0">
         {/* Subtle Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/30 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/30 pointer-events-none z-0"></div>
 
         {/* Background Graphics (Discrete Symbol Texture) */}
-        <div className="absolute -left-[10%] lg:-left-[5%] top-[45%] lg:top-[80%] -translate-y-1/2 opacity-[0.10] lg:opacity-[0.15] pointer-events-none brightness-0">
-          <Image
-            src="/simbolo-gioia.svg"
-            alt=""
-            width={500}
-            height={500}
-            className="w-[180px] lg:w-[450px] h-auto"
-          />
-        </div>
-        <div className="absolute -right-[10%] lg:-right-[5%] top-[85%] lg:top-[80%] -translate-y-1/2 opacity-[0.10] lg:opacity-[0.15] pointer-events-none brightness-0">
+        <div className="absolute -left-[10%] lg:-left-[5%] top-[50%] lg:top-[80%] -translate-y-1/2 opacity-[0.10] lg:opacity-[0.15] pointer-events-none brightness-0 z-0">
           <Image
             src="/simbolo-gioia.svg"
             alt=""
@@ -41,48 +32,60 @@ export default function Home() {
           />
         </div>
 
-        {/* Content Container - Centered */}
-        {/* Content Container - Centered */}
-        <div className="relative z-10 max-w-5xl gap-6 md:gap-8 flex flex-col items-center text-center">
+        {/* Content Wrapper */}
+        <div className="relative z-10 w-full max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center lg:items-stretch justify-between px-6 md:px-12 lg:px-24 min-h-screen lg:min-h-0 lg:h-screen">
 
-          {/* Official Logo (Small - Centered) */}
-          <div className="w-32 md:w-44 order-1">
-            <Image
-              src="/logo-gioia.svg"
-              alt="Gioia e Associados"
-              width={200}
-              height={100}
-              className="w-full h-auto drop-shadow-xl"
-              priority
-            />
+          {/* Left Column: Text Content */}
+          <div className="w-full lg:w-3/5 xl:w-[50%] flex flex-col items-center text-center lg:items-start lg:text-left gap-4 md:gap-7 pt-2 pb-10 lg:pb-0 lg:pt-12 xl:pt-16 z-20">
+            {/* Official Logo (Small) */}
+            <div className="w-24 md:w-32 lg:w-36 xl:w-40 mb-0 lg:mb-2">
+              <Image
+                src="/logo-gioia.svg"
+                alt="Gioia e Associados"
+                width={200}
+                height={100}
+                className="w-full h-auto drop-shadow-xl"
+                priority
+              />
+            </div>
+
+            {/* Main Headline (Playfair Display) */}
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.25rem] xl:text-[4rem] leading-[1.1] tracking-tight text-white drop-shadow-sm w-full lg:max-w-[800px]">
+              Quando a <span className="text-secondary font-light">Saúde</span> ou o <span className="text-secondary font-light">Trabalho</span> estão em risco, <span className="font-light">nós somos a sua <span className="border-b-2 border-secondary pb-1 lg:pb-2 whitespace-nowrap">defesa.</span></span>
+            </h1>
+
+            {/* Subtitle */}
+            <p className="font-sans text-base md:text-lg text-stone-300 font-light leading-relaxed max-w-xl">
+              {homeConfig.hero.subtitle}
+            </p>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-2 w-full sm:w-auto">
+              <Button asChild className="bg-secondary text-secondary-foreground hover:bg-white hover:text-primary transition-all duration-300 h-14 sm:h-12 w-full sm:w-auto sm:px-10 text-xs uppercase tracking-[0.2em] font-bold rounded-none shadow-lg">
+                <a href={siteConfig.links.whatsapp} target="_blank" rel="noreferrer">
+                  Agendar consulta
+                </a>
+              </Button>
+              <Button asChild variant="ghost" className="text-white hover:bg-white/10 h-14 sm:h-12 w-full sm:w-auto sm:px-10 text-xs uppercase tracking-[0.2em] font-bold rounded-none border border-white/30 hover:border-white transition-all">
+                <a href="#services">
+                  Ver Serviços
+                </a>
+              </Button>
+            </div>
           </div>
 
-          {/* Main Headline (Playfair Display) */}
-          <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-white drop-shadow-sm max-w-6xl order-2">
-            <span className="block text-white">Quando a <span className="text-secondary font-light">Saúde</span> ou o <span className="text-secondary font-light">Trabalho</span></span>
-            <span className="block text-white">estão em risco, <span className="font-light">nós somos a sua <span className="border-b-2 border-secondary pb-1">defesa</span>.</span></span>
-          </h1>
-
-          {/* Subtitle */}
-          <p className="font-sans text-base md:text-lg text-stone-300 font-light leading-relaxed max-w-2xl order-4 md:order-3">
-            {homeConfig.hero.subtitle}
-          </p>
-
-          {/* Visual Divider (Horizontal) */}
-          <div className="w-24 h-[1px] bg-white/20 order-5 md:order-4"></div>
-
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-6 pt-0 order-3 md:order-5">
-            <Button asChild className="bg-secondary text-secondary-foreground hover:bg-white hover:text-primary transition-all duration-300 h-12 w-72 sm:w-auto sm:px-12 text-xs uppercase tracking-[0.2em] font-bold rounded-none shadow-lg">
-              <a href={siteConfig.links.whatsapp} target="_blank" rel="noreferrer">
-                Agendar consulta
-              </a>
-            </Button>
-            <Button asChild variant="ghost" className="text-white hover:bg-white/10 h-12 w-72 sm:w-auto sm:px-12 text-xs uppercase tracking-[0.2em] font-bold rounded-none border border-white/30 hover:border-white transition-all">
-              <a href="#services">
-                Nossos Serviços
-              </a>
-            </Button>
+          {/* Right Column: Hero Image - Solta e Menor */}
+          <div className="w-full lg:w-2/5 xl:w-[55%] flex justify-center lg:justify-end items-end z-10 pointer-events-none lg:absolute lg:right-0 lg:bottom-0 lg:h-[85vh] xl:pr-12 relative h-[60vh] md:h-[65vh]">
+            <div className="relative w-full max-w-[420px] md:max-w-[480px] lg:max-w-[550px] xl:max-w-[650px] h-full">
+              <Image
+                src="/gioia-hero-1.webp"
+                alt="Pai e filha sorrindo, representando a proteção da família e dignidade"
+                width={800}
+                height={1000}
+                className="w-full h-full object-contain object-bottom md:object-center lg:object-right-bottom drop-shadow-[0_20px_35px_rgba(0,0,0,0.5)]"
+                priority
+              />
+            </div>
           </div>
         </div>
       </section>

@@ -31,10 +31,10 @@ export function MinimalNavbar() {
                 : "bg-transparent border-transparent"
                 }`}
         >
-            {/* Left Side - Logo & Primary Nav */}
+            {/* Left Side - Logo (Nav movida para Right Side) */}
             <div className="flex items-center gap-12">
-                {/* Logo */}
-                <div className="pointer-events-auto hover:scale-105 transition-transform">
+                {/* Logo - Escondido no Mobile para dar foco à Logo da Hero Section */}
+                <div className="hidden md:block pointer-events-auto hover:scale-105 transition-transform">
                     <Link href="/" className="block">
                         <Image
                             src="/simbolo-gioia.svg"
@@ -46,9 +46,12 @@ export function MinimalNavbar() {
                         />
                     </Link>
                 </div>
+            </div>
 
-                {/* Left Nav Links */}
-                <nav className="hidden md:flex items-center gap-8 pointer-events-auto">
+            {/* Right Side - All Nav & Actions */}
+            <div className="flex items-center gap-8 pointer-events-auto">
+                {/* Primary Nav Links */}
+                <nav className="hidden xl:flex items-center gap-8 pointer-events-auto">
                     <Link href="#saude" className="text-sm font-medium text-white/80 hover:text-white uppercase tracking-[0.15em] transition-colors">
                         Direito da Saúde
                     </Link>
@@ -56,11 +59,10 @@ export function MinimalNavbar() {
                         Direito do Trabalho
                     </Link>
                 </nav>
-            </div>
 
-            {/* Right Side - Secondary Nav & Actions */}
-            <div className="flex items-center gap-8 pointer-events-auto">
-                {/* Right Nav Links */}
+                <div className="hidden xl:block w-[1px] h-6 bg-white/20"></div>
+
+                {/* Secondary Nav Links */}
                 <nav className="hidden md:flex items-center gap-8">
                     <Link href="#about" className="text-sm font-medium text-white/80 hover:text-white uppercase tracking-[0.15em] transition-colors">
                         Sobre
