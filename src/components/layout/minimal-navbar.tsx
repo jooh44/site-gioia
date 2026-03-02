@@ -33,8 +33,8 @@ export function MinimalNavbar() {
         >
             {/* Left Side - Logo (Nav movida para Right Side) */}
             <div className="flex items-center gap-12">
-                {/* Logo - Escondido no Mobile para dar foco à Logo da Hero Section */}
-                <div className="hidden md:block pointer-events-auto hover:scale-105 transition-transform">
+                {/* Logo - Escondido no topo do Mobile, visível ao rolar a página */}
+                <div className={`${isScrolled ? "block" : "hidden md:block"} pointer-events-auto hover:scale-105 transition-transform`}>
                     <Link href="/" className="block">
                         <Image
                             src="/simbolo-gioia.svg"

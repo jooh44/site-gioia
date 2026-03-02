@@ -17,9 +17,21 @@ export default function Home() {
       <MinimalNavbar />
 
       {/* 1. HERO SECTION (Split Layout) */}
-      <section className="relative w-full lg:min-h-[100svh] flex flex-col lg:flex-row bg-primary text-primary-foreground overflow-hidden pt-20 md:pt-24 lg:pt-0 pb-0">
+      <section className="relative w-full lg:min-h-[100svh] flex flex-col lg:flex-row bg-primary text-primary-foreground overflow-hidden pt-12 md:pt-16 lg:pt-0 pb-0">
         {/* Subtle Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/30 pointer-events-none z-0"></div>
+
+        {/* Background Decorative SVG Watermark behind the lawyers */}
+        <div className="absolute top-[40%] lg:top-[50%] right-[-10%] lg:right-[-5%] -translate-y-[45%] lg:-translate-y-1/2 w-[120%] md:w-[80%] lg:w-[60%] xl:w-[50%] h-auto opacity-[0.10] lg:opacity-[0.15] pointer-events-none brightness-0 z-0">
+          <Image
+            src="/simbolo-gioia.svg"
+            alt="Símbolo Gioia Background"
+            width={1200}
+            height={1200}
+            className="w-full h-full object-contain"
+            priority={false}
+          />
+        </div>
 
         {/* Background Graphics (Discrete Symbol Texture) */}
         <div className="absolute -left-[10%] lg:-left-[5%] top-[50%] lg:top-[80%] -translate-y-1/2 opacity-[0.10] lg:opacity-[0.15] pointer-events-none brightness-0 z-0">
@@ -36,9 +48,9 @@ export default function Home() {
         <div className="relative z-10 w-full max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center lg:items-stretch justify-between px-6 md:px-12 lg:px-24 min-h-screen lg:min-h-0 lg:h-screen">
 
           {/* Left Column: Text Content */}
-          <div className="w-full lg:w-3/5 xl:w-[50%] flex flex-col items-center text-center lg:items-start lg:text-left gap-4 md:gap-7 pt-2 pb-10 lg:pb-0 lg:pt-12 xl:pt-16 z-20">
+          <div className="w-full lg:w-3/5 xl:w-[50%] flex flex-col items-center text-center lg:items-start lg:text-left gap-4 md:gap-7 pb-2 lg:pb-0 pt-0 md:pt-4 lg:pt-12 xl:pt-16 z-20">
             {/* Official Logo (Small) */}
-            <div className="w-24 md:w-32 lg:w-36 xl:w-40 mb-0 lg:mb-2">
+            <div className="w-32 md:w-36 lg:w-36 xl:w-40 mb-1 lg:mb-2 mt-4 lg:mt-0">
               <Image
                 src="/logo-gioia.svg"
                 alt="Gioia e Associados"
@@ -75,8 +87,8 @@ export default function Home() {
           </div>
 
           {/* Right Column: Hero Image - Solta e Menor */}
-          <div className="w-full lg:w-2/5 xl:w-[55%] flex justify-center lg:justify-end items-end z-10 pointer-events-none lg:absolute lg:right-0 lg:bottom-0 lg:h-[85vh] xl:pr-12 relative h-[60vh] md:h-[65vh]">
-            <div className="relative w-full max-w-[420px] md:max-w-[480px] lg:max-w-[550px] xl:max-w-[650px] h-full">
+          <div className="w-full lg:w-2/5 xl:w-[55%] flex justify-center lg:justify-end items-end z-10 pointer-events-none lg:absolute lg:-right-4 xl:-right-8 lg:bottom-0 lg:h-[80vh] xl:h-[85vh] relative h-[65vh] md:h-[70vh] -mt-8 md:-mt-16 lg:mt-0">
+            <div className="relative w-full max-w-[500px] md:max-w-[600px] lg:max-w-[550px] xl:max-w-[700px] h-full">
               <Image
                 src="/gioia-hero-1.webp"
                 alt="Pai e filha sorrindo, representando a proteção da família e dignidade"
