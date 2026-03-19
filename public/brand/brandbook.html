@@ -1218,6 +1218,90 @@
     }
     .btn-download:hover { background: var(--garnet-mid); color: var(--gold); }
     .btn-download svg { width: 11px; height: 11px; fill: currentColor; }
+
+    /* ─── Modal de Senha para Download ────────────────────────────── */
+    .download-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    .download-modal-overlay.visible { display: flex; }
+    .download-modal {
+      background: var(--white);
+      padding: 2.5rem 2rem 2rem;
+      max-width: 360px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .download-modal-close {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      color: var(--silver-dark);
+      cursor: pointer;
+      line-height: 1;
+    }
+    .download-modal h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+    .download-modal p {
+      font-size: 0.78rem;
+      color: var(--silver-dark);
+      margin-bottom: 1.25rem;
+    }
+    .download-modal input[type="password"] {
+      width: 100%;
+      padding: 0.6rem 0.8rem;
+      border: 1px solid rgba(0,0,0,0.15);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-align: center;
+      outline: none;
+      transition: border-color 0.2s;
+      box-sizing: border-box;
+    }
+    .download-modal input[type="password"]:focus {
+      border-color: var(--garnet);
+    }
+    .download-modal input[type="password"].error {
+      border-color: #c0392b;
+      animation: shake 0.4s ease;
+    }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-6px); }
+      40%, 80% { transform: translateX(6px); }
+    }
+    .download-modal-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-top: 1rem;
+      padding: 0.6rem 1.8rem;
+      background: var(--garnet);
+      color: var(--gold-light);
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .download-modal-btn:hover { background: var(--garnet-mid); color: var(--gold); }
     .outros-ativos-title {
       font-family: 'Playfair Display', serif;
       font-size: 1.1rem;
@@ -2404,8 +2488,96 @@
 
   </main><!-- /main-content -->
 
+  <!-- Modal de Senha para Download -->
+  <div class="download-modal-overlay" id="downloadModal">
+    <div class="download-modal">
+      <button class="download-modal-close" onclick="closeDownloadModal()">&times;</button>
+      <h3>Área restrita</h3>
+      <p>Digite a senha para baixar este ativo.</p>
+      <input type="password" id="downloadPassword" placeholder="Senha" autocomplete="off">
+      <br>
+      <button class="download-modal-btn" onclick="submitDownloadPassword()">Confirmar</button>
+    </div>
+  </div>
 
   <script>
+    /* ── Proteção de conteúdo & download com senha ── */
+    let pendingDownloadUrl = null;
+    let pendingDownloadName = null;
+
+    // Intercepta todos os cliques em links de download
+    document.addEventListener('click', function(e) {
+      const link = e.target.closest('a[download], a.btn-download');
+      if (!link) return;
+      e.preventDefault();
+      e.stopPropagation();
+      pendingDownloadUrl = link.getAttribute('href');
+      pendingDownloadName = link.getAttribute('download') || pendingDownloadUrl.split('/').pop();
+      openDownloadModal();
+    }, true);
+
+    function openDownloadModal() {
+      const modal = document.getElementById('downloadModal');
+      const input = document.getElementById('downloadPassword');
+      modal.classList.add('visible');
+      input.value = '';
+      input.classList.remove('error');
+      setTimeout(() => input.focus(), 100);
+    }
+
+    function closeDownloadModal() {
+      document.getElementById('downloadModal').classList.remove('visible');
+      pendingDownloadUrl = null;
+      pendingDownloadName = null;
+    }
+
+    function submitDownloadPassword() {
+      const input = document.getElementById('downloadPassword');
+      if (input.value === 'nanagioia') {
+        // Senha correta — dispara download
+        const a = document.createElement('a');
+        a.href = pendingDownloadUrl;
+        a.download = pendingDownloadName;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        closeDownloadModal();
+      } else {
+        input.classList.add('error');
+        input.value = '';
+        input.setAttribute('placeholder', 'Senha incorreta');
+        setTimeout(() => {
+          input.classList.remove('error');
+          input.setAttribute('placeholder', 'Senha');
+        }, 1500);
+      }
+    }
+
+    // Enter para confirmar no modal
+    document.getElementById('downloadPassword').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') submitDownloadPassword();
+    });
+
+    // Fechar modal com Escape ou clicando fora
+    document.getElementById('downloadModal').addEventListener('click', function(e) {
+      if (e.target === this) closeDownloadModal();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeDownloadModal();
+    });
+
+    // Bloquear right-click em imagens e links de download
+    document.addEventListener('contextmenu', function(e) {
+      if (e.target.closest('img, .asset-preview-panel, .asset-download-card, a[download]')) {
+        e.preventDefault();
+      }
+    });
+
+    // Bloquear arrastar imagens
+    document.addEventListener('dragstart', function(e) {
+      if (e.target.tagName === 'IMG') e.preventDefault();
+    });
+
     /* ── Sidebar toggle ── */
     function toggleSidebar() {
       document.getElementById('sidebar').classList.toggle('open');
