@@ -1,5 +1,0 @@
-[     314ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8767/assets/logo-gioia-e-associados.svg:0
-[     555ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8767/assets/simbolo-gioia-e-associados.svg:0
-[     620ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8767/assets/logo-gioia-e-associados.svg:0
-[     623ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8767/public/texture-leather.png:0
-[     926ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8767/favicon.ico:0
