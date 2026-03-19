@@ -1,22 +1,27 @@
 export const siteConfig = {
-    name: "Gioia e Associados",
-    description: "Santuário jurídico com 33 anos de excelência em Direito Médico e Trabalhista. Defesa estratégica e humanizada para momentos críticos.",
-    url: "https://site-gioia.vercel.app",
-    ogImage: "https://site-gioia.vercel.app/og.jpg",
+    name: "Gioia e Associados Advocacia",
+    description: "Escritório com 34 anos de excelência em Direito Médico e Trabalhista em São Paulo. Liminares em 24h, defesa do trabalhador e atendimento humanizado. Lapa/SP.",
+    url: "https://gioiaeassociados.com.br", // TODO: confirmar domínio final
+    ogImage: "https://gioiaeassociados.com.br/og.jpg", // TODO: criar imagem OG
     links: {
-        whatsapp: "https://wa.me/5511999999999", // TODO: Update with real number
-        instagram: "https://instagram.com/gioia.adv", // TODO: Update with real handle
-        linkedin: "https://linkedin.com/company/gioia-associados", // TODO: Update
+        whatsapp: "https://wa.me/5511993349907",
+        instagram: "https://instagram.com/dragioia",
+        linkedin: "https://linkedin.com/company/gioia-associados", // TODO: confirmar URL
     },
     contact: {
-        email: "contato@gioia.adv.br", // TODO: Update
-        phone: "(11) 9999-9999", // TODO: Update
-        address: "Av. Paulista, 0000 - São Paulo, SP", // TODO: Update
+        email: "contato@gioiaeassociados.com.br",
+        phone: "(11) 3835-3200",
+        phoneMobile: "(11) 9 9334-9907",
+        address: "Rua Barão de Jundiaí, 523 – Lapa, São Paulo – SP",
+        addressFull: "Rua Barão de Jundiaí, 523, Lapa, São Paulo - SP, CEP: 05073-010",
+        city: "São Paulo",
+        state: "SP",
+        postalCode: "05073-010",
     },
     mainNav: [
         { title: "Início", href: "/" },
-        { title: "O Escritório", href: "/sobre" },
-        { title: "Áreas de Atuação", href: "/servicos" },
+        { title: "O Escritório", href: "#about" },
+        { title: "Áreas de Atuação", href: "#services" },
         { title: "Falar com Advogado", href: "#contato" },
     ],
 }

@@ -1,19 +1,127 @@
-"use client"
-
 import Link from "next/link"
+import type { Metadata } from "next"
 import { homeConfig } from "@/config/home"
 import { siteConfig } from "@/config/site"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { MinimalNavbar } from "@/components/layout/minimal-navbar"
 import { TeamSection } from "@/components/sections/team-section"
+import { ServicesSection } from "@/components/sections/services-section"
 import Image from "next/image"
-import { Check, ArrowRight, Scale, HeartPulse, Building2, Gavel, FileText, UserCheck, Phone, ChevronRight } from "lucide-react"
+import { ArrowRight } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "Advogado Direito Médico e Trabalhista em São Paulo | Gioia e Associados",
+  description:
+    "Escritório com 34 anos de tradição em Direito Médico e Trabalhista na Lapa, São Paulo. Liminares para planos de saúde em 24h. Defesa do trabalhador. Consulta sem custo inicial.",
+  alternates: {
+    canonical: "/",
+  },
+}
+
+const schemaLegalService = {
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  name: "Gioia e Associados Advocacia",
+  description:
+    "Escritório de advocacia especializado em Direito Médico e Trabalhista com 34 anos de atuação em São Paulo.",
+  url: "https://gioiaeassociados.com.br",
+  telephone: "+551138353200",
+  email: "contato@gioiaeassociados.com.br",
+  foundingDate: "1992",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Rua Barão de Jundiaí, 523",
+    addressLocality: "São Paulo",
+    addressRegion: "SP",
+    postalCode: "05073-010",
+    addressCountry: "BR",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: -23.5275,
+    longitude: -46.7068,
+  },
+  areaServed: { "@type": "State", name: "São Paulo" },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Áreas de Atuação",
+    itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Direito Médico" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Direito do Trabalho" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Direito do Consumidor" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Direito de Família" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Direito Imobiliário" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Direito Empresarial" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Direito Previdenciário" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Direito Sucessório" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Contratos" } },
+    ],
+  },
+  member: [
+    {
+      "@type": "Person",
+      name: "Celso Fernando Gioia",
+      jobTitle: "Sócio Fundador",
+      identifier: "OAB/SP 70.379",
+    },
+    {
+      "@type": "Person",
+      name: "Mariana Matheus Gioia",
+      jobTitle: "Sócia",
+      identifier: "OAB/SP 351.962",
+    },
+    {
+      "@type": "Person",
+      name: "Fábio Dreger da Silva",
+      jobTitle: "Advogado Associado",
+      identifier: "OAB/SP 336.451",
+    },
+  ],
+}
+
+const schemaFAQ = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "O que é uma liminar e quanto tempo demora?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "A liminar é uma decisão judicial provisória e urgente. Em casos de saúde com risco de vida, pode ser obtida em 24 a 48 horas. Nossa equipe atua com plantão especializado para garantir essa agilidade.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "O escritório cobra consulta?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Para uma análise preliminar de viabilidade do caso, não cobramos honorários iniciais. Agende uma conversa para entendermos seu cenário.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Vocês atendem em todo o Brasil?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Sim. Com o processo judicial eletrônico, atuamos em tribunais de todo o país, mantendo o mesmo padrão de atendimento e proximidade através de videoconferências.",
+      },
+    },
+  ],
+}
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col font-sans selection:bg-secondary selection:text-secondary-foreground relative">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaLegalService) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaFAQ) }}
+      />
       <MinimalNavbar />
 
       {/* 1. HERO SECTION (Split Layout) */}
@@ -102,106 +210,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 2. SERVICES SECTION (Modular Grid - Anytype Style) */}
-      <section id="services" className="w-full py-24 md:py-32 bg-white border-b border-stone-200">
-        <div className="container px-6 md:px-12 lg:px-24 mx-auto">
-
-          {/* Main Grid Container */}
-          <div className="flex flex-col border border-stone-200">
-
-            {/* Row 1: Header & Intro */}
-            <div className="grid grid-cols-1 md:grid-cols-2">
-              <div className="p-10 md:p-14 border-b md:border-r border-stone-200">
-                <span className="text-xs font-bold text-secondary uppercase tracking-[0.25em] block mb-6">Áreas de Atuação</span>
-                <h2 className="font-serif text-4xl md:text-5xl text-stone-900 leading-tight">
-                  Especialização <br />que Gera <span className="text-primary">Resultados.</span>
-                </h2>
-              </div>
-              <div className="p-10 md:p-14 border-b border-stone-200 flex flex-col justify-center">
-                <p className="text-stone-500 font-sans text-lg leading-relaxed">
-                  "Não defendemos empresas. Nossa missão é restaurar a dignidade e o patrimônio de quem dedica a vida ao trabalho ou luta pela saúde."
-                </p>
-              </div>
-            </div>
-
-            {/* Row 2: Services Content */}
-            <div className="grid grid-cols-1 md:grid-cols-2">
-              {/* Health Law */}
-              <div id="saude" className="group relative p-10 md:p-14 md:border-r border-stone-200 hover:bg-stone-50 transition-colors">
-                <div className="mb-10">
-                  <div className="mb-8">
-                    <span className="text-xs font-bold text-primary uppercase tracking-widest">Direito da Saúde</span>
-                  </div>
-
-                  <h3 className="font-serif text-3xl text-stone-900 mb-4 group-hover:text-primary transition-colors">
-                    Contra Abusos de Planos de Saúde
-                  </h3>
-                  <p className="text-stone-600 font-sans text-base leading-relaxed mb-8">
-                    Atuação de emergência. Quando a saúde não pode esperar, derrubamos negativas abusivas com liminares judiciais em tempo recorde.
-                  </p>
-
-                  <ul className="space-y-3 mb-10">
-                    {[
-                      "Negativa de Cirurgia e Home Care",
-                      "Medicamentos de Alto Custo (Zolgensma)",
-                      "Tratamentos Autismo (Método ABA)",
-                      "Reajustes Abusivos em Planos"
-                    ].map((item, i) => (
-                      <li key={i} className="flex items-start gap-3 text-stone-600 text-sm">
-                        <Check className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <Button variant="link" className="p-0 text-stone-400 group-hover:text-primary transition-colors uppercase tracking-widest text-xs font-bold absolute bottom-10">
-                  Agendar uma consulta <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-                {/* Spacer for absolute button */}
-                <div className="h-6"></div>
-              </div>
-
-              {/* Labor Law */}
-              <div id="trabalho" className="group relative p-10 md:p-14 border-t md:border-t-0 border-stone-200 hover:bg-stone-50 transition-colors">
-                <div className="mb-10">
-                  <div className="mb-8">
-                    <span className="text-xs font-bold text-secondary uppercase tracking-widest">Direito do Trabalho</span>
-                  </div>
-
-                  <h3 className="font-serif text-3xl text-stone-900 mb-4 group-hover:text-secondary transition-colors">
-                    Defesa Exclusiva do Trabalhador
-                  </h3>
-                  <p className="text-stone-600 font-sans text-base leading-relaxed mb-8">
-                    Especialistas em reverter injustiças no ambiente corporativo, bancário e industrial. Restauramos seu patrimônio e direitos.
-                  </p>
-
-                  <ul className="space-y-3 mb-10">
-                    {[
-                      "Rescisão Indireta e Assédio",
-                      "Bancários, Financiários e Industrial",
-                      "Doenças Ocupacionais e Acidentes",
-                      "Vínculo de Emprego (Pejotização)"
-                    ].map((item, i) => (
-                      <li key={i} className="flex items-start gap-3 text-stone-600 text-sm">
-                        <Check className="w-4 h-4 text-secondary mt-0.5 shrink-0" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <Button variant="link" className="p-0 text-stone-400 group-hover:text-secondary transition-colors uppercase tracking-widest text-xs font-bold absolute bottom-10">
-                  Agendar uma consulta <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-                {/* Spacer for absolute button */}
-                <div className="h-6"></div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
+      {/* 2. SERVICES SECTION */}
+      <ServicesSection />
 
       {/* 3. ABOUT SECTION (Authority & Tradition - Dark Brand Style) */}
       <section id="about" className="w-full py-24 md:py-32 bg-primary text-white relative overflow-hidden">
@@ -404,7 +414,7 @@ export default function Home() {
 
           <div className="lg:col-span-2">
             <Accordion type="single" collapsible className="w-full space-y-4">
-              <AccordionItem value="item-1" className="border border-stone-200 px-6 rounded-sm">
+              <AccordionItem value="item-1" className="border border-stone-200 px-6">
                 <AccordionTrigger className="font-serif text-xl text-stone-800 hover:text-primary py-6 text-left">
                   O que é uma liminar e quanto tempo demora?
                 </AccordionTrigger>
@@ -412,7 +422,7 @@ export default function Home() {
                   A liminar é uma decisão judicial provisória e urgente. Em casos de saúde (risco de vida), pode ser obtida em 24 a 48 horas. Nossa equipe atua com plantão especializado para garantir essa agilidade.
                 </AccordionContent>
               </AccordionItem>
-              <AccordionItem value="item-2" className="border border-stone-200 px-6 rounded-sm">
+              <AccordionItem value="item-2" className="border border-stone-200 px-6">
                 <AccordionTrigger className="font-serif text-xl text-stone-800 hover:text-primary py-6 text-left">
                   O escritório cobra consulta?
                 </AccordionTrigger>
@@ -420,7 +430,7 @@ export default function Home() {
                   Para uma análise preliminar de viabilidade do caso, não cobramos honorários iniciais. Agende uma conversa para entendermos seu cenário.
                 </AccordionContent>
               </AccordionItem>
-              <AccordionItem value="item-3" className="border border-stone-200 px-6 rounded-sm">
+              <AccordionItem value="item-3" className="border border-stone-200 px-6">
                 <AccordionTrigger className="font-serif text-xl text-stone-800 hover:text-primary py-6 text-left">
                   Vocês atendem em todo o Brasil?
                 </AccordionTrigger>

@@ -17,9 +17,9 @@ export const homeConfig = {
             icon: "Scale", // Lucide icon name
         },
         {
-            title: "33 Anos de História",
-            description: "Uma trajetória marcada pela ética, pela técnica jurídica refinada e por vitórias que transformaram a vida de nossos clientes.",
-            icon: "ShieldCheck", // Lucide icon name
+            title: "34 Anos de Tradição",
+            description: "Uma trajetória desde 1992, marcada pela ética, pela técnica jurídica refinada e por vitórias que transformaram a vida de nossos clientes.",
+            icon: "ShieldCheck",
         },
     ],
 }

@@ -20,30 +20,30 @@ interface TeamMember {
 const teamMembers: TeamMember[] = [
     {
         id: "celso",
-        name: "Dr. Celso Gioia",
-        role: "Diretor Fundador — Especialista USP",
-        oab: "OAB/SP 110.134",
-        bio: "Fundador do escritório em 1992, o Dr. Celso Gioia é bacharel em Direito pela Universidade de São Paulo (USP). Com mais de três décadas de atuação, tornou-se referência nacional em casos de alta complexidade no Direito à Saúde, unindo rigor acadêmico a uma visão humanista e estratégica da advocacia.",
-        specializations: ["Direito à Saúde de Alta Complexidade", "Estratégia Processual", "Consultoria Institucional"],
-        image: "/placeholder-celso.jpg"
+        name: "Dr. Celso Fernando Gioia",
+        role: "Sócio Fundador",
+        oab: "OAB/SP 70.379",
+        bio: "Fundador da Gioia e Associados em 1992, o Dr. Celso Fernando Gioia é graduado pela Universidade de São Paulo (USP), com sólida especialização em Responsabilidade Civil, Contratos, Direito Empresarial e Trabalhista. Atuou como Diretor Jurídico da RedeTV! e como Presidente da OAB/SP – 96ª Subseção (Lapa) entre 2012 e 2017.",
+        specializations: ["Responsabilidade Civil e Contratos", "Direito Empresarial e Trabalhista", "Liderança Institucional OAB/SP"],
+        image: "/team/celso-gioia.jpg"
     },
     {
         id: "mariana",
-        name: "Dra. Mariana Gioia",
-        role: "Sócia-Diretora",
-        oab: "OAB/SP 286.723",
-        bio: "Dedicada à defesa dos direitos fundamentais, Dra. Mariana Gioia coordena as áreas estratégica e digital do escritório. Especialista em Direito Médico e do Trabalho, sua atuação é marcada pela agilidade na obtenção de liminares e por um atendimento personalizado que entende a urgência de cada vida.",
-        specializations: ["Direito Médico e Hospitalar", "Direito do Trabalho", "Gestão de Crises Jurídicas"],
-        image: "/placeholder-mariana.jpg"
+        name: "Dra. Mariana Matheus Gioia",
+        role: "Sócia",
+        oab: "OAB/SP 351.962",
+        bio: "Sócia da Gioia e Associados, a Dra. Mariana Matheus Gioia é especialista com pós-graduação em Direito Empresarial e Direito Médico e Hospitalar. Atuou como defensora junto ao CREMESP e presidiu a Comissão de Assuntos do Judiciário da OAB/SP Lapa. Nossa atuação é pautada pela agilidade e pelo compromisso em oferecer soluções jurídicas que acompanham as transformações da sociedade.",
+        specializations: ["Direito Médico e Hospitalar (CREMESP)", "Direito Empresarial", "Consultoria Estratégica"],
+        image: "/team/mariana-gioia.jpg"
     },
     {
         id: "fabio",
-        name: "Dr. Fabio Dreger",
+        name: "Dr. Fábio Dreger da Silva",
         role: "Advogado Associado",
-        oab: "OAB/SP 450.129",
-        bio: "Especialista em Direito Civil e Consumerista focado no setor de saúde. Dr. Fabio atua na proteção do consumidor contra abusos contratuais e negativas de cobertura, trazendo uma abordagem moderna e técnica para garantir que os direitos dos pacientes sejam respeitados perante grandes operadoras.",
-        specializations: ["Direito do Consumidor na Saúde", "Responsabilidade Civil", "Acompanhamento Processual Ágil"],
-        image: "/placeholder-fabio.jpg"
+        oab: "OAB/SP 336.451",
+        bio: "O Dr. Fábio Dreger da Silva integra a equipe com foco no rigor processual e na defesa especializada. Pós-graduado em Processo Civil pela Mackenzie e em Direito Médico e da Saúde pela Faculdade Legale. Foi Vice-Presidente da Comissão de Direito Civil da OAB/SP Lapa (2016–2018).",
+        specializations: ["Processo Civil (Mackenzie)", "Direito Médico e da Saúde", "Direito do Consumidor"],
+        image: "/team/fabio-dreger.jpg"
     }
 ]
 

@@ -1,0 +1,4 @@
+[     317ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8765/assets/logo-gioia-e-associados.svg:0
+[     555ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8765/assets/simbolo-gioia-e-associados.svg:0
+[     624ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8765/assets/logo-gioia-e-associados.svg:0
+[     930ms] [ERROR] Failed to load resource: the server responded with a status of 404 (File not found) @ http://localhost:8765/favicon.ico:0
