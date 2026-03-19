@@ -2504,9 +2504,11 @@
     /* ── Proteção de conteúdo & download com senha ── */
     let pendingDownloadUrl = null;
     let pendingDownloadName = null;
+    let isInternalDownload = false;
 
     // Intercepta todos os cliques em links de download
     document.addEventListener('click', function(e) {
+      if (isInternalDownload) return;
       const link = e.target.closest('a[download], a.btn-download');
       if (!link) return;
       e.preventDefault();
@@ -2540,6 +2542,7 @@
         closeDownloadModal();
         // Dispara download após modal fechar
         setTimeout(() => {
+          isInternalDownload = true;
           const a = document.createElement('a');
           a.href = url;
           a.download = name;
@@ -2547,6 +2550,7 @@
           document.body.appendChild(a);
           a.click();
           document.body.removeChild(a);
+          isInternalDownload = false;
         }, 100);
       } else {
         input.classList.add('error');
