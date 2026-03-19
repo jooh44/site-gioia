@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# ferramentas de desenvolvimento (não necessário para Vercel)
+_bmad/
+_bmad-output/
+.agent/
+.claude/
+.playwright-mcp/
+__prints/
+_cliente/
