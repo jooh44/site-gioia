@@ -2534,14 +2534,20 @@
     function submitDownloadPassword() {
       const input = document.getElementById('downloadPassword');
       if (input.value === 'nanagioia') {
-        // Senha correta — dispara download
-        const a = document.createElement('a');
-        a.href = pendingDownloadUrl;
-        a.download = pendingDownloadName;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
+        // Senha correta — guarda refs antes de limpar
+        const url = pendingDownloadUrl;
+        const name = pendingDownloadName;
         closeDownloadModal();
+        // Dispara download após modal fechar
+        setTimeout(() => {
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = name;
+          a.style.display = 'none';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        }, 100);
       } else {
         input.classList.add('error');
         input.value = '';
