@@ -5,7 +5,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { siteConfig } from "@/config/site"
 import { serviceGroups } from "@/config/services"
-import { Menu, X, ChevronDown } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle } from "@/components/ui/sheet"
 import { useState, useEffect } from "react"
 
@@ -23,7 +23,7 @@ export function MinimalNavbar() {
     return (
         <header
             className={`fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 py-4 md:px-12 md:py-3 transition-all duration-300 ${isScrolled
-                ? "bg-black/20 backdrop-blur-md border-b border-white/5"
+                ? "bg-transparent"
                 : "bg-transparent border-transparent"
                 }`}
         >
@@ -47,31 +47,18 @@ export function MinimalNavbar() {
             <div className="flex items-center gap-8 pointer-events-auto">
 
                 {/* Desktop Nav */}
-                <nav className="hidden md:flex items-center gap-8">
+                <nav className="hidden md:flex items-center gap-6">
+                    {serviceGroups.map((group) => (
+                        <a
+                            key={group.id}
+                            href={`#${group.id}`}
+                            className="text-sm font-medium text-white/80 hover:text-white uppercase tracking-[0.15em] transition-colors"
+                        >
+                            {group.navLabel}
+                        </a>
+                    ))}
 
-                    {/* Dropdown: Áreas de Atuação */}
-                    <div className="group relative">
-                        <button className="flex items-center gap-1.5 text-sm font-medium text-white/80 hover:text-white uppercase tracking-[0.15em] transition-colors">
-                            Áreas
-                            <ChevronDown className="w-3.5 h-3.5 group-hover:rotate-180 transition-transform duration-200" />
-                        </button>
-
-                        {/* Dropdown Panel */}
-                        <div className="absolute top-full right-0 mt-3 w-52 hidden group-hover:flex flex-col bg-primary border border-white/10 shadow-2xl z-50">
-                            {serviceGroups.map((group) => (
-                                <a
-                                    key={group.id}
-                                    href={`#${group.id}`}
-                                    className="flex items-center gap-3 px-5 py-3.5 text-sm text-white/80 hover:text-white hover:bg-white/10 transition-colors border-b border-white/5 last:border-b-0"
-                                >
-                                    <span
-                                        className={`w-1 h-4 shrink-0 ${group.accent === "primary" ? "bg-primary-foreground/40" : "bg-secondary/60"}`}
-                                    />
-                                    <span className="font-sans tracking-wide">{group.navLabel}</span>
-                                </a>
-                            ))}
-                        </div>
-                    </div>
+                    <span className="w-[1px] h-4 bg-white/20" />
 
                     <Link href="#about" className="text-sm font-medium text-white/80 hover:text-white uppercase tracking-[0.15em] transition-colors">
                         Sobre
