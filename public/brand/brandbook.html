@@ -13,7 +13,7 @@
     :root {
       --garnet:      #5E0001;
       --garnet-deep: #420001;
-      --garnet-mid:  #7a0002;
+      --molten-lava: #7A0002;
       --gold:        #BF9F5B;
       --gold-logo:   #D1AF66;
       --gold-light:  #d8bb7e;
@@ -45,7 +45,7 @@
       position: fixed;
       top: 0; left: 0; bottom: 0;
       width: var(--sidebar-w);
-      background: var(--garnet-deep);
+      background: var(--garnet);
       display: flex;
       flex-direction: column;
       z-index: 200;
@@ -111,6 +111,14 @@
       color: var(--gold-light);
       border-left: 2px solid var(--gold);
     }
+    .nav-link.sub-link {
+      padding-left: 3rem;
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.4);
+    }
+    .nav-link.sub-link:hover {
+      color: rgba(255,255,255,0.7);
+    }
     .nav-num {
       font-family: 'Cinzel', serif;
       font-size: 0.6rem;
@@ -136,7 +144,7 @@
       top: 0.875rem;
       right: 0.875rem;
       z-index: 400;
-      background: var(--garnet-deep);
+      background: var(--molten-lava);
       border: none;
       border-radius: 6px;
       cursor: pointer;
@@ -485,7 +493,7 @@
       padding: 2rem 1rem;
       border: 1px solid rgba(0,0,0,0.06);
     }
-    .symbol-card.dark { background: var(--garnet); border-color: transparent; }
+    .symbol-card.dark { background: var(--molten-lava); border-color: transparent; }
     .symbol-card.black { background: var(--ink); border-color: transparent; }
     .symbol-card img { width: 64px; }
     .symbol-card.mono img { filter: grayscale(1); }
@@ -759,7 +767,7 @@
       font-family: 'Playfair Display', serif;
       font-size: clamp(1.5rem, 4vw, 2.5rem);
       font-style: italic;
-      color: var(--garnet);
+      color: var(--molten-lava);
     }
     .specimen-inter {
       font-family: 'Inter', sans-serif;
@@ -772,7 +780,7 @@
       font-family: 'Pinyon Script', cursive;
       font-size: clamp(2.5rem, 6vw, 4rem);
       line-height: 1.2;
-      color: var(--garnet);
+      color: var(--molten-lava);
     }
     .type-scale {
       display: flex;
@@ -815,88 +823,9 @@
       flex-shrink: 0;
     }
 
-    /* ─── Section: Elementos Gráficos ─────────────────────────────── */
-    #elementos {
-      background: var(--smoke);
-    }
-    .element-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin-bottom: 2.5rem;
-    }
-    .element-card {
-      background: var(--white);
-      border: 1px solid rgba(0,0,0,0.06);
-      overflow: hidden;
-    }
-    .element-preview {
-      height: 160px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .element-info {
-      padding: 1.25rem 1.5rem;
-    }
-    .element-info h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      margin-bottom: 0.35rem;
-    }
-    .element-info p {
-      font-size: 0.78rem;
-      color: var(--silver-dark);
-      line-height: 1.5;
-    }
-
-    /* Filete decorativo demo */
-    .filete-demo {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      width: 80%;
-    }
-    .filete-line {
-      flex: 1;
-      height: 1px;
-      background: var(--gold);
-    }
-    .filete-symbol {
-      color: var(--gold);
-      font-family: 'Cinzel', serif;
-      font-size: 1.2rem;
-      opacity: 0.7;
-    }
-
-    /* Pattern demo */
-    .pattern-stripes {
-      position: absolute;
-      inset: 0;
-      background-image: repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 10px,
-        rgba(191,159,91,0.06) 10px,
-        rgba(191,159,91,0.06) 11px
-      );
-    }
-    .pattern-label {
-      position: relative;
-      z-index: 1;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      color: var(--gold);
-      text-transform: uppercase;
-      opacity: 0.7;
-    }
-
     /* ─── Section: Voz & Tom ─────────────────────────────────────── */
     #voz-tom {
-      background: var(--garnet-deep);
+      background: var(--garnet);
       color: var(--white);
     }
     #voz-tom .chapter-title { color: var(--white); }
@@ -969,173 +898,13 @@
     }
     .voice-example.bad .voice-example-text { color: rgba(255,255,255,0.4); }
 
-    /* ─── Section: Fotografia ─────────────────────────────────────── */
-    #fotografia {
-      background: var(--white);
-    }
-    .photo-principles {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
-    .photo-principle-card {
-      border: 1px solid rgba(0,0,0,0.06);
-      overflow: hidden;
-    }
-    .photo-principle-preview {
-      height: 140px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-    .photo-principle-info {
-      padding: 1.25rem;
-    }
-    .photo-principle-info h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: 0.95rem;
-      margin-bottom: 0.35rem;
-    }
-    .photo-principle-info p {
-      font-size: 0.78rem;
-      color: var(--silver-dark);
-      line-height: 1.5;
-    }
-    .photo-treatment-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-    .photo-treatment {
-      padding: 1.5rem;
-      border: 1px solid rgba(0,0,0,0.06);
-      background: var(--smoke);
-    }
-    .photo-treatment h4 {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-    .photo-treatment.good h4 { color: var(--garnet); }
-    .photo-treatment.bad h4 { color: #c0392b; }
-    .photo-treatment ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-    }
-    .photo-treatment li {
-      font-size: 0.8rem;
-      color: var(--ink-light);
-      display: flex;
-      gap: 0.5rem;
-      align-items: flex-start;
-    }
-    .photo-treatment li::before {
-      content: '';
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      margin-top: 0.5rem;
-      flex-shrink: 0;
-    }
-    .photo-treatment.good li::before { background: var(--gold); }
-    .photo-treatment.bad li::before { background: #c0392b; }
-
     /* ─── Section: Aplicações ────────────────────────────────────── */
-    #ativos {
-      background: var(--smoke);
-    }
     .applications-intro {
       font-size: 0.82rem;
       color: var(--silver-dark);
       margin-bottom: 2.5rem;
       line-height: 1.7;
       max-width: 600px;
-    }
-    .mockup-group-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 1px solid rgba(0,0,0,0.08);
-    }
-    .mockup-group {
-      margin-bottom: 3.5rem;
-    }
-    .mockup-grid {
-      display: grid;
-      gap: 1rem;
-    }
-    .mockup-grid-2 { grid-template-columns: 1fr 1fr; }
-    .mockup-grid-3 { grid-template-columns: repeat(3, 1fr); }
-    .mockup-grid-4 { grid-template-columns: repeat(4, 1fr); }
-
-    /* Mockup placeholder */
-    .mockup {
-      background: #1a1a1a;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      min-height: 120px;
-    }
-    .mockup::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        repeating-linear-gradient(
-          45deg,
-          transparent,
-          transparent 12px,
-          rgba(255,255,255,0.02) 12px,
-          rgba(255,255,255,0.02) 13px
-        );
-    }
-    .mockup-inner {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 1.5rem;
-    }
-    .mockup-type {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: rgba(191,159,91,0.5);
-      margin-bottom: 0.35rem;
-    }
-    .mockup-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      color: rgba(255,255,255,0.5);
-      margin-bottom: 0.35rem;
-    }
-    .mockup-dims {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.72rem;
-      color: rgba(191,159,91,0.4);
-      letter-spacing: 0.05em;
-    }
-    .mockup-watermark {
-      position: absolute;
-      bottom: 0.6rem;
-      right: 0.75rem;
-      font-family: 'Cinzel', serif;
-      font-size: 0.5rem;
-      letter-spacing: 0.3em;
-      color: rgba(191,159,91,0.2);
-      text-transform: uppercase;
     }
 
     /* ─── Ativos para Download — cards de download ──────────────── */
@@ -1162,7 +931,7 @@
       overflow: hidden;
     }
     .asset-preview-panel {
-      background: var(--garnet-deep);
+      background: var(--garnet);
       padding: 3rem 2.5rem;
       display: flex;
       align-items: center;
@@ -1205,7 +974,7 @@
       align-items: center;
       gap: 0.45rem;
       padding: 0.55rem 1rem;
-      background: var(--garnet);
+      background: var(--molten-lava);
       color: var(--gold-light);
       font-family: 'Cinzel', serif;
       font-size: 0.58rem;
@@ -1216,7 +985,7 @@
       flex-shrink: 0;
       transition: background 0.2s;
     }
-    .btn-download:hover { background: var(--garnet-mid); color: var(--gold); }
+    .btn-download:hover { background: var(--garnet); color: var(--gold); }
     .btn-download svg { width: 11px; height: 11px; fill: currentColor; }
 
     /* ─── Modal de Senha para Download ────────────────────────────── */
@@ -1274,7 +1043,7 @@
       box-sizing: border-box;
     }
     .download-modal input[type="password"]:focus {
-      border-color: var(--garnet);
+      border-color: var(--molten-lava);
     }
     .download-modal input[type="password"].error {
       border-color: #c0392b;
@@ -1291,7 +1060,7 @@
       gap: 0.45rem;
       margin-top: 1rem;
       padding: 0.6rem 1.8rem;
-      background: var(--garnet);
+      background: var(--molten-lava);
       color: var(--gold-light);
       font-family: 'Cinzel', serif;
       font-size: 0.6rem;
@@ -1301,7 +1070,7 @@
       cursor: pointer;
       transition: background 0.2s;
     }
-    .download-modal-btn:hover { background: var(--garnet-mid); color: var(--gold); }
+    .download-modal-btn:hover { background: var(--garnet); color: var(--gold); }
     .outros-ativos-title {
       font-family: 'Playfair Display', serif;
       font-size: 1.1rem;
@@ -1321,43 +1090,6 @@
       display: flex;
       flex-direction: column;
       gap: 0.625rem;
-    }
-    .bslot {
-      background: #E8E4DF;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      min-height: 80px;
-    }
-    .bslot-inner {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      padding: 1.75rem 1.5rem;
-    }
-    .bslot-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 0.9rem;
-      color: rgba(26,26,26,0.3);
-      margin-bottom: 0.3rem;
-    }
-    .bslot-dims {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.62rem;
-      color: rgba(26,26,26,0.2);
-      letter-spacing: 0.04em;
-    }
-    .bslot-wm {
-      position: absolute;
-      bottom: 0.6rem;
-      right: 0.75rem;
-      font-family: 'Cinzel', serif;
-      font-size: 0.42rem;
-      letter-spacing: 0.3em;
-      color: rgba(94,0,1,0.1);
-      text-transform: uppercase;
     }
 
     /* ─── Section: Restrições ────────────────────────────────────── */
@@ -1424,7 +1156,7 @@
 
     /* ─── Utilities ──────────────────────────────────────────────── */
     .text-gold { color: var(--gold); }
-    .text-garnet { color: var(--garnet); }
+    .text-garnet { color: var(--molten-lava); }
     .mt-1 { margin-top: 0.5rem; }
     .mt-2 { margin-top: 1rem; }
     .mt-3 { margin-top: 1.5rem; }
@@ -1450,7 +1182,7 @@
 
     .tag-pill {
       display: inline-block;
-      background: var(--garnet);
+      background: var(--molten-lava);
       color: var(--gold-light);
       font-family: 'Cinzel', serif;
       font-size: 0.6rem;
@@ -1481,22 +1213,14 @@
       .color-secondary-grid { grid-template-columns: 1fr 1fr; }
       .voice-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem 1.5rem; }
       .voice-examples { grid-template-columns: 1fr; }
-      .mockup-grid-2 { grid-template-columns: 1fr; }
-      .mockup-grid-3 { grid-template-columns: 1fr 1fr; }
-      .mockup-grid-4 { grid-template-columns: 1fr 1fr; }
       .donts-grid { grid-template-columns: 1fr 1fr; }
       .toc-grid { grid-template-columns: 1fr 1fr; }
-      .photo-principles { grid-template-columns: 1fr; }
-      .photo-treatment-grid { grid-template-columns: 1fr; }
-      .element-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
       :root { --content-pad: 1.25rem; }
       .section-inner { padding: 3.5rem var(--content-pad); }
       .color-grid { grid-template-columns: 1fr; }
       .color-secondary-grid { grid-template-columns: 1fr; }
-      .mockup-grid-3 { grid-template-columns: 1fr; }
-      .mockup-grid-4 { grid-template-columns: 1fr 1fr; }
       .donts-grid { grid-template-columns: 1fr; }
       .symbol-row { grid-template-columns: 1fr 1fr; }
       .toc-grid { grid-template-columns: 1fr; }
@@ -1565,12 +1289,24 @@
       <button class="nav-link" onclick="scrollToSection('o-logo')">
         <span class="nav-num">02</span> O Logo &amp; Ativos
       </button>
+      <button class="nav-link sub-link" onclick="scrollToSection('logo-sobre-fundos')">
+        <span class="nav-num"></span> Aplicação por Fundo
+      </button>
       <p class="nav-section-title">Sistema Visual</p>
       <button class="nav-link" onclick="scrollToSection('cores')">
         <span class="nav-num">03</span> Paleta de Cores
       </button>
+      <button class="nav-link sub-link" onclick="scrollToSection('cores-ui')">
+        <span class="nav-num"></span> Cores de UI
+      </button>
       <button class="nav-link" onclick="scrollToSection('tipografia')">
         <span class="nav-num">04</span> Tipografia
+      </button>
+      <button class="nav-link sub-link" onclick="scrollToSection('tipo-fallbacks')">
+        <span class="nav-num"></span> Fallbacks
+      </button>
+      <button class="nav-link sub-link" onclick="scrollToSection('tipo-specs')">
+        <span class="nav-num"></span> Pesos &amp; Métricas
       </button>
       <p class="nav-section-title">Comunicação</p>
       <button class="nav-link" onclick="scrollToSection('voz-tom')">
@@ -1578,6 +1314,12 @@
       </button>
       <button class="nav-link" onclick="scrollToSection('aplicacoes')">
         <span class="nav-num">06</span> Aplicações
+      </button>
+      <button class="nav-link sub-link" onclick="scrollToSection('specs-papelaria')">
+        <span class="nav-num"></span> Specs Papelaria
+      </button>
+      <button class="nav-link sub-link" onclick="scrollToSection('specs-digital')">
+        <span class="nav-num"></span> Specs Digital
       </button>
       <button class="nav-link" onclick="scrollToSection('restricoes')">
         <span class="nav-num">07</span> Restrições
@@ -1758,12 +1500,12 @@
 
           <div class="asset-download-card">
             <div class="asset-preview-panel" style="background:var(--white); border-bottom:1px solid rgba(0,0,0,0.06);">
-              <img src="assets/logo-gioia-versao-garnet.svg" alt="Logo versão garnet">
+              <img src="assets/logo-gioia-versao-garnet.svg" alt="Logo versão Molten Lava">
             </div>
             <div class="asset-card-body">
               <div class="asset-card-info">
-                <p class="asset-card-name">Logo · Versão Garnet</p>
-                <p class="asset-card-format">SVG · Garnet — Fundo Branco</p>
+                <p class="asset-card-name">Logo · Versão Molten Lava</p>
+                <p class="asset-card-format">SVG · Molten Lava — Fundo Branco</p>
               </div>
               <a href="assets/logo-gioia-versao-garnet.svg" download="logo-gioia-versao-garnet.svg" class="btn-download">
                 <svg viewBox="0 0 12 13" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M5.25 0h1.5v7.19l2.03-2.03 1.06 1.06L6 10.06 2.16 6.22l1.06-1.06 2.03 2.03V0zM0 11.5h12V13H0z"/></svg>
@@ -1838,12 +1580,12 @@
 
           <div class="asset-download-card">
             <div class="asset-preview-panel" style="background:var(--smoke); border-bottom:1px solid rgba(0,0,0,0.06); display:flex; align-items:center; justify-content:center; padding:1.5rem;">
-              <img src="assets/logo-gioia-versao-garnet.png" alt="Logo garnet PNG">
+              <img src="assets/logo-gioia-versao-garnet.png" alt="Logo Molten Lava PNG">
             </div>
             <div class="asset-card-body">
               <div class="asset-card-info">
-                <p class="asset-card-name">Logo Garnet · PNG</p>
-                <p class="asset-card-format">PNG · Garnet — Fundo Branco</p>
+                <p class="asset-card-name">Logo Molten Lava · PNG</p>
+                <p class="asset-card-format">PNG · Molten Lava — Fundo Branco</p>
               </div>
               <a href="assets/logo-gioia-versao-garnet.png" download="logo-gioia-versao-garnet.png" class="btn-download">
                 <svg viewBox="0 0 12 13" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M5.25 0h1.5v7.19l2.03-2.03 1.06 1.06L6 10.06 2.16 6.22l1.06-1.06 2.03 2.03V0zM0 11.5h12V13H0z"/></svg>
@@ -1853,7 +1595,7 @@
           </div>
 
           <div class="asset-download-card">
-            <div class="asset-preview-panel simbolo" style="background:var(--garnet-deep); border-bottom:1px solid rgba(0,0,0,0.06);">
+            <div class="asset-preview-panel simbolo" style="background:var(--garnet); border-bottom:1px solid rgba(0,0,0,0.06);">
               <img src="assets/perfil-gioia.png" alt="Perfil Redes Sociais">
             </div>
             <div class="asset-card-body">
@@ -1872,7 +1614,7 @@
 
         <!-- Destaques Instagram -->
         <h3 style="font-family:'Inter',sans-serif;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--silver-dark);margin:3rem 0 1.25rem;">Destaques · Instagram</h3>
-        <p style="font-size:0.82rem;color:var(--silver-dark);margin-bottom:1.5rem;">Ícones para capas de destaques do Instagram — formato 1080×1080px, fundo Garnet com ícone dourado.</p>
+        <p style="font-size:0.82rem;color:var(--silver-dark);margin-bottom:1.5rem;">Ícones para capas de destaques do Instagram — formato 1080×1080px, fundo Molten Lava (#7A0002) com ícone dourado.</p>
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:1rem;margin-bottom:2.5rem;">
           <div style="text-align:center;">
             <img src="assets/highlights/destaque-direito-medico.png" alt="Direito Médico" style="width:100%;border-radius:50%;">
@@ -1936,6 +1678,69 @@
           </div>
         </div>
 
+        <!-- Regras de Aplicação sobre Fundos -->
+        <div id="logo-sobre-fundos" style="background:var(--white);border:1px solid rgba(0,0,0,0.06);padding:2rem;margin-top:2.5rem;">
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:0.5rem;">Aplicação sobre Diferentes Fundos</h3>
+          <p style="font-size:0.78rem;color:var(--silver-dark);margin-bottom:1.25rem;">Regras para garantir legibilidade do logo em qualquer contexto.</p>
+          <table class="wcag-table" style="margin-top:0;">
+            <thead>
+              <tr>
+                <th>Contexto</th>
+                <th>Versão do Logo</th>
+                <th>Regra</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Fundo escuro sólido (Garnet, preto)</td>
+                <td>Versão Principal (ouro)</td>
+                <td>Uso direto, sem overlay</td>
+              </tr>
+              <tr>
+                <td>Fundo claro sólido (branco, smoke)</td>
+                <td>Versão Molten Lava</td>
+                <td>Uso direto, sem overlay</td>
+              </tr>
+              <tr>
+                <td>Fotografia / imagem</td>
+                <td>Versão Principal (ouro)</td>
+                <td>Overlay obrigatório: <strong>Garnet Deep #420001 · opacidade 80–90%</strong></td>
+              </tr>
+              <tr>
+                <td>Vídeo / Reels</td>
+                <td>Versão Principal (ouro)</td>
+                <td>Overlay Garnet Deep 80% ou barra inferior sólida Garnet</td>
+              </tr>
+              <tr>
+                <td>Formato circular (avatar)</td>
+                <td>Símbolo isolado</td>
+                <td>Usar asset <code>perfil-gioia.png</code> · padding interno mín. 15% do diâmetro</td>
+              </tr>
+              <tr>
+                <td>Impressão P&amp;B</td>
+                <td>Versão Monocromática</td>
+                <td>Preto 100% sobre branco. Garnet → 80% preto. Gold → 40% preto</td>
+              </tr>
+              <tr>
+                <td>Gravação / hot stamping</td>
+                <td>Símbolo isolado</td>
+                <td>Foil dourado sobre substrato escuro. Traço mín. 0.5 mm</td>
+              </tr>
+              <tr>
+                <td>Bordado</td>
+                <td>Símbolo isolado simplificado</td>
+                <td>Mín. 40 mm de largura. Linhas finas do monograma podem perder-se abaixo disso</td>
+              </tr>
+              <tr>
+                <td>Vidro / adesivo transparente</td>
+                <td>Versão Monocromática ou Ouro</td>
+                <td>Vinil recortado. Preferir ouro sobre vidro escurecido ou monocromático sobre vidro claro</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="note mt-2">Gradientes como fundo para o logo são permitidos APENAS entre cores da paleta primária (ex: Garnet → Garnet Deep). Gradientes com cores externas são proibidos.</p>
+        </div>
+
         <!-- Tamanho mínimo -->
         <h3 style="font-family:'Inter',sans-serif;font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--silver-dark);margin:2.5rem 0 1.25rem;">Tamanho Mínimo de Aplicação</h3>
         <div class="min-size-grid">
@@ -1976,7 +1781,7 @@
         </div>
 
         <p class="lead" style="margin-bottom:2.5rem;">
-          A paleta é estruturada em duas cores primárias que definem o caráter da marca — <em>Garnet</em> e <em>Golden Bronze</em> — e dois neutros que garantem equilíbrio e respiro visual.
+          A paleta é estruturada em três cores principais que definem o caráter da marca — <em>Dark Garnet</em> (fundos e grandes áreas), <em>Molten Lava</em> (elementos menores, acentos e texto) e <em>Golden Bronze</em> — e dois neutros que garantem equilíbrio e respiro visual.
         </p>
 
         <!-- Cores primárias -->
@@ -1986,11 +1791,23 @@
             <div class="color-swatch" style="background:#5E0001;"></div>
             <div class="color-info">
               <p class="color-name">Dark Garnet</p>
-              <p class="color-role">Cor Principal · Fundos · Autoridade</p>
+              <p class="color-role">Fundos · Grandes áreas · Seções escuras</p>
               <div class="color-values">
                 <div class="color-val"><span class="color-val-label">HEX</span><span class="color-val-code">#5E0001</span></div>
                 <div class="color-val"><span class="color-val-label">RGB</span><span class="color-val-code">94 · 0 · 1</span></div>
                 <div class="color-val"><span class="color-val-label">CMYK</span><span class="color-val-code">0 · 100 · 99 · 63</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="color-card">
+            <div class="color-swatch" style="background:#7A0002;"></div>
+            <div class="color-info">
+              <p class="color-name">Molten Lava</p>
+              <p class="color-role">Acentos · Elementos menores · Texto em destaque</p>
+              <div class="color-values">
+                <div class="color-val"><span class="color-val-label">HEX</span><span class="color-val-code">#7A0002</span></div>
+                <div class="color-val"><span class="color-val-label">RGB</span><span class="color-val-code">122 · 0 · 2</span></div>
+                <div class="color-val"><span class="color-val-label">CMYK</span><span class="color-val-code">0 · 100 · 98 · 52</span></div>
               </div>
             </div>
           </div>
@@ -2031,6 +1848,7 @@
               <div class="color-values">
                 <div class="color-val"><span class="color-val-label">HEX</span><span class="color-val-code">#B8B8B8</span></div>
                 <div class="color-val"><span class="color-val-label">RGB</span><span class="color-val-code">184 · 184 · 184</span></div>
+                <div class="color-val"><span class="color-val-label">CMYK</span><span class="color-val-code">0 · 0 · 0 · 28</span></div>
               </div>
             </div>
           </div>
@@ -2042,6 +1860,7 @@
               <div class="color-values">
                 <div class="color-val"><span class="color-val-label">HEX</span><span class="color-val-code">#F5F5F5</span></div>
                 <div class="color-val"><span class="color-val-label">RGB</span><span class="color-val-code">245 · 245 · 245</span></div>
+                <div class="color-val"><span class="color-val-label">CMYK</span><span class="color-val-code">0 · 0 · 0 · 4</span></div>
               </div>
             </div>
           </div>
@@ -2053,6 +1872,7 @@
               <div class="color-values">
                 <div class="color-val"><span class="color-val-label">HEX</span><span class="color-val-code">#1A1A1A</span></div>
                 <div class="color-val"><span class="color-val-label">RGB</span><span class="color-val-code">26 · 26 · 26</span></div>
+                <div class="color-val"><span class="color-val-label">CMYK</span><span class="color-val-code">0 · 0 · 0 · 90</span></div>
               </div>
             </div>
           </div>
@@ -2062,23 +1882,27 @@
         <div style="margin-top:2.5rem;background:var(--white);padding:2rem;border:1px solid rgba(0,0,0,0.06);">
           <h3 style="font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:1.25rem;">Proporções de Uso</h3>
           <div style="display:flex;gap:0;height:32px;margin-bottom:1rem;overflow:hidden;">
-            <div style="background:#5E0001;width:50%;"></div>
+            <div style="background:#5E0001;width:35%;"></div>
+            <div style="background:#7A0002;width:20%;"></div>
             <div style="background:#BF9F5B;width:25%;"></div>
-            <div style="background:#F5F5F5;width:15%;border:1px solid #eee;"></div>
-            <div style="background:#1A1A1A;width:10%;"></div>
+            <div style="background:#F5F5F5;width:12%;border:1px solid #eee;"></div>
+            <div style="background:#1A1A1A;width:8%;"></div>
           </div>
           <div style="display:flex;gap:2rem;flex-wrap:wrap;">
             <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.75rem;">
-              <span style="display:block;width:12px;height:12px;background:#5E0001;flex-shrink:0;"></span> Garnet 50%
+              <span style="display:block;width:12px;height:12px;background:#5E0001;flex-shrink:0;"></span> Dark Garnet 35%
+            </div>
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.75rem;">
+              <span style="display:block;width:12px;height:12px;background:#7A0002;flex-shrink:0;"></span> Molten Lava 20%
             </div>
             <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.75rem;">
               <span style="display:block;width:12px;height:12px;background:#BF9F5B;flex-shrink:0;"></span> Gold 25%
             </div>
             <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.75rem;">
-              <span style="display:block;width:12px;height:12px;background:#F5F5F5;border:1px solid #ddd;flex-shrink:0;"></span> Smoke 15%
+              <span style="display:block;width:12px;height:12px;background:#F5F5F5;border:1px solid #ddd;flex-shrink:0;"></span> Smoke 12%
             </div>
             <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.75rem;">
-              <span style="display:block;width:12px;height:12px;background:#1A1A1A;flex-shrink:0;"></span> Ink 10%
+              <span style="display:block;width:12px;height:12px;background:#1A1A1A;flex-shrink:0;"></span> Ink 8%
             </div>
           </div>
         </div>
@@ -2151,6 +1975,93 @@
           </table>
           <p class="note mt-2">Gold sobre fundo branco não atinge AA para texto normal — use apenas em elementos decorativos ou texto grande (18px+). Silver sobre branco é estritamente decorativo.</p>
         </div>
+
+        <!-- Cores Semânticas (UI States) -->
+        <div id="cores-ui" style="margin-top:2.5rem;background:var(--white);padding:2rem;border:1px solid rgba(0,0,0,0.06);">
+          <h3 style="font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:0.5rem;">Cores Semânticas — Estados de Interface</h3>
+          <p style="font-size:0.78rem;color:var(--silver-dark);margin-bottom:1.25rem;">Cores complementares para feedback visual em interfaces digitais. Usar com parcimônia — o protagonismo visual continua sendo da paleta primária.</p>
+          <div class="color-grid" style="grid-template-columns:repeat(4,1fr);">
+            <div class="color-card">
+              <div class="color-swatch" style="background:#1a7a3a;height:80px;"></div>
+              <div class="color-info">
+                <p class="color-name">Sucesso</p>
+                <p class="color-role">Confirmações · Validação</p>
+                <div class="color-values">
+                  <div class="color-val"><span class="color-val-label">HEX</span><span class="color-val-code">#1A7A3A</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="color-card">
+              <div class="color-swatch" style="background:#c0392b;height:80px;"></div>
+              <div class="color-info">
+                <p class="color-name">Erro</p>
+                <p class="color-role">Campos inválidos · Alertas</p>
+                <div class="color-values">
+                  <div class="color-val"><span class="color-val-label">HEX</span><span class="color-val-code">#C0392B</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="color-card">
+              <div class="color-swatch" style="background:#d4a017;height:80px;"></div>
+              <div class="color-info">
+                <p class="color-name">Aviso</p>
+                <p class="color-role">Atenção · Pendências</p>
+                <div class="color-values">
+                  <div class="color-val"><span class="color-val-label">HEX</span><span class="color-val-code">#D4A017</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="color-card">
+              <div class="color-swatch" style="background:#2c6fbb;height:80px;"></div>
+              <div class="color-info">
+                <p class="color-name">Info</p>
+                <p class="color-role">Dicas · Links · Informativo</p>
+                <div class="color-values">
+                  <div class="color-val"><span class="color-val-label">HEX</span><span class="color-val-code">#2C6FBB</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="note mt-2">Estas cores NÃO substituem a paleta primária — são reservadas exclusivamente para estados de feedback em formulários, toasts e componentes de interface.</p>
+        </div>
+
+        <!-- Cores auxiliares documentadas -->
+        <div style="margin-top:2.5rem;background:var(--white);padding:2rem;border:1px solid rgba(0,0,0,0.06);">
+          <h3 style="font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:0.5rem;">Variações Auxiliares</h3>
+          <p style="font-size:0.78rem;color:var(--silver-dark);margin-bottom:1.25rem;">Tons derivados usados no sistema visual. Não são cores independentes — derivam das primárias.</p>
+          <div class="color-grid" style="grid-template-columns:repeat(3,1fr);">
+            <div class="color-card">
+              <div class="color-swatch" style="background:#420001;height:80px;"></div>
+              <div class="color-info">
+                <p class="color-name">Garnet Deep</p>
+                <p class="color-role">Overlays · Capa · Footer</p>
+                <div class="color-values">
+                  <div class="color-val"><span class="color-val-label">HEX</span><span class="color-val-code">#420001</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="color-card">
+              <div class="color-swatch" style="background:#d8bb7e;height:80px;"></div>
+              <div class="color-info">
+                <p class="color-name">Gold Light</p>
+                <p class="color-role">Texto sobre fundo escuro · Hover</p>
+                <div class="color-values">
+                  <div class="color-val"><span class="color-val-label">HEX</span><span class="color-val-code">#D8BB7E</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="color-card">
+              <div class="color-swatch" style="background:#3a3a3a;height:80px;"></div>
+              <div class="color-info">
+                <p class="color-name">Ink Light</p>
+                <p class="color-role">Texto secundário sobre branco</p>
+                <div class="color-values">
+                  <div class="color-val"><span class="color-val-label">HEX</span><span class="color-val-code">#3A3A3A</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -2181,7 +2092,7 @@
             <div class="specimen-cinzel">GIOIA<br><span style="font-weight:400;opacity:0.4;font-size:0.6em;letter-spacing:0.3em;">ASSOCIADOS ADVOCACIA</span></div>
           </div>
           <div class="font-usage-rules">
-            <p style="font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem;color:var(--garnet);">Uso permitido</p>
+            <p style="font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.75rem;color:var(--molten-lava);">Uso permitido</p>
             <div class="usage-rule-item"><span class="usage-dot"></span> Logomarca e símbolo</div>
             <div class="usage-rule-item"><span class="usage-dot"></span> Selos, certificados, assinatura oficial</div>
             <div class="usage-rule-item"><span class="usage-dot"></span> Textos muito curtos de alto impacto (títulos de eventos, carimbo)</div>
@@ -2267,8 +2178,80 @@
           <div class="font-usage-rules">
             <div class="usage-rule-item"><span class="usage-dot"></span> Destaques editoriais, citações, chamadas especiais</div>
             <div class="usage-rule-item"><span class="usage-dot"></span> Material comemorativo, convites, datas especiais</div>
+            <div class="usage-rule-item"><span class="usage-dot"></span> Tamanho mínimo: 24 px / 18 pt — abaixo disso fica ilegível</div>
             <div class="usage-rule-item" style="color:#c0392b;"><span class="usage-dot" style="background:#c0392b;"></span> <strong>Nunca</strong> como fonte principal em peças institucionais</div>
           </div>
+        </div>
+
+        <!-- Fallbacks & Specs Técnicas -->
+        <div id="tipo-fallbacks" style="background:var(--smoke);padding:2rem;margin-top:1rem;">
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:0.5rem;">Fontes Fallback</h3>
+          <p style="font-size:0.78rem;color:var(--silver-dark);margin-bottom:1.25rem;">Para contextos onde Google Fonts não estão disponíveis (e-mail, Word, PowerPoint, sistemas legados), usar estas substitutas:</p>
+          <table class="wcag-table" style="margin-top:0;">
+            <thead>
+              <tr>
+                <th>Fonte Primária</th>
+                <th>Fallback 1 (System)</th>
+                <th>Fallback 2</th>
+                <th>Contexto</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-family:'Cinzel',serif;font-weight:600;">Cinzel</td>
+                <td>Trajan Pro</td>
+                <td>Times New Roman (caps)</td>
+                <td>Marca / Selos</td>
+              </tr>
+              <tr>
+                <td style="font-family:'Playfair Display',serif;">Playfair Display</td>
+                <td>Georgia</td>
+                <td>Times New Roman</td>
+                <td>Títulos</td>
+              </tr>
+              <tr>
+                <td style="font-family:'Inter',sans-serif;">Inter</td>
+                <td>Arial</td>
+                <td>Helvetica Neue</td>
+                <td>Corpo / UI</td>
+              </tr>
+              <tr>
+                <td style="font-family:'Pinyon Script',cursive;">Pinyon Script</td>
+                <td>Brush Script MT</td>
+                <td><em>(omitir elemento)</em></td>
+                <td>Acento decorativo</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="note mt-2">Em assinaturas de e-mail HTML, usar apenas Arial (corpo) e Georgia (nome do advogado). Pinyon Script não funciona em clientes de e-mail.</p>
+        </div>
+
+        <!-- Pesos & Métricas por Uso -->
+        <div id="tipo-specs" style="background:var(--white);padding:2rem;border:1px solid rgba(0,0,0,0.06);margin-top:1.5rem;">
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:0.5rem;">Pesos &amp; Métricas por Uso</h3>
+          <table class="wcag-table" style="margin-top:0;">
+            <thead>
+              <tr>
+                <th>Elemento</th>
+                <th>Fonte</th>
+                <th>Peso</th>
+                <th>Tamanho</th>
+                <th>Line-height</th>
+                <th>Letter-spacing</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>H1</td><td>Playfair Display</td><td>400</td><td>2.5 rem</td><td>1.1</td><td>normal</td></tr>
+              <tr><td>H2</td><td>Playfair Display</td><td>400</td><td>1.75 rem</td><td>1.2</td><td>normal</td></tr>
+              <tr><td>H3</td><td>Playfair Display</td><td>400</td><td>1.25 rem</td><td>1.3</td><td>normal</td></tr>
+              <tr><td>H4</td><td>Playfair Display</td><td>500</td><td>1 rem</td><td>1.4</td><td>normal</td></tr>
+              <tr><td>Body L</td><td>Inter</td><td>400</td><td>1 rem</td><td>1.7</td><td>normal</td></tr>
+              <tr><td>Body S</td><td>Inter</td><td>400</td><td>0.875 rem</td><td>1.6</td><td>normal</td></tr>
+              <tr><td>Label</td><td>Inter</td><td>600</td><td>0.7 rem</td><td>1.2</td><td>0.15 em</td></tr>
+              <tr><td>Botão</td><td>Cinzel</td><td>400</td><td>0.6 rem</td><td>1</td><td>0.2 em</td></tr>
+              <tr><td>Caption</td><td>Inter</td><td>400</td><td>0.65 rem</td><td>1.4</td><td>0.05 em</td></tr>
+            </tbody>
+          </table>
         </div>
 
       </div>
@@ -2353,7 +2336,7 @@
       <div class="section-inner">
         <div class="chapter-header">
           <div>
-            <p class="chapter-sub">Identidade</p>
+            <p class="chapter-sub">Comunicação</p>
             <h2 class="chapter-title">Aplicações</h2>
           </div>
           <span class="chapter-num">06</span>
@@ -2385,6 +2368,184 @@
             <img src="assets/Frame 5.jpg" alt="Website · Hero Section" style="width:100%;height:100%;object-fit:cover;display:block;">
           </div>
 
+        </div>
+
+        <!-- ─── Especificações Técnicas — Papelaria ─── -->
+        <div id="specs-papelaria" style="margin-top:3.5rem;">
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:0.5rem;">Especificações Técnicas — Papelaria</h3>
+          <p style="font-size:0.78rem;color:var(--silver-dark);margin-bottom:1.25rem;">Dimensões reais para produção gráfica. Todos os itens devem incluir sangria de 3 mm.</p>
+          <table class="wcag-table" style="margin-top:0;">
+            <thead>
+              <tr>
+                <th>Peça</th>
+                <th>Dimensão (mm)</th>
+                <th>Sangria</th>
+                <th>Logo (largura)</th>
+                <th>Observações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Cartão de Visita</strong></td>
+                <td>90 × 50 mm</td>
+                <td>3 mm</td>
+                <td>45 mm (frente)</td>
+                <td>Frente: Garnet + logo ouro. Verso: branco + dados em Molten Lava. Acabamento: laminação soft touch + hot stamping ouro no símbolo</td>
+              </tr>
+              <tr>
+                <td><strong>Papel Timbrado</strong></td>
+                <td>210 × 297 mm (A4)</td>
+                <td>3 mm</td>
+                <td>50 mm (topo esq.)</td>
+                <td>Margem: 25 mm (topo/esq.), 20 mm (dir./base). Rodapé: dados do escritório em Inter 7pt, Molten Lava. Filete gold 0.5pt separando rodapé</td>
+              </tr>
+              <tr>
+                <td><strong>Envelope DL</strong></td>
+                <td>220 × 110 mm</td>
+                <td>3 mm</td>
+                <td>40 mm (frente)</td>
+                <td>Logo centralizado na aba. Remetente em Inter 7pt na parte inferior</td>
+              </tr>
+              <tr>
+                <td><strong>Envelope C4</strong></td>
+                <td>324 × 229 mm</td>
+                <td>3 mm</td>
+                <td>55 mm</td>
+                <td>Para documentos A4 sem dobra</td>
+              </tr>
+              <tr>
+                <td><strong>Pasta Executiva</strong></td>
+                <td>320 × 230 mm (fechada)</td>
+                <td>3 mm</td>
+                <td>60 mm (capa)</td>
+                <td>Capa Garnet + logo ouro hot stamping. Bolso interno para documentos A4</td>
+              </tr>
+              <tr>
+                <td><strong>Caderno Executivo</strong></td>
+                <td>148 × 210 mm (A5)</td>
+                <td>—</td>
+                <td>40 mm (capa)</td>
+                <td>Capa dura, couro sintético Garnet. Símbolo em baixo-relevo ou hot stamping</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ─── Especificações Técnicas — Digital & Redes Sociais ─── -->
+        <div id="specs-digital" style="margin-top:2.5rem;">
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:0.5rem;">Especificações Técnicas — Digital &amp; Redes Sociais</h3>
+          <p style="font-size:0.78rem;color:var(--silver-dark);margin-bottom:1.25rem;">Dimensões em pixels para peças digitais. Exportar sempre em 2x para telas Retina.</p>
+          <table class="wcag-table" style="margin-top:0;">
+            <thead>
+              <tr>
+                <th>Peça</th>
+                <th>Dimensão (px)</th>
+                <th>Aspecto</th>
+                <th>Logo (largura)</th>
+                <th>Observações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Post Instagram (feed)</strong></td>
+                <td>1080 × 1080</td>
+                <td>1:1</td>
+                <td>200 px</td>
+                <td>Safe area: 40 px das bordas. Logo no canto inferior direito ou esquerdo</td>
+              </tr>
+              <tr>
+                <td><strong>Carrossel Instagram</strong></td>
+                <td>1080 × 1350</td>
+                <td>4:5</td>
+                <td>180 px</td>
+                <td>Primeira lâmina: impacto. Última: CTA. Manter margens laterais de 60 px</td>
+              </tr>
+              <tr>
+                <td><strong>Story / Reels</strong></td>
+                <td>1080 × 1920</td>
+                <td>9:16</td>
+                <td>150 px</td>
+                <td>Safe area: 250 px topo (username) + 300 px base (CTA nativo). Logo no topo, centro</td>
+              </tr>
+              <tr>
+                <td><strong>Destaque Instagram</strong></td>
+                <td>1080 × 1080</td>
+                <td>1:1</td>
+                <td>—</td>
+                <td>Fundo Molten Lava #7A0002. Ícone dourado centralizado. Recortado em círculo pela plataforma</td>
+              </tr>
+              <tr>
+                <td><strong>Foto de Perfil</strong></td>
+                <td>1080 × 1080</td>
+                <td>1:1</td>
+                <td>—</td>
+                <td>Usar <code>perfil-gioia.png</code>. Padding interno 15% para crop circular</td>
+              </tr>
+              <tr>
+                <td><strong>Capa Facebook</strong></td>
+                <td>820 × 312</td>
+                <td>~2.6:1</td>
+                <td>200 px</td>
+                <td>Safe area central: 640 × 312 px (mobile corta laterais)</td>
+              </tr>
+              <tr>
+                <td><strong>Banner LinkedIn</strong></td>
+                <td>1584 × 396</td>
+                <td>4:1</td>
+                <td>220 px</td>
+                <td>Logo à esquerda. Foto de perfil sobrepõe canto inferior esquerdo — posicionar logo à direita</td>
+              </tr>
+              <tr>
+                <td><strong>Thumbnail YouTube</strong></td>
+                <td>1280 × 720</td>
+                <td>16:9</td>
+                <td>150 px</td>
+                <td>Texto legível em 116 × 65 px (tamanho da thumb no feed). Evitar texto pequeno</td>
+              </tr>
+              <tr>
+                <td><strong>OG Image (site)</strong></td>
+                <td>1200 × 630</td>
+                <td>~1.9:1</td>
+                <td>200 px</td>
+                <td>Preview em WhatsApp, LinkedIn, Facebook. Fundo Garnet + logo ouro centrada</td>
+              </tr>
+              <tr>
+                <td><strong>Favicon</strong></td>
+                <td>32 × 32 / 16 × 16</td>
+                <td>1:1</td>
+                <td>—</td>
+                <td>Apenas símbolo. Simplificar detalhes finos do monograma se necessário</td>
+              </tr>
+              <tr>
+                <td><strong>Apple Touch Icon</strong></td>
+                <td>180 × 180</td>
+                <td>1:1</td>
+                <td>—</td>
+                <td>Símbolo com padding 20%. Fundo Garnet sólido</td>
+              </tr>
+              <tr>
+                <td><strong>PWA Icon</strong></td>
+                <td>512 × 512</td>
+                <td>1:1</td>
+                <td>—</td>
+                <td>Símbolo com padding 20%. Fundo Garnet sólido. Exportar também em 192 × 192</td>
+              </tr>
+              <tr>
+                <td><strong>Assinatura de Email</strong></td>
+                <td>600 × ~150 (máx)</td>
+                <td>~4:1</td>
+                <td>120 px</td>
+                <td>Logo à esquerda, dados à direita. Fontes: Georgia + Arial (system). Filete Gold 1px separador vertical</td>
+              </tr>
+              <tr>
+                <td><strong>Apresentação (PPT/Keynote)</strong></td>
+                <td>1920 × 1080</td>
+                <td>16:9</td>
+                <td>180 px</td>
+                <td>Slide título: Garnet + logo ouro. Slides conteúdo: branco + logo Molten Lava no rodapé</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
       </div>
@@ -2456,7 +2617,7 @@
             </div>
             <div class="dont-caption">
               <strong>&#10007; Tamanho mínimo</strong>
-              <p>Nunca aplique a logomarca completa abaixo de 80px de largura. Use apenas o símbolo.</p>
+              <p>Nunca aplique a logomarca completa abaixo de 120 px (digital) ou 25 mm (impresso). Abaixo disso, use apenas o símbolo isolado (mín. 32 px / 8 mm).</p>
             </div>
           </div>
           <div class="dont-item">
@@ -2482,7 +2643,7 @@
     <footer style="background:var(--garnet-deep);text-align:center;padding:4rem 2rem 3rem;">
       <img src="assets/simbolo-gioia-e-associados.svg" alt="Símbolo" style="width:52px;margin:0 auto 1.5rem;opacity:0.5;">
       <p style="font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.3em;color:var(--gold);text-transform:uppercase;opacity:0.7;">Gioia e Associados Advocacia · Est. 1992</p>
-      <p style="font-size:0.7rem;color:rgba(255,255,255,0.3);margin-top:0.4rem;">Brand Guidelines 2026 · Versão 2.0</p>
+      <p style="font-size:0.7rem;color:rgba(255,255,255,0.3);margin-top:0.4rem;">Brand Guidelines 2026 · Versão 2.1</p>
       <p style="font-size:0.6rem;color:rgba(255,255,255,0.18);margin-top:0.25rem;">Desenvolvido por Johny · Todos os direitos reservados</p>
     </footer>
 
@@ -2612,7 +2773,7 @@
     }
 
     /* ── Active nav on scroll ── */
-    const sections = ['capa','sumario','a-marca','o-logo','cores','tipografia','voz-tom','aplicacoes','restricoes'];
+    const sections = ['capa','sumario','a-marca','o-logo','logo-sobre-fundos','cores','cores-ui','tipografia','tipo-fallbacks','tipo-specs','voz-tom','aplicacoes','specs-papelaria','specs-digital','restricoes'];
     const navLinks = document.querySelectorAll('.nav-link');
 
     function updateActive() {

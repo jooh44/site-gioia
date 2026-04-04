@@ -1,0 +1,1627 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gioia Social Media Library V3 — Figma Import</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
+  <style>
+    /* ═══ TOKENS ═══════════════════════════════════════════════════ */
+    :root {
+      --garnet:#5E0001; --garnet-deep:#420001; --molten:#7A0002;
+      --gold:#BF9F5B; --gold-logo:#D1AF66; --gold-light:#D8BB7E;
+      --ink:#1A1A1A; --ink-light:#3A3A3A;
+      --silver:#B8B8B8; --silver-dark:#8A8A8A;
+      --smoke:#F5F5F5; --paper:#FBF9F6; --white:#FFFFFF;
+      --border:rgba(0,0,0,0.08); --gold-line:rgba(191,159,91,0.42);
+      --sh:0 10px 30px rgba(0,0,0,0.08);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',sans-serif;color:var(--ink);background:#f0ece5;line-height:1.5}
+    img{display:block;max-width:100%}
+
+    /* ═══ PAGE SYSTEM ══════════════════════════════════════════════ */
+    .page{width:1440px;margin:0 auto 2px;padding:56px 48px 72px;background:var(--white);position:relative;overflow:hidden}
+    .page::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 18%,rgba(191,159,91,0.07) 0,transparent 22%),radial-gradient(circle at 12% 82%,rgba(94,0,1,0.04) 0,transparent 22%);pointer-events:none}
+    .page.dark{background:linear-gradient(180deg,rgba(66,0,1,0.97) 0%,rgba(30,6,6,0.98) 100%);color:var(--white)}
+    .page.dark::before{background:radial-gradient(circle at 82% 16%,rgba(191,159,91,0.10) 0,transparent 24%),radial-gradient(circle at 16% 84%,rgba(191,159,91,0.05) 0,transparent 22%)}
+    .page.smoke{background:var(--paper)}
+    .page.smoke::before{background:radial-gradient(circle at 80% 20%,rgba(191,159,91,0.05) 0,transparent 20%)}
+
+    .stack{display:flex;flex-direction:column;gap:24px;position:relative;z-index:1}
+
+    /* ═══ SECTION HEAD ═════════════════════════════════════════════ */
+    .sh{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:32px;padding-bottom:18px;border-bottom:1px solid var(--border)}
+    .page.dark .sh{border-bottom-color:rgba(255,255,255,0.10)}
+    .sh-t{display:flex;flex-direction:column;gap:6px}
+    .sh-t h2{font-family:'Playfair Display',serif;font-size:36px;line-height:1.08;font-weight:400}
+    .sh-t p{max-width:720px;font-size:14px;line-height:1.7;color:var(--silver-dark)}
+    .page.dark .sh-t p{color:rgba(255,255,255,0.55)}
+    .mi{font-size:11px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold)}
+    .page.dark .mi{color:var(--gold-light)}
+    .pg-label{font-size:11px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+
+    /* ═══ GRIDS ════════════════════════════════════════════════════ */
+    .g2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .g5{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+    .g6{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+    .g-full{grid-column:1/-1}
+
+    /* ═══ CARDS ════════════════════════════════════════════════════ */
+    .c{background:rgba(255,255,255,0.85);border:1px solid var(--border);box-shadow:var(--sh)}
+    .c-dark{background:linear-gradient(180deg,#4d0506 0%,#250808 100%);color:var(--white);border:1px solid rgba(255,255,255,0.08);box-shadow:none}
+    .p16{padding:16px} .p20{padding:20px} .p24{padding:24px} .p28{padding:28px} .p32{padding:32px}
+
+    /* ═══ HERO ═════════════════════════════════════════════════════ */
+    .hero{min-height:720px;display:flex;flex-direction:column;justify-content:space-between;position:relative;z-index:1}
+    .hero-top{display:flex;justify-content:space-between;align-items:flex-start}
+    .brand-lockup{display:flex;align-items:center;gap:16px}
+    .brand-lockup img{width:52px}
+    .brand-title{font-family:'Playfair Display',serif;font-size:22px;line-height:1.1}
+    .brand-sub{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.48);margin-top:4px}
+    .hero-main{max-width:900px;padding:60px 0 80px}
+    .hero-kicker{font-size:12px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold-light);margin-bottom:18px}
+    .hero h1{font-family:'Playfair Display',serif;font-size:64px;line-height:0.98;font-weight:400;margin-bottom:20px;max-width:800px}
+    .hero p{max-width:600px;font-size:17px;line-height:1.7;color:rgba(255,255,255,0.68)}
+    .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .stat{border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);padding:20px}
+    .stat-n{font-family:'Playfair Display',serif;font-size:36px;color:var(--gold-light);line-height:1}
+    .stat-l{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-top:8px}
+
+    /* ═══ TOKEN SWATCHES ═══════════════════════════════════════════ */
+    .sw{overflow:hidden}
+    .sw-color{height:96px;border-bottom:1px solid rgba(0,0,0,0.06)}
+    .sw-info{padding:14px 16px;background:var(--white)}
+    .sw-name{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:2px}
+    .sw-hex{font-size:12px;font-weight:600;letter-spacing:0.06em;color:var(--silver-dark)}
+    .sw-role{font-size:11px;color:var(--ink-light);margin-top:3px}
+
+    /* ═══ TYPE PANELS ══════════════════════════════════════════════ */
+    .tp h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:400;margin-bottom:8px}
+    .tp-preview{margin:12px 0}
+    .tp-note{font-size:13px;line-height:1.7;color:var(--ink-light)}
+
+    /* ═══ TYPE SCALE TABLE ═════════════════════════════════════════ */
+    .ts-table{width:100%;border-collapse:collapse;font-size:13px}
+    .ts-table th{text-align:left;font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--silver-dark);padding:10px 12px;border-bottom:1px solid var(--border)}
+    .ts-table td{padding:10px 12px;border-bottom:1px solid rgba(0,0,0,0.04);vertical-align:middle}
+    .ts-table .ctx{font-weight:600;color:var(--garnet)}
+    .ts-table .fam{color:var(--ink-light)}
+    .ts-table .sz{font-weight:700;font-size:14px}
+
+    /* ═══ SPACING SYSTEM ═══════════════════════════════════════════ */
+    .space-row{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap}
+    .space-block{display:flex;flex-direction:column;align-items:center;gap:6px}
+    .space-vis{background:var(--gold);opacity:0.35;width:48px}
+    .space-val{font-size:11px;font-weight:600;letter-spacing:0.08em;color:var(--ink-light)}
+    .space-label{font-size:10px;color:var(--silver-dark);text-transform:uppercase;letter-spacing:0.1em}
+
+    /* ═══ COMBO MATRIX ═════════════════════════════════════════════ */
+    .combo{display:flex;align-items:center;gap:12px;padding:14px 16px;border:1px solid var(--border)}
+    .combo-sample{width:42px;height:42px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0}
+    .combo-info{flex:1}
+    .combo-pair{font-size:13px;font-weight:600}
+    .combo-use{font-size:11px;color:var(--silver-dark);margin-top:2px}
+    .combo-tag{font-size:10px;font-weight:700;letter-spacing:0.06em;padding:2px 6px;border-radius:2px;flex-shrink:0}
+    .tag-pass{background:#1a7a3a;color:#fff}
+    .tag-warn{background:#d4a017;color:#fff}
+
+    /* ═══ SIZE REFERENCE TABLE ═════════════════════════════════════ */
+    .sz-table{width:100%;border-collapse:collapse;font-size:13px}
+    .sz-table th{text-align:left;font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--silver-dark);padding:8px 10px;border-bottom:2px solid var(--border)}
+    .sz-table td{padding:8px 10px;border-bottom:1px solid rgba(0,0,0,0.04);vertical-align:top}
+    .sz-table .plat{font-weight:700;color:var(--garnet);white-space:nowrap}
+    .sz-table .dim{font-weight:700;font-size:14px;white-space:nowrap}
+    .sz-table .ratio{color:var(--silver-dark);font-size:12px}
+    .sz-table .note{font-size:11px;color:var(--silver);line-height:1.5}
+    .sz-table tr.group-head td{background:rgba(94,0,1,0.04);font-weight:700;color:var(--garnet);font-size:14px;padding:12px 10px;border-bottom:1px solid rgba(94,0,1,0.12)}
+    .sz-table tr.group-head td .plat-icon{display:inline-flex;width:24px;height:24px;background:var(--garnet);color:var(--gold);font-size:10px;font-weight:700;letter-spacing:0;align-items:center;justify-content:center;border-radius:4px;margin-right:8px;vertical-align:middle}
+
+    /* ═══ SAFE ZONE FRAMES ═════════════════════════════════════════ */
+    .safe-frame{position:relative;overflow:hidden;display:flex;flex-direction:column}
+    .safe-overlay{position:absolute;z-index:2;background:rgba(255,0,0,0.12);border:1px dashed rgba(255,0,0,0.35)}
+    .safe-label{position:absolute;z-index:3;font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,0,0,0.7);background:rgba(255,255,255,0.8);padding:2px 5px}
+
+    /* ═══ COMPONENTS ═══════════════════════════════════════════════ */
+    .comp{display:flex;flex-direction:column;gap:14px}
+    .comp-demo{min-height:140px;border:1px dashed rgba(0,0,0,0.10);background:linear-gradient(180deg,#fff 0%,#f8f5ef 100%);padding:20px;display:flex;align-items:center;justify-content:center}
+    .comp-demo.dk{background:linear-gradient(180deg,#4b0405 0%,#1e0808 100%);border-color:rgba(255,255,255,0.08)}
+    .comp-note{font-size:13px;line-height:1.6;color:var(--ink-light)}
+
+    /* ═══ BRAND MICRO-COMPONENTS ═══════════════════════════════════ */
+    .eyebrow{font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold)}
+    .divider-brand{display:flex;align-items:center;gap:14px;width:100%;max-width:320px}
+    .divider-brand::before,.divider-brand::after{content:"";flex:1;height:1px;background:var(--gold-line)}
+    .divider-brand span{color:var(--gold);font-family:'Cinzel',serif;font-size:16px;opacity:0.7}
+    .sig{display:flex;flex-direction:column;gap:4px}
+    .sig-name{font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold)}
+    .sig-role{font-size:12px;color:rgba(255,255,255,0.6)}
+    .sig-role.lt{color:var(--silver-dark)}
+    .badge{display:inline-flex;padding:8px 12px;border:1px solid rgba(191,159,91,0.35);color:var(--gold);font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase}
+    .cta-btn{display:inline-flex;padding:10px 16px;border:1px solid var(--gold);color:var(--gold);font-size:11px;letter-spacing:0.14em;text-transform:uppercase}
+
+    /* ═══ TEMPLATE FRAMES ══════════════════════════════════════════ */
+    .tpl-card{display:grid;grid-template-columns:380px 1fr;gap:20px;align-items:stretch}
+    .tpl-card.wide{grid-template-columns:1fr 320px}
+    .tpl-info{display:flex;flex-direction:column;justify-content:center;gap:10px;padding:24px;background:rgba(255,255,255,0.7);border:1px solid var(--border)}
+    .tpl-info h3{font-family:'Playfair Display',serif;font-size:22px;font-weight:400;margin-bottom:4px}
+    .tpl-copy{font-size:13px;line-height:1.7;color:var(--ink-light)}
+    .meta-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+    .meta-chip{display:inline-flex;padding:6px 8px;border:1px solid rgba(0,0,0,0.08);background:rgba(255,255,255,0.7);font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink-light)}
+
+    /* Frame bases */
+    .f{position:relative;overflow:hidden}
+    .f::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 68% 22%,rgba(191,159,91,0.10) 0,transparent 28%);pointer-events:none;z-index:1}
+    .f-45{width:340px;height:425px;margin:0 auto;background:linear-gradient(180deg,#4d0405 0%,#230909 100%);color:var(--white);padding:30px 26px;display:flex;flex-direction:column;justify-content:space-between}
+    .f-45.lt{background:linear-gradient(180deg,#fcfaf7 0%,#f0ebe3 100%);color:var(--ink);border:1px solid rgba(0,0,0,0.06)}
+    .f-story{width:240px;height:426px;margin:0 auto;background:linear-gradient(180deg,#510506 0%,#230909 100%);color:var(--white);padding:24px 20px;display:flex;flex-direction:column;justify-content:flex-end}
+    .f-sq{width:340px;height:340px;margin:0 auto;background:linear-gradient(180deg,#1d1a1a 0%,#0f0f0f 100%);color:var(--white);padding:30px 26px;display:flex;flex-direction:column;justify-content:center;text-align:center}
+    .f-banner{width:100%;height:170px;background:linear-gradient(90deg,#420001 0%,#220809 100%);color:var(--white);padding:24px 30px;display:flex;align-items:center;justify-content:space-between}
+    .f-thumb{width:100%;height:200px;background:linear-gradient(135deg,#420001 0%,#5E0001 55%,#2e0d0d 100%);color:var(--white);padding:22px 26px;display:flex;align-items:center;justify-content:space-between}
+    .f-split{width:340px;height:425px;margin:0 auto;display:grid;grid-template-columns:1fr 0.85fr;background:linear-gradient(180deg,#4d0405 0%,#220808 100%);color:var(--white);overflow:hidden}
+    .f-photo{width:340px;height:425px;margin:0 auto;display:grid;grid-template-rows:1.1fr 0.9fr;background:var(--white);border:1px solid rgba(0,0,0,0.08);overflow:hidden}
+    .f-doc{width:340px;height:425px;margin:0 auto;background:linear-gradient(180deg,#fbf9f5 0%,#f0ebe3 100%);padding:22px;display:flex;flex-direction:column;gap:12px;border:1px solid rgba(0,0,0,0.06)}
+    .f-highlight{width:180px;height:180px;background:var(--garnet);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border-radius:50%}
+    .f-pfp{width:140px;height:140px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;overflow:hidden}
+
+    /* Template sub-parts */
+    .t-title{font-family:'Playfair Display',serif;font-size:30px;line-height:1.1;font-weight:400}
+    .t-sub{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-light)}
+    .t-body{font-size:14px;line-height:1.65;color:rgba(255,255,255,0.68)}
+    .f-45.lt .t-body,.f-45.lt .t-sub{color:var(--ink-light)}
+    .quote-mark{font-family:'Playfair Display',serif;font-size:100px;line-height:0.7;color:rgba(191,159,91,0.15)}
+
+    .photo-zone{position:relative;background:linear-gradient(135deg,#d8c4b0 0%,#f3ece2 100%);display:flex;align-items:center;justify-content:center}
+    .photo-zone::after{content:"Foto";position:absolute;top:14px;right:14px;padding:5px 8px;border:1px solid rgba(94,0,1,0.12);background:rgba(255,255,255,0.6);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--garnet)}
+    .silhouette{width:140px;height:180px;border-radius:999px 999px 20px 20px;background:radial-gradient(circle at 50% 24%,rgba(255,255,255,0.8) 0 14%,transparent 15%),radial-gradient(circle at 50% 55%,rgba(255,255,255,0.7) 0 28%,transparent 29%),linear-gradient(180deg,rgba(94,0,1,0.28) 0%,rgba(94,0,1,0.10) 100%);border:1px solid rgba(94,0,1,0.10)}
+    .split-photo{background:linear-gradient(180deg,#ceb7a1 0%,#efe2d3 100%);display:flex;align-items:flex-end;justify-content:center;padding-bottom:12px;position:relative}
+    .split-photo::after{content:"Recorte";position:absolute;top:14px;right:12px;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(94,0,1,0.65)}
+    .doc-window{flex:1;background:var(--white);border:1px solid rgba(0,0,0,0.06);box-shadow:0 8px 20px rgba(0,0,0,0.05);padding:16px;display:flex;flex-direction:column;gap:8px}
+    .doc-line{height:7px;background:linear-gradient(90deg,rgba(94,0,1,0.14) 0%,rgba(94,0,1,0.04) 100%)}
+    .doc-line.s{width:38%} .doc-line.m{width:64%} .doc-line.l{width:100%}
+
+    /* ═══ HIGHLIGHT COVERS ═════════════════════════════════════════ */
+    .hl-grid{display:grid;grid-template-columns:repeat(9,1fr);gap:14px}
+    .hl{display:flex;flex-direction:column;align-items:center;gap:10px}
+    .hl-circle{width:100px;height:100px;background:var(--garnet);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+    .hl-icon{width:28px;height:28px;border:1.5px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center}
+    .hl-icon span{font-family:'Cinzel',serif;font-size:10px;color:var(--gold)}
+    .hl-label{font-family:'Cinzel',serif;font-size:7px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);text-align:center;line-height:1.3}
+    .hl-name{font-size:10px;font-weight:600;color:var(--ink-light);text-align:center;line-height:1.3}
+
+    /* ═══ PROFILE AVATARS ══════════════════════════════════════════ */
+    .pfp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    .pfp-card{display:flex;flex-direction:column;align-items:center;gap:12px;padding:24px;border:1px solid var(--border);background:rgba(255,255,255,0.8)}
+    .pfp-circle{width:120px;height:120px;border-radius:50%;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .pfp-name{font-family:'Playfair Display',serif;font-size:16px;text-align:center}
+    .pfp-handle{font-size:12px;color:var(--garnet);font-weight:600;text-align:center}
+    .pfp-detail{font-size:11px;color:var(--silver-dark);text-align:center;line-height:1.5}
+
+    /* ═══ INSTAGRAM GRID PREVIEW ═══════════════════════════════════ */
+    .ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;max-width:600px;margin:0 auto}
+    .ig-cell{aspect-ratio:1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;font-size:10px;letter-spacing:0.1em;text-transform:uppercase}
+
+    /* ═══ PLUGIN CARDS ═════════════════════════════════════════════ */
+    .plug{padding:18px;border:1px solid var(--border);background:rgba(255,255,255,0.8)}
+    .plug-cat{font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+    .plug-name{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:4px}
+    .plug-desc{font-size:12px;color:var(--silver-dark);line-height:1.6}
+    .plug-use{font-size:11px;color:var(--garnet);font-weight:600;margin-top:6px}
+
+    /* ═══ OAB COMPLIANCE ═══════════════════════════════════════════ */
+    .oab-card{padding:22px;border-left:2px solid var(--gold);background:rgba(255,255,255,0.04)}
+    .oab-card.warn{border-left-color:rgba(255,255,255,0.15);opacity:0.72}
+    .oab-card .k{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;color:var(--gold-light)}
+    .oab-card.warn .k{color:rgba(255,255,255,0.35)}
+    .oab-card p,.oab-card li{font-size:13px;line-height:1.7;color:rgba(255,255,255,0.78)}
+    .oab-card.warn p,.oab-card.warn li{color:rgba(255,255,255,0.45)}
+    .oab-card ul{margin-left:16px;margin-top:6px}
+    .oab-card li{margin-bottom:2px}
+    .checklist-visual{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+    .check-item{padding:14px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);display:flex;align-items:flex-start;gap:8px}
+    .check-box{width:16px;height:16px;border:1.5px solid var(--gold);flex-shrink:0;margin-top:1px}
+    .check-text{font-size:12px;line-height:1.5;color:rgba(255,255,255,0.7)}
+
+    /* ═══ RULES DO/DONT ════════════════════════════════════════════ */
+    .rule{padding:16px;border-left:2px solid var(--gold);background:rgba(255,255,255,0.03)}
+    .rule.bad{border-left-color:rgba(255,255,255,0.15);opacity:0.72}
+    .rule .k{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:6px;color:var(--gold-light)}
+    .rule.bad .k{color:rgba(255,255,255,0.35)}
+    .rule p{font-size:13px;line-height:1.7;color:rgba(255,255,255,0.78)}
+    .rule.bad p{color:rgba(255,255,255,0.45)}
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PAGE 00 — COVER
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="page dark">
+  <div class="hero">
+    <div class="hero-top">
+      <div class="brand-lockup">
+        <img src="assets/simbolo-gioia-e-associados.svg" alt="Gioia">
+        <div>
+          <div class="brand-title">Gioia e Associados</div>
+          <div class="brand-sub">Social Media Library V3 · Figma Import</div>
+        </div>
+      </div>
+      <div class="pg-label">00 Cover</div>
+    </div>
+    <div class="hero-main">
+      <div class="hero-kicker">Biblioteca de Produção Visual</div>
+      <h1>Tokens, componentes, templates e referência completa por plataforma.</h1>
+      <p>Documento pensado para importação no Figma via HTML to Design. Cada página é uma seção autônoma da biblioteca. Separe os blocos como componentes, aplique os tokens como styles e produza com consistência.</p>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-n">6</div><div class="stat-l">Cores primárias</div></div>
+      <div class="stat"><div class="stat-n">4</div><div class="stat-l">Famílias tipo</div></div>
+      <div class="stat"><div class="stat-n">12</div><div class="stat-l">Templates</div></div>
+      <div class="stat"><div class="stat-n">8</div><div class="stat-l">Plataformas</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PAGE 01 — COLOR TOKENS
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="page smoke">
+  <div class="stack">
+    <div class="sh">
+      <div class="sh-t"><div class="mi">01 Color Tokens</div><h2>Paleta completa da marca</h2><p>Cada bloco é importável como swatch. Use os HEX para criar color styles no Figma.</p></div>
+      <div class="pg-label">01 Tokens</div>
+    </div>
+
+    <div class="g6">
+      <div class="sw c"><div class="sw-color" style="background:#5E0001"></div><div class="sw-info"><div class="sw-name">Garnet</div><div class="sw-hex">#5E0001</div><div class="sw-role">Base institucional</div></div></div>
+      <div class="sw c"><div class="sw-color" style="background:#420001"></div><div class="sw-info"><div class="sw-name">Garnet Deep</div><div class="sw-hex">#420001</div><div class="sw-role">Fundos premium</div></div></div>
+      <div class="sw c"><div class="sw-color" style="background:#7A0002"></div><div class="sw-info"><div class="sw-name">Molten Lava</div><div class="sw-hex">#7A0002</div><div class="sw-role">Destaques quentes</div></div></div>
+      <div class="sw c"><div class="sw-color" style="background:#BF9F5B"></div><div class="sw-info"><div class="sw-name">Gold</div><div class="sw-hex">#BF9F5B</div><div class="sw-role">Filetes e acentos</div></div></div>
+      <div class="sw c"><div class="sw-color" style="background:#D1AF66"></div><div class="sw-info"><div class="sw-name">Gold Logo</div><div class="sw-hex">#D1AF66</div><div class="sw-role">Cor do logo</div></div></div>
+      <div class="sw c"><div class="sw-color" style="background:#D8BB7E"></div><div class="sw-info"><div class="sw-name">Gold Light</div><div class="sw-hex">#D8BB7E</div><div class="sw-role">Hover e texto</div></div></div>
+    </div>
+
+    <div class="g6">
+      <div class="sw c"><div class="sw-color" style="background:#1A1A1A"></div><div class="sw-info"><div class="sw-name">Ink</div><div class="sw-hex">#1A1A1A</div><div class="sw-role">Texto principal</div></div></div>
+      <div class="sw c"><div class="sw-color" style="background:#3A3A3A"></div><div class="sw-info"><div class="sw-name">Ink Light</div><div class="sw-hex">#3A3A3A</div><div class="sw-role">Texto secundário</div></div></div>
+      <div class="sw c"><div class="sw-color" style="background:#8A8A8A"></div><div class="sw-info"><div class="sw-name">Silver Dark</div><div class="sw-hex">#8A8A8A</div><div class="sw-role">Metadados</div></div></div>
+      <div class="sw c"><div class="sw-color" style="background:#B8B8B8"></div><div class="sw-info"><div class="sw-name">Silver</div><div class="sw-hex">#B8B8B8</div><div class="sw-role">Labels</div></div></div>
+      <div class="sw c"><div class="sw-color" style="background:#F5F5F5"></div><div class="sw-info"><div class="sw-name">Smoke</div><div class="sw-hex">#F5F5F5</div><div class="sw-role">Fundo neutro</div></div></div>
+      <div class="sw c"><div class="sw-color" style="background:#FBF9F6;border:1px solid #eee"></div><div class="sw-info"><div class="sw-name">Paper</div><div class="sw-hex">#FBF9F6</div><div class="sw-role">Editorial quente</div></div></div>
+    </div>
+
+    <!-- Gradientes -->
+    <div class="mi" style="margin-top:8px">Gradientes</div>
+    <div class="g3">
+      <div style="height:72px;background:linear-gradient(135deg,#5E0001 0%,#420001 100%);display:flex;align-items:flex-end;padding:10px 14px;border:1px solid rgba(0,0,0,0.05)"><span style="font-size:11px;color:rgba(255,255,255,0.6);letter-spacing:0.1em;text-transform:uppercase">Garnet → Deep</span></div>
+      <div style="height:72px;background:linear-gradient(135deg,#BF9F5B 0%,#D1AF66 50%,#D8BB7E 100%);display:flex;align-items:flex-end;padding:10px 14px;border:1px solid rgba(0,0,0,0.05)"><span style="font-size:11px;color:rgba(255,255,255,0.8);letter-spacing:0.1em;text-transform:uppercase">Gold Spectrum</span></div>
+      <div style="height:72px;background:linear-gradient(180deg,#420001 0%,#1A1A1A 100%);display:flex;align-items:flex-end;padding:10px 14px;border:1px solid rgba(0,0,0,0.05)"><span style="font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:0.1em;text-transform:uppercase">Dark Fade</span></div>
+    </div>
+
+    <!-- Combinações aprovadas -->
+    <div class="mi" style="margin-top:8px">Combinações Aprovadas de Cor</div>
+    <div class="g4">
+      <div class="combo"><div class="combo-sample" style="background:#5E0001;color:#D1AF66;">Aa</div><div class="combo-info"><div class="combo-pair">Gold Logo / Garnet</div><div class="combo-use">Headlines, títulos, eyebrows</div></div><span class="combo-tag tag-pass">WCAG AA</span></div>
+      <div class="combo"><div class="combo-sample" style="background:#5E0001;color:#FFFFFF;">Aa</div><div class="combo-info"><div class="combo-pair">White / Garnet</div><div class="combo-use">Corpo, legendas, CTAs</div></div><span class="combo-tag tag-pass">WCAG AAA</span></div>
+      <div class="combo"><div class="combo-sample" style="background:#F5F5F5;color:#1A1A1A;">Aa</div><div class="combo-info"><div class="combo-pair">Ink / Smoke</div><div class="combo-use">Posts claros, corpo</div></div><span class="combo-tag tag-pass">WCAG AAA</span></div>
+      <div class="combo"><div class="combo-sample" style="background:#F5F5F5;color:#5E0001;">Aa</div><div class="combo-info"><div class="combo-pair">Garnet / Smoke</div><div class="combo-use">Headlines em fundo claro</div></div><span class="combo-tag tag-pass">WCAG AAA</span></div>
+      <div class="combo"><div class="combo-sample" style="background:#1A1A1A;color:#D1AF66;">Aa</div><div class="combo-info"><div class="combo-pair">Gold Logo / Ink</div><div class="combo-use">Citações, assinaturas</div></div><span class="combo-tag tag-pass">WCAG AA</span></div>
+      <div class="combo"><div class="combo-sample" style="background:#1A1A1A;color:#FFFFFF;">Aa</div><div class="combo-info"><div class="combo-pair">White / Ink</div><div class="combo-use">Corpo em fundo escuro</div></div><span class="combo-tag tag-pass">WCAG AAA</span></div>
+      <div class="combo"><div class="combo-sample" style="background:#FFFFFF;color:#5E0001;">Aa</div><div class="combo-info"><div class="combo-pair">Garnet / White</div><div class="combo-use">Clean posts, institucional</div></div><span class="combo-tag tag-pass">WCAG AAA</span></div>
+      <div class="combo"><div class="combo-sample" style="background:#5E0001;color:#B8B8B8;">Aa</div><div class="combo-info"><div class="combo-pair">Silver / Garnet</div><div class="combo-use">Apenas metadados grandes</div></div><span class="combo-tag tag-warn">AA 18pt+</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PAGE 02 — TYPOGRAPHY + SCALE
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="stack">
+    <div class="sh">
+      <div class="sh-t"><div class="mi">02 Typography</div><h2>Famílias e escala por contexto</h2><p>Escala tipográfica específica para cada formato de social media. Use como referência direta na produção.</p></div>
+      <div class="pg-label">02 Type</div>
+    </div>
+
+    <div class="g2">
+      <div class="c p24 tp">
+        <div class="mi">Display</div>
+        <h3>Cinzel</h3>
+        <div class="tp-preview" style="font-family:'Cinzel',serif;font-size:40px;letter-spacing:0.08em;line-height:1;">CINZEL</div>
+        <div class="tp-note">Uso: labels institucionais, headings cerimoniais, assinaturas, eyebrows de área. Regular 400, Medium 500, SemiBold 600.</div>
+      </div>
+      <div class="c p24 tp">
+        <div class="mi">Editorial</div>
+        <h3>Playfair Display</h3>
+        <div class="tp-preview" style="font-family:'Playfair Display',serif;font-size:40px;line-height:1.05;">Direito e confiança.</div>
+        <div style="font-family:'Playfair Display',serif;font-size:26px;font-style:italic;color:var(--molten);margin-top:8px;">Playfair Italic</div>
+        <div class="tp-note" style="margin-top:10px">Uso: headlines, capa de carrossel, títulos de thumb, citações. Regular, Medium, Bold + Italics.</div>
+      </div>
+      <div class="c p24 tp">
+        <div class="mi">Corpo</div>
+        <h3>Inter</h3>
+        <div class="tp-preview" style="font-family:'Inter',sans-serif;font-size:22px;font-weight:400;line-height:1.5;color:var(--ink-light);">Texto funcional para legendas, metadados e interface.</div>
+        <div class="tp-note">Uso: corpo, bullets, labels, CTAs, assinaturas OAB. Light 300 → SemiBold 600.</div>
+      </div>
+      <div class="c p24 tp">
+        <div class="mi">Decorativa</div>
+        <h3>Pinyon Script</h3>
+        <div class="tp-preview" style="font-family:'Pinyon Script',cursive;font-size:48px;color:var(--molten);">Gioia</div>
+        <div class="tp-note">Uso EXCEPCIONAL: assinatura decorativa em peças especiais. Nunca para corpo ou elementos funcionais.</div>
+      </div>
+    </div>
+
+    <!-- ESCALA TIPOGRÁFICA POR CONTEXTO -->
+    <div class="mi" style="margin-top:12px">Escala Tipográfica por Contexto</div>
+    <div class="c p24">
+      <table class="ts-table">
+        <thead><tr><th>Contexto</th><th>Família</th><th>Peso</th><th>Tamanho</th><th>Tracking</th><th>Exemplo de uso</th></tr></thead>
+        <tbody>
+          <tr><td class="ctx">Post 4:5 — headline</td><td class="fam">Playfair Display</td><td>400</td><td class="sz">48–56px</td><td>0</td><td>Capa de carrossel, pergunta central</td></tr>
+          <tr><td class="ctx">Post 4:5 — eyebrow</td><td class="fam">Cinzel</td><td>500</td><td class="sz">14–16px</td><td>+200</td><td>"DIREITO MÉDICO" acima do título</td></tr>
+          <tr><td class="ctx">Post 4:5 — corpo</td><td class="fam">Inter</td><td>400</td><td class="sz">22–26px</td><td>0</td><td>Slide miolo de carrossel</td></tr>
+          <tr><td class="ctx">Post 1:1 — headline</td><td class="fam">Playfair Display</td><td>400</td><td class="sz">42–48px</td><td>0</td><td>Citação, frase de impacto</td></tr>
+          <tr><td class="ctx">Story 9:16 — headline</td><td class="fam">Playfair Display</td><td>400</td><td class="sz">52–60px</td><td>0</td><td>Pergunta provocativa no story</td></tr>
+          <tr><td class="ctx">Story 9:16 — corpo</td><td class="fam">Inter</td><td>400</td><td class="sz">24–28px</td><td>0</td><td>Explicação curta sob headline</td></tr>
+          <tr><td class="ctx">Thumbnail 16:9</td><td class="fam">Playfair Display</td><td>500</td><td class="sz">54–64px</td><td>0</td><td>Texto legível em mobile (YouTube)</td></tr>
+          <tr><td class="ctx">Banner — nome</td><td class="fam">Playfair Display</td><td>400</td><td class="sz">36–44px</td><td>0</td><td>"Gioia e Associados"</td></tr>
+          <tr><td class="ctx">Assinatura OAB</td><td class="fam">Cinzel</td><td>400</td><td class="sz">12–14px</td><td>+180</td><td>"DRA. MARIANA GIOIA"</td></tr>
+          <tr><td class="ctx">Meta / Label</td><td class="fam">Inter</td><td>600</td><td class="sz">11–13px</td><td>+150</td><td>"OAB/SP 351.962"</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PAGE 03 — SPACING + GRID SYSTEM
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="page smoke">
+  <div class="stack">
+    <div class="sh">
+      <div class="sh-t"><div class="mi">03 Spacing</div><h2>Sistema de espaçamento</h2><p>Base 8px. Use estes valores como padding, margin e gap em todos os layouts.</p></div>
+      <div class="pg-label">03 Spacing</div>
+    </div>
+
+    <div class="c p28">
+      <div class="space-row">
+        <div class="space-block"><div class="space-vis" style="height:4px"></div><div class="space-val">4px</div><div class="space-label">XXS</div></div>
+        <div class="space-block"><div class="space-vis" style="height:8px"></div><div class="space-val">8px</div><div class="space-label">XS</div></div>
+        <div class="space-block"><div class="space-vis" style="height:12px"></div><div class="space-val">12px</div><div class="space-label">S</div></div>
+        <div class="space-block"><div class="space-vis" style="height:16px"></div><div class="space-val">16px</div><div class="space-label">M</div></div>
+        <div class="space-block"><div class="space-vis" style="height:24px"></div><div class="space-val">24px</div><div class="space-label">L</div></div>
+        <div class="space-block"><div class="space-vis" style="height:32px"></div><div class="space-val">32px</div><div class="space-label">XL</div></div>
+        <div class="space-block"><div class="space-vis" style="height:40px"></div><div class="space-val">40px</div><div class="space-label">2XL</div></div>
+        <div class="space-block"><div class="space-vis" style="height:48px"></div><div class="space-val">48px</div><div class="space-label">3XL</div></div>
+        <div class="space-block"><div class="space-vis" style="height:64px"></div><div class="space-val">64px</div><div class="space-label">4XL</div></div>
+        <div class="space-block"><div class="space-vis" style="height:80px"></div><div class="space-val">80px</div><div class="space-label">5XL</div></div>
+      </div>
+    </div>
+
+    <div class="g3">
+      <div class="c p20">
+        <div class="mi" style="margin-bottom:8px">Padding Interno — Post 4:5</div>
+        <div style="font-size:13px;color:var(--ink-light);line-height:1.7">
+          <strong>Top/Bottom:</strong> 48–64px<br>
+          <strong>Left/Right:</strong> 40–48px<br>
+          <strong>Gap entre blocos:</strong> 24–32px
+        </div>
+      </div>
+      <div class="c p20">
+        <div class="mi" style="margin-bottom:8px">Padding Interno — Story 9:16</div>
+        <div style="font-size:13px;color:var(--ink-light);line-height:1.7">
+          <strong>Top:</strong> 80px (safe zone)<br>
+          <strong>Bottom:</strong> 100px (safe zone)<br>
+          <strong>Left/Right:</strong> 32–40px
+        </div>
+      </div>
+      <div class="c p20">
+        <div class="mi" style="margin-bottom:8px">Padding Interno — Banner</div>
+        <div style="font-size:13px;color:var(--ink-light);line-height:1.7">
+          <strong>Top/Bottom:</strong> 32–40px<br>
+          <strong>Left/Right:</strong> 48–56px<br>
+          <strong>Safe: foto de perfil sobrepõe inferior esquerdo</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PAGE 04 — COMPONENTS
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="stack">
+    <div class="sh">
+      <div class="sh-t"><div class="mi">04 Components</div><h2>Componentes reutilizáveis</h2><p>Cada bloco tem variante dark e light. Converta em componentes no Figma com variantes.</p></div>
+      <div class="pg-label">04 Components</div>
+    </div>
+
+    <div class="g3">
+      <!-- Eyebrow + Headline -->
+      <div class="comp c p20">
+        <div class="mi">Eyebrow + Headline</div>
+        <div class="comp-demo">
+          <div style="text-align:center"><div class="eyebrow">Direito Médico</div><div style="font-family:'Playfair Display',serif;font-size:28px;line-height:1.15;margin-top:10px;">Negativa de tratamento pode ser abusiva?</div></div>
+        </div>
+        <div class="comp-demo dk">
+          <div style="text-align:center"><div class="eyebrow" style="color:var(--gold-light)">Direito Médico</div><div style="font-family:'Playfair Display',serif;font-size:28px;line-height:1.15;margin-top:10px;color:#fff">Negativa de tratamento pode ser abusiva?</div></div>
+        </div>
+        <div class="comp-note">Bloco-base para capa de carrossel, thumb e posts. Duas variantes: light + dark.</div>
+      </div>
+
+      <!-- Divisor -->
+      <div class="comp c p20">
+        <div class="mi">Divisor da Marca</div>
+        <div class="comp-demo"><div class="divider-brand"><span>◆</span></div></div>
+        <div class="comp-demo dk"><div class="divider-brand" style="max-width:240px"><span>◆</span></div></div>
+        <div class="comp-note">Separador editorial. Usar com moderação — 1x por peça no máximo.</div>
+      </div>
+
+      <!-- Assinatura -->
+      <div class="comp c p20">
+        <div class="mi">Assinatura Institucional</div>
+        <div class="comp-demo dk">
+          <div class="sig"><div class="sig-name">Dra. Mariana Gioia</div><div class="sig-role">OAB/SP 351.962 · Gioia e Associados</div></div>
+        </div>
+        <div class="comp-demo">
+          <div class="sig"><div class="sig-name">Dra. Mariana Gioia</div><div class="sig-role lt">OAB/SP 351.962 · Gioia e Associados</div></div>
+        </div>
+        <div class="comp-note">Fecho obrigatório em peças de autoridade. Sempre com OAB visível.</div>
+      </div>
+
+      <!-- Badge de Área -->
+      <div class="comp c p20">
+        <div class="mi">Badge de Área</div>
+        <div class="comp-demo"><div class="badge">Direito Empresarial</div></div>
+        <div class="comp-demo dk"><div class="badge">Direito Trabalhista</div></div>
+        <div class="comp-note">Tag para identificar a área de atuação. 9 variações (uma por área).</div>
+      </div>
+
+      <!-- CTA -->
+      <div class="comp c p20">
+        <div class="mi">CTA Discreto</div>
+        <div class="comp-demo"><div class="cta-btn" style="color:var(--garnet);border-color:var(--garnet)">Agende uma consulta</div></div>
+        <div class="comp-demo dk"><div class="cta-btn">Fale com a equipe</div></div>
+        <div class="comp-note">Sóbrio e informativo. Nunca agressivo. Compliance OAB.</div>
+      </div>
+
+      <!-- FAQ Block -->
+      <div class="comp c p20">
+        <div class="mi">Bloco FAQ</div>
+        <div class="comp-demo" style="align-items:stretch">
+          <div style="width:100%;display:flex;flex-direction:column;gap:8px">
+            <div class="eyebrow">Pergunta comum</div>
+            <div style="font-family:'Playfair Display',serif;font-size:24px;line-height:1.15">Plano negou. O que fazer primeiro?</div>
+            <div style="font-size:13px;line-height:1.6;color:var(--ink-light)">Reunir documentos, registrar a negativa e buscar orientação técnica.</div>
+          </div>
+        </div>
+        <div class="comp-note">Para carrosséis educativos em série. Uma pergunta por slide.</div>
+      </div>
+
+      <!-- Numeração de Slide -->
+      <div class="comp c p20">
+        <div class="mi">Numeração de Slide</div>
+        <div class="comp-demo dk" style="gap:16px">
+          <div style="display:flex;gap:12px;align-items:center">
+            <div style="width:32px;height:32px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:13px;color:var(--gold)">01</div>
+            <div style="width:32px;height:32px;border:1px solid rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:13px;color:rgba(255,255,255,0.3)">02</div>
+            <div style="width:32px;height:32px;border:1px solid rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:13px;color:rgba(255,255,255,0.3)">03</div>
+          </div>
+        </div>
+        <div class="comp-note">Indicador de progresso para carrosséis longos. Variante paginada.</div>
+      </div>
+
+      <!-- Slide CTA Final -->
+      <div class="comp c p20">
+        <div class="mi">Slide CTA Final</div>
+        <div class="comp-demo dk" style="min-height:180px;flex-direction:column;gap:12px">
+          <div style="text-align:center">
+            <div style="font-family:'Playfair Display',serif;font-size:22px;color:#fff;margin-bottom:8px">Ficou com dúvida?</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.55);margin-bottom:14px">Fale com nossa equipe.</div>
+            <div class="cta-btn">Agende sua consulta</div>
+          </div>
+        </div>
+        <div class="comp-note">Último slide de carrossel. CTA informativo, sem pressão.</div>
+      </div>
+
+      <!-- Watermark -->
+      <div class="comp c p20">
+        <div class="mi">Watermark / Logo Mark</div>
+        <div class="comp-demo dk" style="min-height:120px">
+          <div style="width:48px;height:48px;border:1px solid rgba(191,159,91,0.25);border-radius:4px;display:flex;align-items:center;justify-content:center">
+            <span style="font-family:'Cinzel',serif;font-size:18px;color:var(--gold);opacity:0.6">G</span>
+          </div>
+        </div>
+        <div class="comp-note">Marca d'água sutil para canto de peça. Opacidade 40–60%.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PAGE 05 — SOCIAL MEDIA SIZE REFERENCE
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="page smoke">
+  <div class="stack">
+    <div class="sh">
+      <div class="sh-t"><div class="mi">05 Size Reference</div><h2>Dimensões por plataforma (2026)</h2><p>Referência completa de todas as dimensões. Consulte sempre antes de criar um novo frame no Figma.</p></div>
+      <div class="pg-label">05 Sizes</div>
+    </div>
+
+    <div class="c p24">
+      <table class="sz-table">
+        <thead><tr><th>Plataforma</th><th>Formato</th><th>Dimensão (px)</th><th>Proporção</th><th>Notas</th></tr></thead>
+        <tbody>
+          <tr class="group-head"><td colspan="5"><span class="plat-icon">IG</span>Instagram</td></tr>
+          <tr><td class="plat">Instagram</td><td>Post quadrado</td><td class="dim">1080 × 1080</td><td class="ratio">1:1</td><td class="note">Padrão universal</td></tr>
+          <tr><td class="plat">Instagram</td><td>Post retrato</td><td class="dim">1080 × 1350</td><td class="ratio">4:5</td><td class="note">Recomendado — ocupa mais tela no feed</td></tr>
+          <tr><td class="plat">Instagram</td><td>Post paisagem</td><td class="dim">1080 × 566</td><td class="ratio">1.91:1</td><td class="note">Pouco usado, menos impacto</td></tr>
+          <tr><td class="plat">Instagram</td><td>Carrossel (slide)</td><td class="dim">1080 × 1350</td><td class="ratio">4:5</td><td class="note">Até 20 slides. Formato principal para conteúdo educacional</td></tr>
+          <tr><td class="plat">Instagram</td><td>Story / Reels</td><td class="dim">1080 × 1920</td><td class="ratio">9:16</td><td class="note">Safe zone: evitar 250px topo + 340px base</td></tr>
+          <tr><td class="plat">Instagram</td><td>Foto de perfil</td><td class="dim">320 × 320</td><td class="ratio">1:1 circular</td><td class="note">Exibida 110px no feed</td></tr>
+          <tr><td class="plat">Instagram</td><td>Highlight cover</td><td class="dim">1080 × 1920</td><td class="ratio">Circular 58px</td><td class="note">Ícone centralizado na safe zone circular central</td></tr>
+          <tr><td class="plat">Instagram</td><td>Thumbnail Reel</td><td class="dim">1080 × 1920</td><td class="ratio">Grid: 4:5</td><td class="note">Texto na faixa central — grid exibe como 4:5</td></tr>
+
+          <tr class="group-head"><td colspan="5"><span class="plat-icon">FB</span>Facebook</td></tr>
+          <tr><td class="plat">Facebook</td><td>Foto de perfil</td><td class="dim">720 × 720</td><td class="ratio">1:1 circular</td><td class="note">Exibida 176×176 desktop</td></tr>
+          <tr><td class="plat">Facebook</td><td>Capa (cover)</td><td class="dim">1200 × 630</td><td class="ratio">~1.91:1</td><td class="note">Desktop 820×312, mobile corta laterais. Safe zone central.</td></tr>
+          <tr><td class="plat">Facebook</td><td>Post feed</td><td class="dim">1200 × 630</td><td class="ratio">1.91:1</td><td class="note">Paisagem padrão</td></tr>
+          <tr><td class="plat">Facebook</td><td>Post quadrado</td><td class="dim">1080 × 1080</td><td class="ratio">1:1</td><td class="note">Funciona bem no feed</td></tr>
+          <tr><td class="plat">Facebook</td><td>Story</td><td class="dim">1080 × 1920</td><td class="ratio">9:16</td><td class="note">Mesmas safe zones do Instagram</td></tr>
+          <tr><td class="plat">Facebook</td><td>Evento (cover)</td><td class="dim">1920 × 1005</td><td class="ratio">~1.91:1</td><td class="note">Para eventos e webinars</td></tr>
+
+          <tr class="group-head"><td colspan="5"><span class="plat-icon">LI</span>LinkedIn</td></tr>
+          <tr><td class="plat">LinkedIn</td><td>Foto perfil (pessoal)</td><td class="dim">800 × 800</td><td class="ratio">1:1 circular</td><td class="note">Foto profissional dos advogados</td></tr>
+          <tr><td class="plat">LinkedIn</td><td>Logo company page</td><td class="dim">300 × 300</td><td class="ratio">1:1</td><td class="note">Símbolo Gioia</td></tr>
+          <tr><td class="plat">LinkedIn</td><td>Banner pessoal</td><td class="dim">1584 × 396</td><td class="ratio">4:1</td><td class="note">Foto de perfil sobrepõe canto inferior esquerdo</td></tr>
+          <tr><td class="plat">LinkedIn</td><td>Banner company</td><td class="dim">1128 × 191</td><td class="ratio">~5.9:1</td><td class="note">Muito horizontal — texto centralizado curto</td></tr>
+          <tr><td class="plat">LinkedIn</td><td>Post feed</td><td class="dim">1200 × 627</td><td class="ratio">1.91:1</td><td class="note">Paisagem padrão</td></tr>
+          <tr><td class="plat">LinkedIn</td><td>Post quadrado</td><td class="dim">1080 × 1080</td><td class="ratio">1:1</td><td class="note">Bom para carrosséis como PDF</td></tr>
+          <tr><td class="plat">LinkedIn</td><td>Carrossel (PDF)</td><td class="dim">1080 × 1080</td><td class="ratio">1:1 ou 4:5</td><td class="note">Exportar como PDF para upload nativo</td></tr>
+          <tr><td class="plat">LinkedIn</td><td>Artigo hero</td><td class="dim">1200 × 644</td><td class="ratio">~1.86:1</td><td class="note">Imagem de capa para artigos longos</td></tr>
+
+          <tr class="group-head"><td colspan="5"><span class="plat-icon">YT</span>YouTube</td></tr>
+          <tr><td class="plat">YouTube</td><td>Foto de perfil</td><td class="dim">800 × 800</td><td class="ratio">1:1 circular</td><td class="note">Exibida 98px</td></tr>
+          <tr><td class="plat">YouTube</td><td>Banner do canal</td><td class="dim">2560 × 1440</td><td class="ratio">Safe: 1546×423</td><td class="note">TV: full. Desktop: 2560×423. Mobile: 1546×423 (centro)</td></tr>
+          <tr><td class="plat">YouTube</td><td>Thumbnail</td><td class="dim">1280 × 720</td><td class="ratio">16:9</td><td class="note">Texto grande legível em mobile. Evitar canto inferior direito.</td></tr>
+          <tr><td class="plat">YouTube</td><td>Shorts</td><td class="dim">1080 × 1920</td><td class="ratio">9:16</td><td class="note">Mesmo formato de Reels/Story</td></tr>
+          <tr><td class="plat">YouTube</td><td>Watermark</td><td class="dim">150 × 150</td><td class="ratio">1:1 PNG</td><td class="note">Símbolo dourado sobre fundo transparente</td></tr>
+
+          <tr class="group-head"><td colspan="5"><span class="plat-icon">X</span>X (Twitter)</td></tr>
+          <tr><td class="plat">X</td><td>Foto de perfil</td><td class="dim">400 × 400</td><td class="ratio">1:1 circular</td><td class="note"></td></tr>
+          <tr><td class="plat">X</td><td>Header / Banner</td><td class="dim">1500 × 500</td><td class="ratio">3:1</td><td class="note">Similar ao LinkedIn pessoal</td></tr>
+          <tr><td class="plat">X</td><td>Post com imagem</td><td class="dim">1200 × 675</td><td class="ratio">16:9</td><td class="note"></td></tr>
+          <tr><td class="plat">X</td><td>Card (link preview)</td><td class="dim">1200 × 628</td><td class="ratio">~1.91:1</td><td class="note">OG image padrão</td></tr>
+
+          <tr class="group-head"><td colspan="5"><span class="plat-icon">TT</span>TikTok</td></tr>
+          <tr><td class="plat">TikTok</td><td>Foto de perfil</td><td class="dim">200 × 200</td><td class="ratio">1:1 circular</td><td class="note"></td></tr>
+          <tr><td class="plat">TikTok</td><td>Vídeo feed</td><td class="dim">1080 × 1920</td><td class="ratio">9:16</td><td class="note">Safe zone: 150px topo + lateral direita (botões)</td></tr>
+          <tr><td class="plat">TikTok</td><td>Cover de vídeo</td><td class="dim">1080 × 1920</td><td class="ratio">Grid ~1:1.25</td><td class="note">Texto centralizado</td></tr>
+
+          <tr class="group-head"><td colspan="5"><span class="plat-icon">WA</span>WhatsApp Business</td></tr>
+          <tr><td class="plat">WhatsApp</td><td>Foto de perfil</td><td class="dim">500 × 500</td><td class="ratio">1:1 circular</td><td class="note">Símbolo Gioia centralizado sobre garnet</td></tr>
+          <tr><td class="plat">WhatsApp</td><td>Catálogo (capa)</td><td class="dim">600 × 600</td><td class="ratio">1:1</td><td class="note"></td></tr>
+          <tr><td class="plat">WhatsApp</td><td>Status</td><td class="dim">1080 × 1920</td><td class="ratio">9:16</td><td class="note">Mesmo formato de Story</td></tr>
+
+          <tr class="group-head"><td colspan="5"><span class="plat-icon">G</span>Google Business Profile</td></tr>
+          <tr><td class="plat">Google</td><td>Logo</td><td class="dim">720 × 720</td><td class="ratio">1:1</td><td class="note">Símbolo ou logo marca completa</td></tr>
+          <tr><td class="plat">Google</td><td>Foto de capa</td><td class="dim">1024 × 576</td><td class="ratio">16:9</td><td class="note">Fachada ou escritório</td></tr>
+          <tr><td class="plat">Google</td><td>Post / Foto</td><td class="dim">1200 × 900</td><td class="ratio">4:3</td><td class="note">Mínimo 720×540. Fotos da equipe e escritório.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PAGE 06 — SAFE ZONES
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="stack">
+    <div class="sh">
+      <div class="sh-t"><div class="mi">06 Safe Zones</div><h2>Áreas seguras por formato</h2><p>Zonas vermelhas = UI da plataforma sobrepõe seu conteúdo. Nunca colocar texto ou elementos importantes nestas áreas.</p></div>
+      <div class="pg-label">06 Safe Zones</div>
+    </div>
+
+    <div class="g3">
+      <!-- Story / Reels Safe Zone -->
+      <div class="c p20" style="display:flex;flex-direction:column;gap:12px">
+        <div class="mi">Story / Reels — 1080 × 1920</div>
+        <div class="safe-frame f" style="width:216px;height:384px;margin:0 auto;background:linear-gradient(180deg,#4d0405 0%,#230909 100%);border:1px solid rgba(0,0,0,0.1)">
+          <!-- Top safe zone -->
+          <div class="safe-overlay" style="top:0;left:0;right:0;height:50px"></div>
+          <div class="safe-label" style="top:52px;left:8px">← 250px real</div>
+          <!-- Bottom safe zone -->
+          <div class="safe-overlay" style="bottom:0;left:0;right:0;height:68px"></div>
+          <div class="safe-label" style="bottom:70px;left:8px">← 340px real</div>
+          <!-- Content area -->
+          <div style="position:absolute;top:50px;bottom:68px;left:0;right:0;border:1px dashed rgba(191,159,91,0.3);display:flex;align-items:center;justify-content:center">
+            <span style="font-size:10px;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;opacity:0.6">Safe Zone</span>
+          </div>
+        </div>
+        <div style="font-size:12px;color:var(--ink-light);line-height:1.6;text-align:center">Topo: username + ícones<br>Base: legenda + botões</div>
+      </div>
+
+      <!-- Reel Grid Crop -->
+      <div class="c p20" style="display:flex;flex-direction:column;gap:12px">
+        <div class="mi">Reel no Grid do Perfil</div>
+        <div style="width:216px;height:384px;margin:0 auto;background:linear-gradient(180deg,#4d0405 0%,#230909 100%);position:relative;border:1px solid rgba(0,0,0,0.1)">
+          <!-- 4:5 crop overlay -->
+          <div style="position:absolute;top:0;left:0;right:0;height:48px;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center"><span style="font-size:9px;color:rgba(255,255,255,0.5);letter-spacing:0.1em;text-transform:uppercase">Cortado no grid</span></div>
+          <div style="position:absolute;bottom:0;left:0;right:0;height:66px;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center"><span style="font-size:9px;color:rgba(255,255,255,0.5);letter-spacing:0.1em;text-transform:uppercase">Cortado no grid</span></div>
+          <!-- Visible area -->
+          <div style="position:absolute;top:48px;bottom:66px;left:0;right:0;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center">
+            <span style="font-size:10px;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase">Visível no grid (4:5)</span>
+          </div>
+        </div>
+        <div style="font-size:12px;color:var(--ink-light);line-height:1.6;text-align:center">O grid do perfil corta o Reel<br>para 4:5. Título deve ficar no centro.</div>
+      </div>
+
+      <!-- YouTube Banner Safe Zone -->
+      <div class="c p20" style="display:flex;flex-direction:column;gap:12px">
+        <div class="mi">YouTube Banner — 2560 × 1440</div>
+        <div style="width:280px;height:157px;margin:0 auto;background:var(--garnet-deep);position:relative;border:1px solid rgba(0,0,0,0.1)">
+          <!-- TV area = full -->
+          <div style="position:absolute;inset:0;border:1px dashed rgba(255,255,255,0.1)"></div>
+          <!-- Desktop area -->
+          <div style="position:absolute;top:44px;bottom:44px;left:0;right:0;border:1px dashed rgba(191,159,91,0.3)">
+            <div class="safe-label" style="top:-14px;left:4px;font-size:8px">Desktop (2560×423)</div>
+          </div>
+          <!-- Mobile safe area -->
+          <div style="position:absolute;top:44px;bottom:44px;left:55px;right:55px;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center">
+            <span style="font-size:9px;color:var(--gold);letter-spacing:0.08em;text-transform:uppercase">Mobile safe (1546×423)</span>
+          </div>
+        </div>
+        <div style="font-size:12px;color:var(--ink-light);line-height:1.6;text-align:center">Texto e logo essenciais<br>apenas na zona mobile central.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PAGE 06B — PROFILE ASSETS
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="page smoke">
+  <div class="stack">
+    <div class="sh">
+      <div class="sh-t"><div class="mi">06B Profile Assets</div><h2>Highlights, avatares e banners prontos para usar</h2><p>Frames renderizados para importar no Figma sem depender apenas de tabela ou CSS. Separe como componentes e reaplique em cada canal.</p></div>
+      <div class="pg-label">06B Assets</div>
+    </div>
+
+    <div class="c p24">
+      <div class="mi" style="margin-bottom:14px">Instagram Highlights</div>
+      <div class="hl-grid">
+        <div class="hl">
+          <div class="hl-circle"><div class="hl-icon"><span>DM</span></div><div class="hl-label">Direito Médico</div></div>
+          <div class="hl-name">Destaque 01</div>
+        </div>
+        <div class="hl">
+          <div class="hl-circle"><div class="hl-icon"><span>TR</span></div><div class="hl-label">Trabalhista</div></div>
+          <div class="hl-name">Destaque 02</div>
+        </div>
+        <div class="hl">
+          <div class="hl-circle"><div class="hl-icon"><span>CD</span></div><div class="hl-label">Consumidor</div></div>
+          <div class="hl-name">Destaque 03</div>
+        </div>
+        <div class="hl">
+          <div class="hl-circle"><div class="hl-icon"><span>FA</span></div><div class="hl-label">Família</div></div>
+          <div class="hl-name">Destaque 04</div>
+        </div>
+        <div class="hl">
+          <div class="hl-circle"><div class="hl-icon"><span>SU</span></div><div class="hl-label">Sucessório</div></div>
+          <div class="hl-name">Destaque 05</div>
+        </div>
+        <div class="hl">
+          <div class="hl-circle"><div class="hl-icon"><span>IM</span></div><div class="hl-label">Imobiliário</div></div>
+          <div class="hl-name">Destaque 06</div>
+        </div>
+        <div class="hl">
+          <div class="hl-circle"><div class="hl-icon"><span>EM</span></div><div class="hl-label">Empresarial</div></div>
+          <div class="hl-name">Destaque 07</div>
+        </div>
+        <div class="hl">
+          <div class="hl-circle"><div class="hl-icon"><span>CT</span></div><div class="hl-label">Contratos</div></div>
+          <div class="hl-name">Destaque 08</div>
+        </div>
+        <div class="hl">
+          <div class="hl-circle"><div class="hl-icon"><span>PR</span></div><div class="hl-label">Previdenciário</div></div>
+          <div class="hl-name">Destaque 09</div>
+        </div>
+      </div>
+      <div style="font-size:12px;color:var(--silver-dark);line-height:1.7;margin-top:14px">Master recomendado: 1080 × 1080. Ícone e label centralizados. A plataforma fará o crop circular.</div>
+    </div>
+
+    <div class="c p24">
+      <div class="mi" style="margin-bottom:14px">Profile Avatars</div>
+      <div class="pfp-grid">
+        <div class="pfp-card">
+          <div class="pfp-circle" style="background:linear-gradient(135deg,#5E0001 0%,#2A0001 100%);border:2px solid rgba(191,159,91,0.35)">
+            <div class="f-pfp" style="width:88px;height:88px;background:transparent;border:1px solid rgba(191,159,91,0.22)">
+              <div style="font-family:'Cinzel',serif;font-size:32px;color:var(--gold)">G</div>
+            </div>
+          </div>
+          <div class="pfp-name">Master Gioia</div>
+          <div class="pfp-handle">@dragioia</div>
+          <div class="pfp-detail">Perfil institucional. Símbolo centralizado com respiro interno para crop circular.</div>
+        </div>
+        <div class="pfp-card">
+          <div class="pfp-circle" style="background:linear-gradient(135deg,#d8c4b0 0%,#f3ece2 100%);border:2px solid rgba(191,159,91,0.35)">
+            <div class="silhouette" style="width:74px;height:92px;border-radius:999px 999px 12px 12px"></div>
+          </div>
+          <div class="pfp-name">Dra. Mariana</div>
+          <div class="pfp-handle">LinkedIn pessoal</div>
+          <div class="pfp-detail">Retrato próximo, fundo limpo, rosto central e margem mínima de 15%.</div>
+        </div>
+        <div class="pfp-card">
+          <div class="pfp-circle" style="background:linear-gradient(135deg,#d8c4b0 0%,#f3ece2 100%);border:2px solid rgba(191,159,91,0.35)">
+            <div class="silhouette" style="width:74px;height:92px;border-radius:999px 999px 12px 12px"></div>
+          </div>
+          <div class="pfp-name">Dr. Fábio</div>
+          <div class="pfp-handle">LinkedIn pessoal</div>
+          <div class="pfp-detail">Retrato profissional com enquadramento de peito para cima e fundo sem ruído.</div>
+        </div>
+        <div class="pfp-card">
+          <div class="pfp-circle" style="background:linear-gradient(135deg,#420001 0%,#220809 100%);border:2px solid rgba(191,159,91,0.35)">
+            <div class="f-pfp" style="width:86px;height:86px;background:transparent">
+              <div style="font-family:'Cinzel',serif;font-size:26px;color:var(--gold);letter-spacing:0.12em">GG</div>
+            </div>
+          </div>
+          <div class="pfp-name">YouTube / WhatsApp</div>
+          <div class="pfp-handle">Marca reduzida</div>
+          <div class="pfp-detail">Variação compacta para canais em que o avatar aparece muito pequeno.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="g2">
+      <div class="c p24">
+        <div class="mi" style="margin-bottom:14px">Banner LinkedIn Pessoal</div>
+        <div class="f-banner" style="position:relative;overflow:hidden">
+          <div style="position:absolute;left:28px;bottom:-18px;width:88px;height:88px;border-radius:50%;background:linear-gradient(135deg,#d8c4b0 0%,#f3ece2 100%);border:4px solid var(--white);display:flex;align-items:center;justify-content:center;z-index:2">
+            <div class="silhouette" style="width:46px;height:58px;border-radius:999px 999px 10px 10px"></div>
+          </div>
+          <div style="width:36%"></div>
+          <div style="position:relative;z-index:2;max-width:54%;text-align:left">
+            <div class="eyebrow" style="color:var(--gold-light)">Advocacia boutique em São Paulo</div>
+            <div style="font-family:'Playfair Display',serif;font-size:28px;line-height:1.1;margin-top:8px">Atuação técnica com clareza e acolhimento.</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.58);margin-top:8px;line-height:1.6">Direito Médico, Família, Sucessório, Contratos e áreas correlatas.</div>
+          </div>
+        </div>
+        <div style="font-size:12px;color:var(--silver-dark);line-height:1.7;margin-top:12px">Logo e texto deslocados para a direita. A foto de perfil ocupa o canto inferior esquerdo.</div>
+      </div>
+
+      <div class="c p24">
+        <div class="mi" style="margin-bottom:14px">YouTube Channel Banner</div>
+        <div style="width:100%;height:220px;background:linear-gradient(90deg,#420001 0%,#2A0001 38%,#220809 100%);position:relative;overflow:hidden;border:1px solid rgba(0,0,0,0.06)">
+          <div style="position:absolute;top:58px;bottom:58px;left:80px;right:80px;border:2px solid rgba(191,159,91,0.42);display:flex;align-items:center;justify-content:space-between;padding:0 38px;z-index:2">
+            <div>
+              <div class="eyebrow" style="color:var(--gold-light)">Safe area mobile</div>
+              <div style="font-family:'Playfair Display',serif;font-size:30px;line-height:1.08;color:#fff;margin-top:8px;max-width:420px">Gioia e Associados Advocacia</div>
+              <div style="font-size:13px;color:rgba(255,255,255,0.58);line-height:1.6;margin-top:8px">Orientação jurídica clara para decisões difíceis.</div>
+            </div>
+            <div style="width:74px;height:74px;border:1px solid rgba(191,159,91,0.35);display:flex;align-items:center;justify-content:center">
+              <div style="font-family:'Cinzel',serif;font-size:30px;color:var(--gold)">G</div>
+            </div>
+          </div>
+          <div style="position:absolute;top:14px;right:18px;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35)">Full 2560 × 1440</div>
+        </div>
+        <div style="font-size:12px;color:var(--silver-dark);line-height:1.7;margin-top:12px">Tudo que importa fica dentro da faixa central. O restante funciona como expansão para TV e desktop.</div>
+      </div>
+    </div>
+
+    <div class="g2">
+      <div class="c p24">
+        <div class="mi" style="margin-bottom:14px">Thumbnail YouTube</div>
+        <div class="f-thumb">
+          <div style="max-width:60%">
+            <div class="eyebrow" style="color:var(--gold-light)">Direito Médico</div>
+            <div style="font-family:'Playfair Display',serif;font-size:34px;line-height:1.02;color:#fff;margin-top:8px">Plano negou cirurgia?</div>
+            <div style="font-size:13px;color:rgba(255,255,255,0.55);line-height:1.6;margin-top:8px">O que fazer nos primeiros passos.</div>
+          </div>
+          <div style="width:132px;height:132px;border:1px solid rgba(191,159,91,0.20);background:linear-gradient(135deg,#d8c4b0 0%,#f3ece2 100%);display:flex;align-items:center;justify-content:center">
+            <div class="silhouette" style="width:76px;height:98px;border-radius:999px 999px 12px 12px"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="c p24">
+        <div class="mi" style="margin-bottom:14px">Banner Company / X Header</div>
+        <div class="f-banner" style="background:linear-gradient(90deg,#5E0001 0%,#3A0001 45%,#220809 100%)">
+          <div>
+            <div class="eyebrow" style="color:var(--gold-light)">Gioia e Associados</div>
+            <div style="font-family:'Playfair Display',serif;font-size:26px;line-height:1.1;margin-top:8px">Tradição jurídica com linguagem humana.</div>
+          </div>
+          <div style="width:76px;height:76px;border:1px solid rgba(191,159,91,0.28);display:flex;align-items:center;justify-content:center">
+            <div style="font-family:'Cinzel',serif;font-size:28px;color:var(--gold)">G</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PAGE 06C — OPERATIONAL TEMPLATES
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="stack">
+    <div class="sh">
+      <div class="sh-t"><div class="mi">06C Operational Templates</div><h2>Slide miolo, stories e copy de apoio</h2><p>Blocos operacionais para você não precisar abrir outro documento durante a montagem no Figma.</p></div>
+      <div class="pg-label">06C Ops</div>
+    </div>
+
+    <div class="g3">
+      <div class="c p24">
+        <div class="mi" style="margin-bottom:12px">Carrossel — Slide Miolo</div>
+        <div class="f f-45 lt" style="margin:0 auto">
+          <div style="position:relative;z-index:2">
+            <div class="eyebrow">Direito Médico</div>
+            <div class="t-title" style="font-size:24px;color:var(--ink);margin-top:10px">Quando a negativa do plano pode ser abusiva?</div>
+          </div>
+          <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:12px">
+            <div style="font-size:14px;line-height:1.65;color:var(--ink-light)">Se o tratamento tem indicação médica, urgência comprovada ou cobertura contratual compatível, a recusa pode ser contestada.</div>
+            <div style="padding:14px 16px;border-left:2px solid var(--gold);background:rgba(191,159,91,0.06)">
+              <div style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:6px">Ponto-chave</div>
+              <div style="font-size:13px;line-height:1.6;color:var(--ink)">Guia ANS, contrato e relatório médico precisam ser lidos em conjunto.</div>
+            </div>
+          </div>
+          <div style="position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-end">
+            <div class="sig"><div class="sig-name">Gioia e Associados</div><div class="sig-role lt">Informação jurídica, não promessa</div></div>
+            <div style="font-family:'Cinzel',serif;font-size:12px;color:var(--gold)">02</div>
+          </div>
+        </div>
+        <div style="font-size:12px;color:var(--silver-dark);line-height:1.7;margin-top:12px">Template completo de slide interno: eyebrow + headline + corpo + box de apoio + assinatura + numeração.</div>
+      </div>
+
+      <div class="c p24">
+        <div class="mi" style="margin-bottom:12px">Story — Texto Puro</div>
+        <div class="f f-story" style="margin:0 auto">
+          <div style="position:relative;z-index:2">
+            <div class="eyebrow" style="color:var(--gold-light)">Direito do Consumidor</div>
+            <div class="t-title" style="font-size:30px;margin-top:10px">Comprou online e se arrependeu?</div>
+            <div class="t-body" style="font-size:13px;margin-top:10px">Em regra, o consumidor tem 7 dias para desistir da compra feita fora do estabelecimento comercial.</div>
+          </div>
+          <div style="position:relative;z-index:2">
+            <div class="cta-btn" style="font-size:10px">Salve este lembrete</div>
+          </div>
+        </div>
+        <div style="font-size:12px;color:var(--silver-dark);line-height:1.7;margin-top:12px">Variação rápida para caixinha, enquete, lembrete jurídico ou corte de FAQ.</div>
+      </div>
+
+      <div class="c p24">
+        <div class="mi" style="margin-bottom:12px">Story — Derivação de Carrossel</div>
+        <div class="f f-story" style="margin:0 auto;background:linear-gradient(180deg,#fcfaf7 0%,#f0ebe3 100%);color:var(--ink);border:1px solid rgba(0,0,0,0.06)">
+          <div style="position:relative;z-index:2">
+            <div class="eyebrow" style="color:var(--gold)">Novo carrossel no feed</div>
+            <div style="font-family:'Playfair Display',serif;font-size:28px;line-height:1.15;margin-top:10px">3 sinais de cláusula abusiva em contrato</div>
+            <div style="font-size:13px;line-height:1.7;color:var(--ink-light);margin-top:10px">Resumo rápido no story. Conteúdo completo no post do feed.</div>
+          </div>
+          <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;gap:8px">
+              <div style="width:54px;height:6px;background:var(--garnet)"></div>
+              <div style="width:54px;height:6px;background:rgba(94,0,1,0.18)"></div>
+              <div style="width:54px;height:6px;background:rgba(94,0,1,0.18)"></div>
+            </div>
+            <div class="cta-btn" style="font-size:10px;color:var(--garnet);border-color:var(--garnet)">Ver o post no feed</div>
+          </div>
+        </div>
+        <div style="font-size:12px;color:var(--silver-dark);line-height:1.7;margin-top:12px">Story para puxar tráfego do feed ou do carrossel técnico sem parecer anúncio.</div>
+      </div>
+    </div>
+
+    <div class="g3">
+      <div class="c p24">
+        <div class="mi" style="margin-bottom:10px">Bio Base</div>
+        <div style="font-family:'Playfair Display',serif;font-size:22px;line-height:1.2">Estrutura de bio institucional</div>
+        <div style="font-size:13px;color:var(--ink-light);line-height:1.8;margin-top:12px">
+          Gioia e Associados Advocacia<br>
+          Direito Médico, Família e Patrimônio<br>
+          São Paulo, SP<br>
+          Atendimento com clareza e acolhimento<br>
+          ↓ Fale com nossa equipe
+        </div>
+      </div>
+
+      <div class="c p24">
+        <div class="mi" style="margin-bottom:10px">Legenda Base</div>
+        <div style="font-family:'Playfair Display',serif;font-size:22px;line-height:1.2">Hook + corpo + CTA</div>
+        <div style="font-size:13px;color:var(--ink-light);line-height:1.8;margin-top:12px">
+          <strong style="color:var(--garnet)">Hook:</strong> abrir com a dor, dúvida ou crença errada.<br>
+          <strong style="color:var(--garnet)">Corpo:</strong> explicar em 2 ou 3 blocos curtos, sem juridiquês excessivo.<br>
+          <strong style="color:var(--garnet)">CTA:</strong> “Salve este post”, “Compartilhe com quem precisa” ou “Fale com um advogado”.
+        </div>
+      </div>
+
+      <div class="c p24">
+        <div class="mi" style="margin-bottom:10px">Hashtag Sets</div>
+        <div style="font-family:'Playfair Display',serif;font-size:22px;line-height:1.2">Blocos prontos por tema</div>
+        <div style="font-size:12px;color:var(--ink-light);line-height:1.9;margin-top:12px">
+          <strong style="color:var(--garnet)">Médico:</strong> #direitomedico #planodesaude #negativadecobertura #advocaciaemsaude<br>
+          <strong style="color:var(--garnet)">Família:</strong> #direitodefamilia #guardacompartilhada #pensaoalimenticia #advocaciafamilia<br>
+          <strong style="color:var(--garnet)">Contratos:</strong> #direitocontratual #clausulaabusiva #contratos #segurancajuridica
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PAGE 07 — LAYOUT COMPOSITIONS
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="stack">
+    <div class="sh">
+      <div class="sh-t"><div class="mi">07 Layout Compositions</div><h2>Exemplos de diagramação para enviar ao Nano Banana</h2><p>Estas composições mostram onde a imagem deve respirar e onde o texto entrará depois no Figma. Use como referência estrutural no prompt.</p></div>
+      <div class="pg-label">07 Layout</div>
+    </div>
+
+    <div class="g3">
+      <div class="c p24">
+        <div class="f f-45" style="margin-bottom:16px">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start"><div class="t-sub">Área de texto</div><div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35)">Livre</div></div>
+          <div class="t-title" style="max-width:72%">Headline principal no bloco superior esquerdo.</div>
+          <div class="sig"><div class="sig-name">Assinatura / OAB</div><div class="sig-role">Base inferior</div></div>
+        </div>
+        <div class="tpl-info" style="padding:0"><div class="mi">Layout A</div><h3>Headline Superior + Base Institucional</h3><div class="tpl-copy">Use para capas de carrossel e manifestos. Ao enviar para o Nano Banana, peça um frame com a metade superior esquerda limpa e a base livre para assinatura. O sujeito não deve invadir essas áreas.</div></div>
+      </div>
+      <div class="c p24">
+        <div class="f f-45 lt" style="margin-bottom:16px">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start"><div class="t-sub" style="color:var(--gold)">Área de texto</div><div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(94,0,1,0.35)">Livre</div></div>
+          <div style="display:grid;grid-template-columns:1fr 0.62fr;gap:16px;align-items:end;flex:1">
+            <div><div class="t-title" style="font-size:26px;color:var(--ink)">Texto principal à esquerda.</div><div class="t-body" style="margin-top:10px;color:var(--ink-light)">Lista, FAQ ou explicação curta.</div></div>
+            <div style="height:220px;border:1px dashed rgba(94,0,1,0.18);display:flex;align-items:center;justify-content:center"><span style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(94,0,1,0.35)">Sujeito à direita</span></div>
+          </div>
+        </div>
+        <div class="tpl-info" style="padding:0"><div class="mi">Layout B</div><h3>Texto à Esquerda + Sujeito à Direita</h3><div class="tpl-copy">Use para foto de advogado com lista, FAQ ou checklist. No prompt, peça o advogado ocupando apenas o lado direito, preservando 60% do frame para texto sobre fundo limpo.</div></div>
+      </div>
+      <div class="c p24">
+        <div class="f f-photo" style="margin-bottom:16px">
+          <div class="photo-zone"><div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(94,0,1,0.35)">Foto / retrato</div></div>
+          <div style="padding:22px 20px;display:flex;flex-direction:column;justify-content:space-between">
+            <div><div class="t-sub" style="color:var(--gold)">Headline</div><div style="font-family:'Playfair Display',serif;font-size:24px;line-height:1.15;color:var(--ink);margin-top:8px">Texto concentrado apenas na metade inferior.</div></div>
+            <div class="sig"><div class="sig-name">Logo / nome</div><div class="sig-role lt">Faixa inferior</div></div>
+          </div>
+        </div>
+        <div class="tpl-info" style="padding:0"><div class="mi">Layout C</div><h3>Foto em Cima + Texto embaixo</h3><div class="tpl-copy">Use quando quiser foto real e clareza editorial. No prompt, peça o rosto acima da linha média e a metade inferior sem ruído para texto e assinatura.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PAGE 08 — PHOTO POSITIONING
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="page smoke">
+  <div class="stack">
+    <div class="sh">
+      <div class="sh-t"><div class="mi">08 Photo Positioning</div><h2>Posicionamento do sujeito para prompt com foto enviada</h2><p>Esses blocos existem para mostrar como pedir enquadramento ao Nano Banana sem perder espaço útil para headline, logo e assinatura.</p></div>
+      <div class="pg-label">08 Subject</div>
+    </div>
+
+    <div class="g3">
+      <div class="c p24">
+        <div class="f f-45" style="margin-bottom:16px;display:grid;grid-template-columns:1fr 0.58fr;gap:14px;align-items:end">
+          <div style="height:100%;border:1px dashed rgba(255,255,255,0.16);padding:18px;display:flex;align-items:flex-start"><span style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45)">Texto / logo / OAB</span></div>
+          <div style="height:260px;border:1px dashed rgba(255,255,255,0.16);display:flex;align-items:center;justify-content:center"><span style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45)">Advogado</span></div>
+        </div>
+        <div class="tpl-info" style="padding:0"><div class="mi">Positioning A</div><h3>Sujeito no Terço Direito</h3><div class="tpl-copy">Ideal para FAQ, lista, checklist e CTA. No prompt: “position the lawyer on the right third and keep the left two-thirds visually clean for text overlay.”</div></div>
+      </div>
+      <div class="c p24">
+        <div class="f f-45" style="margin-bottom:16px">
+          <div style="height:52%;border:1px dashed rgba(255,255,255,0.16);display:flex;align-items:center;justify-content:center"><span style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45)">Rosto acima da linha média</span></div>
+          <div style="height:32%;margin-top:16px;border:1px dashed rgba(255,255,255,0.16);padding:18px;display:flex;align-items:flex-start"><span style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45)">Headline + apoio + assinatura</span></div>
+        </div>
+        <div class="tpl-info" style="padding:0"><div class="mi">Positioning B</div><h3>Sujeito Acima, Texto Embaixo</h3><div class="tpl-copy">Ideal para institucional e retrato com assinatura. No prompt: “keep the lawyer above the midline and preserve the lower half for typography.”</div></div>
+      </div>
+      <div class="c p24">
+        <div class="f f-45 lt" style="margin-bottom:16px;display:grid;grid-template-columns:0.56fr 1fr;gap:14px;align-items:center">
+          <div style="height:240px;border:1px dashed rgba(94,0,1,0.16);display:flex;align-items:center;justify-content:center"><span style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(94,0,1,0.35)">Advogado</span></div>
+          <div style="height:240px;border:1px dashed rgba(94,0,1,0.16);padding:18px;display:flex;align-items:flex-start"><span style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(94,0,1,0.35)">Headline / bullets / logo</span></div>
+        </div>
+        <div class="tpl-info" style="padding:0"><div class="mi">Positioning C</div><h3>Sujeito no Terço Esquerdo</h3><div class="tpl-copy">Útil quando a composição pede leitura da esquerda para a direita com o texto dominando o lado oposto. No prompt: “keep the lawyer narrow and leave the right side open and calm for content.”</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PAGE 09 — TEXT ZONES
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="stack">
+    <div class="sh">
+      <div class="sh-t"><div class="mi">09 Text Zones</div><h2>Zonas de headline, logo e assinatura</h2><p>Estes quadros ajudam a descrever no prompt exatamente onde a imagem deve deixar espaço para a arte final ser montada no Figma.</p></div>
+      <div class="pg-label">09 Zones</div>
+    </div>
+
+    <div class="g3">
+      <div class="c p24">
+        <div class="f f-45" style="margin-bottom:16px">
+          <div style="height:82px;border:1px dashed rgba(255,255,255,0.16);padding:16px;display:flex;align-items:flex-start"><span style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45)">Headline zone</span></div>
+          <div style="flex:1"></div>
+          <div style="height:58px;border:1px dashed rgba(255,255,255,0.16);padding:16px;display:flex;align-items:flex-start"><span style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45)">Logo / OAB zone</span></div>
+        </div>
+        <div class="tpl-info" style="padding:0"><div class="mi">Zone A</div><h3>Topo para Headline, Base para Assinatura</h3><div class="tpl-copy">No prompt: “keep the top band uncluttered for headline and the bottom band calm for logo and professional signature.”</div></div>
+      </div>
+      <div class="c p24">
+        <div class="f f-45 lt" style="margin-bottom:16px;display:grid;grid-template-columns:1fr 0.42fr;gap:14px">
+          <div style="border:1px dashed rgba(94,0,1,0.16);padding:18px;display:flex;align-items:flex-start"><span style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(94,0,1,0.35)">Headline + body</span></div>
+          <div style="display:grid;grid-template-rows:1fr 74px;gap:12px">
+            <div style="border:1px dashed rgba(94,0,1,0.16);display:flex;align-items:center;justify-content:center"><span style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(94,0,1,0.35)">Sujeito</span></div>
+            <div style="border:1px dashed rgba(94,0,1,0.16);padding:12px;display:flex;align-items:flex-start"><span style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(94,0,1,0.35)">Logo</span></div>
+          </div>
+        </div>
+        <div class="tpl-info" style="padding:0"><div class="mi">Zone B</div><h3>Texto Dominante com Marca Discreta</h3><div class="tpl-copy">No prompt: “leave the main text block dominant and keep the logo area small and unobtrusive in the lower corner.”</div></div>
+      </div>
+      <div class="c p24">
+        <div class="f f-45" style="margin-bottom:16px;display:grid;grid-template-rows:70px 1fr 70px;gap:12px">
+          <div style="border:1px dashed rgba(255,255,255,0.16);padding:14px;display:flex;align-items:flex-start"><span style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45)">Eyebrow / section label</span></div>
+          <div style="border:1px dashed rgba(255,255,255,0.16);padding:18px;display:flex;align-items:flex-start"><span style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45)">Main statement</span></div>
+          <div style="border:1px dashed rgba(255,255,255,0.16);padding:14px;display:flex;align-items:flex-start"><span style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.45)">Signature / OAB / CTA</span></div>
+        </div>
+        <div class="tpl-info" style="padding:0"><div class="mi">Zone C</div><h3>Três Faixas de Hierarquia</h3><div class="tpl-copy">No prompt: “build a composition with a small top label area, a strong central statement area, and a restrained bottom band for signature or CTA.”</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PAGE 10 — INSTAGRAM GRID PREVIEW
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="page smoke">
+  <div class="stack">
+    <div class="sh">
+      <div class="sh-t"><div class="mi">10 Launch Grid</div><h2>Primeiro grid Instagram — 3×3 de lançamento</h2><p>Estrutura inicial para 2026 pensada para a Gioia: menos frase bonita, mais utilidade real, autoridade técnica e apresentação institucional. Cada peça deve funcionar no grid e também sozinha no feed.</p></div>
+      <div class="pg-label">10 Grid</div>
+    </div>
+
+    <div class="g2">
+      <div>
+        <div class="mi" style="margin-bottom:12px">Sequência Recomendada</div>
+        <div class="ig-grid">
+          <div class="ig-cell" style="background:var(--garnet);padding:18px;align-items:flex-end;justify-content:flex-start"><div><div style="font-size:9px;color:rgba(255,255,255,0.42);margin-bottom:6px">Post 01</div><span style="color:var(--gold);line-height:1.45">Carrossel âncora</span></div></div>
+          <div class="ig-cell" style="background:var(--paper);padding:18px;align-items:flex-end;justify-content:flex-start"><div><div style="font-size:9px;color:rgba(94,0,1,0.45);margin-bottom:6px">Post 02</div><span style="color:var(--garnet);line-height:1.45">FAQ salvável</span></div></div>
+          <div class="ig-cell" style="background:var(--garnet-deep);padding:18px;align-items:flex-end;justify-content:flex-start"><div><div style="font-size:9px;color:rgba(255,255,255,0.42);margin-bottom:6px">Post 03</div><span style="color:var(--gold-light);line-height:1.45">Retrato institucional</span></div></div>
+          <div class="ig-cell" style="background:var(--paper);padding:18px;align-items:flex-end;justify-content:flex-start"><div><div style="font-size:9px;color:rgba(94,0,1,0.45);margin-bottom:6px">Post 04</div><span style="color:var(--ink);line-height:1.45">Educativo curto</span></div></div>
+          <div class="ig-cell" style="background:var(--garnet);padding:18px;align-items:flex-end;justify-content:flex-start"><div><div style="font-size:9px;color:rgba(255,255,255,0.42);margin-bottom:6px">Post 05</div><span style="color:var(--gold);line-height:1.45">Manifesto da marca</span></div></div>
+          <div class="ig-cell" style="background:var(--paper);padding:18px;align-items:flex-end;justify-content:flex-start"><div><div style="font-size:9px;color:rgba(94,0,1,0.45);margin-bottom:6px">Post 06</div><span style="color:var(--garnet);line-height:1.45">Documento útil</span></div></div>
+          <div class="ig-cell" style="background:var(--garnet-deep);padding:18px;align-items:flex-end;justify-content:flex-start"><div><div style="font-size:9px;color:rgba(255,255,255,0.42);margin-bottom:6px">Post 07</div><span style="color:var(--gold-light);line-height:1.45">Carrossel técnico</span></div></div>
+          <div class="ig-cell" style="background:var(--paper);padding:18px;align-items:flex-end;justify-content:flex-start"><div><div style="font-size:9px;color:rgba(94,0,1,0.45);margin-bottom:6px">Post 08</div><span style="color:var(--ink);line-height:1.45">Citação jurídica útil</span></div></div>
+          <div class="ig-cell" style="background:var(--garnet);padding:18px;align-items:flex-end;justify-content:flex-start"><div><div style="font-size:9px;color:rgba(255,255,255,0.42);margin-bottom:6px">Post 09</div><span style="color:var(--gold);line-height:1.45">Educativo + CTA</span></div></div>
+        </div>
+      </div>
+
+      <div class="c p24">
+        <div class="mi" style="margin-bottom:12px">Princípios do Primeiro Ciclo</div>
+        <div style="font-size:13px;line-height:1.8;color:var(--ink-light)">
+          <strong style="color:var(--garnet)">1.</strong> A marca entra ensinando, não se exibindo.<br><br>
+          <strong style="color:var(--garnet)">2.</strong> O centro do grid precisa comunicar posicionamento, não apenas decorar.<br><br>
+          <strong style="color:var(--garnet)">3.</strong> Carrossel continua sendo o formato mais importante porque gera salvamento e profundidade.<br><br>
+          <strong style="color:var(--garnet)">4.</strong> Retrato aparece uma vez, com função clara de confiança institucional.<br><br>
+          <strong style="color:var(--garnet)">5.</strong> Citação só entra se vier com interpretação prática. Nada de frase motivacional vazia.<br><br>
+          <strong style="color:var(--garnet)">6.</strong> Distribuição sugerida: 3 carrosséis, 3 posts claros, 2 peças institucionais, 1 retrato.
+        </div>
+      </div>
+    </div>
+
+    <div class="mi" style="margin-top:10px">Mapa de Produção por Post</div>
+    <div class="g3">
+      <div class="c p20"><div class="mi">Post 01</div><div style="font-family:'Playfair Display',serif;font-size:22px;line-height:1.2;margin-top:10px">Carrossel âncora</div><div style="font-size:13px;color:var(--ink-light);line-height:1.7;margin-top:10px">Tema de dor urgente e comum. Ex.: negativa de cobertura, demissão injusta, cláusula abusiva.</div><div style="font-size:11px;line-height:1.8;color:var(--silver-dark);margin-top:12px"><strong style="color:var(--garnet)">Função:</strong> alcance + salvamento<br><strong style="color:var(--garnet)">Visual:</strong> dark, capa forte<br><strong style="color:var(--garnet)">Formato:</strong> 4:5 carrossel</div></div>
+      <div class="c p20"><div class="mi">Post 02</div><div style="font-family:'Playfair Display',serif;font-size:22px;line-height:1.2;margin-top:10px">FAQ salvável</div><div style="font-size:13px;color:var(--ink-light);line-height:1.7;margin-top:10px">Pergunta real do cliente com resposta curta e orientada à ação prática.</div><div style="font-size:11px;line-height:1.8;color:var(--silver-dark);margin-top:12px"><strong style="color:var(--garnet)">Função:</strong> utilidade imediata<br><strong style="color:var(--garnet)">Visual:</strong> claro, editorial<br><strong style="color:var(--garnet)">Formato:</strong> 4:5 estático</div></div>
+      <div class="c p20"><div class="mi">Post 03</div><div style="font-family:'Playfair Display',serif;font-size:22px;line-height:1.2;margin-top:10px">Retrato institucional</div><div style="font-size:13px;color:var(--ink-light);line-height:1.7;margin-top:10px">Peça de humanização. Usar a foto dos 3 juntos para comunicar equipe, solidez e continuidade.</div><div style="font-size:11px;line-height:1.8;color:var(--silver-dark);margin-top:12px"><strong style="color:var(--garnet)">Função:</strong> confiança<br><strong style="color:var(--garnet)">Visual:</strong> retrato com overlay<br><strong style="color:var(--garnet)">Formato:</strong> 4:5 estático</div></div>
+      <div class="c p20"><div class="mi">Post 04</div><div style="font-family:'Playfair Display',serif;font-size:22px;line-height:1.2;margin-top:10px">Educativo curto</div><div style="font-size:13px;color:var(--ink-light);line-height:1.7;margin-top:10px">Headline direta e útil. Serve para dar respiro e clareza ao grid.</div><div style="font-size:11px;line-height:1.8;color:var(--silver-dark);margin-top:12px"><strong style="color:var(--garnet)">Função:</strong> clareza<br><strong style="color:var(--garnet)">Visual:</strong> light minimalista<br><strong style="color:var(--garnet)">Formato:</strong> 4:5 estático</div></div>
+      <div class="c p20" style="border-color:rgba(94,0,1,0.18);box-shadow:0 18px 40px rgba(94,0,1,0.08)"><div class="mi">Post 05 · Centro</div><div style="font-family:'Playfair Display',serif;font-size:24px;line-height:1.18;margin-top:10px;color:var(--garnet)">Manifesto da marca</div><div style="font-size:13px;color:var(--ink-light);line-height:1.7;margin-top:10px">Peça central com a ideia de boutique empática: sofisticação, proximidade e firmeza técnica. Melhor sem foto, para o centro ter peso editorial puro.</div><div style="font-size:11px;line-height:1.8;color:var(--silver-dark);margin-top:12px"><strong style="color:var(--garnet)">Função:</strong> posicionamento<br><strong style="color:var(--garnet)">Visual:</strong> bordô, respiro, luxo silencioso<br><strong style="color:var(--garnet)">Formato:</strong> 4:5 estático</div></div>
+      <div class="c p20"><div class="mi">Post 06</div><div style="font-family:'Playfair Display',serif;font-size:22px;line-height:1.2;margin-top:10px">Documento útil</div><div style="font-size:13px;color:var(--ink-light);line-height:1.7;margin-top:10px">Checklist de documentos, provas ou registros que o cliente deve guardar.</div><div style="font-size:11px;line-height:1.8;color:var(--silver-dark);margin-top:12px"><strong style="color:var(--garnet)">Função:</strong> seriedade + instrução<br><strong style="color:var(--garnet)">Visual:</strong> documental claro<br><strong style="color:var(--garnet)">Formato:</strong> 4:5 estático</div></div>
+      <div class="c p20"><div class="mi">Post 07</div><div style="font-family:'Playfair Display',serif;font-size:22px;line-height:1.2;margin-top:10px">Carrossel técnico</div><div style="font-size:13px;color:var(--ink-light);line-height:1.7;margin-top:10px">Conteúdo mais analítico. Excelente para contratos, sucessório, consumidor ou família.</div><div style="font-size:11px;line-height:1.8;color:var(--silver-dark);margin-top:12px"><strong style="color:var(--garnet)">Função:</strong> autoridade técnica<br><strong style="color:var(--garnet)">Visual:</strong> modular e rigoroso<br><strong style="color:var(--garnet)">Formato:</strong> 4:5 carrossel</div></div>
+      <div class="c p20"><div class="mi">Post 08</div><div style="font-family:'Playfair Display',serif;font-size:22px;line-height:1.2;margin-top:10px">Citação jurídica útil</div><div style="font-size:13px;color:var(--ink-light);line-height:1.7;margin-top:10px">Artigo de lei ou princípio com tradução prática. Não usar “quote de efeito”.</div><div style="font-size:11px;line-height:1.8;color:var(--silver-dark);margin-top:12px"><strong style="color:var(--garnet)">Função:</strong> rigor acessível<br><strong style="color:var(--garnet)">Visual:</strong> editorial claro<br><strong style="color:var(--garnet)">Formato:</strong> 4:5 estático</div></div>
+      <div class="c p20"><div class="mi">Post 09</div><div style="font-family:'Playfair Display',serif;font-size:22px;line-height:1.2;margin-top:10px">Educativo + CTA suave</div><div style="font-size:13px;color:var(--ink-light);line-height:1.7;margin-top:10px">Fecho do primeiro ciclo com orientação e convite ético para contato. Pode usar retrato discreto da Mariana para dar acolhimento direto.</div><div style="font-size:11px;line-height:1.8;color:var(--silver-dark);margin-top:12px"><strong style="color:var(--garnet)">Função:</strong> conversão ética<br><strong style="color:var(--garnet)">Visual:</strong> dark simples<br><strong style="color:var(--garnet)">Formato:</strong> 4:5 estático</div></div>
+    </div>
+
+    <div class="g2">
+      <div class="c p24">
+        <div class="mi" style="margin-bottom:10px">Uso de Fotos no Lançamento</div>
+        <div style="font-family:'Playfair Display',serif;font-size:24px;line-height:1.2">Quem aparece em qual peça</div>
+        <div style="font-size:13px;color:var(--ink-light);line-height:1.8;margin-top:12px">
+          <strong style="color:var(--garnet)">Foto dos 3 juntos:</strong> usar no Post 03. Passa equipe, estabilidade e presença institucional.<br><br>
+          <strong style="color:var(--garnet)">Mariana:</strong> usar no Post 09 ou em peças de acolhimento e contato.<br><br>
+          <strong style="color:var(--garnet)">Celso:</strong> reservar para posts de tradição, legado e autoridade histórica em um segundo ciclo.<br><br>
+          <strong style="color:var(--garnet)">Fabio:</strong> reservar para posts mais técnicos, especialmente direito médico, também em ciclos seguintes.
+        </div>
+      </div>
+      <div class="c p24">
+        <div class="mi" style="margin-bottom:10px">Regra Prática</div>
+        <div style="font-family:'Playfair Display',serif;font-size:24px;line-height:1.2">Não transformar o perfil em ensaio</div>
+        <div style="font-size:13px;color:var(--ink-light);line-height:1.8;margin-top:12px">
+          No primeiro 3×3, limitar o uso de foto a 2 peças é o ideal.
+          <br><br>
+          <strong style="color:var(--garnet)">Obrigatória:</strong> Post 03 com os 3 juntos.
+          <br>
+          <strong style="color:var(--garnet)">Opcional:</strong> Post 09 com Mariana.
+          <br><br>
+          O restante do grid deve sustentar a marca por composição, tipografia e clareza.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PAGE 11 — OAB COMPLIANCE + RULES
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="page dark">
+  <div class="stack">
+    <div class="sh">
+      <div class="sh-t"><div class="mi">11 Rules + Compliance</div><h2>Regras visuais e Provimento OAB 205/2021</h2><p>Referência permanente para produção. Manter dentro do arquivo Figma como página de regras.</p></div>
+      <div class="pg-label">11 Rules</div>
+    </div>
+
+    <!-- Do / Don't -->
+    <div class="g2">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="rule"><div class="k">Sempre</div><p>Tipografia como vetor de sofisticação. Ornamento apoia, nunca comanda.</p></div>
+        <div class="rule"><div class="k">Sempre</div><p>Headline curta, leitura imediata, uma ideia por peça.</p></div>
+        <div class="rule"><div class="k">Sempre</div><p>Nome + OAB quando a peça depender de autoridade pessoal.</p></div>
+        <div class="rule"><div class="k">Sempre</div><p>Quiet luxury: refinamento sem ostentação. Fotografias com tons quentes e sóbrios.</p></div>
+        <div class="rule"><div class="k">Sempre</div><p>Clearspace ao redor do logo — mínimo 1x a altura do símbolo.</p></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="rule bad"><div class="k">Nunca</div><p>Visual agressivo, neon, excesso de efeitos, linguagem promocional.</p></div>
+        <div class="rule bad"><div class="k">Nunca</div><p>Poluir layout com muito texto, muitos selos ou CTAs competindo.</p></div>
+        <div class="rule bad"><div class="k">Nunca</div><p>Prometer resultado, insinuar urgência artificial ou tom mercantil.</p></div>
+        <div class="rule bad"><div class="k">Nunca</div><p>Emojis excessivos, fontes decorativas para corpo, gradientes rainbow.</p></div>
+        <div class="rule bad"><div class="k">Nunca</div><p>Alterar cores do logo. Efeitos (sombra, brilho, 3D) no logo ou símbolo.</p></div>
+      </div>
+    </div>
+
+    <!-- OAB Checklist Visual -->
+    <div class="mi" style="margin-top:16px">Checklist OAB — Conferir Antes de Publicar</div>
+    <div class="checklist-visual">
+      <div class="check-item"><div class="check-box"></div><div class="check-text">Nome do advogado presente e legível?</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text">Número OAB visível na peça?</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text">Tom informativo (não mercantil)?</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text">Sem promessa de resultado?</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text">Sem valores de honorários?</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text">Visual sóbrio e discreto?</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text">CTA ético (não captação)?</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text">Sem linguagem sensacionalista?</div></div>
+      <div class="check-item"><div class="check-box"></div><div class="check-text">Identificação do escritório?</div></div>
+    </div>
+
+    <!-- OAB Summary -->
+    <div class="g2" style="margin-top:16px">
+      <div class="oab-card">
+        <div class="k">Permitido — Provimento 205/2021</div>
+        <ul>
+          <li>Conteúdo educativo e informativo</li>
+          <li>Divulgação de artigos e eventos acadêmicos</li>
+          <li>Informações sobre áreas de atuação</li>
+          <li>Apresentação da equipe com nome e OAB</li>
+          <li>Publicação em redes sociais com moderação</li>
+        </ul>
+      </div>
+      <div class="oab-card warn">
+        <div class="k">Proibido — Provimento 205/2021</div>
+        <ul>
+          <li>Prometer resultados ou garantir sucesso</li>
+          <li>Divulgar valores de honorários</li>
+          <li>Linguagem sensacionalista ou mercantil</li>
+          <li>Consultas gratuitas como isca publicitária</li>
+          <li>Captação direta via anúncios agressivos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PAGE 12 — FIGMA PLUGINS + WORKFLOW
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="stack">
+    <div class="sh">
+      <div class="sh-t"><div class="mi">12 Production Board</div><h2>Quadro de produção para prompts e artes</h2><p>Esta página substitui a lista de plugins por utilidade real: o que cada peça precisa comunicar, qual direção visual pedir e como transformar isso em prompt ou layout dentro do Figma.</p></div>
+      <div class="pg-label">12 Board</div>
+    </div>
+
+    <div class="g4">
+      <div class="plug"><div class="plug-cat">Post 01</div><div class="plug-name">Prompt-base</div><div class="plug-desc">Crie uma capa de carrossel 4:5 para advocacia com dor urgente, estética quiet luxury, fundo bordô profundo, tipografia editorial clara, headline curta e alta tensão visual. A peça deve funcionar sozinha no grid e sugerir continuidade para o swipe.</div><div class="plug-use">→ Tema: dor urgente + autoridade acolhedora</div></div>
+      <div class="plug"><div class="plug-cat">Post 02</div><div class="plug-name">Prompt-base</div><div class="plug-desc">Crie um post FAQ 4:5 com fundo claro, composição editorial limpa, muito respiro, pergunta real do cliente e resposta curta em linguagem humana. Visual elegante, jurídico, sem aparência de anúncio.</div><div class="plug-use">→ Tema: resposta prática e salvável</div></div>
+      <div class="plug"><div class="plug-cat">Post 03</div><div class="plug-name">Prompt-base</div><div class="plug-desc">Usar a foto real dos 3 juntos. Criar post institucional 4:5 com overlay bordô, tipografia refinada e assinatura discreta. O resultado deve transmitir confiança, permanência e proximidade.</div><div class="plug-use">→ Tema: equipe e credibilidade</div></div>
+      <div class="plug"><div class="plug-cat">Post 04</div><div class="plug-name">Prompt-base</div><div class="plug-desc">Crie um post tipográfico 4:5 com uma única orientação útil em linguagem simples. Fundo claro, headline elegante, corpo mínimo e zero elementos supérfluos.</div><div class="plug-use">→ Tema: clareza e respiro</div></div>
+      <div class="plug"><div class="plug-cat">Post 05</div><div class="plug-name">Prompt-base</div><div class="plug-desc">Crie um post-manifesto 4:5 sem foto, com fundo bordô, muito espaço negativo, tipografia Playfair sofisticada e mensagem central sobre autoridade acolhedora. Deve parecer premium, estável e humano.</div><div class="plug-use">→ Tema: manifesto da marca</div></div>
+      <div class="plug"><div class="plug-cat">Post 06</div><div class="plug-name">Prompt-base</div><div class="plug-desc">Crie um post documental 4:5 sobre documentos, provas ou registros importantes. Visual de papel, dossiê, checklist ou mesa editorial. Clareza visual, tom sério e útil.</div><div class="plug-use">→ Tema: método e organização</div></div>
+      <div class="plug"><div class="plug-cat">Post 07</div><div class="plug-name">Prompt-base</div><div class="plug-desc">Crie uma capa de carrossel técnico 4:5 com composição modular, hierarquia rigorosa e atmosfera jurídica contemporânea. Deve comunicar precisão, não drama.</div><div class="plug-use">→ Tema: conteúdo técnico</div></div>
+      <div class="plug"><div class="plug-cat">Post 08</div><div class="plug-name">Prompt-base</div><div class="plug-desc">Crie um post editorial 4:5 com citação jurídica ou artigo de lei e uma camada de interpretação prática. Fundo claro, tipografia nobre e nota legal legível.</div><div class="plug-use">→ Tema: lei traduzida para o cliente</div></div>
+      <div class="plug"><div class="plug-cat">Post 09</div><div class="plug-name">Prompt-base</div><div class="plug-desc">Usar foto real da Mariana se quiser aproximação humana. Criar post 4:5 com CTA ético, orientação clara e atmosfera sóbria. Deve convidar sem pressionar.</div><div class="plug-use">→ Tema: contato com acolhimento</div></div>
+      <div class="plug"><div class="plug-cat">Direção</div><div class="plug-name">Tom visual fixo</div><div class="plug-desc">Quiet luxury, bordô e dourado com parcimônia, sofisticação sem ostentação, clareza acima de ornamento.</div><div class="plug-use">→ Incluir em todos os prompts</div></div>
+      <div class="plug"><div class="plug-cat">Direção</div><div class="plug-name">Tom de linguagem</div><div class="plug-desc">Técnico, humano, empático, sem juridiquês excessivo, sem promessas e sem tom mercantil.</div><div class="plug-use">→ Incluir em todos os textos</div></div>
+      <div class="plug"><div class="plug-cat">Direção</div><div class="plug-name">Formato padrão</div><div class="plug-desc">Priorizar 1080 × 1350. A capa precisa funcionar como thumbnail do grid e como peça avulsa.</div><div class="plug-use">→ Base para frames e exportação</div></div>
+    </div>
+
+    <div class="mi" style="margin-top:16px">Checklist Antes de Pedir Prompt</div>
+    <div class="c p24">
+      <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:12px;text-align:center">
+        <div style="padding:16px 8px;background:var(--garnet);color:var(--white)"><div style="font-family:'Cinzel',serif;font-size:20px;color:var(--gold);margin-bottom:6px">01</div><div style="font-size:11px;line-height:1.4;letter-spacing:0.05em">Qual é a dor real?</div></div>
+        <div style="padding:16px 8px;background:var(--garnet);color:var(--white)"><div style="font-family:'Cinzel',serif;font-size:20px;color:var(--gold);margin-bottom:6px">02</div><div style="font-size:11px;line-height:1.4;letter-spacing:0.05em">É educativo, institucional ou técnico?</div></div>
+        <div style="padding:16px 8px;background:var(--garnet);color:var(--white)"><div style="font-family:'Cinzel',serif;font-size:20px;color:var(--gold);margin-bottom:6px">03</div><div style="font-size:11px;line-height:1.4;letter-spacing:0.05em">Vai com foto real ou imagem gerada?</div></div>
+        <div style="padding:16px 8px;background:var(--garnet);color:var(--white)"><div style="font-family:'Cinzel',serif;font-size:20px;color:var(--gold);margin-bottom:6px">04</div><div style="font-size:11px;line-height:1.4;letter-spacing:0.05em">Qual template sustenta melhor?</div></div>
+        <div style="padding:16px 8px;background:var(--garnet);color:var(--white)"><div style="font-family:'Cinzel',serif;font-size:20px;color:var(--gold);margin-bottom:6px">05</div><div style="font-size:11px;line-height:1.4;letter-spacing:0.05em">A capa funciona sozinha?</div></div>
+        <div style="padding:16px 8px;background:var(--garnet);color:var(--white)"><div style="font-family:'Cinzel',serif;font-size:20px;color:var(--gold);margin-bottom:6px">06</div><div style="font-size:11px;line-height:1.4;letter-spacing:0.05em">Está em compliance com a OAB?</div></div>
+      </div>
+    </div>
+
+    <div class="g2">
+      <div class="c p24">
+        <div class="mi" style="margin-bottom:10px">Prompt Frame</div>
+        <div style="font-family:'Playfair Display',serif;font-size:24px;line-height:1.2">Estrutura mínima do pedido</div>
+        <div style="font-size:13px;color:var(--ink-light);line-height:1.8;margin-top:12px">
+          <strong style="color:var(--garnet)">Tipo de peça:</strong> carrossel, FAQ, retrato, manifesto, documento.<br>
+          <strong style="color:var(--garnet)">Objetivo:</strong> alcance, salvamento, autoridade, posicionamento ou CTA ético.<br>
+          <strong style="color:var(--garnet)">Tom:</strong> autoridade acolhedora, boutique empática, sem sensacionalismo.<br>
+          <strong style="color:var(--garnet)">Visual:</strong> bordô, dourado, editorial limpo, quiet luxury.<br>
+          <strong style="color:var(--garnet)">Formato:</strong> 1080 × 1350.<br>
+          <strong style="color:var(--garnet)">Restrições:</strong> sem promessa, sem urgência artificial, sem marketing agressivo.
+        </div>
+      </div>
+      <div class="c p24">
+        <div class="mi" style="margin-bottom:10px">Decisão de Imagem</div>
+        <div style="font-family:'Playfair Display',serif;font-size:24px;line-height:1.2">Quando gerar e quando fotografar</div>
+        <div style="font-size:13px;color:var(--ink-light);line-height:1.8;margin-top:12px">
+          <strong style="color:var(--garnet)">Imagem gerada:</strong> capas, metáforas visuais, manifesto, cenas documentais controladas.<br><br>
+          <strong style="color:var(--garnet)">Foto real:</strong> retratos, equipe, escritório, qualquer peça em que autenticidade direta aumente confiança.<br><br>
+          <strong style="color:var(--garnet)">Tipografia pura:</strong> quando a força da mensagem estiver na clareza e não na cena.
+        </div>
+      </div>
+    </div>
+
+    <div class="mi" style="margin-top:16px">Prompt Pack — Foto Enviada do Advogado</div>
+    <div class="g3">
+      <div class="c p24">
+        <div class="mi">Prompt 01</div>
+        <div style="font-family:'Playfair Display',serif;font-size:22px;line-height:1.2;margin-top:10px">Retrato com área livre à esquerda</div>
+        <div style="font-size:13px;color:var(--ink-light);line-height:1.8;margin-top:12px">Use a foto enviada do advogado como referência principal. Crie uma composição vertical 4:5, estética quiet luxury, fundo bordô profundo ou editorial neutro. Posicione o sujeito ocupando o terço direito do frame, do peito para cima, olhando levemente para a câmera ou em perfil calmo. Preserve uma área limpa e vazia no terço esquerdo para headline e subtítulo. Deixe a região inferior direita ou inferior central adequada para assinatura institucional e OAB. Não inserir textos dentro da imagem final. Não adicionar elementos chamativos. O objetivo é permitir sobreposição posterior de headline, logo e assinatura no Figma.</div>
+      </div>
+      <div class="c p24">
+        <div class="mi">Prompt 02</div>
+        <div style="font-family:'Playfair Display',serif;font-size:22px;line-height:1.2;margin-top:10px">Retrato central com faixa inferior</div>
+        <div style="font-size:13px;color:var(--ink-light);line-height:1.8;margin-top:12px">Use a foto enviada do advogado como referência principal. Crie uma composição vertical 4:5 com o sujeito centralizado, enquadramento médio, fundo sóbrio e iluminação quente controlada. Reserve a metade inferior do frame com gradiente ou área visual mais escura e limpa para receber headline curta, apoio textual e assinatura. O rosto deve ficar acima da linha média para não competir com o texto. Não adicionar lettering ou logo na imagem. O resultado deve parecer institucional, elegante e confiável.</div>
+      </div>
+      <div class="c p24">
+        <div class="mi">Prompt 03</div>
+        <div style="font-family:'Playfair Display',serif;font-size:22px;line-height:1.2;margin-top:10px">Recorte lateral para lista ou FAQ</div>
+        <div style="font-size:13px;color:var(--ink-light);line-height:1.8;margin-top:12px">Use a foto enviada do advogado como referência principal. Crie uma composição vertical 4:5 com o sujeito recortado e posicionado no lado direito do frame, ocupando cerca de 35% da largura. O lado esquerdo deve permanecer limpo, com contraste adequado e espaço suficiente para uma lista curta, FAQ ou bullets. Fundo discreto, tom bordô ou neutro claro, sem texturas excessivas. Não inserir texto, números ou logotipos na imagem final. A imagem deve funcionar como base para compor conteúdo informativo no Figma.</div>
+      </div>
+    </div>
+
+    <div class="g2">
+      <div class="c p24">
+        <div class="mi" style="margin-bottom:10px">Regra de Composição com Foto</div>
+        <div style="font-family:'Playfair Display',serif;font-size:24px;line-height:1.2">Onde entrarão texto, logo e assinatura</div>
+        <div style="font-size:13px;color:var(--ink-light);line-height:1.8;margin-top:12px">
+          <strong style="color:var(--garnet)">Headline:</strong> sempre na área mais limpa e previsível da composição.
+          <br>
+          <strong style="color:var(--garnet)">Subheadline ou apoio:</strong> abaixo da headline, nunca cruzando rosto, mãos ou detalhes importantes.
+          <br>
+          <strong style="color:var(--garnet)">Logo ou símbolo:</strong> pequeno, discreto, preferencialmente no canto inferior ou como assinatura visual.
+          <br>
+          <strong style="color:var(--garnet)">Nome + OAB:</strong> na base do layout, com contraste alto e hierarquia secundária.
+          <br><br>
+          O prompt deve sempre pedir explicitamente uma <strong>área livre para sobreposição</strong>, e não tentar gerar a arte final já com texto embutido.
+        </div>
+      </div>
+      <div class="c p24">
+        <div class="mi" style="margin-bottom:10px">Regra de Enquadramento</div>
+        <div style="font-family:'Playfair Display',serif;font-size:24px;line-height:1.2">Como evitar atrito no Figma</div>
+        <div style="font-size:13px;color:var(--ink-light);line-height:1.8;margin-top:12px">
+          <strong style="color:var(--garnet)">Evitar:</strong> rosto central ocupando todo o frame, mãos cruzando a área do texto, fundos cheios de objetos, contraste irregular atrás da headline.
+          <br><br>
+          <strong style="color:var(--garnet)">Preferir:</strong> enquadramento médio, fundo simplificado, um lado do frame respirando, luz consistente e linhas visuais calmas.
+          <br><br>
+          Se a imagem for para o grid do feed, pedir sempre composição que continue legível mesmo após crop visual para thumbnail.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PAGE 13 — POSTS DE TEXTO (Tipografia pura)
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="page">
+  <div class="stack">
+    <div class="sh">
+      <div class="sh-t"><div class="mi">13 Posts — Texto Puro</div><h2>Layouts tipográficos sem imagem</h2><p>Posts que funcionam apenas com tipografia, cor e composição. Ideais para produção rápida e alto impacto no feed.</p></div>
+      <div class="pg-label">13 Texto</div>
+    </div>
+
+    <!-- T12: Dado Estatístico -->
+    <div class="tpl-card c p24">
+      <div class="f f-45">
+        <div style="position:relative;z-index:2">
+          <div class="t-sub">Direito do Consumidor</div>
+        </div>
+        <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-start;gap:8px">
+          <div style="font-family:'Playfair Display',serif;font-size:72px;line-height:0.95;color:var(--gold-light)">78%</div>
+          <div style="font-family:'Playfair Display',serif;font-size:24px;line-height:1.2;max-width:90%">das reclamações contra planos de saúde envolvem negativa de cobertura.</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.40);margin-top:8px;line-height:1.5">Fonte: ANS, Relatório 2025</div>
+        </div>
+        <div style="position:relative;z-index:2">
+          <div class="divider-brand"><span>◆</span></div>
+          <div class="sig" style="margin-top:14px"><div class="sig-name">Dra. Mariana Gioia</div><div class="sig-role">OAB/SP 351.962</div></div>
+        </div>
+      </div>
+      <div class="tpl-info"><div class="mi">Template 12</div><h3>Dado Estatístico</h3><div class="tpl-copy"><strong>Quando usar:</strong> autoridade com dado verificável. <strong>Melhor para:</strong> Post 07 ou ciclos técnicos. <strong>Prompt-base:</strong> criar post 4:5 tipográfico, dark, com número grande, fonte citada, tom jurídico editorial e leitura imediata.</div><div class="meta-row"><div class="meta-chip">1080 × 1350</div><div class="meta-chip">4:5</div><div class="meta-chip">Dado</div><div class="meta-chip">Texto</div></div></div>
+    </div>
+
+    <!-- T13: Mito vs Verdade -->
+    <div class="tpl-card c p24">
+      <div class="f f-45">
+        <div style="position:relative;z-index:2">
+          <div class="t-sub">Direito Trabalhista</div>
+          <div class="t-title" style="font-size:26px;margin-top:12px">Mito ou verdade?</div>
+        </div>
+        <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:16px">
+          <!-- Mito -->
+          <div style="padding:16px 18px;border-left:2px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.03)">
+            <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:6px">Mito</div>
+            <div style="font-family:'Playfair Display',serif;font-size:18px;line-height:1.3;color:rgba(255,255,255,0.50);text-decoration:line-through">"Quem pede demissão perde tudo."</div>
+          </div>
+          <!-- Verdade -->
+          <div style="padding:16px 18px;border-left:2px solid var(--gold);background:rgba(191,159,91,0.04)">
+            <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-light);margin-bottom:6px">Verdade</div>
+            <div style="font-family:'Playfair Display',serif;font-size:18px;line-height:1.3">Mesmo pedindo demissão, o trabalhador mantém direitos como férias e 13º proporcionais.</div>
+          </div>
+        </div>
+        <div style="position:relative;z-index:2">
+          <div class="sig"><div class="sig-name">Dra. Mariana Gioia</div><div class="sig-role">OAB/SP 351.962 · Gioia e Associados</div></div>
+        </div>
+      </div>
+      <div class="tpl-info"><div class="mi">Template 13</div><h3>Mito vs Verdade</h3><div class="tpl-copy"><strong>Quando usar:</strong> corrigir crença comum. <strong>Melhor para:</strong> Post 02 ou Post 04. <strong>Prompt-base:</strong> criar post 4:5 com duas faixas contrastantes, uma ideia errada riscada e uma correção clara, aparência sóbria e salvável, sem visual de anúncio.</div><div class="meta-row"><div class="meta-chip">1080 × 1350</div><div class="meta-chip">4:5</div><div class="meta-chip">Engajamento</div><div class="meta-chip">Texto</div></div></div>
+    </div>
+
+    <!-- T14: Lista / Checklist -->
+    <div class="tpl-card c p24">
+      <div class="f f-45 lt">
+        <div style="position:relative;z-index:2">
+          <div class="t-sub" style="color:var(--gold)">Direito Imobiliário</div>
+          <div class="t-title" style="font-size:24px;margin-top:10px;color:var(--ink)">5 documentos para conferir antes de comprar um imóvel</div>
+        </div>
+        <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:flex-start;gap:10px"><div style="width:28px;height:28px;border:1.5px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Cinzel',serif;font-size:11px;color:var(--gold)">01</div><div style="font-size:14px;line-height:1.5;color:var(--ink-light)">Matrícula atualizada do imóvel</div></div>
+          <div style="display:flex;align-items:flex-start;gap:10px"><div style="width:28px;height:28px;border:1.5px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Cinzel',serif;font-size:11px;color:var(--gold)">02</div><div style="font-size:14px;line-height:1.5;color:var(--ink-light)">Certidão negativa de débitos</div></div>
+          <div style="display:flex;align-items:flex-start;gap:10px"><div style="width:28px;height:28px;border:1.5px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Cinzel',serif;font-size:11px;color:var(--gold)">03</div><div style="font-size:14px;line-height:1.5;color:var(--ink-light)">Certidão de ações cíveis do vendedor</div></div>
+          <div style="display:flex;align-items:flex-start;gap:10px"><div style="width:28px;height:28px;border:1.5px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Cinzel',serif;font-size:11px;color:var(--gold)">04</div><div style="font-size:14px;line-height:1.5;color:var(--ink-light)">IPTU em dia e sem dívida ativa</div></div>
+          <div style="display:flex;align-items:flex-start;gap:10px"><div style="width:28px;height:28px;border:1.5px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Cinzel',serif;font-size:11px;color:var(--gold)">05</div><div style="font-size:14px;line-height:1.5;color:var(--ink-light)">Certidão de ônus reais</div></div>
+        </div>
+        <div style="position:relative;z-index:2">
+          <div class="divider-brand"><span>◆</span></div>
+          <div class="sig" style="margin-top:10px"><div class="sig-name">Dra. Mariana Gioia</div><div class="sig-role lt">OAB/SP 351.962</div></div>
+        </div>
+      </div>
+      <div class="tpl-info"><div class="mi">Template 14</div><h3>Lista Numerada / Checklist</h3><div class="tpl-copy"><strong>Quando usar:</strong> documentos, passos, sinais ou cuidados. <strong>Melhor para:</strong> Post 06. <strong>Prompt-base:</strong> criar post 4:5 light, editorial, com checklist numerado, leitura limpa, sensação de método jurídico e utilidade prática.</div><div class="meta-row"><div class="meta-chip">1080 × 1350</div><div class="meta-chip">4:5</div><div class="meta-chip">Lista</div><div class="meta-chip">Texto</div></div></div>
+    </div>
+
+    <!-- T15: Dica Rápida / Você Sabia -->
+    <div class="tpl-card c p24">
+      <div class="f f-sq">
+        <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:14px">
+          <div style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);padding:6px 14px;border:1px solid rgba(191,159,91,0.30)">Você Sabia?</div>
+          <div style="font-family:'Playfair Display',serif;font-size:26px;line-height:1.25;max-width:90%">O consumidor tem 7 dias para desistir de compras feitas fora da loja.</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.50);max-width:80%;line-height:1.6">Art. 49 do CDC — vale para compras online, por telefone ou catálogo.</div>
+          <div class="divider-brand" style="margin-top:4px"><span>◆</span></div>
+          <div class="sig" style="align-items:center"><div class="sig-name">Gioia e Associados</div><div class="sig-role">Advocacia · Desde 1992</div></div>
+        </div>
+      </div>
+      <div class="tpl-info"><div class="mi">Template 15</div><h3>Dica Rápida / Você Sabia</h3><div class="tpl-copy"><strong>Quando usar:</strong> orientação curtíssima com base legal. <strong>Melhor para:</strong> variações fora do 3×3 principal ou stories adaptados ao feed. <strong>Prompt-base:</strong> criar peça tipográfica simples, de uma ideia só, com referência legal discreta e visual altamente compartilhável.</div><div class="meta-row"><div class="meta-chip">1080 × 1080</div><div class="meta-chip">1:1</div><div class="meta-chip">Educativo</div><div class="meta-chip">Texto</div></div></div>
+    </div>
+
+    <!-- T16: Artigo de Lei -->
+    <div class="tpl-card c p24">
+      <div class="f f-45">
+        <div style="position:relative;z-index:2">
+          <div class="t-sub">Direito de Família</div>
+        </div>
+        <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:12px">
+          <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);opacity:0.6">O que diz a lei</div>
+          <div style="padding:18px 20px;border:1px solid rgba(191,159,91,0.20);background:rgba(191,159,91,0.03)">
+            <div style="font-family:'Playfair Display',serif;font-size:16px;font-style:italic;line-height:1.5;color:rgba(255,255,255,0.80)">"A guarda será atribuída a quem revelar melhores condições para exercê-la."</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:8px">Art. 1.584, §2º — Código Civil</div>
+          </div>
+          <div style="font-size:14px;line-height:1.65;color:rgba(255,255,255,0.65)">Isso significa que o juiz avalia a rotina, vínculo afetivo e estrutura — não apenas quem "ganha mais".</div>
+        </div>
+        <div style="position:relative;z-index:2">
+          <div class="sig"><div class="sig-name">Dra. Mariana Gioia</div><div class="sig-role">OAB/SP 351.962</div></div>
+        </div>
+      </div>
+      <div class="tpl-info"><div class="mi">Template 16</div><h3>Citação de Artigo de Lei</h3><div class="tpl-copy"><strong>Quando usar:</strong> traduzir lei para linguagem humana. <strong>Melhor para:</strong> Post 08. <strong>Prompt-base:</strong> criar post 4:5 editorial com citação jurídica central, nota legal visível e explicação prática curta, tom técnico mas acessível.</div><div class="meta-row"><div class="meta-chip">1080 × 1350</div><div class="meta-chip">4:5</div><div class="meta-chip">Lei</div><div class="meta-chip">Texto</div></div></div>
+    </div>
+
+    <!-- T17: Pergunta Provocativa -->
+    <div class="tpl-card c p24">
+      <div class="f f-45">
+        <div style="position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:20px">
+          <div class="quote-mark" style="font-size:80px">"</div>
+          <div style="font-family:'Playfair Display',serif;font-size:32px;line-height:1.20;max-width:90%">Você sabe a diferença entre herança e testamento?</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.45);max-width:80%;line-height:1.6">Muita gente confunde — e isso pode custar caro no futuro.</div>
+          <div class="cta-btn" style="font-size:10px;margin-top:4px">Salve para consultar depois</div>
+        </div>
+        <div style="position:relative;z-index:2;text-align:center">
+          <div class="sig" style="align-items:center"><div class="sig-name">Gioia e Associados</div><div class="sig-role">Direito Sucessório · Desde 1992</div></div>
+        </div>
+      </div>
+      <div class="tpl-info"><div class="mi">Template 17</div><h3>Pergunta Provocativa</h3><div class="tpl-copy"><strong>Quando usar:</strong> abrir assunto com curiosidade real. <strong>Melhor para:</strong> Post 01 capa ou Post 04. <strong>Prompt-base:</strong> criar post 4:5 dark com pergunta central dominante, tensão controlada e subtítulo curto que justifique o swipe ou o salvamento.</div><div class="meta-row"><div class="meta-chip">1080 × 1350</div><div class="meta-chip">4:5</div><div class="meta-chip">Engajamento</div><div class="meta-chip">Texto</div></div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     PAGE 14 — POSTS COM IMAGEM (Espaço para foto)
+     ═══════════════════════════════════════════════════════════════ -->
+<section class="page smoke">
+  <div class="stack">
+    <div class="sh">
+      <div class="sh-t"><div class="mi">14 Posts — Com Imagem</div><h2>Layouts com espaço para foto</h2><p>Templates com zona de imagem definida. Placeholder indica onde inserir foto no Figma. Use Remove BG para recortes.</p></div>
+      <div class="pg-label">14 Imagem</div>
+    </div>
+
+    <!-- T18: Foto Full Bleed + Overlay -->
+    <div class="tpl-card c p24">
+      <div class="f" style="width:340px;height:425px;margin:0 auto;position:relative;overflow:hidden">
+        <!-- Photo zone full bleed -->
+        <div style="position:absolute;inset:0;background:linear-gradient(180deg,#c8b49e 0%,#e8ddd0 60%,#f0e8dc 100%);display:flex;align-items:center;justify-content:center">
+          <div style="text-align:center"><div class="silhouette" style="width:180px;height:220px;opacity:0.6"></div><div style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(94,0,1,0.4);margin-top:8px">Foto full bleed</div></div>
+        </div>
+        <!-- Gradient overlay bottom -->
+        <div style="position:absolute;bottom:0;left:0;right:0;height:55%;background:linear-gradient(180deg,transparent 0%,rgba(66,0,1,0.90) 60%,rgba(42,0,1,0.97) 100%);z-index:2"></div>
+        <!-- Content over gradient -->
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:28px 26px;z-index:3;display:flex;flex-direction:column;gap:10px">
+          <div class="t-sub">Equipe Gioia</div>
+          <div style="font-family:'Playfair Display',serif;font-size:26px;line-height:1.12;color:#fff">Advocacia é relação de confiança.</div>
+          <div class="sig" style="margin-top:6px"><div class="sig-name">Dr. Celso Gioia</div><div class="sig-role">Sócio Fundador · OAB/SP 70.379</div></div>
+        </div>
+      </div>
+      <div class="tpl-info"><div class="mi">Template 18</div><h3>Foto Full Bleed + Overlay</h3><div class="tpl-copy"><strong>Quando usar:</strong> retrato institucional forte. <strong>Melhor para:</strong> Post 03 com a foto dos 3 juntos. <strong>Prompt-base:</strong> se precisar expandir a foto, manter enquadramento editorial, overlay bordô profundo, texto curto e assinatura discreta.</div><div class="meta-row"><div class="meta-chip">1080 × 1350</div><div class="meta-chip">4:5</div><div class="meta-chip">Retrato</div><div class="meta-chip">Foto</div></div></div>
+    </div>
+
+    <!-- T19: Foto Topo + Texto Embaixo -->
+    <div class="tpl-card c p24">
+      <div class="f" style="width:340px;height:425px;margin:0 auto;display:grid;grid-template-rows:1fr 1fr;background:var(--white);border:1px solid rgba(0,0,0,0.08);overflow:hidden">
+        <!-- Photo zone top half -->
+        <div style="background:linear-gradient(135deg,#d8c4b0 0%,#f3ece2 100%);display:flex;align-items:center;justify-content:center;position:relative">
+          <div style="text-align:center"><div style="width:200px;height:130px;border:1px dashed rgba(94,0,1,0.15);display:flex;align-items:center;justify-content:center"><span style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(94,0,1,0.35)">Foto do escritório</span></div></div>
+          <div style="position:absolute;top:12px;right:12px;padding:4px 8px;border:1px solid rgba(94,0,1,0.12);background:rgba(255,255,255,0.6);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--garnet)">Ambiente</div>
+        </div>
+        <!-- Text bottom half -->
+        <div style="padding:24px 22px;display:flex;flex-direction:column;justify-content:space-between">
+          <div>
+            <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Institucional</div>
+            <div style="font-family:'Playfair Display',serif;font-size:24px;line-height:1.15;color:var(--ink)">Mais de 30 anos construindo relações de confiança.</div>
+          </div>
+          <div>
+            <div style="font-size:13px;color:var(--ink-light);line-height:1.6;margin-bottom:12px">Rua Barão de Jundiaí, 523 — Lapa, São Paulo</div>
+            <div class="sig"><div class="sig-name">Gioia e Associados</div><div class="sig-role lt">Desde 1992</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="tpl-info"><div class="mi">Template 19</div><h3>Foto Ambiente + Texto</h3><div class="tpl-copy"><strong>Quando usar:</strong> mostrar escritório, ambiente ou presença física. <strong>Melhor para:</strong> ciclos institucionais futuros. <strong>Prompt-base:</strong> criar post 4:5 com metade superior fotográfica e metade inferior editorial, enfatizando confiança, endereço e permanência.</div><div class="meta-row"><div class="meta-chip">1080 × 1350</div><div class="meta-chip">4:5</div><div class="meta-chip">Institucional</div><div class="meta-chip">Foto</div></div></div>
+    </div>
+
+    <!-- T20: Retrato Circular + Texto -->
+    <div class="tpl-card c p24">
+      <div class="f f-45">
+        <div style="position:relative;z-index:2">
+          <div class="t-sub">Direito Médico</div>
+        </div>
+        <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center">
+          <!-- Circular photo -->
+          <div style="width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,#d8c4b0,#f3ece2);border:2px solid rgba(191,159,91,0.30);display:flex;align-items:center;justify-content:center;overflow:hidden">
+            <div class="silhouette" style="width:80px;height:100px;border-radius:999px 999px 10px 10px"></div>
+          </div>
+          <div style="font-family:'Playfair Display',serif;font-size:24px;line-height:1.20;max-width:90%">Erro médico: o paciente tem direito à reparação.</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.55);max-width:85%;line-height:1.6">É possível buscar indenização quando o profissional age com negligência, imprudência ou imperícia.</div>
+        </div>
+        <div style="position:relative;z-index:2;text-align:center">
+          <div class="sig" style="align-items:center"><div class="sig-name">Dr. Fábio Dreger</div><div class="sig-role">OAB/SP 336.451 · Direito Médico</div></div>
+        </div>
+      </div>
+      <div class="tpl-info"><div class="mi">Template 20</div><h3>Retrato Circular + Explicação</h3><div class="tpl-copy"><strong>Quando usar:</strong> especialidade com rosto do advogado. <strong>Melhor para:</strong> Fabio em direito médico ou Mariana em orientação prática. <strong>Prompt-base:</strong> usar foto real recortada, destaque circular e explicação curta abaixo, equilibrando proximidade e autoridade.</div><div class="meta-row"><div class="meta-chip">1080 × 1350</div><div class="meta-chip">4:5</div><div class="meta-chip">Autoridade</div><div class="meta-chip">Foto</div></div></div>
+    </div>
+
+    <!-- T21: Foto Lateral + Lista -->
+    <div class="tpl-card c p24">
+      <div class="f f-split">
+        <div style="padding:24px 18px;display:flex;flex-direction:column;justify-content:space-between;position:relative;z-index:2">
+          <div>
+            <div class="t-sub">Direito Empresarial</div>
+            <div class="t-title" style="font-size:22px;margin-top:10px">3 cuidados antes de abrir empresa</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;align-items:center;gap:8px"><div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold)">01</div><div style="font-size:12px;color:rgba(255,255,255,0.70);line-height:1.4">Tipo societário adequado</div></div>
+            <div style="display:flex;align-items:center;gap:8px"><div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold)">02</div><div style="font-size:12px;color:rgba(255,255,255,0.70);line-height:1.4">Contrato social revisado</div></div>
+            <div style="display:flex;align-items:center;gap:8px"><div style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold)">03</div><div style="font-size:12px;color:rgba(255,255,255,0.70);line-height:1.4">Regime tributário planejado</div></div>
+          </div>
+          <div class="sig"><div class="sig-name">Dra. Mariana Gioia</div><div class="sig-role">OAB/SP 351.962</div></div>
+        </div>
+        <div class="split-photo">
+          <div class="silhouette" style="width:110px;height:170px"></div>
+        </div>
+      </div>
+      <div class="tpl-info"><div class="mi">Template 21</div><h3>Foto Lateral + Lista Curta</h3><div class="tpl-copy"><strong>Quando usar:</strong> lista rápida com presença humana. <strong>Melhor para:</strong> Post 09 ou ciclos práticos com Mariana. <strong>Prompt-base:</strong> compor layout split 4:5, lista objetiva de um lado e foto lateral do outro, sem excesso de texto.</div><div class="meta-row"><div class="meta-chip">1080 × 1350</div><div class="meta-chip">4:5</div><div class="meta-chip">Split</div><div class="meta-chip">Foto</div></div></div>
+    </div>
+
+    <!-- T22: Story com Foto -->
+    <div class="tpl-card c p24" style="grid-template-columns:280px 1fr">
+      <div class="f f-story" style="position:relative">
+        <!-- Photo zone upper portion -->
+        <div style="position:absolute;top:0;left:0;right:0;height:55%;background:linear-gradient(180deg,#d0baa4 0%,#e8ddd0 100%);display:flex;align-items:center;justify-content:center">
+          <div style="text-align:center"><div class="silhouette" style="width:140px;height:180px;opacity:0.5"></div><div style="font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(94,0,1,0.35);margin-top:6px">Foto</div></div>
+        </div>
+        <!-- Gradient transition -->
+        <div style="position:absolute;top:40%;left:0;right:0;height:30%;background:linear-gradient(180deg,transparent 0%,rgba(51,5,6,0.95) 100%);z-index:1"></div>
+        <!-- Content bottom -->
+        <div style="position:relative;z-index:2;margin-top:auto;padding-bottom:8px">
+          <div class="t-sub">Direito Médico</div>
+          <div class="t-title" style="font-size:26px;margin-top:10px">Negaram seu tratamento?</div>
+          <div class="t-body" style="font-size:12px;margin-top:8px">Você pode ter direito à cobertura integral pelo plano de saúde.</div>
+          <div class="cta-btn" style="font-size:10px;margin-top:14px">Saiba seus direitos</div>
+        </div>
+      </div>
+      <div class="tpl-info"><div class="mi">Template 22</div><h3>Story com Foto + Texto</h3><div class="tpl-copy"><strong>Quando usar:</strong> adaptar o feed para stories e reels. <strong>Melhor para:</strong> derivar dos Posts 01, 03 e 09. <strong>Prompt-base:</strong> manter foto no topo, texto na safe zone inferior e CTA curto, com legibilidade preservada no formato 9:16.</div><div class="meta-row"><div class="meta-chip">1080 × 1920</div><div class="meta-chip">9:16</div><div class="meta-chip">Story</div><div class="meta-chip">Foto</div></div></div>
+    </div>
+
+    <!-- T23: Post Quadrado com Foto + Badge -->
+    <div class="tpl-card c p24">
+      <div class="f" style="width:340px;height:340px;margin:0 auto;position:relative;overflow:hidden">
+        <!-- Full photo bg -->
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,#c8b49e 0%,#dfd3c5 100%);display:flex;align-items:center;justify-content:center">
+          <span style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(94,0,1,0.30)">Foto ambiente / equipe</span>
+        </div>
+        <!-- Dark overlay -->
+        <div style="position:absolute;inset:0;background:rgba(42,0,1,0.55);z-index:1"></div>
+        <!-- Content centered -->
+        <div style="position:relative;z-index:2;width:100%;height:100%;padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center">
+          <div style="font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);padding:6px 14px;border:1px solid rgba(191,159,91,0.30)">34 anos de atuação</div>
+          <div>
+            <div style="font-family:'Playfair Display',serif;font-size:28px;line-height:1.15;color:#fff">Gioia e Associados Advocacia</div>
+            <div style="font-size:12px;color:rgba(255,255,255,0.50);margin-top:10px;line-height:1.5">9 áreas de atuação · São Paulo, SP</div>
+          </div>
+          <div class="cta-btn" style="font-size:10px">Conheça o escritório</div>
+        </div>
+      </div>
+      <div class="tpl-info"><div class="mi">Template 23</div><h3>Quadrado Institucional com Foto</h3><div class="tpl-copy"><strong>Quando usar:</strong> datas, marcos ou peças institucionais secundárias. <strong>Melhor para:</strong> fora do grid inicial principal. <strong>Prompt-base:</strong> usar foto ambiente ou equipe, overlay escuro controlado e mensagem institucional centralizada.</div><div class="meta-row"><div class="meta-chip">1080 × 1080</div><div class="meta-chip">1:1</div><div class="meta-chip">Institucional</div><div class="meta-chip">Foto</div></div></div>
+    </div>
+
+    <!-- T24: Antes / Depois Conceitual com Imagem -->
+    <div class="tpl-card c p24">
+      <div class="f" style="width:340px;height:425px;margin:0 auto;display:grid;grid-template-rows:1fr 1fr;overflow:hidden;border:1px solid rgba(0,0,0,0.06)">
+        <!-- Top: "Sem orientação" -->
+        <div style="background:linear-gradient(180deg,#e8e2da 0%,#d8d0c5 100%);padding:22px 20px;display:flex;flex-direction:column;justify-content:space-between;position:relative">
+          <div>
+            <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(94,0,1,0.40);margin-bottom:6px">Sem orientação jurídica</div>
+            <div style="font-family:'Playfair Display',serif;font-size:20px;line-height:1.2;color:var(--ink);opacity:0.6">Assinou o contrato sem ler as cláusulas de rescisão.</div>
+          </div>
+          <div style="width:100%;height:60px;border:1px dashed rgba(94,0,1,0.12);display:flex;align-items:center;justify-content:center"><span style="font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(94,0,1,0.25)">Ícone ou ilustração</span></div>
+        </div>
+        <!-- Bottom: "Com orientação" -->
+        <div style="background:linear-gradient(180deg,#4d0405 0%,#220808 100%);padding:22px 20px;display:flex;flex-direction:column;justify-content:space-between;color:#fff">
+          <div>
+            <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-light);margin-bottom:6px">Com orientação jurídica</div>
+            <div style="font-family:'Playfair Display',serif;font-size:20px;line-height:1.2">Revisou o contrato e incluiu cláusula de proteção.</div>
+          </div>
+          <div class="sig"><div class="sig-name">Dra. Mariana Gioia</div><div class="sig-role">Contratos · OAB/SP 351.962</div></div>
+        </div>
+      </div>
+      <div class="tpl-info"><div class="mi">Template 24</div><h3>Antes / Depois Conceitual</h3><div class="tpl-copy"><strong>Quando usar:</strong> mostrar risco vs proteção, erro vs orientação. <strong>Melhor para:</strong> Post 07 ou ciclos de contratos e consumidor. <strong>Prompt-base:</strong> criar peça 4:5 com duas metades contrastantes, uma visualmente fraca e outra segura, sem parecer anúncio alarmista.</div><div class="meta-row"><div class="meta-chip">1080 × 1350</div><div class="meta-chip">4:5</div><div class="meta-chip">Contraste</div><div class="meta-chip">Foto+Texto</div></div></div>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>
