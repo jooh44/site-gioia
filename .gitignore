@@ -44,7 +44,10 @@ next-env.d.ts
 _bmad/
 _bmad-output/
 .agent/
+.agents/
 .claude/
+.gemini/
+.codex
 .playwright-mcp/
 __prints/
 _cliente/gmb/
