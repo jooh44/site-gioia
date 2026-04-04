@@ -3,6 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon"
 import { siteConfig } from "@/config/site"
 import { serviceGroups } from "@/config/services"
 import { Menu, X } from "lucide-react"
@@ -74,6 +75,7 @@ export function MinimalNavbar() {
                 <Button asChild variant="ghost" className="hidden md:inline-flex text-white hover:bg-white/10 uppercase tracking-[0.2em] text-xs font-bold px-6 h-10 rounded-none border border-white/30 hover:border-white transition-all">
                     <a href={siteConfig.links.whatsapp} target="_blank" rel="noreferrer">
                         Contato
+                        <WhatsAppIcon className="ml-2 size-[1.05rem] opacity-80" />
                     </a>
                 </Button>
 
@@ -152,6 +154,7 @@ export function MinimalNavbar() {
                                 <Button asChild className="bg-secondary text-secondary-foreground hover:bg-white hover:text-primary uppercase tracking-[0.2em] text-sm font-bold h-16 w-full rounded-none shadow-none border-t border-white/10">
                                     <a href={siteConfig.links.whatsapp} target="_blank" rel="noreferrer">
                                         Falar no WhatsApp
+                                        <WhatsAppIcon className="ml-2 size-[1.05rem] opacity-80" />
                                     </a>
                                 </Button>
                             </div>

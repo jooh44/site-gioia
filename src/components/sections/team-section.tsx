@@ -1,9 +1,9 @@
 "use client"
 
 import React, { useState } from 'react'
-import Image from 'next/image'
 import { Button } from '@/components/ui/button'
-import { User, Scale, GraduationCap, ArrowRight, CheckCircle2 } from 'lucide-react'
+import { WhatsAppIcon } from '@/components/ui/whatsapp-icon'
+import { User, Scale, CheckCircle2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { siteConfig } from '@/config/site'
 
@@ -47,16 +47,32 @@ const teamMembers: TeamMember[] = [
     }
 ]
 
-export function TeamSection() {
+interface TeamSectionProps {
+    embedded?: boolean
+}
+
+export function TeamSection({ embedded = false }: TeamSectionProps) {
     const [activeTab, setActiveTab] = useState(teamMembers[0].id)
     const activeMember = teamMembers.find(m => m.id === activeTab) || teamMembers[0]
 
     return (
-        <section id="team" className="w-full py-24 md:py-32 bg-stone-50 overflow-hidden">
-            <div className="container px-6 md:px-12 lg:px-24 mx-auto">
+        <section
+            id="team"
+            className={cn(
+                "w-full overflow-hidden",
+                embedded ? "py-0 bg-transparent" : "py-24 md:py-32 bg-white"
+            )}
+        >
+            <div className={cn("container px-6 md:px-12 lg:px-24 mx-auto", embedded && "px-0 md:px-0 lg:px-0")}>
                 <div className="max-w-xl mb-16">
-                    <span className="text-xs font-bold text-primary uppercase tracking-[0.25em] block mb-4">Nossa Equipe</span>
-                    <h2 className="font-serif text-4xl md:text-5xl text-stone-900 leading-tight">
+                    <span className={cn(
+                        "text-xs font-bold uppercase tracking-[0.25em] block mb-4",
+                        embedded ? "text-secondary" : "text-primary"
+                    )}>Nossa Equipe</span>
+                    <h2 className={cn(
+                        "font-serif text-4xl md:text-5xl leading-tight",
+                        embedded ? "text-white" : "text-stone-900"
+                    )}>
                         Excelência Técnica <br />e Atendimento Humano.
                     </h2>
                 </div>
@@ -82,18 +98,32 @@ export function TeamSection() {
                     </div>
 
                     {/* Content Card (Folder Body) */}
-                    <div className="bg-white border border-stone-200 shadow-xl shadow-stone-200/40 p-8 md:p-12 relative z-10 overflow-hidden min-h-[500px] -mt-[1px] rounded-none">
+                    <div className={cn(
+                        "border p-8 md:p-12 relative z-10 overflow-hidden min-h-[500px] -mt-[1px] rounded-none",
+                        embedded
+                            ? "bg-[#fbf8f2] border-white/10 shadow-none"
+                            : "bg-white border-stone-200 shadow-xl shadow-stone-200/40"
+                    )}>
                         {/* Subtle Texture/Gradient */}
-                        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-stone-50/50 to-transparent pointer-events-none"></div>
+                        <div className={cn(
+                            "absolute top-0 right-0 w-1/2 h-full pointer-events-none",
+                            embedded ? "bg-gradient-to-l from-white/10 to-transparent" : "bg-gradient-to-l from-stone-50/50 to-transparent"
+                        )}></div>
 
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
                             <div className="lg:col-span-5">
-                                <div className="relative aspect-[4/5] bg-stone-100 border border-stone-200 overflow-hidden rounded-none">
+                                <div className={cn(
+                                    "relative aspect-[4/5] overflow-hidden rounded-none",
+                                    embedded ? "bg-[#f1eadf] border border-stone-300/60" : "bg-stone-100 border border-stone-200"
+                                )}>
                                     {/* Decorative Frame */}
                                     <div className="absolute inset-4 border border-stone-300/30 z-10 pointer-events-none"></div>
 
                                     {/* Placeholder Content */}
-                                    <div className="absolute inset-0 flex flex-col items-center justify-center text-stone-300">
+                                    <div className={cn(
+                                        "absolute inset-0 flex flex-col items-center justify-center",
+                                        embedded ? "text-stone-400" : "text-stone-300"
+                                    )}>
                                         <User className="w-20 h-20 mb-4 opacity-20" />
                                         <span className="font-serif italic text-sm">Aguardando Foto Oficial</span>
                                     </div>
@@ -132,9 +162,10 @@ export function TeamSection() {
                                 </div>
 
                                 <div className="pt-8">
-                                    <Button asChild className="bg-primary text-white hover:bg-stone-900 h-16 px-12 text-sm uppercase tracking-[0.2em] font-bold rounded-none shadow-lg w-full sm:w-auto">
+                                    <Button asChild className="bg-secondary text-secondary-foreground hover:bg-[#e1c483] hover:text-primary hover:shadow-[0_0_34px_rgba(209,175,102,0.28)] h-16 px-12 text-sm uppercase tracking-[0.2em] font-bold rounded-none shadow-lg w-full sm:w-auto">
                                         <a href={siteConfig.links.whatsapp} target="_blank" rel="noreferrer">
                                             Agendar horário
+                                            <WhatsAppIcon className="ml-2 size-[1.05rem] opacity-80" />
                                         </a>
                                     </Button>
                                 </div>

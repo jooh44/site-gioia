@@ -48,8 +48,8 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.35 0.12 25);
-  /* #761D1D Burgundy */
+  --primary: #5E0001;
+  /* Dark Garnet — fundos principais */
   --primary-foreground: oklch(0.985 0 0);
   --secondary: #d1af66;
   /* Logo Gold */
@@ -126,4 +126,28 @@
     color: var(--foreground);
     @apply font-sans antialiased;
   }
+}
+
+/* Testimonials ticker animations */
+@keyframes ticker-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes ticker-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-ticker-left {
+  animation: ticker-left 60s linear infinite;
+}
+
+.animate-ticker-right {
+  animation: ticker-right 60s linear infinite;
+}
+
+.animate-ticker-left:hover,
+.animate-ticker-right:hover {
+  animation-play-state: paused;
 }

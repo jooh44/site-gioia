@@ -1,8 +1,8 @@
 export const homeConfig = {
     hero: {
-        title: "Quando a Saúde ou o Trabalho estão em risco, nós somos a sua defesa.",
-        subtitle: "Há mais de três décadas, o escritório Gioia e Associados reverte negativas de planos de saúde e restaura a dignidade de trabalhadores. Atendimento humanizado, estratégia implacável.",
-        cta: "Plantão de Urgência (WhatsApp)",
+        title: "Três décadas de história na defesa dos seus direitos.",
+        subtitle: "Unimos a experiência de uma atuação consolidada à sensibilidade de um atendimento humanizado, entregando soluções jurídicas precisas e eficazes em cada etapa do seu processo.",
+        cta: "Agendar consulta",
         image: "/images/hero-bg.jpg", // TODO: Add image
     },
     features: [
