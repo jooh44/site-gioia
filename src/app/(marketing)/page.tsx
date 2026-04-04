@@ -228,7 +228,7 @@ export default function Home() {
       <ServicesSection />
 
       {/* 3. ABOUT SECTION */}
-      <section id="about" className="w-full py-24 md:py-32 bg-primary text-white relative overflow-hidden">
+      <section id="about" className="w-full py-16 md:py-24 lg:py-32 bg-primary text-white relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none z-0">
           <Image
             src="/images/bg.webp"
@@ -243,54 +243,54 @@ export default function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_right_center,rgba(209,175,102,0.06),transparent_28%)] pointer-events-none z-0" />
 
         <div className="container px-6 md:px-12 lg:px-24 mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-            <div className="lg:col-span-5 space-y-10 lg:sticky lg:top-24">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+            <div className="lg:col-span-5 space-y-8 lg:space-y-10 lg:sticky lg:top-24">
               <div className="space-y-4">
                 <span className="text-xs font-bold text-secondary uppercase tracking-[0.25em] block">
                   {aboutConfig.eyebrow}
                 </span>
-                <h2 className="font-serif text-4xl md:text-5xl text-white leading-tight">
+                <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-white leading-tight">
                   {aboutConfig.title}
                 </h2>
               </div>
-              <div className="space-y-5 text-stone-300 font-sans text-lg leading-relaxed">
+              <div className="space-y-4 text-stone-300 font-sans text-base lg:text-lg leading-relaxed">
                 <p>{aboutConfig.intro}</p>
-                <p>{aboutConfig.approach}</p>
+                <p className="hidden md:block">{aboutConfig.approach}</p>
                 <p className="text-white font-medium">{aboutConfig.closing}</p>
               </div>
             </div>
 
-            <div className="lg:col-span-7 space-y-6">
-              <div className="relative overflow-hidden border border-secondary/20 bg-[linear-gradient(180deg,rgba(255,255,255,0.04)_0%,rgba(255,255,255,0.02)_100%)] min-h-[28rem] lg:min-h-[34rem]">
+            <div className="lg:col-span-7 space-y-4">
+              <div className="relative overflow-hidden border border-secondary/20 bg-[linear-gradient(180deg,rgba(255,255,255,0.04)_0%,rgba(255,255,255,0.02)_100%)] min-h-[22rem] md:min-h-[28rem] lg:min-h-[34rem]">
                 <Image
                   src="/about-gioia-team.webp"
                   alt="Equipe Gioia e Associados em retrato institucional"
                   fill
-                  className="object-cover object-center"
+                  className="object-cover object-top"
                   priority={false}
                 />
               </div>
 
-              <div className="grid grid-cols-3 gap-px bg-secondary/12 border border-secondary/18">
-                <div className="bg-primary/55 px-5 py-4 flex items-center gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-secondary/12 border border-secondary/18">
+                <div className="bg-primary/55 px-5 py-4 flex items-center gap-3 border-b sm:border-b-0 border-secondary/12">
                   <Scale className="h-4 w-4 text-secondary/80 shrink-0" strokeWidth={1.4} />
                   <div>
                     <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-secondary/80">{aboutConfig.mission.title}</span>
-                    <p className="text-sm text-stone-300 leading-snug mt-0.5">Rigor técnico com atendimento humanizado.</p>
+                    <p className="text-xs text-stone-300 leading-snug mt-0.5">Rigor técnico com atendimento humanizado.</p>
                   </div>
                 </div>
-                <div className="bg-primary/55 px-5 py-4 flex items-center gap-3">
+                <div className="bg-primary/55 px-5 py-4 flex items-center gap-3 border-b sm:border-b-0 border-secondary/12">
                   <Telescope className="h-4 w-4 text-secondary/80 shrink-0" strokeWidth={1.4} />
                   <div>
                     <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-secondary/80">{aboutConfig.vision.title}</span>
-                    <p className="text-sm text-stone-300 leading-snug mt-0.5">Excelência sólida, presença contemporânea.</p>
+                    <p className="text-xs text-stone-300 leading-snug mt-0.5">Excelência sólida, presença contemporânea.</p>
                   </div>
                 </div>
                 <div className="bg-primary/55 px-5 py-4 flex items-center gap-3">
                   <Gem className="h-4 w-4 text-secondary/80 shrink-0" strokeWidth={1.4} />
                   <div>
                     <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-secondary/80">Valores</span>
-                    <p className="text-sm text-stone-300 leading-snug mt-0.5">Ética, resultado e compromisso humano.</p>
+                    <p className="text-xs text-stone-300 leading-snug mt-0.5">Ética, resultado e compromisso humano.</p>
                   </div>
                 </div>
               </div>
