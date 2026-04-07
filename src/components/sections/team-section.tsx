@@ -24,7 +24,7 @@ const teamMembers: TeamMember[] = [
         name: "Dr. Celso Fernando Gioia",
         role: "Sócio Fundador",
         oab: "OAB/SP 70.379",
-        bio: "Fundador da Gioia e Associados em 1992, o Dr. Celso Fernando Gioia é graduado pela Universidade de São Paulo (USP), com sólida especialização em Responsabilidade Civil, Contratos, Direito Empresarial e Trabalhista. Atuou como Diretor Jurídico da RedeTV! e como Presidente da OAB/SP – 96ª Subseção (Lapa) entre 2012 e 2017.",
+        bio: "Fundador da Gioia e Associados em 1992, o Dr. Celso Fernando Gioia é graduado pela Universidade de São Paulo (USP), com sólida especialização em Responsabilidade Civil, Contratos, Direito Empresarial e Trabalhista. Atuou como Diretor Jurídico da RedeTV, e no Santos Futebol Clube e foi Presidente da OAB/SP – 96ª Subseção (Lapa) entre 2012 e 2017.",
         specializations: ["Responsabilidade Civil e Contratos", "Direito Empresarial e Trabalhista", "Liderança Institucional OAB/SP"],
         image: "/team/celso-gioia.webp",
         imageClassName: ""
@@ -34,7 +34,7 @@ const teamMembers: TeamMember[] = [
         name: "Dra. Mariana Matheus Gioia",
         role: "Sócia",
         oab: "OAB/SP 351.962",
-        bio: "Sócia da Gioia e Associados, a Dra. Mariana Matheus Gioia é especialista com pós-graduação em Direito Empresarial e Direito Médico e Hospitalar. Atuou como defensora junto ao CREMESP e presidiu a Comissão de Assuntos do Judiciário da OAB/SP Lapa. Nossa atuação é pautada pela agilidade e pelo compromisso em oferecer soluções jurídicas que acompanham as transformações da sociedade.",
+        bio: "Sócia da Gioia e Associados, a Dra. Mariana é especialista com pós-graduação em Direito Empresarial e Direito Médico e Hospitalar. Atuou como defensora junto ao CREMESP e presidiu a Comissão de Assuntos do Judiciário da OAB/SP Lapa e foi presidente da Comissão do Jovem Advogado e Coordenadora Estadual da Comissão do Jovem Advogado da OAB/SP. Nossa atuação é pautada pela agilidade e pelo compromisso em oferecer soluções jurídicas que acompanham as transformações da sociedade.",
         specializations: ["Direito Médico e Hospitalar (CREMESP)", "Direito Empresarial", "Consultoria Estratégica"],
         image: "/team/mariana-gioia.webp"
     },
