@@ -1,0 +1,84 @@
+---
+import "../styles/globals.css";
+import { siteConfig } from "@/config/site";
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  robots?: string;
+  jsonLd?: object[];
+}
+
+const {
+  title,
+  description,
+  canonical = siteConfig.url,
+  robots = "index, follow",
+  jsonLd = [],
+} = Astro.props;
+
+const ogTitle = title;
+const ogDescription = description;
+const ogImage = siteConfig.ogImage;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/simbolo-gioia.svg" />
+
+    <!-- Preconnect Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Pinyon+Script&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={canonical} />
+
+    <meta name="author" content={siteConfig.name} />
+    <meta
+      name="keywords"
+      content="advogado direito médico São Paulo, liminar plano de saúde, advogado trabalhista Lapa SP, negativa de cobertura plano de saúde, Gioia e Associados"
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={siteConfig.name} />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={ogTitle} />
+    <meta name="twitter:description" content={ogDescription} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- JSON-LD -->
+    {jsonLd.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
+
+    <style is:inline>
+      :root {
+        --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+        --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+        --font-handwriting: "Pinyon Script", cursive;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-stone-50 font-sans antialiased">
+    <slot />
+  </body>
+</html>

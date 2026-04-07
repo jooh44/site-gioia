@@ -1,7 +1,5 @@
 "use client"
 
-import Link from "next/link"
-import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon"
 import { siteConfig } from "@/config/site"
@@ -31,16 +29,15 @@ export function MinimalNavbar() {
             {/* Logo */}
             <div className="flex items-center gap-12">
                 <div className={`${isScrolled ? "block" : "hidden md:block"} pointer-events-auto hover:scale-105 transition-transform`}>
-                    <Link href="/" className="block">
-                        <Image
+                    <a href="/" className="block">
+                        <img
                             src="/simbolo-gioia.svg"
                             alt="Gioia e Associados - Início"
                             width={48}
                             height={48}
                             className="w-10 h-10 md:w-12 md:h-12 drop-shadow-md"
-                            priority
                         />
-                    </Link>
+                    </a>
                 </div>
             </div>
 
@@ -61,12 +58,12 @@ export function MinimalNavbar() {
 
                     <span className="w-[1px] h-4 bg-white/20" />
 
-                    <Link href="#about" className="text-sm font-medium text-white/80 hover:text-white uppercase tracking-[0.15em] transition-colors">
+                    <a href="#about" className="text-sm font-medium text-white/80 hover:text-white uppercase tracking-[0.15em] transition-colors">
                         Sobre
-                    </Link>
-                    <Link href="#faq" className="text-sm font-medium text-white/80 hover:text-white uppercase tracking-[0.15em] transition-colors">
+                    </a>
+                    <a href="#faq" className="text-sm font-medium text-white/80 hover:text-white uppercase tracking-[0.15em] transition-colors">
                         Dúvidas
-                    </Link>
+                    </a>
                 </nav>
 
                 <div className="hidden md:block w-[1px] h-6 bg-white/20" />
@@ -93,15 +90,15 @@ export function MinimalNavbar() {
                         {/* Mobile Header */}
                         <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
                             <SheetClose asChild>
-                                <Link href="/">
-                                    <Image
+                                <a href="/">
+                                    <img
                                         src="/simbolo-gioia.svg"
                                         alt="Gioia"
                                         width={48}
                                         height={48}
                                         className="w-10 h-10 drop-shadow-md"
                                     />
-                                </Link>
+                                </a>
                             </SheetClose>
                             <SheetClose asChild>
                                 <button className="text-secondary hover:bg-white/10 w-12 h-12 flex items-center justify-center transition-all rounded-none outline-none border-none">
@@ -138,14 +135,14 @@ export function MinimalNavbar() {
                             {/* Links Secundários */}
                             <div className="flex flex-col">
                                 <SheetClose asChild>
-                                    <Link href="#about" className="block px-6 py-4 text-xl font-sans font-light text-stone-200 hover:text-white hover:bg-white/5 transition-all border-b border-white/10">
+                                    <a href="#about" className="block px-6 py-4 text-xl font-sans font-light text-stone-200 hover:text-white hover:bg-white/5 transition-all border-b border-white/10">
                                         Sobre o Escritório
-                                    </Link>
+                                    </a>
                                 </SheetClose>
                                 <SheetClose asChild>
-                                    <Link href="#faq" className="block px-6 py-4 text-xl font-sans font-light text-stone-200 hover:text-white hover:bg-white/5 transition-all border-b border-white/10">
+                                    <a href="#faq" className="block px-6 py-4 text-xl font-sans font-light text-stone-200 hover:text-white hover:bg-white/5 transition-all border-b border-white/10">
                                         Dúvidas Frequentes
-                                    </Link>
+                                    </a>
                                 </SheetClose>
                             </div>
 

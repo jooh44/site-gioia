@@ -1,0 +1,130 @@
+---
+import { homeConfig } from "@/config/home";
+import { siteConfig } from "@/config/site";
+import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
+---
+
+<section
+  class="relative w-full lg:min-h-[100svh] flex flex-col lg:flex-row bg-primary text-primary-foreground overflow-hidden pt-12 md:pt-16 lg:pt-0 pb-0"
+>
+  <!-- Subtle Gradient Overlay -->
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/30 pointer-events-none z-0"
+  >
+  </div>
+
+  <!-- Background Decorative SVG Watermark -->
+  <div
+    class="absolute top-[40%] lg:top-[50%] right-[-10%] lg:right-[-5%] -translate-y-[45%] lg:-translate-y-1/2 w-[120%] md:w-[80%] lg:w-[60%] xl:w-[50%] h-auto opacity-[0.10] lg:opacity-[0.15] pointer-events-none brightness-0 z-0"
+  >
+    <img
+      src="/simbolo-gioia.svg"
+      alt=""
+      width="1200"
+      height="1200"
+      class="w-full h-full object-contain"
+    />
+  </div>
+
+  <!-- Background Graphics (Discrete Symbol Texture) -->
+  <div
+    class="absolute -left-[10%] lg:-left-[5%] top-[50%] lg:top-[80%] -translate-y-1/2 opacity-[0.10] lg:opacity-[0.15] pointer-events-none brightness-0 z-0"
+  >
+    <img
+      src="/simbolo-gioia.svg"
+      alt=""
+      width="500"
+      height="500"
+      class="w-[180px] lg:w-[450px] h-auto"
+    />
+  </div>
+
+  <!-- Content Wrapper -->
+  <div
+    class="relative z-10 w-full max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center lg:items-stretch justify-between px-6 md:px-12 lg:px-20 xl:px-24 min-h-screen lg:min-h-0 lg:h-screen"
+  >
+    <!-- Left Column: Text Content -->
+    <div
+      class="w-full lg:w-[72%] xl:w-[62%] flex flex-col items-center text-center lg:items-start lg:text-left gap-4 md:gap-7 pb-2 lg:pb-0 pt-0 md:pt-4 lg:pt-12 xl:pt-16 z-20"
+    >
+      <!-- Official Logo -->
+      <div class="w-32 md:w-36 lg:w-36 xl:w-40 mb-1 lg:mb-2 mt-4 lg:mt-0">
+        <img
+          src="/logo-gioia.svg"
+          alt="Gioia e Associados"
+          width="200"
+          height="100"
+          class="w-full h-auto drop-shadow-xl"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+
+      <!-- Main Headline -->
+      <h1
+        class="font-serif text-4xl md:text-5xl lg:text-[3.65rem] xl:text-[4.35rem] leading-[1.02] tracking-tight text-white drop-shadow-sm w-full lg:max-w-[19ch]"
+      >
+        <span class="block">Três décadas</span>
+        <span class="block">de história na defesa</span>
+        <span class="block text-secondary font-light">dos seus direitos.</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p
+        class="font-sans text-base md:text-lg text-stone-300 font-light leading-relaxed max-w-xl"
+      >
+        {homeConfig.hero.subtitle}
+      </p>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row gap-4 pt-2 w-full sm:w-auto">
+        <a
+          href={siteConfig.links.whatsapp}
+          target="_blank"
+          rel="noreferrer"
+          class="inline-flex items-center justify-center gap-2 bg-secondary text-secondary-foreground hover:bg-[#e1c483] hover:text-primary hover:shadow-[0_0_34px_rgba(209,175,102,0.28)] transition-all duration-300 h-14 sm:h-12 w-full sm:w-auto sm:px-10 text-xs uppercase tracking-[0.2em] font-bold rounded-none shadow-lg"
+        >
+          {homeConfig.hero.cta}
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="size-[1.05rem] opacity-80" fill="currentColor">
+            <path d="M19.05 4.94A9.86 9.86 0 0 0 12.02 2a9.94 9.94 0 0 0-8.6 14.9L2 22l5.25-1.37A9.94 9.94 0 0 0 12.01 22 10 10 0 0 0 22 12.02a9.84 9.84 0 0 0-2.95-7.08Zm-7.03 15.4a8.2 8.2 0 0 1-4.17-1.14l-.3-.18-3.12.82.83-3.04-.2-.31a8.22 8.22 0 1 1 6.96 3.85Zm4.5-6.14c-.25-.13-1.47-.73-1.7-.81-.23-.08-.4-.13-.57.12-.17.25-.66.81-.81.98-.15.17-.3.19-.55.06-.25-.13-1.07-.39-2.03-1.23-.75-.67-1.25-1.48-1.4-1.73-.15-.25-.02-.38.11-.5.11-.11.25-.3.38-.45.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.57-1.38-.78-1.89-.21-.5-.42-.43-.57-.44h-.49c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1s.9 2.44 1.02 2.61c.13.17 1.78 2.72 4.31 3.81.6.26 1.08.41 1.45.52.61.19 1.16.16 1.6.1.49-.07 1.47-.6 1.68-1.19.21-.58.21-1.08.15-1.19-.06-.1-.23-.17-.48-.29Z" />
+          </svg>
+        </a>
+        <a
+          href="#services"
+          class="inline-flex items-center justify-center text-white hover:bg-secondary/15 hover:text-secondary h-14 sm:h-12 w-full sm:w-auto sm:px-10 text-xs uppercase tracking-[0.2em] font-bold rounded-none border border-white/30 hover:border-secondary/70 transition-all"
+        >
+          Ver Serviços
+        </a>
+      </div>
+    </div>
+
+    <!-- Right Column: Hero Image -->
+    <div
+      class="w-full lg:w-2/5 xl:w-[55%] flex justify-center lg:justify-end items-end z-10 pointer-events-none lg:absolute lg:-right-4 xl:-right-8 lg:bottom-0 lg:h-[80vh] xl:h-[85vh] relative h-[65vh] md:h-[70vh] -mt-8 md:-mt-16 lg:mt-0"
+    >
+      <div
+        class="relative w-full max-w-[500px] md:max-w-[600px] lg:max-w-[550px] xl:max-w-[700px] h-full"
+      >
+        <div
+          aria-hidden="true"
+          class="absolute inset-x-[16%] bottom-[4%] h-[14%] bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.22)_0%,rgba(0,0,0,0.12)_42%,transparent_78%)] blur-xl"
+        >
+        </div>
+        <div
+          aria-hidden="true"
+          class="absolute inset-x-[10%] top-[10%] h-[78%] bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.09)_0%,rgba(255,255,255,0.05)_28%,rgba(255,255,255,0.02)_46%,transparent_70%)] blur-3xl"
+        >
+        </div>
+        <img
+          src="/gioia-hero-2.webp"
+          alt="Pai e filha sorrindo, representando a proteção da família e dignidade"
+          width="800"
+          height="1000"
+          class="relative z-10 w-full h-full object-contain object-bottom md:object-center lg:object-right-bottom drop-shadow-[0_12px_18px_rgba(0,0,0,0.18)]"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+  </div>
+</section>

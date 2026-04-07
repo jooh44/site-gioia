@@ -1,0 +1,150 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { MinimalNavbar } from "@/components/layout/minimal-navbar";
+import HeroSection from "@/components/sections/HeroSection.astro";
+import { ServicesSection } from "@/components/sections/services-section";
+import AboutSection from "@/components/sections/AboutSection.astro";
+import { TeamSection } from "@/components/sections/team-section";
+import TestimonialsTicker from "@/components/sections/TestimonialsTicker.astro";
+import FaqSection from "@/components/sections/FaqSection.astro";
+import FooterCta from "@/components/sections/FooterCta.astro";
+
+const schemaLegalService = {
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  name: "Gioia e Associados Advocacia",
+  description:
+    "Escritório de advocacia especializado em Direito Médico e Trabalhista com 34 anos de atuação em São Paulo.",
+  url: "https://gioiaeassociados.com.br",
+  telephone: "+551138353200",
+  email: "contato@gioiaeassociados.com.br",
+  foundingDate: "1992",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Rua Barão de Jundiaí, 523",
+    addressLocality: "São Paulo",
+    addressRegion: "SP",
+    postalCode: "05073-010",
+    addressCountry: "BR",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: -23.5275,
+    longitude: -46.7068,
+  },
+  areaServed: { "@type": "State", name: "São Paulo" },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Áreas de Atuação",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Direito Médico" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Direito do Trabalho" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Direito do Consumidor" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Direito de Família" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Direito Imobiliário" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Direito Empresarial" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Direito Previdenciário" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Direito Sucessório" },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: "Contratos" },
+      },
+    ],
+  },
+  member: [
+    {
+      "@type": "Person",
+      name: "Celso Fernando Gioia",
+      jobTitle: "Sócio Fundador",
+      identifier: "OAB/SP 70.379",
+    },
+    {
+      "@type": "Person",
+      name: "Mariana Matheus Gioia",
+      jobTitle: "Sócia",
+      identifier: "OAB/SP 351.962",
+    },
+    {
+      "@type": "Person",
+      name: "Fábio Dreger da Silva",
+      jobTitle: "Advogado Associado",
+      identifier: "OAB/SP 336.451",
+    },
+  ],
+};
+
+const schemaFAQ = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "O que é uma liminar e quanto tempo demora?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "A liminar é uma decisão judicial provisória e urgente. Em casos de saúde com risco de vida, pode ser obtida em 24 a 48 horas. Nossa equipe atua com plantão especializado para garantir essa agilidade.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "O escritório cobra consulta?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Para uma análise preliminar de viabilidade do caso, não cobramos honorários iniciais. Agende uma conversa para entendermos seu cenário.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Vocês atendem em todo o Brasil?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Sim. Com o processo judicial eletrônico, atuamos em tribunais de todo o país, mantendo o mesmo padrão de atendimento e proximidade através de videoconferências.",
+      },
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="Advogado Direito Médico e Trabalhista em São Paulo | Gioia e Associados"
+  description="Escritório com 34 anos de tradição em Direito Médico e Trabalhista na Lapa, São Paulo. Liminares para planos de saúde em 24h. Defesa do trabalhador. Consulta sem custo inicial."
+  canonical="https://gioiaeassociados.com.br/"
+  jsonLd={[schemaLegalService, schemaFAQ]}
+>
+  <main
+    class="flex min-h-screen flex-col font-sans selection:bg-secondary selection:text-secondary-foreground relative"
+  >
+    <MinimalNavbar client:load />
+    <HeroSection />
+    <ServicesSection client:load />
+    <AboutSection />
+    <TeamSection client:load />
+    <TestimonialsTicker />
+    <FaqSection />
+    <FooterCta />
+  </main>
+</BaseLayout>

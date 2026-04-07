@@ -1,9 +1,9 @@
 "use client"
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { WhatsAppIcon } from '@/components/ui/whatsapp-icon'
-import { User, Scale, CheckCircle2 } from 'lucide-react'
+import { Scale, CheckCircle2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { siteConfig } from '@/config/site'
 
@@ -25,7 +25,7 @@ const teamMembers: TeamMember[] = [
         oab: "OAB/SP 70.379",
         bio: "Fundador da Gioia e Associados em 1992, o Dr. Celso Fernando Gioia é graduado pela Universidade de São Paulo (USP), com sólida especialização em Responsabilidade Civil, Contratos, Direito Empresarial e Trabalhista. Atuou como Diretor Jurídico da RedeTV! e como Presidente da OAB/SP – 96ª Subseção (Lapa) entre 2012 e 2017.",
         specializations: ["Responsabilidade Civil e Contratos", "Direito Empresarial e Trabalhista", "Liderança Institucional OAB/SP"],
-        image: "/team/celso-gioia.jpg"
+        image: "/team/celso-gioia.webp"
     },
     {
         id: "mariana",
@@ -34,7 +34,7 @@ const teamMembers: TeamMember[] = [
         oab: "OAB/SP 351.962",
         bio: "Sócia da Gioia e Associados, a Dra. Mariana Matheus Gioia é especialista com pós-graduação em Direito Empresarial e Direito Médico e Hospitalar. Atuou como defensora junto ao CREMESP e presidiu a Comissão de Assuntos do Judiciário da OAB/SP Lapa. Nossa atuação é pautada pela agilidade e pelo compromisso em oferecer soluções jurídicas que acompanham as transformações da sociedade.",
         specializations: ["Direito Médico e Hospitalar (CREMESP)", "Direito Empresarial", "Consultoria Estratégica"],
-        image: "/team/mariana-gioia.jpg"
+        image: "/team/mariana-gioia.webp"
     },
     {
         id: "fabio",
@@ -43,7 +43,7 @@ const teamMembers: TeamMember[] = [
         oab: "OAB/SP 336.451",
         bio: "O Dr. Fábio Dreger da Silva integra a equipe com foco no rigor processual e na defesa especializada. Pós-graduado em Processo Civil pela Mackenzie e em Direito Médico e da Saúde pela Faculdade Legale. Foi Vice-Presidente da Comissão de Direito Civil da OAB/SP Lapa (2016–2018).",
         specializations: ["Processo Civil (Mackenzie)", "Direito Médico e da Saúde", "Direito do Consumidor"],
-        image: "/team/fabio-dreger.jpg"
+        image: "/team/fabio-dreger.webp"
     }
 ]
 
@@ -116,17 +116,14 @@ export function TeamSection({ embedded = false }: TeamSectionProps) {
                                     "relative aspect-[4/5] overflow-hidden rounded-none",
                                     embedded ? "bg-[#f1eadf] border border-stone-300/60" : "bg-stone-100 border border-stone-200"
                                 )}>
+                                    <img
+                                        src={activeMember.image}
+                                        alt={activeMember.name}
+                                        className="absolute inset-0 h-full w-full object-cover object-top"
+                                        loading="lazy"
+                                    />
                                     {/* Decorative Frame */}
                                     <div className="absolute inset-4 border border-stone-300/30 z-10 pointer-events-none"></div>
-
-                                    {/* Placeholder Content */}
-                                    <div className={cn(
-                                        "absolute inset-0 flex flex-col items-center justify-center",
-                                        embedded ? "text-stone-400" : "text-stone-300"
-                                    )}>
-                                        <User className="w-20 h-20 mb-4 opacity-20" />
-                                        <span className="font-serif italic text-sm">Aguardando Foto Oficial</span>
-                                    </div>
                                 </div>
                             </div>
 
