@@ -63,20 +63,16 @@ function ServiceIcon({
   return <Icon className={className} strokeWidth={1.8} />
 }
 
-function scrollToServices(offset = 96) {
+function scrollToServices() {
   const el = document.getElementById("services")
   if (!el) return
-
-  const top = el.getBoundingClientRect().top + window.scrollY - offset
-  window.scrollTo({ top, behavior: "smooth" })
+  el.scrollIntoView({ behavior: "smooth", block: "start" })
 }
 
-function scrollToGroup(groupId: string, offset = 96) {
+function scrollToGroup(groupId: string) {
   const el = document.querySelector<HTMLElement>(`[data-service-group="${groupId}"]`)
   if (!el) return
-
-  const top = el.getBoundingClientRect().top + window.scrollY - offset
-  window.scrollTo({ top, behavior: "smooth" })
+  el.scrollIntoView({ behavior: "smooth", block: "start" })
 }
 
 /* ─── Shared: conteúdo das subáreas (tabs ou direto) ─── */
@@ -164,7 +160,7 @@ function DesktopServices() {
       if (serviceGroups.some((group) => group.id === hash)) {
         setActiveId(hash)
         window.setTimeout(() => {
-          scrollToServices(92)
+          scrollToServices()
         }, 0)
       }
     }
@@ -257,7 +253,7 @@ function MobileServices() {
 
     // Espera a animação do accordion abrir antes de alinhar a seção.
     window.setTimeout(() => {
-      scrollToGroup(value, 88)
+      scrollToGroup(value)
     }, 180)
   }, [])
 
@@ -271,7 +267,7 @@ function MobileServices() {
       setOpenId(hash)
 
       window.setTimeout(() => {
-        scrollToGroup(hash, 88)
+        scrollToGroup(hash)
       }, 220)
     }
 
@@ -359,7 +355,7 @@ function MobileServices() {
 
 export function ServicesSection() {
   return (
-    <section id="services" data-nav-theme="light" className="w-full bg-white border-b border-stone-200">
+    <section id="services" data-nav-theme="light" className="w-full bg-white border-b border-stone-200 scroll-mt-16 lg:scroll-mt-20">
 
       {/* Header */}
       <div className="border-b border-stone-200">

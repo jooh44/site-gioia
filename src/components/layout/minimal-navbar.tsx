@@ -20,17 +20,17 @@ export function MinimalNavbar() {
 
         window.history.replaceState(null, "", `#${groupId}`)
         window.dispatchEvent(new HashChangeEvent("hashchange"))
+    }
 
-        const servicesSection = document.getElementById("services")
-        if (!servicesSection) return
+    const handleAnchorNavigation = (event: MouseEvent<HTMLAnchorElement>) => {
+        const href = event.currentTarget.getAttribute("href")
+        if (!href?.startsWith("#")) return
 
-        const offset = window.innerWidth >= 1024 ? 92 : 84
-        const top = servicesSection.getBoundingClientRect().top + window.scrollY - offset
+        const target = document.getElementById(href.slice(1))
+        if (!target) return
 
-        window.scrollTo({
-            top,
-            behavior: "smooth",
-        })
+        event.preventDefault()
+        target.scrollIntoView({ behavior: "smooth", block: "start" })
     }
 
     useEffect(() => {
@@ -109,6 +109,7 @@ export function MinimalNavbar() {
 
                     <a
                         href="#about"
+                        onClick={handleAnchorNavigation}
                         className={cn(
                             "text-sm font-medium uppercase tracking-[0.15em] transition-colors",
                             navTheme === "light"
@@ -120,6 +121,7 @@ export function MinimalNavbar() {
                     </a>
                     <a
                         href="#faq"
+                        onClick={handleAnchorNavigation}
                         className={cn(
                             "text-sm font-medium uppercase tracking-[0.15em] transition-colors",
                             navTheme === "light"
@@ -217,12 +219,12 @@ export function MinimalNavbar() {
                             {/* Links Secundários */}
                             <div className="flex flex-col">
                                 <SheetClose asChild>
-                                    <a href="#about" className="block px-6 py-4 text-xl font-sans font-light text-stone-200 hover:text-white hover:bg-white/5 transition-all border-b border-white/10">
+                                    <a href="#about" onClick={handleAnchorNavigation} className="block px-6 py-4 text-xl font-sans font-light text-stone-200 hover:text-white hover:bg-white/5 transition-all border-b border-white/10">
                                         Sobre o Escritório
                                     </a>
                                 </SheetClose>
                                 <SheetClose asChild>
-                                    <a href="#faq" className="block px-6 py-4 text-xl font-sans font-light text-stone-200 hover:text-white hover:bg-white/5 transition-all border-b border-white/10">
+                                    <a href="#faq" onClick={handleAnchorNavigation} className="block px-6 py-4 text-xl font-sans font-light text-stone-200 hover:text-white hover:bg-white/5 transition-all border-b border-white/10">
                                         Dúvidas Frequentes
                                     </a>
                                 </SheetClose>
