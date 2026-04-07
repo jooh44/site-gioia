@@ -15,6 +15,7 @@ interface TeamMember {
     bio: string
     specializations: string[]
     image: string
+    imageClassName?: string
 }
 
 const teamMembers: TeamMember[] = [
@@ -25,7 +26,8 @@ const teamMembers: TeamMember[] = [
         oab: "OAB/SP 70.379",
         bio: "Fundador da Gioia e Associados em 1992, o Dr. Celso Fernando Gioia é graduado pela Universidade de São Paulo (USP), com sólida especialização em Responsabilidade Civil, Contratos, Direito Empresarial e Trabalhista. Atuou como Diretor Jurídico da RedeTV! e como Presidente da OAB/SP – 96ª Subseção (Lapa) entre 2012 e 2017.",
         specializations: ["Responsabilidade Civil e Contratos", "Direito Empresarial e Trabalhista", "Liderança Institucional OAB/SP"],
-        image: "/team/celso-gioia.webp"
+        image: "/team/celso-gioia.webp",
+        imageClassName: "scale-[1.05] -translate-x-2"
     },
     {
         id: "mariana",
@@ -58,6 +60,7 @@ export function TeamSection({ embedded = false }: TeamSectionProps) {
     return (
         <section
             id="team"
+            data-nav-theme="light"
             className={cn(
                 "w-full overflow-hidden",
                 embedded ? "py-0 bg-transparent" : "py-24 md:py-32 bg-white"
@@ -119,7 +122,10 @@ export function TeamSection({ embedded = false }: TeamSectionProps) {
                                     <img
                                         src={activeMember.image}
                                         alt={activeMember.name}
-                                        className="absolute inset-0 h-full w-full object-cover object-top"
+                                        className={cn(
+                                            "absolute inset-0 h-full w-full object-cover object-top transition-transform duration-300",
+                                            activeMember.imageClassName
+                                        )}
                                         loading="lazy"
                                     />
                                     {/* Decorative Frame */}

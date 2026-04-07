@@ -1,6 +1,7 @@
 export interface ServiceChild {
   id: string
   title: string
+  icon: string
   items: string[]
 }
 
@@ -27,6 +28,7 @@ export const serviceGroups: ServiceGroup[] = [
       {
         id: "saude-paciente",
         title: "Para o Paciente e Familiar",
+        icon: "HandHeart",
         items: [
           "Cobertura de tratamentos urgentes e obtenção de liminares",
           "Cirurgias em geral e cirurgias modernas (tratamentos inovadores)",
@@ -44,6 +46,7 @@ export const serviceGroups: ServiceGroup[] = [
       {
         id: "saude-medico",
         title: "Para o Médico",
+        icon: "Stethoscope",
         items: [
           "Defesa jurídica em processos de responsabilidade civil (erro médico)",
           "Defesa perante o CREMESP em processos administrativos",
@@ -67,6 +70,7 @@ export const serviceGroups: ServiceGroup[] = [
       {
         id: "trabalho-trabalhista",
         title: "Direito Trabalhista",
+        icon: "Briefcase",
         items: [
           "Rescisão indireta do contrato de trabalho",
           "Reversão de demissão por justa causa",
@@ -84,6 +88,7 @@ export const serviceGroups: ServiceGroup[] = [
       {
         id: "trabalho-previdenciario",
         title: "Direito Previdenciário",
+        icon: "Landmark",
         items: [
           "Aposentadoria por tempo de contribuição",
           "Aposentadoria por invalidez",
@@ -109,6 +114,7 @@ export const serviceGroups: ServiceGroup[] = [
       {
         id: "familia-familia",
         title: "Direito de Família",
+        icon: "HeartHandshake",
         items: [
           "Divórcio e partilha de bens",
           "Guarda de filhos (paterna, materna ou dos avós)",
@@ -122,6 +128,7 @@ export const serviceGroups: ServiceGroup[] = [
       {
         id: "familia-sucessorio",
         title: "Direito Sucessório",
+        icon: "ScrollText",
         items: [
           "Inventário judicial e extrajudicial",
           "Planejamento sucessório",
@@ -143,6 +150,7 @@ export const serviceGroups: ServiceGroup[] = [
       {
         id: "patrimonio-imobiliario",
         title: "Direito Imobiliário",
+        icon: "House",
         items: [
           "Ação de despejo e ação reivindicatória",
           "Ação de usucapião",
@@ -158,6 +166,7 @@ export const serviceGroups: ServiceGroup[] = [
       {
         id: "patrimonio-empresarial",
         title: "Direito Empresarial",
+        icon: "Building",
         items: [
           "Constituição e dissolução de sociedade empresária",
           "Recuperação de empresas e falência",
@@ -172,6 +181,7 @@ export const serviceGroups: ServiceGroup[] = [
       {
         id: "patrimonio-contratos",
         title: "Contratos",
+        icon: "FileText",
         items: [
           "Elaboração, revisão e negociação de contratos em geral",
           "Contratos empresariais, de seguro e prestação de serviços",
@@ -192,20 +202,28 @@ export const serviceGroups: ServiceGroup[] = [
     accent: "primary",
     children: [
       {
-        id: "consumidor-geral",
-        title: "Proteção ao Consumidor",
+        id: "consumidor-cobrancas",
+        title: "Cobranças e Contratos",
+        icon: "ReceiptText",
         items: [
           "Cobranças indevidas e inscrições indevidas no SERASA/SPC",
           "Juros abusivos em contratos bancários",
+          "Revisional e busca e apreensão",
+          "Contratos de planos de saúde",
+          "Contrato educacional (liminar)",
+          "Multas decorrentes da venda de veículo",
+        ],
+      },
+      {
+        id: "consumidor-servicos",
+        title: "Produtos, Serviços e Viagens",
+        icon: "Package",
+        items: [
           "Entrega de produtos com vício ou defeito",
           "Produtos não entregues ou serviços não prestados",
           "Propaganda enganosa ou abusiva",
           "Problemas em compras pela internet",
           "Atraso em voo, overbooking e extravio de bagagens",
-          "Revisional e busca e apreensão",
-          "Contratos de planos de saúde",
-          "Contrato educacional (liminar)",
-          "Multas decorrentes da venda de veículo",
           "Acompanhamento em órgãos de proteção (Procon)",
         ],
       },

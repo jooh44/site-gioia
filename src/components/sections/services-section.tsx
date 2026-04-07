@@ -3,43 +3,100 @@
 import { useState, useCallback, useEffect } from "react"
 import * as AccordionPrimitive from "@radix-ui/react-accordion"
 import * as TabsPrimitive from "@radix-ui/react-tabs"
-import { Check, Plus, X } from "lucide-react"
+import {
+  Briefcase,
+  Building,
+  Building2,
+  Check,
+  FileText,
+  HandHeart,
+  HeartHandshake,
+  HeartPulse,
+  House,
+  Landmark,
+  Package,
+  Plus,
+  ReceiptText,
+  Scale,
+  ScrollText,
+  ShieldCheck,
+  Stethoscope,
+  type LucideIcon,
+  Users,
+  X,
+} from "lucide-react"
 import { serviceGroups, type ServiceGroup } from "@/config/services"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon"
 
 const MAX_VISIBLE_ITEMS = 6
+const serviceIconMap: Record<string, LucideIcon> = {
+  Briefcase,
+  Building,
+  Building2,
+  FileText,
+  HandHeart,
+  HeartHandshake,
+  HeartPulse,
+  House,
+  Landmark,
+  Package,
+  ReceiptText,
+  Scale,
+  ScrollText,
+  ShieldCheck,
+  Stethoscope,
+  Users,
+}
+
+function ServiceIcon({
+  icon,
+  className,
+}: {
+  icon: string
+  className?: string
+}) {
+  const Icon = serviceIconMap[icon]
+  if (!Icon) return null
+
+  return <Icon className={className} strokeWidth={1.8} />
+}
+
+function scrollToServices(offset = 96) {
+  const el = document.getElementById("services")
+  if (!el) return
+
+  const top = el.getBoundingClientRect().top + window.scrollY - offset
+  window.scrollTo({ top, behavior: "smooth" })
+}
+
+function scrollToGroup(groupId: string, offset = 96) {
+  const el = document.querySelector<HTMLElement>(`[data-service-group="${groupId}"]`)
+  if (!el) return
+
+  const top = el.getBoundingClientRect().top + window.scrollY - offset
+  window.scrollTo({ top, behavior: "smooth" })
+}
 
 /* ─── Shared: conteúdo das subáreas (tabs ou direto) ─── */
 
 function SubAreaContent({ group }: { group: ServiceGroup }) {
-  const hasTabs = group.children.length > 1
-
-  if (!hasTabs) {
-    // Subárea única — sem tabs
-    const child = group.children[0]
-    return (
-      <div>
-        <ItemList items={child.items} accent={group.accent} />
-      </div>
-    )
-  }
-
   return (
     <TabsPrimitive.Root defaultValue={group.children[0].id} className="w-full">
-      <TabsPrimitive.List className="flex border-b border-stone-200 mb-6 gap-0">
+      <TabsPrimitive.List className="flex flex-wrap border-b border-stone-200 mb-6 gap-0">
         {group.children.map((child) => (
           <TabsPrimitive.Trigger
             key={child.id}
             value={child.id}
             className={cn(
-              "px-4 py-2.5 text-xs font-bold uppercase tracking-[0.15em] transition-colors cursor-pointer",
+              "inline-flex items-center gap-2.5 px-4 py-2.5 text-xs font-bold uppercase tracking-[0.15em] transition-colors cursor-pointer",
               "text-stone-400 hover:text-stone-600",
               "border-b-2 border-transparent",
               "data-[state=active]:text-stone-900 data-[state=active]:border-primary"
             )}
           >
+            <ServiceIcon icon={child.icon} className="size-3.5 shrink-0" />
             {child.title}
           </TabsPrimitive.Trigger>
         ))}
@@ -55,7 +112,6 @@ function SubAreaContent({ group }: { group: ServiceGroup }) {
 
 function ItemList({ items, accent }: { items: string[]; accent: "primary" | "secondary" }) {
   const visible = items.slice(0, MAX_VISIBLE_ITEMS)
-  const hiddenCount = items.length - MAX_VISIBLE_ITEMS
 
   return (
     <div>
@@ -72,11 +128,6 @@ function ItemList({ items, accent }: { items: string[]; accent: "primary" | "sec
           </li>
         ))}
       </ul>
-      {hiddenCount > 0 && (
-        <p className="text-xs text-stone-400 mt-3 pl-6">
-          + {hiddenCount} {hiddenCount === 1 ? "serviço" : "serviços"}
-        </p>
-      )}
     </div>
   )
 }
@@ -107,9 +158,14 @@ function DesktopServices() {
 
   useEffect(() => {
     const syncFromHash = () => {
+      if (window.innerWidth < 1024) return
+
       const hash = window.location.hash.replace("#", "")
       if (serviceGroups.some((group) => group.id === hash)) {
         setActiveId(hash)
+        window.setTimeout(() => {
+          scrollToServices(92)
+        }, 0)
       }
     }
 
@@ -128,15 +184,14 @@ function DesktopServices() {
             {serviceGroups.map((group, index) => {
               const isActive = group.id === activeId
               const num = String(index + 1).padStart(2, "0")
-              const totalItems = group.children.reduce((sum, c) => sum + c.items.length, 0)
 
               return (
                 <button
                   key={group.id}
-                  id={group.id}
+                  data-service-group={group.id}
                   onClick={() => setActiveId(group.id)}
                   className={cn(
-                    "w-full scroll-mt-20 text-left px-8 py-5 border-b border-stone-200 transition-colors cursor-pointer",
+                    "w-full scroll-mt-28 text-left px-8 py-5 border-b border-stone-200 transition-colors cursor-pointer",
                     "grid grid-cols-[2rem_minmax(0,1fr)] items-center gap-x-3",
                     isActive
                       ? "bg-primary text-white"
@@ -149,26 +204,20 @@ function DesktopServices() {
                   )}>
                     {num}
                   </span>
-                  <div className="min-w-0">
+                  <div className="flex items-center gap-3 min-w-0">
                     <span className={cn(
-                      "text-[10px] font-bold uppercase tracking-[0.2em] px-2 py-0.5 border mr-3",
+                      "flex size-9 shrink-0 items-center justify-center border",
                       isActive
-                        ? "border-white/20 text-white/70"
-                        : "border-stone-200 text-stone-400"
+                        ? "border-white/20 text-white/75"
+                        : "border-stone-200 text-stone-500"
                     )}>
-                      {group.navLabel}
+                      <ServiceIcon icon={group.icon} className="size-[1.125rem]" />
                     </span>
                     <span className={cn(
-                      "font-serif text-base",
+                      "min-w-0 font-serif text-base",
                       isActive ? "text-white" : "text-stone-900"
                     )}>
                       {group.title}
-                    </span>
-                    <span className={cn(
-                      "block text-[11px] mt-1",
-                      isActive ? "text-white/50" : "text-stone-400"
-                    )}>
-                      {group.children.length} {group.children.length === 1 ? "subárea" : "subáreas"} · {totalItems} serviços
                     </span>
                   </div>
                 </button>
@@ -197,15 +246,39 @@ function DesktopServices() {
 /* ─── Mobile: accordion com tabs dentro ─── */
 
 function MobileServices() {
+  const [openId, setOpenId] = useState(serviceGroups[0].id)
+
   const handleValueChange = useCallback((value: string) => {
     if (!value) return
-    // Pequeno delay para a animação do accordion abrir
-    setTimeout(() => {
-      const el = document.getElementById(value)
-      if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "start" })
-      }
-    }, 150)
+
+    setOpenId(value)
+
+    if (window.innerWidth >= 1024) return
+
+    // Espera a animação do accordion abrir antes de alinhar a seção.
+    window.setTimeout(() => {
+      scrollToGroup(value, 88)
+    }, 180)
+  }, [])
+
+  useEffect(() => {
+    const syncFromHash = () => {
+      if (window.innerWidth >= 1024) return
+
+      const hash = window.location.hash.replace("#", "")
+      if (!serviceGroups.some((group) => group.id === hash)) return
+
+      setOpenId(hash)
+
+      window.setTimeout(() => {
+        scrollToGroup(hash, 88)
+      }, 220)
+    }
+
+    syncFromHash()
+    window.addEventListener("hashchange", syncFromHash)
+
+    return () => window.removeEventListener("hashchange", syncFromHash)
   }, [])
 
   return (
@@ -214,20 +287,19 @@ function MobileServices() {
         <AccordionPrimitive.Root
           type="single"
           collapsible
-          defaultValue="saude"
+          value={openId}
           className="w-full"
           onValueChange={handleValueChange}
         >
           {serviceGroups.map((group, index) => {
-            const totalItems = group.children.reduce((sum, c) => sum + c.items.length, 0)
             const num = String(index + 1).padStart(2, "0")
 
             return (
               <AccordionPrimitive.Item
                 key={group.id}
                 value={group.id}
-                id={group.id}
-                className="scroll-mt-20 border-b border-stone-200 group"
+                data-service-group={group.id}
+                className="scroll-mt-28 border-b border-stone-200 group"
               >
                 {/* Trigger */}
                 <AccordionPrimitive.Header className="flex">
@@ -243,19 +315,14 @@ function MobileServices() {
                     </span>
 
                     <span className={cn(
-                      "text-[10px] font-bold uppercase tracking-[0.15em] px-2.5 py-0.5 shrink-0",
-                      "border border-stone-200 text-stone-400",
-                      "group-[[data-state=open]]:border-white/20 group-[[data-state=open]]:text-white/70"
+                      "flex size-8 shrink-0 items-center justify-center border border-stone-200 text-stone-500",
+                      "group-[[data-state=open]]:border-white/20 group-[[data-state=open]]:text-white/75"
                     )}>
-                      {group.navLabel}
+                      <ServiceIcon icon={group.icon} className="size-4" />
                     </span>
 
                     <span className="font-serif text-base text-stone-900 group-[[data-state=open]]:text-white flex-1 min-w-0 truncate">
                       {group.title}
-                    </span>
-
-                    <span className="text-[11px] text-stone-400 group-[[data-state=open]]:text-white/60 shrink-0 hidden sm:block whitespace-nowrap">
-                      {totalItems} serv.
                     </span>
 
                     <span className="shrink-0 w-7 h-7 flex items-center justify-center border border-stone-200 group-[[data-state=open]]:border-white/20 transition-colors">
@@ -292,7 +359,7 @@ function MobileServices() {
 
 export function ServicesSection() {
   return (
-    <section id="services" className="w-full bg-white border-b border-stone-200">
+    <section id="services" data-nav-theme="light" className="w-full bg-white border-b border-stone-200">
 
       {/* Header */}
       <div className="border-b border-stone-200">
