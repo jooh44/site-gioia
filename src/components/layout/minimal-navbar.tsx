@@ -19,7 +19,15 @@ export function MinimalNavbar() {
         event.preventDefault()
 
         window.history.replaceState(null, "", `#${groupId}`)
-        window.dispatchEvent(new HashChangeEvent("hashchange"))
+
+        // Custom event para a ServicesSection reagir com certeza
+        window.dispatchEvent(new CustomEvent("navigate-service", { detail: groupId }))
+
+        // Scroll para a seção de serviços
+        const servicesSection = document.getElementById("services")
+        if (servicesSection) {
+            servicesSection.scrollIntoView({ behavior: "smooth", block: "start" })
+        }
     }
 
     const handleAnchorNavigation = (event: MouseEvent<HTMLAnchorElement>) => {

@@ -159,16 +159,25 @@ function DesktopServices() {
       const hash = window.location.hash.replace("#", "")
       if (serviceGroups.some((group) => group.id === hash)) {
         setActiveId(hash)
-        window.setTimeout(() => {
-          scrollToServices()
-        }, 0)
+      }
+    }
+
+    const handleNavigateService = (e: Event) => {
+      if (window.innerWidth < 1024) return
+      const groupId = (e as CustomEvent).detail
+      if (serviceGroups.some((group) => group.id === groupId)) {
+        setActiveId(groupId)
       }
     }
 
     syncFromHash()
     window.addEventListener("hashchange", syncFromHash)
+    window.addEventListener("navigate-service", handleNavigateService)
 
-    return () => window.removeEventListener("hashchange", syncFromHash)
+    return () => {
+      window.removeEventListener("hashchange", syncFromHash)
+      window.removeEventListener("navigate-service", handleNavigateService)
+    }
   }, [])
 
   return (
@@ -271,10 +280,26 @@ function MobileServices() {
       }, 220)
     }
 
+    const handleNavigateService = (e: Event) => {
+      if (window.innerWidth >= 1024) return
+      const groupId = (e as CustomEvent).detail
+      if (!serviceGroups.some((group) => group.id === groupId)) return
+
+      setOpenId(groupId)
+
+      window.setTimeout(() => {
+        scrollToGroup(groupId)
+      }, 220)
+    }
+
     syncFromHash()
     window.addEventListener("hashchange", syncFromHash)
+    window.addEventListener("navigate-service", handleNavigateService)
 
-    return () => window.removeEventListener("hashchange", syncFromHash)
+    return () => {
+      window.removeEventListener("hashchange", syncFromHash)
+      window.removeEventListener("navigate-service", handleNavigateService)
+    }
   }, [])
 
   return (

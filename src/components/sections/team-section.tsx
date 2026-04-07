@@ -27,7 +27,7 @@ const teamMembers: TeamMember[] = [
         bio: "Fundador da Gioia e Associados em 1992, o Dr. Celso Fernando Gioia é graduado pela Universidade de São Paulo (USP), com sólida especialização em Responsabilidade Civil, Contratos, Direito Empresarial e Trabalhista. Atuou como Diretor Jurídico da RedeTV! e como Presidente da OAB/SP – 96ª Subseção (Lapa) entre 2012 e 2017.",
         specializations: ["Responsabilidade Civil e Contratos", "Direito Empresarial e Trabalhista", "Liderança Institucional OAB/SP"],
         image: "/team/celso-gioia.webp",
-        imageClassName: "scale-[1.05] -translate-x-2"
+        imageClassName: ""
     },
     {
         id: "mariana",

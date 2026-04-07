@@ -49,7 +49,7 @@ import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
       class="hero-copy w-full lg:w-1/2 xl:w-[55%] flex flex-col items-center text-center lg:items-start lg:text-left gap-4 md:gap-6 pt-20 md:pt-24 lg:pt-0 lg:justify-center lg:self-center lg:pb-8 z-20"
     >
       <!-- Official Logo -->
-      <div class="hero-logo w-28 md:w-32 lg:w-36 xl:w-40 mb-1 lg:mb-2">
+      <div class="hero-logo w-28 md:w-32 lg:w-32 xl:w-40 mb-1 lg:mb-1">
         <img
           src="/logo-gioia.svg"
           alt="Gioia e Associados"
@@ -63,7 +63,7 @@ import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 
       <!-- Main Headline (max 3 lines) -->
       <h1
-        class="hero-title font-serif text-[2rem] sm:text-4xl md:text-5xl lg:text-[2.85rem] xl:text-[3.75rem] 2xl:text-[4.65rem] leading-[1.05] tracking-tight text-white drop-shadow-sm w-full"
+        class="hero-title font-serif text-[2rem] sm:text-4xl md:text-5xl lg:text-[clamp(2rem,3.6vw,3.75rem)] 2xl:text-[4.65rem] leading-[1.05] tracking-tight text-white drop-shadow-sm w-full"
       >
         <span class="block">Três décadas</span>
         <span class="block">de história na defesa</span>
@@ -72,7 +72,7 @@ import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 
       <!-- Subtitle -->
       <p
-        class="hero-subtitle font-sans text-sm md:text-base lg:text-lg text-stone-300 font-light leading-relaxed max-w-xl"
+        class="hero-subtitle font-sans text-sm md:text-base lg:text-base xl:text-lg text-stone-300 font-light leading-relaxed max-w-xl"
       >
         {homeConfig.hero.subtitle}
       </p>
@@ -101,7 +101,7 @@ import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 
     <!-- Right Column: Hero Image -->
     <div
-      class="hero-art w-full lg:w-1/2 xl:w-[45%] flex justify-center items-end z-10 pointer-events-none relative h-[55vh] sm:h-[60vh] md:h-[65vh] lg:h-[82vh] -mt-4 md:-mt-8 lg:mt-0 lg:shrink-0"
+      class="hero-art w-full lg:w-1/2 xl:w-[45%] flex justify-center items-end z-10 pointer-events-none relative h-[55vh] sm:h-[60vh] md:h-[65vh] lg:h-[80vh] -mt-4 md:-mt-8 lg:mt-0 lg:shrink-0"
     >
       <div
         class="hero-figure relative w-full max-w-[420px] sm:max-w-[480px] md:max-w-[540px] lg:max-w-[480px] xl:max-w-[580px] 2xl:max-w-[660px] h-full"
@@ -129,3 +129,74 @@ import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
     </div>
   </div>
 </section>
+
+<style is:inline>
+  /* Notebooks com tela curta (ex: 1366x768, 1440x900) */
+  @media (min-width: 1024px) and (max-height: 820px) {
+    .hero-section {
+      min-height: 100svh;
+    }
+
+    .hero-shell {
+      padding-top: 0;
+    }
+
+    .hero-copy {
+      gap: 0.75rem;
+    }
+
+    .hero-logo {
+      width: 6.5rem;
+      margin-bottom: 0;
+    }
+
+    .hero-title {
+      font-size: clamp(1.75rem, 3.2vw, 2.6rem);
+    }
+
+    .hero-subtitle {
+      font-size: 0.875rem;
+      max-width: 28rem;
+    }
+
+    .hero-actions {
+      padding-top: 0.25rem;
+    }
+
+    .hero-actions a {
+      height: 2.5rem;
+      font-size: 0.65rem;
+    }
+
+    .hero-art {
+      height: 72vh;
+    }
+
+    .hero-figure {
+      max-width: 26rem;
+    }
+  }
+
+  /* Telas muito curtas (ex: 1366x600, 1280x720 com zoom) */
+  @media (min-width: 1024px) and (max-height: 680px) {
+    .hero-copy {
+      gap: 0.5rem;
+    }
+
+    .hero-logo {
+      width: 5.5rem;
+    }
+
+    .hero-title {
+      font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+    }
+
+    .hero-art {
+      height: 65vh;
+    }
+
+    .hero-figure {
+      max-width: 22rem;
+    }
+  }
+</style>
