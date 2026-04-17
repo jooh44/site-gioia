@@ -2,6 +2,7 @@
 
 import type { MouseEvent } from "react"
 import { Button } from "@/components/ui/button"
+import { GioiaLockup } from "@/components/ui/gioia-lockup"
 import { WhatsAppIcon } from "@/components/ui/whatsapp-icon"
 import { siteConfig } from "@/config/site"
 import { serviceGroups } from "@/config/services"
@@ -72,28 +73,27 @@ export function MinimalNavbar() {
     return (
         <header
             ref={headerRef}
-            className={`fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 py-4 md:px-12 md:py-3 transition-all duration-300 ${isScrolled
+            className={`fixed top-0 left-0 right-0 z-[100] flex items-center justify-between gap-4 px-4 py-3 md:px-8 md:py-3 transition-all duration-300 ${isScrolled
                 ? "bg-transparent"
                 : "bg-transparent border-transparent"
                 }`}
         >
             {/* Logo */}
-            <div className="flex items-center gap-12">
-                <div className={`${isScrolled ? "block" : "hidden md:block"} pointer-events-auto hover:scale-105 transition-transform`}>
-                    <a href="/" className="block">
-                        <img
-                            src="/simbolo-gioia.svg"
-                            alt="Gioia e Associados - Início"
-                            width={48}
-                            height={48}
-                            className="w-10 h-10 md:w-12 md:h-12 drop-shadow-md"
-                        />
+            <div className="flex min-w-0 items-center">
+                <div className="pointer-events-auto">
+                    <a href="/" className="group inline-flex items-center">
+                        <span className="hidden md:inline-flex">
+                            <GioiaLockup theme={navTheme} />
+                        </span>
+                        <span className="md:hidden inline-flex">
+                            <GioiaLockup theme={navTheme} compact />
+                        </span>
                     </a>
                 </div>
             </div>
 
             {/* Right Side */}
-            <div className="flex items-center gap-8 pointer-events-auto">
+            <div className="flex items-center gap-4 md:gap-8 pointer-events-auto">
 
                 {/* Desktop Nav */}
                 <nav className="hidden md:flex items-center gap-6">
@@ -179,16 +179,10 @@ export function MinimalNavbar() {
                         <SheetTitle className="sr-only">Menu de Navegação</SheetTitle>
 
                         {/* Mobile Header */}
-                        <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
+                        <div className="flex items-center justify-between gap-4 px-6 py-4 border-b border-white/10">
                             <SheetClose asChild>
-                                <a href="/">
-                                    <img
-                                        src="/simbolo-gioia.svg"
-                                        alt="Gioia"
-                                        width={48}
-                                        height={48}
-                                        className="w-10 h-10 drop-shadow-md"
-                                    />
+                                <a href="/" className="group inline-flex min-w-0 items-center">
+                                    <GioiaLockup compact className="max-w-full" />
                                 </a>
                             </SheetClose>
                             <SheetClose asChild>

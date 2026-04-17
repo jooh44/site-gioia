@@ -1,5 +1,5 @@
 export const siteConfig = {
-    name: "Gioia e Associados Advocacia",
+    name: "Gioia e Associados Advogados",
     description: "Escritório com 34 anos de excelência em Direito Médico e Trabalhista em São Paulo. Liminares em 24h, defesa do trabalhador e atendimento humanizado. Lapa/SP.",
     url: "https://gioiaeassociados.com.br", // TODO: confirmar domínio final
     ogImage: "https://gioiaeassociados.com.br/brand/assets/logo-gioia-e-associados.png", // Placeholder temporário até criar uma OG dedicada
