@@ -81,7 +81,7 @@ export function MinimalNavbar() {
             {/* Logo */}
             <div className="flex min-w-0 items-center">
                 <div className="pointer-events-auto">
-                    <a href="/" className="group inline-flex items-center max-w-[10.75rem] sm:max-w-none">
+                    <a href="/" className="group inline-flex items-center max-w-[12rem] sm:max-w-none">
                         <span className="hidden md:inline-flex">
                             <GioiaLockup theme={navTheme} />
                         </span>
