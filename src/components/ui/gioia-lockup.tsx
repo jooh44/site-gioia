@@ -32,7 +32,7 @@ export function GioiaLockup({
         height={714}
         className={cn(
           "w-auto shrink-0 drop-shadow-sm",
-          compact ? "h-9 sm:h-10" : "h-10 md:h-12",
+          compact ? "h-9 sm:h-10" : "h-11 md:h-13 xl:h-14",
         )}
       />
 
@@ -40,7 +40,7 @@ export function GioiaLockup({
         <span
           className={cn(
             "uppercase tracking-[0.22em]",
-            compact ? "text-[1.06rem] sm:text-[1.22rem] tracking-[0.18em] sm:tracking-[0.22em]" : "text-[1.28rem] md:text-[1.55rem]",
+            compact ? "text-[1.06rem] sm:text-[1.22rem] tracking-[0.18em] sm:tracking-[0.22em]" : "text-[1.36rem] md:text-[1.68rem] xl:text-[1.8rem]",
             titleColor,
           )}
           style={{ fontFamily: '"Cinzel", serif', fontWeight: 500 }}
@@ -50,7 +50,7 @@ export function GioiaLockup({
         <span
           className={cn(
             "mt-1 whitespace-nowrap uppercase font-semibold tracking-[0.34em]",
-            compact ? "mt-0.5 text-[0.36rem] sm:text-[0.45rem] tracking-[0.3em] sm:tracking-[0.34em]" : "text-[0.43rem] md:text-[0.5rem]",
+            compact ? "mt-0.5 text-[0.36rem] sm:text-[0.45rem] tracking-[0.3em] sm:tracking-[0.34em]" : "text-[0.46rem] md:text-[0.54rem] xl:text-[0.58rem]",
             subtitleColor,
           )}
         >
