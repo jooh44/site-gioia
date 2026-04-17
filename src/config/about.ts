@@ -8,12 +8,12 @@ export const aboutConfig = {
   mission: {
     title: "Missão",
     description:
-      "Transformar desafios jurídicos em soluções éticas, claras e humanizadas, oferecendo segurança ao cliente e fortalecendo os talentos que constroem o escritório.",
+      "Transformar desafios jurídicos em soluções seguras, éticas e bem conduzidas, oferecendo clareza ao cliente e atuação estratégica em cada etapa do caso.",
   },
   vision: {
     title: "Visão",
     description:
-      "Ser reconhecido pela excelência e agilidade na entrega de soluções jurídicas completas, expandindo parcerias e projetos que gerem valor real.",
+      "Consolidar a Gioia e Associados como referência em advocacia técnica, humana e confiável, com presença forte em casos complexos e relações duradouras.",
   },
   values: [
     {
