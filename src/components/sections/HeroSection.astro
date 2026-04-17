@@ -42,6 +42,10 @@ import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
     <div
       class="hero-copy w-full lg:w-[49%] xl:w-[52%] flex flex-col items-center text-center lg:items-start lg:text-left gap-4 sm:gap-4 md:gap-5 lg:gap-5 xl:gap-6 lg:justify-center lg:self-center pb-2 md:pb-6 lg:pb-8 xl:pb-10 z-20"
     >
+      <p class="font-sans text-[0.72rem] sm:text-[0.78rem] md:text-[0.82rem] uppercase tracking-[0.26em] text-secondary/88 font-semibold">
+        Advogado Direito Médico e Trabalhista em São Paulo
+      </p>
+
       <!-- Main Headline (max 3 lines) -->
       <h1
         class="hero-title font-serif text-[2.24rem] sm:text-[2.72rem] md:text-[3.22rem] lg:text-[clamp(3rem,4vw,4rem)] xl:text-[clamp(3.32rem,4.35vw,4.58rem)] 2xl:text-[4.78rem] leading-[0.94] sm:leading-[0.94] lg:leading-[0.9] tracking-tight text-white drop-shadow-sm w-full max-w-none sm:max-w-[12.5ch] lg:max-w-[10.8ch] xl:max-w-[11.4ch]"
@@ -82,7 +86,7 @@ import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 
     <!-- Right Column: Hero Image -->
     <div
-      class="hero-art w-full lg:w-[53%] xl:w-[48%] flex justify-center lg:justify-end items-end z-10 pointer-events-none relative overflow-hidden h-[45vh] sm:h-[50vh] md:h-[54vh] lg:h-[76vh] xl:h-[88vh] mt-8 sm:mt-4 md:mt-6 lg:mt-0 lg:shrink-0"
+      class="hero-art w-full lg:w-[53%] xl:w-[48%] flex justify-center lg:justify-end items-end z-10 pointer-events-none relative overflow-visible md:overflow-hidden h-[45vh] sm:h-[50vh] md:h-[54vh] lg:h-[76vh] xl:h-[88vh] mt-8 sm:mt-4 md:mt-6 lg:mt-0 lg:shrink-0"
     >
       <div
         aria-hidden="true"
@@ -97,11 +101,11 @@ import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
         />
       </div>
       <div
-        class="hero-figure relative z-[2] w-full max-w-[430px] sm:max-w-[470px] md:max-w-[520px] lg:max-w-[520px] xl:max-w-[660px] 2xl:max-w-[760px] h-full lg:translate-x-3 xl:translate-x-4"
+        class="hero-figure relative isolate overflow-visible z-[2] w-full max-w-[430px] sm:max-w-[470px] md:max-w-[520px] lg:max-w-[520px] xl:max-w-[660px] 2xl:max-w-[760px] h-full lg:translate-x-3 xl:translate-x-4"
       >
         <div
           aria-hidden="true"
-          class="absolute md:hidden inset-x-0 top-[5%] h-[92%] pointer-events-none z-[1]"
+          class="absolute md:hidden inset-x-0 top-[5%] h-[92%] pointer-events-none z-0"
         >
           <img
             src="/simbolo-gioia.svg"
@@ -118,12 +122,12 @@ import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
         </div>
         <div
           aria-hidden="true"
-          class="absolute inset-x-[16%] bottom-[4%] h-[14%] bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.22)_0%,rgba(0,0,0,0.12)_42%,transparent_78%)] blur-xl"
+          class="absolute inset-x-[16%] bottom-[4%] h-[14%] bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.22)_0%,rgba(0,0,0,0.12)_42%,transparent_78%)] blur-xl z-[1]"
         >
         </div>
         <div
           aria-hidden="true"
-          class="absolute inset-x-[10%] top-[10%] h-[78%] bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.07)_24%,rgba(255,255,255,0.02)_42%,transparent_68%)] blur-3xl z-[2]"
+          class="absolute inset-x-[10%] top-[10%] h-[78%] bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.07)_24%,rgba(255,255,255,0.02)_42%,transparent_68%)] blur-3xl z-[1]"
         >
         </div>
         <img
@@ -131,7 +135,7 @@ import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
           alt="Pai e filha sorrindo, representando a proteção da família e dignidade"
           width="800"
           height="1000"
-          class="hero-portrait relative z-10 w-full h-full object-contain object-bottom scale-[1.08] sm:scale-[1.04] md:scale-100 lg:scale-[0.97] xl:scale-100 drop-shadow-[0_12px_18px_rgba(0,0,0,0.18)]"
+          class="hero-portrait relative z-[3] w-full h-full object-contain object-bottom scale-[1.08] sm:scale-[1.04] md:scale-100 lg:scale-[0.97] xl:scale-100 drop-shadow-[0_12px_18px_rgba(0,0,0,0.18)]"
           loading="eager"
           fetchpriority="high"
         />
