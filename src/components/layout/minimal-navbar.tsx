@@ -73,7 +73,7 @@ export function MinimalNavbar() {
     return (
         <header
             ref={headerRef}
-            className={`fixed top-0 left-0 right-0 z-[100] flex items-center justify-between gap-4 px-4 py-3 md:px-8 md:py-3 transition-all duration-300 ${isScrolled
+            className={`fixed top-0 left-0 right-0 z-[100] flex items-center justify-between gap-3 px-3 py-2.5 md:gap-4 md:px-8 md:py-3 transition-all duration-300 ${isScrolled
                 ? "bg-transparent"
                 : "bg-transparent border-transparent"
                 }`}
@@ -81,7 +81,7 @@ export function MinimalNavbar() {
             {/* Logo */}
             <div className="flex min-w-0 items-center">
                 <div className="pointer-events-auto">
-                    <a href="/" className="group inline-flex items-center">
+                    <a href="/" className="group inline-flex items-center max-w-[10.75rem] sm:max-w-none">
                         <span className="hidden md:inline-flex">
                             <GioiaLockup theme={navTheme} />
                         </span>
@@ -93,7 +93,7 @@ export function MinimalNavbar() {
             </div>
 
             {/* Right Side */}
-            <div className="flex items-center gap-4 md:gap-8 pointer-events-auto">
+            <div className="flex items-center gap-2.5 md:gap-8 pointer-events-auto">
 
                 {/* Desktop Nav */}
                 <nav className="hidden md:flex items-center gap-6">
@@ -165,7 +165,7 @@ export function MinimalNavbar() {
                     <SheetTrigger asChild>
                         <button
                             className={cn(
-                                "md:hidden w-12 h-12 flex items-center justify-center transition-all rounded-none outline-none border-none",
+                                "md:hidden w-10 h-10 flex items-center justify-center transition-all rounded-none outline-none border-none",
                                 navTheme === "light"
                                     ? "text-primary hover:bg-primary/5"
                                     : "text-secondary hover:bg-white/10"

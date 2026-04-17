@@ -16,7 +16,7 @@ import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 
   <!-- Background Decorative SVG Watermark -->
   <div
-    class="absolute top-[40%] lg:top-[50%] right-[-10%] lg:right-[-5%] -translate-y-[45%] lg:-translate-y-1/2 w-[120%] md:w-[80%] lg:w-[60%] xl:w-[50%] h-auto opacity-[0.10] lg:opacity-[0.15] pointer-events-none brightness-0 z-0"
+    class="hidden md:block absolute top-[40%] lg:top-[50%] right-[-10%] lg:right-[-5%] -translate-y-[45%] lg:-translate-y-1/2 w-[80%] lg:w-[60%] xl:w-[50%] h-auto opacity-[0.08] lg:opacity-[0.15] pointer-events-none brightness-0 z-0"
   >
     <img
       src="/simbolo-gioia.svg"
@@ -29,7 +29,7 @@ import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 
   <!-- Background Graphics (Discrete Symbol Texture) -->
   <div
-    class="absolute -left-[10%] lg:-left-[5%] top-[50%] lg:top-[80%] -translate-y-1/2 opacity-[0.10] lg:opacity-[0.15] pointer-events-none brightness-0 z-0"
+    class="hidden md:block absolute -left-[10%] lg:-left-[5%] top-[50%] lg:top-[80%] -translate-y-1/2 opacity-[0.10] lg:opacity-[0.15] pointer-events-none brightness-0 z-0"
   >
     <img
       src="/simbolo-gioia.svg"
@@ -40,17 +40,24 @@ import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
     />
   </div>
 
+  <!-- Mobile Background Cleanup -->
+  <div
+    aria-hidden="true"
+    class="absolute inset-x-0 bottom-0 h-[44%] md:hidden bg-[radial-gradient(ellipse_at_bottom,rgba(209,175,102,0.14)_0%,rgba(209,175,102,0.04)_28%,transparent_72%)] pointer-events-none z-0"
+  >
+  </div>
+
   <!-- Content Wrapper -->
   <div
-    class="hero-shell relative z-10 w-full container mx-auto flex flex-col lg:flex-row items-center lg:items-end px-5 md:px-10 lg:px-20 xl:px-24 flex-1 pt-24 md:pt-28 lg:pt-32"
+    class="hero-shell relative z-10 w-full container mx-auto flex flex-col lg:flex-row items-center lg:items-end px-4 sm:px-5 md:px-10 lg:px-20 xl:px-24 flex-1 pt-20 sm:pt-22 md:pt-28 lg:pt-32"
   >
     <!-- Left Column: Text Content -->
     <div
-      class="hero-copy w-full lg:w-[50%] xl:w-[52%] flex flex-col items-center text-center lg:items-start lg:text-left gap-4 md:gap-5 lg:gap-6 lg:justify-center lg:self-center pb-4 md:pb-6 lg:pb-10 z-20"
+      class="hero-copy w-full lg:w-[50%] xl:w-[52%] flex flex-col items-center text-center lg:items-start lg:text-left gap-3 sm:gap-4 md:gap-5 lg:gap-6 lg:justify-center lg:self-center pb-0 md:pb-6 lg:pb-10 z-20"
     >
       <!-- Main Headline (max 3 lines) -->
       <h1
-        class="hero-title font-serif text-[2.15rem] sm:text-[2.8rem] md:text-[3.35rem] lg:text-[clamp(2.8rem,3.5vw,4rem)] 2xl:text-[4.35rem] leading-[0.98] tracking-tight text-white drop-shadow-sm w-full max-w-[14ch] lg:max-w-[13ch]"
+        class="hero-title font-serif text-[2.65rem] sm:text-[3rem] md:text-[3.35rem] lg:text-[clamp(2.8rem,3.5vw,4rem)] 2xl:text-[4.35rem] leading-[0.94] sm:leading-[0.96] tracking-tight text-white drop-shadow-sm w-full max-w-[11ch] sm:max-w-[12ch] lg:max-w-[13ch]"
       >
         <span class="block">Três décadas</span>
         <span class="block">de história na defesa</span>
@@ -59,18 +66,18 @@ import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 
       <!-- Subtitle -->
       <p
-        class="hero-subtitle font-sans text-sm md:text-base lg:text-[1.05rem] xl:text-lg text-stone-300 font-light leading-relaxed max-w-xl lg:max-w-[38rem]"
+        class="hero-subtitle font-sans text-[1.02rem] sm:text-[1.08rem] md:text-base lg:text-[1.05rem] xl:text-lg text-stone-200 font-light leading-[1.65] max-w-[22rem] sm:max-w-[30rem] lg:max-w-[38rem]"
       >
         {homeConfig.hero.subtitle}
       </p>
 
       <!-- CTAs -->
-      <div class="hero-actions flex flex-col sm:flex-row gap-3 pt-1 w-full sm:w-auto">
+      <div class="hero-actions flex flex-col sm:flex-row gap-2.5 sm:gap-3 pt-2 w-full sm:w-auto">
         <a
           href={siteConfig.links.whatsapp}
           target="_blank"
           rel="noreferrer"
-          class="inline-flex items-center justify-center gap-2 bg-secondary text-secondary-foreground hover:bg-[#e1c483] hover:text-primary hover:shadow-[0_0_34px_rgba(209,175,102,0.28)] transition-all duration-300 h-12 sm:h-11 w-full sm:w-auto sm:px-8 text-xs uppercase tracking-[0.2em] font-bold rounded-none shadow-lg"
+          class="inline-flex items-center justify-center gap-2 bg-secondary text-secondary-foreground hover:bg-[#e1c483] hover:text-primary hover:shadow-[0_0_34px_rgba(209,175,102,0.28)] transition-all duration-300 h-13 sm:h-11 w-full sm:w-auto sm:px-8 text-[0.82rem] sm:text-xs uppercase tracking-[0.18em] sm:tracking-[0.2em] font-bold rounded-none shadow-lg"
         >
           {homeConfig.hero.cta}
           <svg viewBox="0 0 24 24" aria-hidden="true" class="size-[1.05rem] opacity-80" fill="currentColor">
@@ -79,7 +86,7 @@ import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
         </a>
         <a
           href="#services"
-          class="inline-flex items-center justify-center text-white hover:bg-secondary/15 hover:text-secondary h-12 sm:h-11 w-full sm:w-auto sm:px-8 text-xs uppercase tracking-[0.2em] font-bold rounded-none border border-white/30 hover:border-secondary/70 transition-all"
+          class="inline-flex items-center justify-center text-white hover:bg-secondary/15 hover:text-secondary h-13 sm:h-11 w-full sm:w-auto sm:px-8 text-[0.82rem] sm:text-xs uppercase tracking-[0.18em] sm:tracking-[0.2em] font-bold rounded-none border border-white/30 hover:border-secondary/70 transition-all"
         >
           Ver Serviços
         </a>
@@ -88,10 +95,10 @@ import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 
     <!-- Right Column: Hero Image -->
     <div
-      class="hero-art w-full lg:w-[50%] xl:w-[48%] flex justify-center items-end z-10 pointer-events-none relative h-[39vh] sm:h-[46vh] md:h-[54vh] lg:h-[84vh] xl:h-[88vh] mt-2 sm:mt-4 md:mt-6 lg:mt-0 lg:shrink-0"
+      class="hero-art w-full lg:w-[50%] xl:w-[48%] flex justify-center items-end z-10 pointer-events-none relative h-[45vh] sm:h-[50vh] md:h-[54vh] lg:h-[84vh] xl:h-[88vh] mt-1 sm:mt-3 md:mt-6 lg:mt-0 lg:shrink-0"
     >
       <div
-        class="hero-figure relative w-full max-w-[330px] sm:max-w-[430px] md:max-w-[520px] lg:max-w-[580px] xl:max-w-[660px] 2xl:max-w-[760px] h-full"
+        class="hero-figure relative w-full max-w-[380px] sm:max-w-[470px] md:max-w-[520px] lg:max-w-[580px] xl:max-w-[660px] 2xl:max-w-[760px] h-full"
       >
         <div
           aria-hidden="true"
@@ -108,7 +115,7 @@ import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
           alt="Pai e filha sorrindo, representando a proteção da família e dignidade"
           width="800"
           height="1000"
-          class="hero-portrait relative z-10 w-full h-full object-contain object-bottom drop-shadow-[0_12px_18px_rgba(0,0,0,0.18)]"
+          class="hero-portrait relative z-10 w-full h-full object-contain object-bottom scale-[1.15] sm:scale-[1.04] md:scale-100 drop-shadow-[0_12px_18px_rgba(0,0,0,0.18)]"
           loading="eager"
           fetchpriority="high"
         />
