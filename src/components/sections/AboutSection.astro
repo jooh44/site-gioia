@@ -64,10 +64,10 @@ import { aboutConfig } from "@/config/about";
         </div>
 
         <div
-          class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-secondary/12 border border-secondary/18"
+          class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5"
         >
           <div
-            class="bg-primary/55 px-6 py-5 md:px-6 md:py-6 flex flex-col items-start gap-4 border-b sm:border-b-0 border-secondary/12"
+            class="bg-primary/55 border border-secondary/16 px-6 py-6 md:px-7 md:py-7 flex flex-col items-start gap-4"
           >
             <!-- Scale icon -->
             <svg
@@ -95,13 +95,13 @@ import { aboutConfig } from "@/config/about";
                 class="text-[11px] font-bold uppercase tracking-[0.22em] text-secondary/85"
                 >{aboutConfig.mission.title}</span
               >
-              <p class="text-sm md:text-[0.95rem] text-stone-300 leading-relaxed mt-1.5 max-w-[24ch]">
+              <p class="text-sm md:text-[0.98rem] text-stone-300 leading-relaxed mt-2 max-w-[31ch]">
                 {aboutConfig.mission.description}
               </p>
             </div>
           </div>
           <div
-            class="bg-primary/55 px-6 py-5 md:px-6 md:py-6 flex flex-col items-start gap-4 border-b sm:border-b-0 border-secondary/12"
+            class="bg-primary/55 border border-secondary/16 px-6 py-6 md:px-7 md:py-7 flex flex-col items-start gap-4"
           >
             <!-- Telescope icon -->
             <svg
@@ -128,12 +128,12 @@ import { aboutConfig } from "@/config/about";
                 class="text-[11px] font-bold uppercase tracking-[0.22em] text-secondary/85"
                 >{aboutConfig.vision.title}</span
               >
-              <p class="text-sm md:text-[0.95rem] text-stone-300 leading-relaxed mt-1.5 max-w-[24ch]">
+              <p class="text-sm md:text-[0.98rem] text-stone-300 leading-relaxed mt-2 max-w-[31ch]">
                 {aboutConfig.vision.description}
               </p>
             </div>
           </div>
-          <div class="bg-primary/55 px-6 py-5 md:px-6 md:py-6 flex flex-col items-start gap-4">
+          <div class="bg-primary/55 border border-secondary/16 px-6 py-6 md:px-7 md:py-7 flex flex-col items-start gap-4 md:col-span-2">
             <!-- Gem icon -->
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -156,14 +156,19 @@ import { aboutConfig } from "@/config/about";
                 class="text-[11px] font-bold uppercase tracking-[0.22em] text-secondary/85"
                 >Valores</span
               >
-              <p class="text-sm md:text-[0.95rem] text-stone-300 leading-relaxed mt-1.5 max-w-[24ch]">
-                Ética, resultado, atendimento humano e disciplina operacional em cada entrega.
+              <p class="text-sm md:text-[0.98rem] text-stone-300 leading-relaxed mt-2 max-w-[46rem]">
+                Nossa cultura é construída sobre ética, consistência técnica, respeito ao cliente e disciplina operacional. Esses princípios sustentam a forma como estudamos cada caso, orientamos cada decisão e entregamos cada resultado.
               </p>
-              <div class="flex flex-wrap gap-2 mt-3">
-                {aboutConfig.values.slice(0, 4).map((value) => (
-                  <span class="border border-secondary/20 bg-white/4 px-2.5 py-1 text-[10px] uppercase tracking-[0.18em] text-secondary/90">
-                    {value.title}
-                  </span>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4 w-full">
+                {aboutConfig.values.map((value) => (
+                  <div class="border border-secondary/14 bg-white/[0.03] px-4 py-3">
+                    <p class="text-[10px] uppercase tracking-[0.18em] text-secondary/90 font-semibold">
+                      {value.title}
+                    </p>
+                    <p class="text-sm text-stone-300 leading-relaxed mt-2">
+                      {value.description}
+                    </p>
+                  </div>
                 ))}
               </div>
             </div>
