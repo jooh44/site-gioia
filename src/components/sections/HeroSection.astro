@@ -40,11 +40,11 @@ import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
   >
     <!-- Left Column: Text Content -->
     <div
-      class="hero-copy w-full lg:w-[49%] xl:w-[52%] flex flex-col items-center text-center lg:items-start lg:text-left gap-3 sm:gap-4 md:gap-5 lg:gap-5 xl:gap-6 lg:justify-center lg:self-center pb-0 md:pb-6 lg:pb-8 xl:pb-10 z-20"
+      class="hero-copy w-full lg:w-[49%] xl:w-[52%] flex flex-col items-center text-center lg:items-start lg:text-left gap-4 sm:gap-4 md:gap-5 lg:gap-5 xl:gap-6 lg:justify-center lg:self-center pb-2 md:pb-6 lg:pb-8 xl:pb-10 z-20"
     >
       <!-- Main Headline (max 3 lines) -->
       <h1
-        class="hero-title font-serif text-[2.42rem] sm:text-[2.72rem] md:text-[3.22rem] lg:text-[clamp(3rem,4vw,4rem)] xl:text-[clamp(3.32rem,4.35vw,4.58rem)] 2xl:text-[4.78rem] leading-[0.92] sm:leading-[0.94] lg:leading-[0.9] tracking-tight text-white drop-shadow-sm w-full max-w-[11.2ch] sm:max-w-[12.5ch] lg:max-w-[10.8ch] xl:max-w-[11.4ch]"
+        class="hero-title font-serif text-[2.24rem] sm:text-[2.72rem] md:text-[3.22rem] lg:text-[clamp(3rem,4vw,4rem)] xl:text-[clamp(3.32rem,4.35vw,4.58rem)] 2xl:text-[4.78rem] leading-[0.94] sm:leading-[0.94] lg:leading-[0.9] tracking-tight text-white drop-shadow-sm w-full max-w-none sm:max-w-[12.5ch] lg:max-w-[10.8ch] xl:max-w-[11.4ch]"
       >
         <span class="block">Três décadas</span>
         <span class="block lg:whitespace-nowrap">de história na defesa</span>
@@ -82,8 +82,20 @@ import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 
     <!-- Right Column: Hero Image -->
     <div
-      class="hero-art w-full lg:w-[53%] xl:w-[48%] flex justify-center lg:justify-end items-end z-10 pointer-events-none relative overflow-hidden h-[45vh] sm:h-[50vh] md:h-[54vh] lg:h-[76vh] xl:h-[88vh] mt-6 sm:mt-4 md:mt-6 lg:mt-0 lg:shrink-0"
+      class="hero-art w-full lg:w-[53%] xl:w-[48%] flex justify-center lg:justify-end items-end z-10 pointer-events-none relative overflow-hidden h-[45vh] sm:h-[50vh] md:h-[54vh] lg:h-[76vh] xl:h-[88vh] mt-8 sm:mt-4 md:mt-6 lg:mt-0 lg:shrink-0"
     >
+      <div
+        aria-hidden="true"
+        class="absolute md:hidden right-[-12%] bottom-[4%] w-[78%] opacity-[0.2] pointer-events-none z-0"
+      >
+        <img
+          src="/simbolo-gioia.svg"
+          alt=""
+          width="1200"
+          height="1200"
+          class="w-full h-full object-contain"
+        />
+      </div>
       <div
         aria-hidden="true"
         class="hidden md:block absolute right-[-4%] lg:right-[0%] xl:right-[2%] top-[49%] -translate-y-1/2 w-[78%] lg:w-[92%] xl:w-[88%] h-auto pointer-events-none z-0"
