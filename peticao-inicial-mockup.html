@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Petição Inicial Mockup — Gioia e Associados</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --garnet: #5e0001;
+      --paper: #fffdfa;
+      --ink: #201c19;
+      --muted-mark: rgba(32, 27, 24, 0.045);
+      --desk-dark: #4b3124;
+      --desk-mid: #6e4a35;
+      --desk-light: #7f5a42;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      padding: 32px 16px;
+      background:
+        radial-gradient(circle at top, rgba(209, 175, 102, 0.14), transparent 28%),
+        linear-gradient(135deg, var(--desk-dark) 0%, var(--desk-mid) 24%, var(--desk-dark) 52%, var(--desk-light) 100%);
+      color: var(--ink);
+      font-family: "Times New Roman", Georgia, serif;
+    }
+
+    .stage {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .page {
+      width: min(210mm, calc(100vw - 32px));
+      min-height: 297mm;
+      position: relative;
+      padding: 24mm 22mm 20mm;
+      background: linear-gradient(180deg, #fffefc 0%, var(--paper) 100%);
+      box-shadow: 0 32px 80px rgba(31, 15, 8, 0.34);
+      overflow: hidden;
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.84)),
+        radial-gradient(circle at top, rgba(94, 0, 1, 0.04), transparent 30%);
+      pointer-events: none;
+    }
+
+    .page > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .watermark {
+      position: absolute;
+      top: 28px;
+      width: 132px;
+      opacity: 1;
+      filter: grayscale(1);
+    }
+
+    .watermark.left {
+      left: 24px;
+    }
+
+    .watermark.right {
+      right: 24px;
+    }
+
+    .watermark img {
+      display: block;
+      width: 100%;
+      opacity: 0.08;
+    }
+
+    .header {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 34px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+      color: var(--garnet);
+    }
+
+    .brand-mark {
+      width: 78px;
+      height: 78px;
+      display: block;
+    }
+
+    .brand-name {
+      margin: 0;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 2.6rem;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 0.18em;
+      transform: translateX(0.1em);
+    }
+
+    .brand-ampersand {
+      margin: -2px 0 0;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .brand-subtitle {
+      margin: 0;
+      font-family: "Inter", Arial, sans-serif;
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.29em;
+      transform: translateX(0.14em);
+    }
+
+    .court {
+      max-width: 560px;
+      margin: 0 auto 40px;
+      text-align: center;
+      font-size: 1.16rem;
+      line-height: 1.32;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 24px;
+      margin-bottom: 30px;
+    }
+
+    .title-row h1 {
+      margin: 0;
+      font-size: 1.62rem;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    .title-row p {
+      margin: 0;
+      font-size: 1rem;
+      white-space: nowrap;
+    }
+
+    .content {
+      font-size: 1rem;
+      line-height: 1.64;
+    }
+
+    .content > * + * {
+      margin-top: 1rem;
+    }
+
+    .content p {
+      margin: 0;
+      text-align: justify;
+    }
+
+    .content h2,
+    .content h3 {
+      margin: 0;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .content h2 {
+      padding-top: 6px;
+      font-size: 1.12rem;
+      letter-spacing: 0.04em;
+    }
+
+    .content h3 {
+      padding-top: 6px;
+      font-size: 1rem;
+    }
+
+    .content ol {
+      margin: 0 0 0 24px;
+      padding: 0;
+    }
+
+    .content li + li {
+      margin-top: 6px;
+    }
+
+    .line {
+      display: inline-block;
+      min-width: 8.2rem;
+      border-bottom: 1px solid currentColor;
+      transform: translateY(-0.16rem);
+      margin: 0 0.16rem;
+    }
+
+    .line.short {
+      min-width: 6.4rem;
+    }
+
+    .line.long {
+      min-width: 10.4rem;
+    }
+
+    .footer {
+      margin-top: 44px;
+      text-align: center;
+    }
+
+    .signatures {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .signature {
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    .signature-line {
+      display: block;
+      width: min(100%, 240px);
+      margin: 0 auto 10px;
+      border-top: 1px solid var(--ink);
+    }
+
+    .signature p {
+      margin: 0;
+    }
+
+    @media (max-width: 900px) {
+      body {
+        padding: 16px 8px;
+      }
+
+      .page {
+        width: min(100%, 210mm);
+        padding: 18mm 14mm 16mm;
+      }
+
+      .watermark {
+        width: 92px;
+      }
+
+      .brand-mark {
+        width: 64px;
+        height: 64px;
+      }
+
+      .brand-name {
+        font-size: 2.1rem;
+      }
+
+      .court {
+        font-size: 1rem;
+      }
+
+      .title-row {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .title-row p {
+        white-space: normal;
+      }
+
+      .signatures {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        background: #fff;
+      }
+
+      .page {
+        width: 210mm;
+        min-height: 297mm;
+        margin: 0;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="stage">
+    <article class="page" aria-label="Mockup de petição inicial Gioia">
+      <div class="watermark left" aria-hidden="true">
+        <img src="./public/simbolo-gioia.svg" alt="" />
+      </div>
+      <div class="watermark right" aria-hidden="true">
+        <img src="./public/simbolo-gioia.svg" alt="" />
+      </div>
+
+      <header class="header">
+        <div class="brand">
+          <img class="brand-mark" src="./public/simbolo-gioia.svg" alt="Símbolo Gioia" />
+          <div>
+            <p class="brand-name">GIOIA</p>
+            <p class="brand-ampersand">&amp;</p>
+            <p class="brand-subtitle">ASSOCIADOS ADVOCACIA</p>
+          </div>
+        </div>
+      </header>
+
+      <section class="court">
+        EXCELENTÍSSIMO SENHOR DOUTOR JUIZ DE DIREITO DA
+        <span class="line long"></span><br />
+        VARA CÍVEL DA COMARCA DE <span class="line short"></span>.
+      </section>
+
+      <section class="title-row">
+        <h1>PETIÇÃO INICIAL</h1>
+        <p>Processo nº: <span class="line"></span></p>
+      </section>
+
+      <section class="content">
+        <p>
+          <strong>FULANO DE TAL</strong>, nacionalidade, estado civil, profissão, portador do RG nº
+          <span class="line"></span> e CPF nº <span class="line"></span>, residente e domiciliado à
+          <span class="line long"></span>, por intermédio de seus advogados infra-assinados, com escritório
+          profissional na <strong>Gioia &amp; Associados Advocacia</strong>, onde recebem intimações e notificações
+          de estilo, vem, respeitosamente, à presença de Vossa Excelência propor a presente
+        </p>
+
+        <h2>AÇÃO DE OBRIGAÇÃO DE FAZER C/C TUTELA DE URGÊNCIA</h2>
+
+        <p>
+          em face de <strong>NOME DA PARTE RÉ</strong>, pessoa jurídica inscrita no CNPJ nº
+          <span class="line"></span>, com sede à <span class="line long"></span>, pelos fatos e fundamentos
+          jurídicos a seguir expostos.
+        </p>
+
+        <h3>I. DOS FATOS</h3>
+        <p>
+          O Autor buscou solução extrajudicial para a controvérsia, porém restou frustrada a tentativa
+          administrativa, tornando necessária a intervenção do Poder Judiciário para assegurar o direito material
+          ora pleiteado. A documentação anexa evidencia a urgência da medida e o risco de prejuízo em caso de
+          demora processual.
+        </p>
+
+        <h3>II. DO DIREITO</h3>
+        <p>
+          A pretensão encontra amparo na legislação vigente, na jurisprudência aplicável e nos princípios da
+          boa-fé objetiva, da dignidade da pessoa humana e da efetividade da tutela jurisdicional. Estão presentes
+          os requisitos legais para concessão da tutela de urgência, em razão da probabilidade do direito invocado
+          e do perigo de dano.
+        </p>
+
+        <h3>III. DOS PEDIDOS</h3>
+        <ol>
+          <li>O recebimento da presente petição inicial, com a regular citação da parte ré.</li>
+          <li>O deferimento da tutela de urgência, nos termos da fundamentação apresentada.</li>
+          <li>A procedência integral da ação, confirmando-se em sentença a medida requerida.</li>
+          <li>A condenação da parte ré ao pagamento das verbas sucumbenciais, na forma da lei.</li>
+        </ol>
+
+        <p>
+          Dá-se à causa, para fins meramente fiscais, o valor de <span class="line"></span>.
+        </p>
+
+        <p>
+          Termos em que,<br />
+          pede deferimento.
+        </p>
+      </section>
+
+      <footer class="footer">
+        <p>São Paulo, <span class="line"></span>.</p>
+
+        <div class="signatures">
+          <div class="signature">
+            <span class="signature-line"></span>
+            <p>CELSO FERNANDO GIOIA</p>
+            <p>OAB/SP 70.379</p>
+          </div>
+
+          <div class="signature">
+            <span class="signature-line"></span>
+            <p>MARIANA MATHEUS GIOIA</p>
+            <p>OAB/SP 351.962</p>
+          </div>
+        </div>
+      </footer>
+    </article>
+  </main>
+</body>
+</html>

@@ -1,46 +1,130 @@
 # System Architecture: Gioia e Associados
 
-## 1. Technology Stack
+## 1. Resumo Arquitetural
 
-- **Frontend:** Next.js 15+ (App Router).
-- **Language:** TypeScript.
-- **Styles:** Tailwind CSS (Utility-first).
-- **UI Components:** Radix UI / Shadcn UI (Customized).
-- **Icons:** Lucide React.
-- **Animations:** Framer Motion (Subtle micro-interactions).
+O projeto Gioia opera hoje como um ecossistema leve de presença digital com três camadas principais:
 
-## 2. Design System Implementation
+1. **Site institucional estático em Astro**
+2. **Sistema de identidade visual e produção social centralizado no Figma**
+3. **Ativos e documentação operacional versionados no repositório**
 
-The design system is implemented through Tailwind configuration and specialized tokens:
+O objetivo deste ciclo não é construir uma plataforma transacional complexa, e sim manter uma base institucional elegante, rápida e consistente com a nova marca, enquanto o escritório lança a identidade nova em todos os canais.
 
-- **Colors:** Defined in `globals.css` (primary: burgundy, secondary: gold).
-- **Borders:** Global mandate for `rounded-none`.
-- **Responsive:** Mobile-first approach with custom breakpoints for high-end typography scaling.
+## 2. Stack Real em Produção
 
-## 3. Data Flow
+- **Frontend:** Astro 6
+- **Ilhas interativas:** React 19 com `client:load`
+- **Linguagem:** TypeScript
+- **Estilos:** Tailwind CSS v4 via `src/styles/globals.css`
+- **Componentes UI:** Radix UI / Shadcn adaptados ao sistema Gioia
+- **Ícones:** Lucide React
+- **Build:** `astro build`
+- **Output:** estático
 
-Currently, content is managed through local configuration files to ensure maximum performance (Zero-JS initial state where possible):
+## 3. Regra de Renderização
 
-- `src/config/site.ts`: High-level data.
-- Components use static data arrays (e.g., `teamMembers`) until Phase 2 (CMS Integration).
+O site segue uma estratégia de HTML estático por padrão.
 
-## 4. Key Components
+- Páginas em `src/pages/` renderizam conteúdo estático.
+- Componentes `.astro` são usados sempre que não há necessidade real de estado no cliente.
+- Apenas três ilhas React concentram interatividade:
+  - `src/components/layout/minimal-navbar.tsx`
+  - `src/components/sections/services-section.tsx`
+  - `src/components/sections/team-section.tsx`
 
-- `MinimalNavbar`: High-performance navigation with accessibility fixes for mobile `Sheet`.
-- `TeamSection`: Tabs-based member display with rigorous square aesthetic.
-- `ServicesSection`: Modular grid highlighting key firm results.
-- `VisualLaw`: Reusable components for explaining complex legal processes (Planned).
+Essa decisão preserva performance, reduz JS entregue ao navegador e favorece SEO.
 
-## 5. Directory Structure
+## 4. Arquitetura de Conteúdo
+
+O projeto usa **content-as-code** para a camada institucional.
+
+### Fontes primárias do site
+
+- `src/config/site.ts`: NAP, links e navegação
+- `src/config/home.ts`: hero e destaques da home
+- `src/config/about.ts`: texto institucional
+- `src/config/services.ts`: áreas de atuação
+- `src/config/faq.ts`: perguntas frequentes
+
+### Fontes complementares
+
+- `src/components/sections/team-section.tsx`: bios e focos da equipe
+- `src/components/sections/TestimonialsTicker.astro`: depoimentos e prova social
+
+## 5. Sistema de Marca e Produção Visual
+
+A camada visual da marca não vive apenas no código. O sistema atual é dividido assim:
+
+- **Figma master do projeto:** fonte central de templates, grids, capas e manual visual
+- `_cliente/brand/assets/`: exportações de logo e símbolos
+- `_cliente/brand/social-media-toolkit-v3-figma.html`: biblioteca HTML preparada para importação no Figma
+- `_cliente/brand/social-media-toolkit-v3-final-review.md`: avaliação de fechamento do toolkit
+
+O Figma concentra:
+
+- tokens de cor
+- regras tipográficas
+- templates de carrossel
+- capas e banners
+- papelaria
+- cartão de visita
+- mockup de petição inicial
+
+## 6. SEO, Metadata e Schema
+
+- `BaseLayout.astro` centraliza metadados e JSON-LD
+- `src/pages/index.astro` monta o schema principal
+- NAP e links devem permanecer consistentes entre:
+  - `siteConfig`
+  - conteúdo visível
+  - metadados e schema
+
+## 7. Estrutura Atual de Pastas
 
 ```text
 src/
-├── app/             # App Router pages
-├── components/      # UI components
-│   ├── layout/      # Navbar, Footer
-│   ├── sections/    # Page-specific sections
-│   └── ui/          # Atomic components (shadcn)
-├── config/          # Site metadata and arrays
-├── lib/             # Utilities (cn, etc.)
-└── styles/          # Global CSS
+├── components/
+│   ├── layout/
+│   ├── sections/
+│   └── ui/
+├── config/
+├── layouts/
+├── lib/
+├── pages/
+└── styles/
+
+_cliente/
+├── brand/
+├── contratos/
+├── gmb/
+└── lancamento/
+
+docs/
+_bmad-output/
 ```
+
+## 8. Integrações e Operação
+
+### Ativas
+
+- WhatsApp via link direto
+- ativos institucionais locais
+- Figma como ambiente de aprovação visual
+
+### Planejadas, mas fora do ciclo atual
+
+- CMS headless
+- automação de triagem
+- analytics mais robusto
+- portal do cliente
+
+## 9. Restrições Importantes
+
+- `rounded-none` em toda UI
+- copy em conformidade com o Provimento 205/2021 da OAB
+- site preparado para lançamento imediato, sem dependência de backend
+- comentários e aprovações visuais devem acontecer no arquivo Figma compartilhado com a cliente
+
+## 10. Fonte de Verdade Arquitetural
+
+Se algum documento antigo ainda mencionar `Next.js`, App Router ou CMS como estado atual, trate isso como histórico de planejamento. A arquitetura vigente deste projeto e desta semana de lançamento é a descrita aqui: **Astro estático + React islands + toolkit visual operacional no Figma**.

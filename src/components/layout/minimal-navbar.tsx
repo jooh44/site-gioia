@@ -13,25 +13,53 @@ import { useState, useEffect, useRef } from "react"
 
 export function MinimalNavbar() {
     const [isScrolled, setIsScrolled] = useState(false)
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [navTheme, setNavTheme] = useState<"light" | "dark">("dark")
     const headerRef = useRef<HTMLElement | null>(null)
 
-    const handleServiceNavigation = (event: MouseEvent<HTMLAnchorElement>, groupId: string) => {
+    const scrollToElement = (target: HTMLElement) => {
+        const headerHeight = headerRef.current?.getBoundingClientRect().height ?? 0
+        const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 12
+
+        window.scrollTo({
+            top: Math.max(0, top),
+            behavior: "smooth",
+        })
+    }
+
+    const handleServiceNavigation = (
+        event: MouseEvent<HTMLAnchorElement>,
+        groupId: string,
+        options?: { closeMenu?: boolean }
+    ) => {
         event.preventDefault()
+        const isMobileMenuNavigation = Boolean(options?.closeMenu)
+
+        if (isMobileMenuNavigation) {
+            setIsMenuOpen(false)
+        }
 
         window.history.replaceState(null, "", `#${groupId}`)
 
         // Custom event para a ServicesSection reagir com certeza
         window.dispatchEvent(new CustomEvent("navigate-service", { detail: groupId }))
 
-        // Scroll para a seção de serviços
+        // No mobile, a própria ServicesSection faz o alinhamento fino do grupo.
+        if (isMobileMenuNavigation) return
+
+        // No desktop, mantemos o scroll para a seção de serviços.
         const servicesSection = document.getElementById("services")
         if (servicesSection) {
-            servicesSection.scrollIntoView({ behavior: "smooth", block: "start" })
+            window.requestAnimationFrame(() => {
+                scrollToElement(servicesSection)
+            })
         }
     }
 
-    const handleAnchorNavigation = (event: MouseEvent<HTMLAnchorElement>) => {
+    const handleAnchorNavigation = (
+        event: MouseEvent<HTMLAnchorElement>,
+        options?: { closeMenu?: boolean }
+    ) => {
         const href = event.currentTarget.getAttribute("href")
         if (!href?.startsWith("#")) return
 
@@ -39,7 +67,14 @@ export function MinimalNavbar() {
         if (!target) return
 
         event.preventDefault()
-        target.scrollIntoView({ behavior: "smooth", block: "start" })
+
+        if (options?.closeMenu) {
+            setIsMenuOpen(false)
+        }
+
+        window.requestAnimationFrame(() => {
+            scrollToElement(target)
+        })
     }
 
     useEffect(() => {
@@ -161,7 +196,7 @@ export function MinimalNavbar() {
                 </Button>
 
                 {/* Mobile Menu Trigger */}
-                <Sheet>
+                <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
                     <SheetTrigger asChild>
                         <button
                             className={cn(
@@ -201,41 +236,36 @@ export function MinimalNavbar() {
                                     Áreas de Atuação
                                 </h3>
                                 {serviceGroups.map((group) => (
-                                    <SheetClose asChild key={group.id}>
-                                        <a
-                                            href={`#${group.id}`}
-                                            onClick={(event) => handleServiceNavigation(event, group.id)}
-                                            className="flex items-center gap-3 py-3 border-b border-white/5 last:border-b-0 group"
-                                        >
-                                            <span
-                                                className={`w-0.5 h-5 shrink-0 transition-colors ${group.accent === "primary" ? "bg-primary-foreground/30 group-hover:bg-primary-foreground" : "bg-secondary/40 group-hover:bg-secondary"}`}
-                                            />
-                                            <span className="font-serif text-2xl text-white/90 group-hover:text-white transition-colors leading-tight">
-                                                {group.navLabel}
-                                            </span>
-                                        </a>
-                                    </SheetClose>
+                                    <a
+                                        key={group.id}
+                                        href={`#${group.id}`}
+                                        onClick={(event) => handleServiceNavigation(event, group.id, { closeMenu: true })}
+                                        className="flex items-center gap-3 py-3 border-b border-white/5 last:border-b-0 group"
+                                    >
+                                        <span
+                                            className={`w-0.5 h-5 shrink-0 transition-colors ${group.accent === "primary" ? "bg-primary-foreground/30 group-hover:bg-primary-foreground" : "bg-secondary/40 group-hover:bg-secondary"}`}
+                                        />
+                                        <span className="font-serif text-2xl text-white/90 group-hover:text-white transition-colors leading-tight">
+                                            {group.navLabel}
+                                        </span>
+                                    </a>
                                 ))}
                             </div>
 
                             {/* Links Secundários */}
                             <div className="flex flex-col">
-                                <SheetClose asChild>
-                                    <a href="#about" onClick={handleAnchorNavigation} className="block px-6 py-4 text-xl font-sans font-light text-stone-200 hover:text-white hover:bg-white/5 transition-all border-b border-white/10">
-                                        Sobre o Escritório
-                                    </a>
-                                </SheetClose>
-                                <SheetClose asChild>
-                                    <a href="#faq" onClick={handleAnchorNavigation} className="block px-6 py-4 text-xl font-sans font-light text-stone-200 hover:text-white hover:bg-white/5 transition-all border-b border-white/10">
-                                        Dúvidas Frequentes
-                                    </a>
-                                </SheetClose>
+                                <a href="#about" onClick={(event) => handleAnchorNavigation(event, { closeMenu: true })} className="block px-6 py-4 text-xl font-sans font-light text-stone-200 hover:text-white hover:bg-white/5 transition-all border-b border-white/10">
+                                    Sobre o Escritório
+                                </a>
+                                <a href="#faq" onClick={(event) => handleAnchorNavigation(event, { closeMenu: true })} className="block px-6 py-4 text-xl font-sans font-light text-stone-200 hover:text-white hover:bg-white/5 transition-all border-b border-white/10">
+                                    Dúvidas Frequentes
+                                </a>
                             </div>
 
                             {/* WhatsApp CTA */}
                             <div className="mt-auto">
                                 <Button asChild className="bg-secondary text-secondary-foreground hover:bg-white hover:text-primary uppercase tracking-[0.2em] text-sm font-bold h-16 w-full rounded-none shadow-none border-t border-white/10">
-                                    <a href={siteConfig.links.whatsapp} target="_blank" rel="noreferrer">
+                                    <a href={siteConfig.links.whatsapp} target="_blank" rel="noreferrer" onClick={() => setIsMenuOpen(false)}>
                                         Falar no WhatsApp
                                         <WhatsAppIcon className="ml-2 size-[1.05rem] opacity-80" />
                                     </a>

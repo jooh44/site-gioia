@@ -1,6 +1,6 @@
 ---
-project: Gioia e Associados Advocacia — Site Institucional + Identidade Visual
-last_updated: 2026-04-07
+project: Gioia e Associados Advocacia — Site Institucional + Identidade Visual + Lancamento de Marca
+last_updated: 2026-04-19
 status: active
 ---
 
@@ -9,6 +9,64 @@ status: active
 > **Para agentes de IA:** Leia as seções na ordem apresentada.
 > As regras na Seção 1 são invioláveis — nunca as questione ou "melhore".
 > O contexto nas seções seguintes explica o raciocínio; a lógica não muda as regras.
+
+---
+
+## SECAO 0 - Estado Operacional Atual
+
+### 0.1 Escopo vigente do projeto
+
+O projeto nao deve mais ser lido apenas como "um site institucional".
+
+O escopo ativo agora e composto por:
+
+- site institucional em Astro
+- identidade visual consolidada
+- toolkit social e manual operacional no Figma
+- lancamento coordenado da nova marca nos canais digitais
+- base para assessoria continua de marca e presenca digital
+
+### 0.2 Prioridade desta semana
+
+A prioridade imediata e o **lancamento da nova marca da Gioia em todos os canais**.
+
+Isso inclui:
+
+- ajustes finais do site
+- publicacao do carrossel principal
+- atualizacao de perfis e capas
+- comunicacao por e-mail
+- comunicacao por lista de transmissao no WhatsApp
+
+### 0.3 Fonte de verdade visual
+
+O arquivo master de design do projeto esta no Figma:
+
+`https://www.figma.com/design/Q3Z4u0sRw6iNkLDwUJLQ75/Gioia?node-id=0-1&p=f&t=OujLyLFKe87EezE1-0`
+
+Use tambem como apoio:
+
+- `_cliente/brand/`
+- `_cliente/lancamento/`
+- `docs/estado-atual-2026-04-19.md`
+
+### 0.4 Decisoes aprovadas na reuniao de 2026-04-19
+
+- missao, visao e valores voltam ao formato compacto sob a foto da equipe
+- rodape continua minimalista e passa a exibir e-mail
+- nao usar mapa no rodape
+- carrossel de inauguracao da marca foi aprovado conceitualmente
+- Figma compartilhado passa a ser ambiente de comentario e aprovacao continua
+- deve ser preparado contrato fixo de continuidade
+
+### 0.5 Regra de precedencia
+
+Se houver conflito entre documentos antigos e o estado atual do projeto, considere nesta ordem:
+
+1. `docs/estado-atual-2026-04-19.md`
+2. este `project-context.md`
+3. o codigo em `src/`
+4. o Figma master
 
 ---
 

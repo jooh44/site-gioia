@@ -66,13 +66,29 @@ function ServiceIcon({
 function scrollToServices() {
   const el = document.getElementById("services")
   if (!el) return
-  el.scrollIntoView({ behavior: "smooth", block: "start" })
+
+  const header = document.querySelector("header")
+  const headerHeight = header?.getBoundingClientRect().height ?? 0
+  const top = el.getBoundingClientRect().top + window.scrollY - headerHeight - 12
+
+  window.scrollTo({
+    top: Math.max(0, top),
+    behavior: "smooth",
+  })
 }
 
 function scrollToGroup(groupId: string) {
   const el = document.querySelector<HTMLElement>(`[data-service-group="${groupId}"]`)
   if (!el) return
-  el.scrollIntoView({ behavior: "smooth", block: "start" })
+
+  const header = document.querySelector("header")
+  const headerHeight = header?.getBoundingClientRect().height ?? 0
+  const top = el.getBoundingClientRect().top + window.scrollY - headerHeight - 12
+
+  window.scrollTo({
+    top: Math.max(0, top),
+    behavior: "smooth",
+  })
 }
 
 /* ─── Shared: conteúdo das subáreas (tabs ou direto) ─── */
@@ -257,6 +273,7 @@ function MobileServices() {
     if (!value) return
 
     setOpenId(value)
+    window.history.replaceState(null, "", `#${value}`)
 
     if (window.innerWidth >= 1024) return
 

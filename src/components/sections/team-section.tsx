@@ -24,7 +24,7 @@ const teamMembers: TeamMember[] = [
         name: "Dr. Celso Fernando Gioia",
         role: "Sócio Fundador",
         oab: "OAB/SP 70.379",
-        bio: "Fundador da Gioia e Associados em 1992, o Dr. Celso Fernando Gioia é graduado pela Universidade de São Paulo (USP), com sólida especialização em Responsabilidade Civil, Contratos, Direito Empresarial e Trabalhista. Atuou como Diretor Jurídico da RedeTV, e no Santos Futebol Clube e foi Presidente da OAB/SP – 96ª Subseção (Lapa) entre 2012 e 2017.",
+        bio: "Fundador da Gioia e Associados em 1992, o Dr. Celso Fernando Gioia é graduado pela Universidade de São Paulo (USP), com sólida especialização em Responsabilidade Civil, Contratos, Direito Empresarial e Trabalhista. Atuou como Diretor Jurídico da RedeTV! e no Santos Futebol Clube, e exerceu liderança institucional na OAB/SP - 96ª Subseção (Lapa) entre 2016 e 2018.",
         specializations: ["Responsabilidade Civil e Contratos", "Direito Empresarial e Trabalhista", "Liderança Institucional OAB/SP"],
         image: "/team/celso-gioia.webp",
         imageClassName: ""
@@ -95,7 +95,7 @@ export function TeamSection({ embedded = false }: TeamSectionProps) {
                                         : "bg-primary text-white/60 border-white/5 hover:text-white relative z-0"
                                 )}
                             >
-                                {member.id === 'celso' ? 'Dr. Celso' : member.id === 'mariana' ? 'Dra. Mariana' : 'Dr. Fabio'}
+                                {member.id === 'celso' ? 'Dr. Celso' : member.id === 'mariana' ? 'Dra. Mariana' : 'Dr. Fábio'}
                             </button>
                         ))}
                     </div>
