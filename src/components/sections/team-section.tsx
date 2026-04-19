@@ -81,9 +81,9 @@ export function TeamSection({ embedded = false }: TeamSectionProps) {
                 </div>
 
                 {/* Folder Component */}
-                <div className="relative">
+                <div className="relative -mx-6 md:mx-0">
                     {/* Tab Header (Folder Labels) */}
-                    <div className="grid grid-cols-3 md:flex gap-0 md:gap-3 relative z-10 -mx-6 md:mx-0">
+                    <div className="grid grid-cols-3 md:flex gap-0 md:gap-3 relative z-10">
                         {teamMembers.map((member) => (
                             <button
                                 key={member.id}
