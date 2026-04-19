@@ -77,8 +77,27 @@ function scrollToServices() {
   })
 }
 
+function getVisibleElement<T extends HTMLElement>(elements: T[]) {
+  return elements.find((element) => {
+    const rect = element.getBoundingClientRect()
+    return rect.width > 0 && rect.height > 0
+  }) ?? null
+}
+
 function scrollToGroup(groupId: string) {
-  const el = document.querySelector<HTMLElement>(`[data-service-group="${groupId}"]`)
+  const mobileItem = getVisibleElement(
+    Array.from(
+      document.querySelectorAll<HTMLElement>(`[data-service-group-mobile="${groupId}"]`)
+    )
+  )
+
+  const genericItem = getVisibleElement(
+    Array.from(
+      document.querySelectorAll<HTMLElement>(`[data-service-group="${groupId}"]`)
+    )
+  )
+
+  const el = mobileItem ?? genericItem
   if (!el) return
 
   const header = document.querySelector("header")
@@ -337,6 +356,7 @@ function MobileServices() {
                 key={group.id}
                 value={group.id}
                 data-service-group={group.id}
+                data-service-group-mobile={group.id}
                 className="scroll-mt-28 border-b border-stone-200 group"
               >
                 {/* Trigger */}
