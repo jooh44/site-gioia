@@ -108,27 +108,28 @@ export function MinimalNavbar() {
     return (
         <header
             ref={headerRef}
-            className={`fixed top-0 left-0 right-0 z-[100] flex items-center justify-between gap-3 px-3 py-2.5 md:gap-4 md:px-8 md:py-3 transition-all duration-300 ${isScrolled
+            className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${isScrolled
                 ? "bg-transparent"
                 : "bg-transparent border-transparent"
                 }`}
         >
-            {/* Logo */}
-            <div className="flex min-w-0 items-center">
-                <div className="pointer-events-auto">
-                    <a href="/" className="group inline-flex items-center max-w-[12rem] sm:max-w-none">
-                        <span className="hidden md:inline-flex">
-                            <GioiaLockup theme={navTheme} />
-                        </span>
-                        <span className="md:hidden inline-flex">
-                            <GioiaLockup theme={navTheme} compact />
-                        </span>
-                    </a>
+            <div className="site-shell flex items-center justify-between gap-3 px-4 py-2.5 md:gap-4 md:px-0 md:py-3">
+                {/* Logo */}
+                <div className="flex min-w-0 items-center">
+                    <div className="pointer-events-auto">
+                        <a href="/" className="group inline-flex items-center max-w-[15rem] sm:max-w-none">
+                            <span className="hidden md:inline-flex">
+                                <GioiaLockup theme={navTheme} />
+                            </span>
+                            <span className="md:hidden inline-flex">
+                                <GioiaLockup theme={navTheme} compact />
+                            </span>
+                        </a>
+                    </div>
                 </div>
-            </div>
 
-            {/* Right Side */}
-            <div className="flex items-center gap-2.5 md:gap-8 pointer-events-auto">
+                {/* Right Side */}
+                <div className="flex items-center gap-2.5 md:gap-8 pointer-events-auto">
 
                 {/* Desktop Nav */}
                 <nav className="hidden md:flex items-center gap-6">
@@ -274,6 +275,7 @@ export function MinimalNavbar() {
                         </div>
                     </SheetContent>
                 </Sheet>
+                </div>
             </div>
         </header>
     )

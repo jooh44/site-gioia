@@ -128,6 +128,43 @@
   }
 }
 
+@layer components {
+  .site-shell {
+    width: min(100% - 2rem, 1700px);
+    margin-inline: auto;
+  }
+
+  @media (min-width: 640px) {
+    .site-shell {
+      width: min(100% - 3rem, 1700px);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .site-shell {
+      width: min(100% - 5rem, 1700px);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .site-shell {
+      width: min(100% - 7rem, 1700px);
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .site-shell {
+      width: min(100% - 8.5rem, 1700px);
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .site-shell {
+      width: min(100% - 10rem, 1760px);
+    }
+  }
+}
+
 /* Testimonials ticker animations */
 @keyframes ticker-left {
   0% { transform: translateX(0); }

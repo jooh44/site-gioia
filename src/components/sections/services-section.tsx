@@ -63,20 +63,6 @@ function ServiceIcon({
   return <Icon className={className} strokeWidth={1.8} />
 }
 
-function scrollToServices() {
-  const el = document.getElementById("services")
-  if (!el) return
-
-  const header = document.querySelector("header")
-  const headerHeight = header?.getBoundingClientRect().height ?? 0
-  const top = el.getBoundingClientRect().top + window.scrollY - headerHeight - 12
-
-  window.scrollTo({
-    top: Math.max(0, top),
-    behavior: "smooth",
-  })
-}
-
 function getVisibleElement<T extends HTMLElement>(elements: T[]) {
   return elements.find((element) => {
     const rect = element.getBoundingClientRect()
@@ -163,7 +149,7 @@ function ItemList({ items, accent }: { items: string[]; accent: "primary" | "sec
   )
 }
 
-function CtaButton({ accent: _accent }: { accent: "primary" | "secondary" }) {
+function CtaButton() {
   return (
     <a
       href={siteConfig.links.whatsapp}
@@ -217,7 +203,7 @@ function DesktopServices() {
 
   return (
     <div className="hidden lg:block border-t border-stone-200">
-      <div className="container px-6 md:px-12 lg:px-24 mx-auto">
+      <div className="site-shell">
         <div className="grid lg:grid-cols-[minmax(320px,1.7fr)_minmax(0,4fr)] border-x border-stone-200">
           {/* Coluna esquerda — triggers */}
           <div className="border-r border-stone-200">
@@ -274,7 +260,7 @@ function DesktopServices() {
             <SubAreaContent group={activeGroup} />
 
             <div className="mt-8">
-              <CtaButton accent={activeGroup.accent} />
+              <CtaButton />
             </div>
           </div>
         </div>
@@ -340,7 +326,7 @@ function MobileServices() {
 
   return (
     <div className="lg:hidden border-t border-stone-200">
-      <div className="container px-6 md:px-12 lg:px-24 mx-auto border-x border-stone-200">
+      <div className="site-shell border-x border-stone-200">
         <AccordionPrimitive.Root
           type="single"
           collapsible
@@ -400,7 +386,7 @@ function MobileServices() {
                     <SubAreaContent group={group} />
 
                     <div className="mt-8">
-                      <CtaButton accent={group.accent} />
+                      <CtaButton />
                     </div>
                   </div>
                 </AccordionPrimitive.Content>
@@ -421,7 +407,7 @@ export function ServicesSection() {
 
       {/* Header */}
       <div className="border-b border-stone-200">
-        <div className="container px-6 md:px-12 lg:px-24 mx-auto">
+        <div className="site-shell">
           <div className="grid grid-cols-1 lg:grid-cols-[minmax(320px,1.7fr)_minmax(0,4fr)] md:grid-cols-2">
             <div className="px-6 py-10 md:py-14 md:pr-14 md:pl-8 lg:border-r border-stone-200">
               <span className="text-xs font-bold text-secondary uppercase tracking-[0.25em] block mb-6">

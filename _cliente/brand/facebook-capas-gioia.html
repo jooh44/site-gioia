@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Capas Facebook | Gioia e Associados</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --garnet: #5e0001;
+        --garnet-deep: #3f0000;
+        --garnet-soft: #7d1216;
+        --gold: #d1af66;
+        --gold-soft: #ead6a0;
+        --ivory: #f6efe5;
+        --ink-soft: rgba(246, 239, 229, 0.82);
+        --line: rgba(209, 175, 102, 0.28);
+        --page-bg:
+          radial-gradient(circle at top, rgba(209, 175, 102, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f1e8 0%, #efe4d6 100%);
+        --shadow: 0 28px 80px rgba(36, 8, 7, 0.16);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        color: #241818;
+        background: var(--page-bg);
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      .page {
+        width: min(1380px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 40px 0 64px;
+      }
+
+      .intro {
+        margin-bottom: 32px;
+      }
+
+      .eyebrow {
+        margin: 0 0 10px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        color: var(--garnet);
+      }
+
+      h1 {
+        margin: 0;
+        font-family: "Playfair Display", serif;
+        font-size: clamp(36px, 4.4vw, 56px);
+        line-height: 0.96;
+        letter-spacing: -0.03em;
+      }
+
+      .intro p {
+        max-width: 820px;
+        margin: 14px 0 0;
+        font-size: 17px;
+        line-height: 1.7;
+        color: rgba(36, 24, 24, 0.75);
+      }
+
+      .grid {
+        display: grid;
+        gap: 28px;
+      }
+
+      .concept {
+        display: grid;
+        gap: 14px;
+      }
+
+      .meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 16px;
+      }
+
+      .meta h2 {
+        margin: 0;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--garnet);
+      }
+
+      .meta span {
+        font-size: 13px;
+        color: rgba(36, 24, 24, 0.66);
+      }
+
+      .cover-shell {
+        position: relative;
+        padding: 16px;
+        background: rgba(255, 255, 255, 0.58);
+        border: 1px solid rgba(94, 0, 1, 0.08);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .cover {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 820 / 312;
+        overflow: hidden;
+      }
+
+      .safe-zone {
+        position: absolute;
+        left: 26px;
+        bottom: -46px;
+        width: 168px;
+        height: 168px;
+        border-radius: 50%;
+        border: 3px dashed rgba(255, 255, 255, 0.68);
+        background: rgba(255, 255, 255, 0.08);
+        z-index: 5;
+        box-shadow: 0 0 0 18px rgba(94, 0, 1, 0.14);
+        backdrop-filter: blur(4px);
+      }
+
+      .safe-zone::after {
+        content: "foto do perfil";
+        position: absolute;
+        top: 46px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        text-align: center;
+        font-size: 10px;
+        font-weight: 700;
+        line-height: 1.35;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.82);
+      }
+
+      .note {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.65;
+        color: rgba(36, 24, 24, 0.72);
+      }
+
+      .logo-mark {
+        width: 74px;
+        height: auto;
+      }
+
+      .kicker {
+        margin: 0 0 12px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: var(--gold-soft);
+      }
+
+      .title {
+        margin: 0;
+        font-family: "Playfair Display", serif;
+        font-size: clamp(34px, 4vw, 52px);
+        line-height: 0.95;
+        letter-spacing: -0.03em;
+        color: var(--ivory);
+      }
+
+      .body {
+        margin: 16px 0 0;
+        font-size: 15px;
+        line-height: 1.7;
+        color: var(--ink-soft);
+      }
+
+      .chips,
+      .stats {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 18px;
+      }
+
+      .chip,
+      .stat {
+        padding: 8px 12px;
+        border: 1px solid rgba(209, 175, 102, 0.32);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--gold-soft);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .concept-1a {
+        background:
+          linear-gradient(115deg, rgba(58, 0, 0, 0.96) 10%, rgba(94, 0, 1, 0.9) 52%, rgba(70, 0, 0, 0.92) 100%),
+          url("../../public/brand-burgundy-leather-flat.png") center/cover no-repeat;
+      }
+
+      .concept-1a .gridline {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(to right, transparent 0 70%, rgba(209, 175, 102, 0.14) 70% 70.3%, transparent 70.3% 100%),
+          linear-gradient(to bottom, transparent 0 76%, rgba(209, 175, 102, 0.12) 76% 76.3%, transparent 76.3% 100%);
+      }
+
+      .concept-1a .frame {
+        position: absolute;
+        inset: 24px;
+        border: 1px solid rgba(209, 175, 102, 0.42);
+      }
+
+      .concept-1a .content {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: 250px 1fr;
+        gap: 34px;
+        align-items: center;
+        height: 100%;
+        padding: 34px 42px 34px 238px;
+      }
+
+      .concept-1a .seal {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+      }
+
+      .concept-1a .logo-mark {
+        width: 112px;
+      }
+
+      .concept-1b {
+        background:
+          radial-gradient(circle at 78% 22%, rgba(209, 175, 102, 0.18), transparent 18%),
+          linear-gradient(135deg, rgba(61, 0, 0, 0.98) 0%, rgba(94, 0, 1, 0.94) 58%, rgba(122, 18, 22, 0.94) 100%);
+      }
+
+      .concept-1b .monogram {
+        position: absolute;
+        right: 36px;
+        top: 20px;
+        width: 260px;
+        opacity: 0.12;
+      }
+
+      .concept-1b .gridline {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(to right, transparent 0 70%, rgba(209, 175, 102, 0.14) 70% 70.3%, transparent 70.3% 100%),
+          linear-gradient(to bottom, transparent 0 76%, rgba(209, 175, 102, 0.12) 76% 76.3%, transparent 76.3% 100%);
+      }
+
+      .concept-1b .content {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+        max-width: 540px;
+        margin-left: 238px;
+        padding: 30px 40px 24px 0;
+      }
+
+      .rule {
+        width: 96px;
+        height: 1px;
+        margin-top: 18px;
+        background: rgba(209, 175, 102, 0.64);
+      }
+
+      .concept-4a {
+        background:
+          linear-gradient(90deg, rgba(61, 0, 0, 0.97) 0%, rgba(94, 0, 1, 0.95) 48%, rgba(68, 0, 0, 0.97) 100%),
+          url("../../public/brand-burgundy-leather-flat.png") center/cover no-repeat;
+      }
+
+      .concept-4a .content {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 28px;
+        align-items: center;
+        height: 100%;
+        padding: 30px 40px 28px 230px;
+      }
+
+      .service-grid {
+        display: grid;
+        gap: 10px;
+      }
+
+      .service-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 12px;
+        border: 1px solid rgba(209, 175, 102, 0.22);
+        background: rgba(255, 255, 255, 0.03);
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--gold-soft);
+      }
+
+      .service-item::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        background: var(--gold);
+        flex: 0 0 auto;
+      }
+
+      .concept-4b {
+        background:
+          linear-gradient(90deg, rgba(52, 0, 0, 0.98) 0%, rgba(75, 0, 0, 0.96) 54%, rgba(103, 12, 13, 0.93) 100%);
+      }
+
+      .concept-4b .frame {
+        position: absolute;
+        inset: 22px;
+        border: 1px solid rgba(209, 175, 102, 0.24);
+      }
+
+      .concept-4b .content {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: 1fr 310px;
+        gap: 26px;
+        align-items: stretch;
+        height: 100%;
+        padding: 26px 34px 24px 228px;
+      }
+
+      .concept-4b .panel {
+        display: grid;
+        gap: 12px;
+        padding: 18px;
+        border: 1px solid rgba(209, 175, 102, 0.22);
+        background: rgba(255, 255, 255, 0.04);
+        align-content: center;
+      }
+
+      .concept-4b .panel-title {
+        margin: 0 0 2px;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(234, 214, 160, 0.76);
+      }
+
+      .concept-4b .panel-item {
+        font-size: 11px;
+        line-height: 1.55;
+        color: var(--ivory);
+      }
+
+      @media (max-width: 980px) {
+        .page {
+          width: min(100% - 20px, 1200px);
+          padding-top: 28px;
+        }
+
+        .cover-shell {
+          padding: 10px;
+        }
+      }
+
+      @media (max-width: 760px) {
+        .page {
+          width: min(100% - 16px, 900px);
+        }
+
+        .cover {
+          min-height: 300px;
+          aspect-ratio: auto;
+        }
+
+        .safe-zone {
+          width: 110px;
+          height: 110px;
+          left: 18px;
+          bottom: -34px;
+          box-shadow: 0 0 0 12px rgba(94, 0, 1, 0.14);
+        }
+
+        .safe-zone::after {
+          top: 28px;
+          width: 74px;
+          font-size: 8px;
+        }
+
+        .concept-1a .content,
+        .concept-4a .content,
+        .concept-4b .content {
+          grid-template-columns: 1fr;
+        }
+
+        .concept-1a .content,
+        .concept-1b .content,
+        .concept-4a .content,
+        .concept-4b .content {
+          margin-left: 124px;
+          padding-left: 0;
+        }
+
+        .concept-1b .monogram {
+          width: 160px;
+          right: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="intro">
+        <p class="eyebrow">Capas Facebook · revisão focada</p>
+        <h1>Quatro variações em bordô, derivadas dos conceitos 1 e 4.</h1>
+        <p>
+          Limpei o documento para ficar só com as rotas que fizeram mais sentido:
+          duas mais institucionais de marca e duas mais orientadas a proposta de
+          valor/serviços. Todas mantêm a linguagem premium da Gioia, com a área
+          da foto de perfil respeitada.
+        </p>
+      </section>
+
+      <section class="grid">
+        <article class="concept">
+          <div class="meta">
+            <h2>Conceito 1A · Monograma clássico</h2>
+            <span>Mais heráldico e institucional</span>
+          </div>
+          <div class="cover-shell">
+            <div class="cover concept-1a">
+              <div class="gridline"></div>
+              <div class="frame"></div>
+              <div class="safe-zone"></div>
+              <div class="content">
+                <div class="seal">
+                  <img class="logo-mark" src="../../public/simbolo-gioia.svg" alt="Monograma Gioia e Associados" />
+                </div>
+                <div>
+                  <p class="kicker">Gioia e Associados Advocacia</p>
+                  <h3 class="title">Excelência jurídica com clareza, técnica e presença.</h3>
+                  <p class="body">
+                    Uma capa mais atemporal, centrada em reputação e assinatura de
+                    marca. Faz a página parecer sólida e refinada logo no primeiro
+                    contato.
+                  </p>
+                  <div class="chips">
+                    <span class="chip">Desde 1992</span>
+                    <span class="chip">São Paulo</span>
+                    <span class="chip">Atendimento humanizado</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="note">
+            A mais clássica das quatro. Boa se a prioridade for parecer
+            consolidado, tradicional e premium.
+          </p>
+        </article>
+
+        <article class="concept">
+          <div class="meta">
+            <h2>Conceito 1B · Monograma editorial</h2>
+            <span>Mais contemporâneo e arquitetado</span>
+          </div>
+          <div class="cover-shell">
+            <div class="cover concept-1b">
+              <div class="gridline"></div>
+              <img class="monogram" src="../../public/simbolo-gioia.svg" alt="" />
+              <div class="safe-zone"></div>
+              <div class="content">
+                <p class="kicker">Boutique jurídica premium</p>
+                <h3 class="title">Advocacia com densidade técnica para decisões que não admitem improviso.</h3>
+                <p class="body">
+                  Mantém o peso institucional, mas com um desenho mais editorial,
+                  elegante e urbano. Ajuda a marca a parecer mais sofisticada sem
+                  perder sobriedade.
+                </p>
+                <div class="rule"></div>
+                <div class="stats">
+                  <span class="stat">Quiet luxury</span>
+                  <span class="stat">Bordô e dourado</span>
+                  <span class="stat">Marca protagonista</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="note">
+            Mais atual que a 1A, sem cair em visual genérico. É a melhor ponte
+            entre sofisticação institucional e linguagem de marca.
+          </p>
+        </article>
+
+        <article class="concept">
+          <div class="meta">
+            <h2>Conceito 4A · Serviços em colunas</h2>
+            <span>Mais claro e consultivo</span>
+          </div>
+          <div class="cover-shell">
+            <div class="cover concept-4a">
+              <div class="safe-zone"></div>
+              <div class="content">
+                <div>
+                  <p class="kicker">Gioia e Associados</p>
+                  <h3 class="title">Segurança jurídica para momentos que pedem resposta e condução firme.</h3>
+                  <p class="body">
+                    Variação com foco em proposta de valor e leitura rápida das
+                    frentes de atuação. Boa para página que funciona como vitrine
+                    ativa de captação.
+                  </p>
+                </div>
+                <div class="service-grid">
+                  <div class="service-item">Direito médico</div>
+                  <div class="service-item">Trabalho e previdenciário</div>
+                  <div class="service-item">Família e sucessório</div>
+                  <div class="service-item">Patrimônio e negócios</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="note">
+            É a mais útil das quatro para explicar rápido o escritório, sem virar
+            peça publicitária gritante.
+          </p>
+        </article>
+
+        <article class="concept">
+          <div class="meta">
+            <h2>Conceito 4B · Painel estratégico</h2>
+            <span>Mais organizado e corporativo</span>
+          </div>
+          <div class="cover-shell">
+            <div class="cover concept-4b">
+              <div class="frame"></div>
+              <div class="safe-zone"></div>
+              <div class="content">
+                <div>
+                  <p class="kicker">Estrutura, tradição e atendimento próximo</p>
+                  <h3 class="title">Uma presença jurídica confiável para proteger pessoas, patrimônio e decisões.</h3>
+                  <p class="body">
+                    Uma leitura mais corporativa do conceito 4, com hierarquia
+                    forte entre headline e painel lateral de serviços.
+                  </p>
+                </div>
+                <div class="panel">
+                  <p class="panel-title">Áreas de atuação</p>
+                  <div class="panel-item">Direito médico e saúde</div>
+                  <div class="panel-item">Trabalho e previdenciário</div>
+                  <div class="panel-item">Família e sucessório</div>
+                  <div class="panel-item">Patrimônio, negócios e contratos</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="note">
+            A mais “executiva” da linha de serviços. Boa se você quiser um visual
+            mais estruturado, com cara de escritório bem posicionado.
+          </p>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

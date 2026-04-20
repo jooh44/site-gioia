@@ -1,7 +1,6 @@
 ---
 import { homeConfig } from "@/config/home";
 import { siteConfig } from "@/config/site";
-import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 ---
 
 <section
@@ -14,19 +13,6 @@ import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
   >
   </div>
 
-  <!-- Background Graphics (Discrete Symbol Texture) -->
-  <div
-    class="hidden md:block absolute -left-[10%] lg:-left-[5%] top-[50%] lg:top-[80%] -translate-y-1/2 opacity-[0.08] lg:opacity-[0.12] pointer-events-none brightness-0 z-0"
-  >
-    <img
-      src="/simbolo-gioia.svg"
-      alt=""
-      width="500"
-      height="500"
-      class="w-[180px] lg:w-[450px] h-auto"
-    />
-  </div>
-
   <!-- Mobile Background Cleanup -->
   <div
     aria-hidden="true"
@@ -36,7 +22,7 @@ import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 
   <!-- Content Wrapper -->
   <div
-    class="hero-shell relative z-10 w-full container mx-auto flex flex-col lg:flex-row items-center lg:items-end px-3 sm:px-5 md:px-10 lg:px-14 xl:px-24 flex-1 pt-20 sm:pt-22 md:pt-28 lg:pt-28 xl:pt-32"
+    class="hero-shell site-shell relative z-10 flex flex-col lg:flex-row items-center lg:items-center lg:gap-10 xl:gap-14 2xl:gap-20 flex-1 pt-20 sm:pt-22 md:pt-28 lg:pt-28 xl:pt-32"
   >
     <!-- Left Column: Text Content -->
     <div
@@ -52,7 +38,7 @@ import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 
       <!-- Main Headline (max 3 lines) -->
       <h1
-        class="hero-title font-serif text-[2.24rem] sm:text-[2.72rem] md:text-[3.22rem] lg:text-[clamp(3rem,4vw,4rem)] xl:text-[clamp(3.32rem,4.35vw,4.58rem)] 2xl:text-[4.78rem] leading-[0.94] sm:leading-[0.94] lg:leading-[0.9] tracking-tight text-white drop-shadow-sm w-full max-w-none sm:max-w-[12.5ch] lg:max-w-[10.8ch] xl:max-w-[11.4ch]"
+        class="hero-title font-serif text-[2.24rem] sm:text-[2.72rem] md:text-[3.22rem] lg:text-[clamp(3rem,4vw,4rem)] xl:text-[clamp(3.32rem,4.35vw,4.58rem)] 2xl:text-[4.78rem] leading-[1.08] sm:leading-[1.06] lg:leading-[1.04] tracking-tight text-white drop-shadow-sm w-full max-w-none sm:max-w-[12.5ch] lg:max-w-[10.8ch] xl:max-w-[11.4ch]"
       >
         <span class="block">Três décadas</span>
         <span class="block lg:whitespace-nowrap">de história na defesa</span>
@@ -90,56 +76,32 @@ import { WhatsAppIcon } from "@/components/ui/whatsapp-icon";
 
     <!-- Right Column: Hero Image -->
     <div
-      class="hero-art w-full lg:w-[53%] xl:w-[48%] flex justify-center lg:justify-end items-end z-10 pointer-events-none relative overflow-visible md:overflow-hidden h-[45vh] sm:h-[50vh] md:h-[54vh] lg:h-[76vh] xl:h-[88vh] mt-8 sm:mt-4 md:mt-6 lg:mt-0 lg:shrink-0"
+      class="hero-art w-full lg:w-[55%] xl:w-[50%] flex justify-center lg:justify-end items-center z-10 pointer-events-none relative overflow-visible h-[45svh] sm:h-[50svh] md:h-[54svh] lg:h-[76svh] xl:h-[88svh] mt-8 sm:mt-4 md:mt-6 lg:mt-0 lg:shrink-0"
     >
       <div
-        aria-hidden="true"
-        class="hidden md:block absolute right-[-4%] lg:right-[0%] xl:right-[2%] top-[49%] -translate-y-1/2 w-[78%] lg:w-[92%] xl:w-[88%] h-auto pointer-events-none z-0"
-      >
-        <img
-          src="/simbolo-gioia.svg"
-          alt=""
-          width="1200"
-          height="1200"
-          class="w-full h-full object-contain"
-        />
-      </div>
-      <div
-        class="hero-figure relative isolate overflow-visible z-[2] w-full max-w-[430px] sm:max-w-[470px] md:max-w-[520px] lg:max-w-[520px] xl:max-w-[660px] 2xl:max-w-[760px] h-full lg:translate-x-3 xl:translate-x-4"
+        class="hero-figure relative isolate overflow-visible z-[2] w-full max-w-[450px] sm:max-w-[500px] md:max-w-[580px] lg:max-w-[660px] xl:max-w-[760px] 2xl:max-w-[860px] h-full"
       >
         <div
           aria-hidden="true"
-          class="absolute md:hidden inset-x-0 top-[5%] h-[92%] pointer-events-none z-0"
-        >
-          <img
-            src="/simbolo-gioia.svg"
-            alt=""
-            width="1200"
-            height="1200"
-            class="w-full h-full object-contain"
-          />
-        </div>
-        <div
-          aria-hidden="true"
-          class="hidden md:block absolute inset-x-[8%] top-[11%] h-[78%] rounded-full bg-[radial-gradient(circle,rgba(247,231,190,0.72)_0%,rgba(225,196,131,0.42)_16%,rgba(209,175,102,0.2)_34%,rgba(209,175,102,0.08)_52%,transparent_74%)] blur-3xl z-[1]"
+          class="hidden md:block absolute inset-x-[14%] top-[14%] h-[68%] rounded-full bg-[radial-gradient(circle,rgba(247,231,190,0.34)_0%,rgba(225,196,131,0.16)_26%,rgba(209,175,102,0.08)_46%,transparent_74%)] blur-3xl z-[1]"
         >
         </div>
         <div
           aria-hidden="true"
-          class="absolute inset-x-[16%] bottom-[4%] h-[14%] bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.22)_0%,rgba(0,0,0,0.12)_42%,transparent_78%)] blur-xl z-[1]"
+          class="absolute inset-x-[20%] bottom-[7%] h-[11%] bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.2)_0%,rgba(0,0,0,0.1)_42%,transparent_78%)] blur-xl z-[1]"
         >
         </div>
         <div
           aria-hidden="true"
-          class="absolute inset-x-[10%] top-[10%] h-[78%] bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.14)_0%,rgba(255,255,255,0.07)_24%,rgba(255,255,255,0.02)_42%,transparent_68%)] blur-3xl z-[1]"
+          class="absolute inset-x-[14%] top-[15%] h-[66%] bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.04)_24%,rgba(255,255,255,0.015)_42%,transparent_68%)] blur-3xl z-[1]"
         >
         </div>
         <img
-          src="/gioia-hero-2.webp"
-          alt="Pai e filha sorrindo, representando a proteção da família e dignidade"
+          src="/dr-celso-gioia-e-dra-mariana-gioia-clean.webp"
+          alt="Dr. Celso Gioia e Dra. Mariana Gioia em retrato institucional"
           width="800"
           height="1000"
-          class="hero-portrait relative z-[3] w-full h-full object-contain object-bottom scale-[1.08] sm:scale-[1.04] md:scale-100 lg:scale-[0.97] xl:scale-100 drop-shadow-[0_12px_18px_rgba(0,0,0,0.18)]"
+          class="hero-portrait relative z-[3] w-full h-full object-contain object-bottom scale-100 sm:scale-[1.01] md:scale-[1.01] lg:scale-[1.01] xl:scale-[1.02] drop-shadow-[0_12px_18px_rgba(0,0,0,0.18)]"
           loading="eager"
           fetchpriority="high"
         />

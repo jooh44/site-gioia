@@ -66,7 +66,7 @@ export function TeamSection({ embedded = false }: TeamSectionProps) {
                 embedded ? "py-0 bg-transparent" : "py-24 md:py-32 bg-white"
             )}
         >
-            <div className={cn("container px-6 md:px-12 lg:px-24 mx-auto", embedded && "px-0 md:px-0 lg:px-0")}>
+            <div className={cn("site-shell", embedded && "w-full")}>
                 <div className="max-w-xl mb-16">
                     <span className={cn(
                         "text-xs font-bold uppercase tracking-[0.25em] block mb-4",

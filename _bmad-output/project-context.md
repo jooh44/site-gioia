@@ -455,8 +455,8 @@ Todos têm `scroll-mt-20` e `id` para smooth scroll a partir da navbar.
 
 ### 6.2 Pendente / Planejado ⏳
 
-- [ ] OG image dedicada para social preview final
-- [ ] Confirmação do domínio final e URL canônica
+- [x] OG image dedicada publicada em `/og-gioia.jpg`
+- [x] Domínio final e URL canônica definidos como `https://gioiaeassociados.com.br`
 - [ ] Confirmação URL LinkedIn do escritório
 - [ ] Schema `Person` para cada advogado (páginas individuais — Fase 2)
 - [ ] Páginas de área por advogado (Fase 2)
@@ -467,7 +467,7 @@ Todos têm `scroll-mt-20` e `id` para smooth scroll a partir da navbar.
 - [ ] Testes de performance / Core Web Vitals audit
 - [ ] Revisão final visual de `TestimonialsTicker`, `FAQ` e `Footer`
 - [ ] Atualizar `_bmad-output/planning-artifacts/architecture.md` ou marcá-lo como histórico; ele ainda descreve a arquitetura antiga em Next.js
-- [ ] Renomear `package.json.name` de `temp-app` para o nome definitivo do projeto
+- [x] `package.json.name` atualizado para `site-gioia`
 - [ ] Remover ou atualizar `homeConfig.hero.image`, hoje sem uso no Hero real
 
 ### 6.3 Assets Disponíveis
@@ -476,7 +476,7 @@ Todos têm `scroll-mt-20` e `id` para smooth scroll a partir da navbar.
 /public/
 ├── simbolo-gioia.svg              ← Monograma GG (navbar, watermarks)
 ├── logo-gioia.svg                 ← Logo principal usada no hero
-├── brand/assets/logo-gioia-e-associados.png ← Placeholder atual de OG image
+├── og-gioia.jpg                  ← OG image publicada para social preview
 ├── images/bg.webp                 ← Fundo da seção About / Quem Somos
 └── team/
     ├── celso-gioia.webp

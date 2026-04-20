@@ -22,11 +22,11 @@ Fazer a transicao da marca antiga para a nova identidade com consistencia entre 
 - [x] Reverter missao, visao e valores para o formato compacto
 - [x] Adicionar e-mail no rodape
 - [x] Corrigir bio resumida do Dr. Celso
-- [ ] Validar visual final no mobile antes da publicacao
+- [x] Validar visual final no mobile antes da publicacao
 
 ### Redes e perfis
 
-- [ ] Definir avatar final com leitura forte em tamanho reduzido
+- [x] Definir avatar final com leitura forte em tamanho reduzido
 - [ ] Atualizar foto de perfil do Instagram
 - [ ] Atualizar foto de perfil do Facebook
 - [ ] Atualizar foto de perfil do LinkedIn

@@ -66,7 +66,7 @@ const itemsReversed = [...items].reverse();
   data-nav-theme="light"
   class="w-full py-20 md:py-24 bg-stone-50 overflow-hidden border-y border-stone-200"
 >
-  <div class="container px-6 md:px-12 lg:px-24 mx-auto mb-12">
+  <div class="site-shell mb-12">
     <div
       class="flex flex-col md:flex-row md:items-end justify-between gap-6"
     >
@@ -147,7 +147,7 @@ const itemsReversed = [...items].reverse();
         class="flex gap-6 animate-ticker-left md:[animation-duration:30s]"
       >
         {
-          items.map((t, i) => (
+          items.map((t) => (
             <div class="flex-shrink-0 w-[400px] bg-white border border-stone-200 p-8 flex flex-col gap-4">
               <div class="flex items-center justify-between">
                 <div class="flex gap-0.5">
@@ -194,7 +194,7 @@ const itemsReversed = [...items].reverse();
         class="flex gap-6 animate-ticker-right md:[animation-duration:32s]"
       >
         {
-          itemsReversed.map((t, i) => (
+          itemsReversed.map((t) => (
             <div class="flex-shrink-0 w-[400px] bg-white border border-stone-200 p-8 flex flex-col gap-4">
               <div class="flex items-center justify-between">
                 <div class="flex gap-0.5">
