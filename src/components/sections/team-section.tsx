@@ -89,7 +89,7 @@ export function TeamSection({ embedded = false }: TeamSectionProps) {
                                 key={member.id}
                                 onClick={() => setActiveTab(member.id)}
                                 className={cn(
-                                    "flex items-center justify-center px-2 py-4 transition-all duration-300 font-sans text-[10px] md:text-xs font-bold tracking-widest border-t border-x uppercase text-center rounded-none",
+                                    "flex items-center justify-center px-2 py-4 transition-all duration-300 font-sans text-[10px] md:text-xs font-bold tracking-widest border-t border-x uppercase text-center rounded-t-[18px]",
                                     activeTab === member.id
                                         ? "bg-white text-primary border-stone-200 relative z-20 translate-y-[1px]"
                                         : "bg-primary text-white/60 border-white/5 hover:text-white relative z-0"
@@ -102,7 +102,7 @@ export function TeamSection({ embedded = false }: TeamSectionProps) {
 
                     {/* Content Card (Folder Body) */}
                     <div className={cn(
-                        "border p-8 md:p-12 relative z-10 overflow-hidden min-h-[500px] -mt-[1px] rounded-none",
+                        "border p-8 md:p-12 relative z-10 overflow-hidden min-h-[500px] -mt-[1px] rounded-[24px] rounded-tl-none lux-float",
                         embedded
                             ? "bg-[#fbf8f2] border-white/10 shadow-none"
                             : "bg-white border-stone-200 shadow-xl shadow-stone-200/40"
@@ -116,7 +116,7 @@ export function TeamSection({ embedded = false }: TeamSectionProps) {
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
                             <div className="lg:col-span-5">
                                 <div className={cn(
-                                    "relative aspect-[4/5] overflow-hidden rounded-none",
+                                    "relative aspect-[4/5] overflow-hidden rounded-[20px] lux-inset",
                                     embedded ? "bg-[#f1eadf] border border-stone-300/60" : "bg-stone-100 border border-stone-200"
                                 )}>
                                     <img
@@ -138,7 +138,7 @@ export function TeamSection({ embedded = false }: TeamSectionProps) {
                                 <div className="space-y-4">
                                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                                         <h3 className="font-serif text-3xl md:text-5xl text-stone-900">{activeMember.name}</h3>
-                                        <div className="flex items-center gap-2 px-3 py-1 bg-secondary/10 border border-secondary/20 rounded-none">
+                                        <div className="flex items-center gap-2 px-3 py-1 bg-secondary/10 border border-secondary/20 rounded-[14px] lux-inset-soft">
                                             <Scale className="w-3.5 h-3.5 text-secondary" />
                                             <span className="text-[10px] font-bold text-secondary uppercase tracking-widest">{activeMember.oab}</span>
                                         </div>
@@ -156,7 +156,7 @@ export function TeamSection({ embedded = false }: TeamSectionProps) {
                                     <span className="block text-[10px] font-bold text-stone-400 uppercase tracking-[0.2em]">Foco de Atuação</span>
                                     <div className="flex flex-wrap gap-3">
                                         {activeMember.specializations.map((spec, i) => (
-                                            <div key={i} className="flex items-center gap-2.5 px-4 py-2 bg-stone-50 border border-stone-100 rounded-none text-sm text-stone-700 font-medium hover:border-secondary/20 hover:bg-white transition-all">
+                                            <div key={i} className="flex items-center gap-2.5 px-4 py-2 bg-stone-50 border border-stone-100 rounded-[14px] lux-inset-soft text-sm text-stone-700 font-medium hover:border-secondary/20 hover:bg-white transition-all">
                                                 <CheckCircle2 className="w-4 h-4 text-secondary/60" />
                                                 {spec}
                                             </div>
@@ -165,7 +165,7 @@ export function TeamSection({ embedded = false }: TeamSectionProps) {
                                 </div>
 
                                 <div className="pt-8">
-                                    <Button asChild className="bg-secondary text-secondary-foreground hover:bg-[#e1c483] hover:text-primary hover:shadow-[0_0_34px_rgba(209,175,102,0.28)] h-16 px-12 text-sm uppercase tracking-[0.2em] font-bold rounded-none shadow-lg w-full sm:w-auto">
+                                    <Button asChild className="lux-button bg-secondary text-secondary-foreground hover:bg-[#e1c483] hover:text-primary hover:shadow-[0_0_34px_rgba(209,175,102,0.28)] h-16 px-12 text-sm uppercase tracking-[0.2em] font-bold shadow-lg w-full sm:w-auto">
                                         <a href={siteConfig.links.whatsapp} target="_blank" rel="noreferrer">
                                             Agendar horário
                                             <WhatsAppIcon className="ml-2 size-[1.05rem] opacity-80" />

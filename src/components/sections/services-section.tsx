@@ -156,7 +156,7 @@ function CtaButton() {
       target="_blank"
       rel="noreferrer"
       className={cn(
-        "inline-flex items-center h-12 px-8 text-xs uppercase tracking-[0.2em] font-bold transition-all",
+        "lux-button inline-flex items-center h-12 px-8 text-xs uppercase tracking-[0.2em] font-bold transition-all",
         "bg-secondary text-secondary-foreground shadow-lg shadow-black/10",
         "hover:bg-[#e1c483] hover:text-primary hover:shadow-[0_0_34px_rgba(209,175,102,0.28)]"
       )}
@@ -252,7 +252,7 @@ function DesktopServices() {
           </div>
 
           {/* Coluna direita — conteúdo ativo */}
-          <div className="p-10 xl:p-14" key={activeId}>
+          <div className="lux-inset bg-stone-50/40 p-10 xl:p-14 rounded-tl-none" key={activeId}>
             <p className="text-stone-500 text-base leading-relaxed max-w-2xl mb-8">
               {activeGroup.description}
             </p>
@@ -378,7 +378,7 @@ function MobileServices() {
 
                 {/* Content */}
                 <AccordionPrimitive.Content className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
-                  <div className="border-t border-stone-200 px-6 py-8">
+                  <div className="lux-inset bg-stone-50/40 border-t border-stone-200 px-6 py-8 m-3">
                     <p className="text-stone-500 text-sm leading-relaxed mb-6">
                       {group.description}
                     </p>

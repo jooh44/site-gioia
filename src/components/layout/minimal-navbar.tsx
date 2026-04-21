@@ -117,7 +117,7 @@ export function MinimalNavbar() {
                 {/* Logo */}
                 <div className="flex min-w-0 items-center">
                     <div className="pointer-events-auto">
-                        <a href="/" className="group inline-flex items-center max-w-[15rem] sm:max-w-none">
+                        <a href="/" className="group inline-flex items-center max-w-[15rem] sm:max-w-none pt-1">
                             <span className="hidden md:inline-flex">
                                 <GioiaLockup theme={navTheme} />
                             </span>
@@ -184,7 +184,7 @@ export function MinimalNavbar() {
                     asChild
                     variant="ghost"
                     className={cn(
-                        "hidden md:inline-flex uppercase tracking-[0.2em] text-xs font-bold px-6 h-10 rounded-none transition-all",
+                        "hidden md:inline-flex lux-outline uppercase tracking-[0.2em] text-xs font-bold px-6 h-10 transition-all",
                         navTheme === "light"
                             ? "text-primary border border-stone-300 hover:border-primary hover:bg-primary/5"
                             : "text-white border border-white/30 hover:border-white hover:bg-white/10"
@@ -201,7 +201,7 @@ export function MinimalNavbar() {
                     <SheetTrigger asChild>
                         <button
                             className={cn(
-                                "md:hidden w-10 h-10 flex items-center justify-center transition-all rounded-none outline-none border-none",
+                                "md:hidden w-10 h-10 flex items-center justify-center transition-all rounded-[12px] outline-none border-none",
                                 navTheme === "light"
                                     ? "text-primary hover:bg-primary/5"
                                     : "text-secondary hover:bg-white/10"
@@ -222,7 +222,7 @@ export function MinimalNavbar() {
                                 </a>
                             </SheetClose>
                             <SheetClose asChild>
-                                <button className="text-secondary hover:bg-white/10 w-12 h-12 flex items-center justify-center transition-all rounded-none outline-none border-none">
+                                <button className="text-secondary hover:bg-white/10 w-12 h-12 flex items-center justify-center transition-all rounded-[12px] outline-none border-none">
                                     <X size={32} className="shrink-0" strokeWidth={2.5} strokeLinecap="square" strokeLinejoin="miter" />
                                     <span className="sr-only">Fechar</span>
                                 </button>
@@ -265,7 +265,7 @@ export function MinimalNavbar() {
 
                             {/* WhatsApp CTA */}
                             <div className="mt-auto">
-                                <Button asChild className="bg-secondary text-secondary-foreground hover:bg-white hover:text-primary uppercase tracking-[0.2em] text-sm font-bold h-16 w-full rounded-none shadow-none border-t border-white/10">
+                                <Button asChild className="lux-button bg-secondary text-secondary-foreground hover:bg-white hover:text-primary uppercase tracking-[0.2em] text-sm font-bold h-16 w-full shadow-none border-t border-white/10">
                                     <a href={siteConfig.links.whatsapp} target="_blank" rel="noreferrer" onClick={() => setIsMenuOpen(false)}>
                                         Falar no WhatsApp
                                         <WhatsAppIcon className="ml-2 size-[1.05rem] opacity-80" />
