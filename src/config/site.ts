@@ -2,7 +2,7 @@ export const siteConfig = {
     name: "Gioia e Associados Advogados",
     description: "Escritório com 34 anos de excelência em Direito Médico e Trabalhista em São Paulo. Liminares em 24h, defesa do trabalhador e atendimento humanizado. Lapa/SP.",
     url: "https://gioiaeassociados.com.br",
-    ogImage: "https://gioiaeassociados.com.br/og-gioia.jpg",
+    ogImage: "https://gioiaeassociados.com.br/images/og/og-gioia.jpg",
     links: {
         whatsapp: "https://wa.me/5511993349907",
         instagram: "https://instagram.com/dragioia",

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anexo de Escopo Operacional - Gioia</title>
+    <style>
+      :root {
+        --ink: #1d1d1f;
+        --muted: #666;
+        --line: #d9d9dd;
+        --soft: #f6f6f8;
+        --accent: #6f0d11;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 14px;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Georgia", "Times New Roman", serif;
+        color: var(--ink);
+        background: #ececef;
+        line-height: 1.62;
+      }
+
+      .page-shell {
+        max-width: 960px;
+        margin: 24px auto;
+        padding: 24px;
+      }
+
+      .document {
+        background: #fff;
+        border: 1px solid var(--line);
+        box-shadow: 0 18px 60px rgba(0, 0, 0, 0.08);
+      }
+
+      .document-inner {
+        padding: 56px 64px 72px;
+      }
+
+      .eyebrow {
+        font: 600 0.79rem/1.4 Arial, Helvetica, sans-serif;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin: 0 0 14px;
+      }
+
+      h1 {
+        font-size: 2rem;
+        line-height: 1.16;
+        margin: 0 0 10px;
+      }
+
+      .subtitle {
+        margin: 0 0 26px;
+        color: var(--muted);
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .notice {
+        margin: 0 0 28px;
+        padding: 14px 16px;
+        background: var(--soft);
+        border-left: 3px solid var(--accent);
+        color: #3f3f46;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .summary {
+        margin: 28px 0 34px;
+        border: 1px solid var(--line);
+        background: linear-gradient(180deg, #fcfcfd 0%, #f6f6f8 100%);
+      }
+
+      .summary h2 {
+        margin: 0;
+        padding: 14px 18px;
+        font: 700 0.9rem/1.4 Arial, Helvetica, sans-serif;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .summary-item {
+        padding: 14px 18px;
+        border-right: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .summary-item:nth-child(2n) {
+        border-right: 0;
+      }
+
+      .summary-item strong {
+        display: block;
+        margin-bottom: 4px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.84rem;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        color: #4b5563;
+      }
+
+      p {
+        margin: 0 0 14px;
+      }
+
+      h2.section-title {
+        margin: 34px 0 12px;
+        padding-top: 12px;
+        border-top: 1px solid var(--line);
+        font-size: 1.16rem;
+      }
+
+      h3 {
+        margin: 20px 0 10px;
+        font-size: 1rem;
+      }
+
+      ul {
+        margin: 10px 0 16px 1.2rem;
+        padding: 0;
+      }
+
+      li {
+        margin-bottom: 6px;
+      }
+
+      .page-break {
+        break-before: page;
+        page-break-before: always;
+      }
+
+      @page {
+        size: A4;
+        margin: 18mm;
+      }
+
+      @media print {
+        body {
+          background: #fff;
+        }
+
+        .page-shell {
+          max-width: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        .document {
+          border: 0;
+          box-shadow: none;
+        }
+
+        .document-inner {
+          padding: 0;
+        }
+
+        .summary,
+        .notice,
+        .summary-item,
+        h2.section-title,
+        h3,
+        p,
+        ul,
+        li {
+          break-inside: avoid;
+          page-break-inside: avoid;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .page-shell {
+          padding: 0;
+          margin: 0;
+        }
+
+        .document-inner {
+          padding: 28px 22px 36px;
+        }
+
+        .summary-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .summary-item {
+          border-right: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <main class="document">
+        <div class="document-inner">
+          <p class="eyebrow">Anexo Operacional</p>
+          <h1>Anexo de Escopo Operacional</h1>
+          <p class="subtitle">
+            Assessoria mensal Gioia | Data-base: 2026-04-21
+          </p>
+
+          <div class="notice">
+            Este anexo integra o contrato principal de prestacao de servicos
+            continuados e foi estruturado para o plano atualmente recomendado a
+            Gioia.
+          </div>
+
+          <section class="summary">
+            <h2>Quadro-Resumo do Plano</h2>
+            <div class="summary-grid">
+              <div class="summary-item">
+                <strong>Setup ja entregue</strong>
+                <span>Identidade, base institucional, site e estrutura inicial da nova fase</span>
+              </div>
+              <div class="summary-item">
+                <strong>Fee mensal recorrente</strong>
+                <span>R$ 2.500,00</span>
+              </div>
+              <div class="summary-item">
+                <strong>Prazo inicial recomendado</strong>
+                <span>90 dias</span>
+              </div>
+              <div class="summary-item">
+                <strong>Foco do plano atual</strong>
+                <span>Lancamento, presenca recorrente e continuidade institucional</span>
+              </div>
+              <div class="summary-item">
+                <strong>Verba de midia</strong>
+                <span>Nao inclusa no fee</span>
+              </div>
+              <div class="summary-item">
+                <strong>Ferramentas pagas de terceiros</strong>
+                <span>Nao inclusas, salvo aprovacao expressa</span>
+              </div>
+            </div>
+          </section>
+
+          <h2 class="section-title">1. Objetivo da Assessoria</h2>
+          <p>
+            Esta assessoria mensal foi desenhada para manter a nova fase da
+            Gioia em operacao com criterio, consistencia e continuidade.
+          </p>
+          <p>
+            Nao se trata de pacote ilimitado de criacao, nem de estrutura
+            completa de agencia com multiplas frentes simultaneas abertas o
+            tempo todo.
+          </p>
+          <p>O objetivo pratico do plano e:</p>
+          <ul>
+            <li>sustentar a coerencia da marca no dia a dia</li>
+            <li>manter a comunicacao institucional ativa</li>
+            <li>organizar prioridades reais do periodo</li>
+            <li>dar continuidade a materiais, campanhas e presenca digital</li>
+            <li>
+              apoiar o escritorio na fase inicial de consolidacao da nova marca
+            </li>
+          </ul>
+
+          <h2 class="section-title">2. Logica de Operacao Mensal</h2>
+          <p>
+            A assessoria funciona por <strong>priorizacao mensal</strong>, e nao
+            por acumulacao irrestrita de pedidos.
+          </p>
+          <p>Na pratica, o desenho operacional recomendado para a Gioia contempla:</p>
+          <ul>
+            <li>1 alinhamento mensal principal</li>
+            <li>pauta mensal priorizada</li>
+            <li>1 frente principal por vez</li>
+            <li>ate 2 frentes secundarias compativeis com a agenda do periodo</li>
+            <li>
+              trocas assincronas por mensagem, e-mail e comentarios em ambiente
+              compartilhado
+            </li>
+          </ul>
+          <p>O que sera executado em cada mes dependera de:</p>
+          <ul>
+            <li>urgencia</li>
+            <li>impacto institucional</li>
+            <li>calendario real do escritorio</li>
+            <li>disponibilidade de briefing, aprovacao e acessos</li>
+          </ul>
+
+          <h2 class="section-title">3. O que Entra no Escopo Mensal</h2>
+          <p>
+            O escopo recorrente do plano atual pode contemplar, conforme a
+            prioridade do mes:
+          </p>
+          <ul>
+            <li>manutencao da coerencia da marca nos materiais do periodo</li>
+            <li>
+              criacao, adaptacao e refinamento de pecas institucionais digitais
+            </li>
+            <li>
+              desdobramentos para Instagram, WhatsApp, e-mail e comunicacao
+              institucional correlata
+            </li>
+            <li>
+              apoio visual e operacional ao lancamento e a continuidade da nova
+              fase
+            </li>
+            <li>organizacao da pauta mensal e acompanhamento das prioridades</li>
+            <li>
+              orientacao criativa e operacional para campanhas e comunicacoes do
+              periodo
+            </li>
+            <li>
+              coordenacao de trafego pago em nivel compativel com o plano,
+              quando houver ativacao
+            </li>
+            <li>leitura basica de performance e recomendacoes de ajuste</li>
+            <li>
+              ajustes leves em textos, CTAs, blocos e elementos do site
+              institucional, quando priorizados na pauta do mes
+            </li>
+          </ul>
+
+          <h2 class="section-title">4. Entregas Tipicas Dentro do Plano</h2>
+          <p>Como referencia, podem fazer parte de um ciclo mensal:</p>
+          <ul>
+            <li>pecas de lancamento ou continuidade</li>
+            <li>carrosseis e desdobramentos institucionais</li>
+            <li>capas, avatares e ajustes de perfil</li>
+            <li>
+              materiais de apoio para WhatsApp e comunicacao institucional
+            </li>
+            <li>criativos e textos-base para campanhas</li>
+            <li>revisoes de apresentacao visual</li>
+            <li>ajustes leves no site</li>
+            <li>recomendacoes de proximo passo e leitura do que priorizar</li>
+          </ul>
+          <p>
+            Importante: a assessoria e estruturada por
+            <strong>frentes e prioridades</strong>, nao por grade fixa ou volume
+            ilimitado de pecas.
+          </p>
+
+          <div class="page-break"></div>
+
+          <h2 class="section-title">5. O que Nao Esta Incluido no Fee</h2>
+          <p>Salvo contratacao complementar, nao integram este fee mensal:</p>
+          <ul>
+            <li>community management diario</li>
+            <li>resposta em tempo real a comentarios, directs ou mensagens</li>
+            <li>
+              atendimento comercial ou juridico ao cliente final da CONTRATANTE
+            </li>
+            <li>fotografia profissional</li>
+            <li>filmagem, captacao ou edicao audiovisual pesada</li>
+            <li>cobertura presencial</li>
+            <li>redacao juridica ilimitada</li>
+            <li>blog recorrente</li>
+            <li>novas landing pages em volume</li>
+            <li>reformulacao estrutural ampla do site</li>
+            <li>automacoes complexas</li>
+            <li>CRM customizado</li>
+            <li>integracoes profundas</li>
+            <li>desenvolvimento de software</li>
+            <li>promessa de volume minimo de leads, consultas ou faturamento</li>
+          </ul>
+
+          <h2 class="section-title">6. Trafego Pago, Midia e Contas</h2>
+          <p>Quando houver ativacao de campanhas:</p>
+          <ul>
+            <li>
+              o fee cobre coordenacao, direcionamento criativo, apoio a
+              criativos e acompanhamento compativel com o plano
+            </li>
+            <li>a verba de midia corre separadamente</li>
+            <li>
+              as contas de anuncio devem permanecer sob governanca da
+              CONTRATANTE, sempre que possivel
+            </li>
+          </ul>
+          <p>Nao estao incluidos no fee:</p>
+          <ul>
+            <li>investimento em Google Ads, Meta Ads ou plataformas equivalentes</li>
+            <li>creditos de plataforma</li>
+            <li>taxas, assinaturas ou custos de terceiros ligados a midia</li>
+            <li>
+              operacao intensiva de testes, landing pages ou infraestrutura
+              avancada de performance
+            </li>
+          </ul>
+          <p>
+            Valor de verba de midia sera definido caso a caso conforme
+            estrategia, momento e objetivo da campanha.
+          </p>
+
+          <h2 class="section-title">7. Ferramentas e Ambiente de Trabalho</h2>
+          <p>O trabalho podera utilizar:</p>
+          <ul>
+            <li>mensagem e e-mail</li>
+            <li>calls curtas de alinhamento</li>
+            <li>ambiente digital compartilhado para comentarios e aprovacao</li>
+            <li>contas de anuncio, analytics e site, quando aplicavel</li>
+            <li>
+              ferramentas de IA e automacao como apoio operacional ao trabalho do
+              CONTRATADO
+            </li>
+          </ul>
+          <p>
+            Ferramentas pagas de terceiros somente serao consideradas inclusas
+            se houver previsao expressa.
+          </p>
+
+          <h2 class="section-title">8. Revisoes, Limites e Mudanca de Escopo</h2>
+          <p>
+            Cada demanda contempla rodadas razoaveis de ajuste, compativeis com
+            o briefing aprovado.
+          </p>
+          <p>Nao se consideram simples revisoes:</p>
+          <ul>
+            <li>mudanca integral de direcao</li>
+            <li>nova campanha fora da pauta do mes</li>
+            <li>aumento significativo de volume apos definicao da prioridade</li>
+            <li>refacao integral por alteracao posterior de estrategia</li>
+          </ul>
+          <p>Nesses casos, as partes poderao:</p>
+          <ul>
+            <li>reordenar a fila do mes</li>
+            <li>deslocar a demanda para o ciclo seguinte</li>
+            <li>aprovar escopo complementar</li>
+          </ul>
+
+          <h2 class="section-title">9. Prazos e Dependencias</h2>
+          <p>Os prazos serao definidos conforme:</p>
+          <ul>
+            <li>complexidade da demanda</li>
+            <li>fila do mes</li>
+            <li>qualidade do briefing</li>
+            <li>tempo de resposta e aprovacao da CONTRATANTE</li>
+            <li>disponibilidade de acessos, contas e materiais</li>
+          </ul>
+          <p>
+            Atrasos de aprovacao, correcoes estruturais de briefing ou mudancas
+            de direcao impactam diretamente o cronograma.
+          </p>
+
+          <h2 class="section-title">10. Itens Extraordinarios e Adicionais Possiveis</h2>
+          <p>Podem ser contratados a parte, se necessario:</p>
+          <ul>
+            <li>campanha pontual de maior porte</li>
+            <li>sprint de automacao</li>
+            <li>sprint tecnico de SEO</li>
+            <li>nova pagina institucional</li>
+            <li>pacote adicional de pecas</li>
+            <li>artigo de blog</li>
+            <li>operacao reforcada de midia</li>
+            <li>cobertura, foto ou video</li>
+          </ul>
+
+          <h2 class="section-title">11. Compliance e Limites Eticos</h2>
+          <p>Como se trata de escritorio de advocacia:</p>
+          <ul>
+            <li>
+              a comunicacao deve respeitar sobriedade, criterio e os limites
+              aplicaveis a atividade
+            </li>
+            <li>nao ha promessa de resultado juridico</li>
+            <li>nao ha promessa de volume minimo de leads ou faturamento</li>
+            <li>
+              eventual uso de IA e automacoes tera funcao auxiliar e operacional,
+              sem substituir validacao humana e responsabilidade final
+            </li>
+          </ul>
+
+          <h2 class="section-title">12. Resumo Executivo do Plano</h2>
+          <h3>Base ja entregue</h3>
+          <ul>
+            <li>identidade</li>
+            <li>base institucional</li>
+            <li>site</li>
+            <li>estrutura inicial da nova fase</li>
+          </ul>
+
+          <h3>Assessoria mensal atual</h3>
+          <ul>
+            <li>fee: <strong>R$ 2.500,00 / mes</strong></li>
+            <li>
+              foco: <strong>lancamento + presenca recorrente + continuidade institucional</strong>
+            </li>
+            <li>prazo inicial: <strong>90 dias</strong></li>
+            <li>midia: <strong>separada</strong></li>
+          </ul>
+
+          <h3>Tese do plano</h3>
+          <p>
+            O plano atual foi desenhado para manter a nova marca da Gioia em
+            operacao com consistencia e continuidade, sem criar dissonancia
+            entre o historico da relacao, o momento real do escritorio e o
+            escopo mensal efetivamente contratado.
+          </p>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

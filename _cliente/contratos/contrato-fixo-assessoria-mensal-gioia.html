@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contrato de Prestacao de Servicos Continuados - Gioia</title>
+    <style>
+      :root {
+        --ink: #1d1d1f;
+        --muted: #666;
+        --line: #d9d9dd;
+        --soft: #f6f6f8;
+        --accent: #6f0d11;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 14px;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Georgia", "Times New Roman", serif;
+        color: var(--ink);
+        background: #ececef;
+        line-height: 1.62;
+      }
+
+      .page-shell {
+        max-width: 960px;
+        margin: 24px auto;
+        padding: 24px;
+      }
+
+      .document {
+        background: #fff;
+        border: 1px solid var(--line);
+        box-shadow: 0 18px 60px rgba(0, 0, 0, 0.08);
+      }
+
+      .document-inner {
+        padding: 56px 64px 72px;
+      }
+
+      .eyebrow {
+        font: 600 0.79rem/1.4 Arial, Helvetica, sans-serif;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin: 0 0 14px;
+      }
+
+      h1 {
+        font-size: 2rem;
+        line-height: 1.16;
+        margin: 0 0 10px;
+      }
+
+      .subtitle {
+        margin: 0 0 26px;
+        color: var(--muted);
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .notice {
+        margin: 0 0 28px;
+        padding: 14px 16px;
+        background: var(--soft);
+        border-left: 3px solid var(--accent);
+        color: #3f3f46;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .summary {
+        margin: 28px 0 34px;
+        border: 1px solid var(--line);
+        background: linear-gradient(180deg, #fcfcfd 0%, #f6f6f8 100%);
+      }
+
+      .summary h2 {
+        margin: 0;
+        padding: 14px 18px;
+        font: 700 0.9rem/1.4 Arial, Helvetica, sans-serif;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0;
+      }
+
+      .summary-item {
+        padding: 14px 18px;
+        border-right: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .summary-item:nth-child(2n) {
+        border-right: 0;
+      }
+
+      .summary-item strong {
+        display: block;
+        margin-bottom: 4px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.84rem;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        color: #4b5563;
+      }
+
+      .contract-title {
+        margin: 0 0 28px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      p {
+        margin: 0 0 14px;
+      }
+
+      h2.section-title {
+        margin: 34px 0 12px;
+        padding-top: 12px;
+        border-top: 1px solid var(--line);
+        font-size: 1.16rem;
+      }
+
+      ul {
+        margin: 10px 0 16px 1.2rem;
+        padding: 0;
+      }
+
+      li {
+        margin-bottom: 6px;
+      }
+
+      .signature-block {
+        margin-top: 48px;
+      }
+
+      .signature-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px 32px;
+        margin-top: 28px;
+      }
+
+      .signature-line {
+        padding-top: 34px;
+        border-top: 1px solid #444;
+        min-height: 64px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 0.92rem;
+      }
+
+      .page-break {
+        break-before: page;
+        page-break-before: always;
+      }
+
+      @page {
+        size: A4;
+        margin: 18mm;
+      }
+
+      @media print {
+        body {
+          background: #fff;
+        }
+
+        .page-shell {
+          max-width: none;
+          margin: 0;
+          padding: 0;
+        }
+
+        .document {
+          border: 0;
+          box-shadow: none;
+        }
+
+        .document-inner {
+          padding: 0;
+        }
+
+        .summary,
+        .notice,
+        .summary-item,
+        h2.section-title,
+        .signature-block,
+        p,
+        ul,
+        li {
+          break-inside: avoid;
+          page-break-inside: avoid;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .page-shell {
+          padding: 0;
+          margin: 0;
+        }
+
+        .document-inner {
+          padding: 28px 22px 36px;
+        }
+
+        .summary-grid,
+        .signature-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .summary-item {
+          border-right: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <main class="document">
+        <div class="document-inner">
+          <p class="eyebrow">Minuta Contratual</p>
+          <h1>Contrato de Prestacao de Servicos Continuados</h1>
+          <p class="subtitle">
+            Assessoria de marca, comunicacao e presenca digital
+          </p>
+
+          <div class="notice">
+            Preencher qualificacao completa das partes, datas, vencimento, forma
+            de pagamento e foro antes da assinatura.
+          </div>
+
+          <section class="summary">
+            <h2>Quadro-Resumo Comercial</h2>
+            <div class="summary-grid">
+              <div class="summary-item">
+                <strong>Fee mensal</strong>
+                <span>R$ 2.500,00</span>
+              </div>
+              <div class="summary-item">
+                <strong>Prazo inicial</strong>
+                <span>90 dias</span>
+              </div>
+              <div class="summary-item">
+                <strong>Vencimento</strong>
+                <span>Todo dia [preencher]</span>
+              </div>
+              <div class="summary-item">
+                <strong>Forma de pagamento</strong>
+                <span>[PIX / transferencia / outro meio]</span>
+              </div>
+              <div class="summary-item">
+                <strong>Aviso previo apos prazo inicial</strong>
+                <span>30 dias</span>
+              </div>
+              <div class="summary-item">
+                <strong>Verba de midia</strong>
+                <span>Nao inclusa no fee</span>
+              </div>
+            </div>
+          </section>
+
+          <p class="contract-title">
+            Contrato de prestacao de servicos continuados de assessoria de
+            marca, comunicacao e presenca digital
+          </p>
+
+          <p>
+            Pelo presente instrumento particular, de um lado:
+          </p>
+          <p>
+            <strong>CONTRATANTE:</strong> [razao social completa], inscrita no
+            CNPJ sob n. [preencher], com sede em [preencher], neste ato
+            representada por [preencher].
+          </p>
+          <p>e, de outro lado:</p>
+          <p>
+            <strong>CONTRATADO:</strong> Johny [nome completo], CPF n.
+            [preencher], residente e domiciliado em [preencher].
+          </p>
+          <p>
+            As partes resolvem celebrar o presente Contrato de Prestacao de
+            Servicos Continuados de Assessoria de Marca, Comunicacao e Presenca
+            Digital, que se regera pelas clausulas e condicoes abaixo.
+          </p>
+
+          <h2 class="section-title">1. Objeto</h2>
+          <p>
+            1.1. O presente contrato tem por objeto a prestacao continuada, pelo
+            CONTRATADO, de servicos de assessoria criativa, operacional e
+            estrategica voltados a manutencao, lancamento e continuidade da
+            presenca digital da CONTRATANTE.
+          </p>
+          <p>
+            1.2. O trabalho abrange, em regime recorrente, apoio de marca,
+            comunicacao institucional, coordenacao das frentes digitais
+            priorizadas e acompanhamento das acoes definidas para cada ciclo
+            mensal.
+          </p>
+          <p>
+            1.3. Para o ciclo ora contratado, as partes reconhecem que existe um
+            <strong>setup ja entregue</strong>, composto pela base inicial de
+            marca e presenca institucional, passando o objeto deste contrato a
+            incidir sobre a continuidade operacional dessa nova fase.
+          </p>
+          <p>
+            1.4. O detalhamento de escopo, limites, exclusoes, dinamica de
+            trabalho e itens extraordinarios consta do
+            <strong>Anexo de Escopo Operacional</strong>, que integra este
+            contrato para todos os fins.
+          </p>
+
+          <h2 class="section-title">2. Documentos Integrantes e Ordem de Prevalencia</h2>
+          <p>2.1. Integram este contrato:</p>
+          <ul>
+            <li>este instrumento principal</li>
+            <li>o Anexo de Escopo Operacional</li>
+            <li>
+              eventuais aprovacoes complementares por escrito, inclusive por
+              e-mail ou mensagem com aceite expresso
+            </li>
+          </ul>
+          <p>
+            2.2. Em caso de divergencia entre este contrato e o anexo
+            operacional, prevalecera o anexo quanto a escopo, investimento,
+            exclusoes e detalhes de execucao.
+          </p>
+
+          <h2 class="section-title">3. Natureza da Operacao Mensal</h2>
+          <p>
+            3.1. O trabalho sera executado em regime de demanda continuada e
+            priorizacao mensal, e nao como pacote ilimitado de pedidos, pecas,
+            campanhas ou alteracoes.
+          </p>
+          <p>3.2. O fee mensal remunera, de forma integrada:</p>
+          <ul>
+            <li>reserva de agenda</li>
+            <li>planejamento e acompanhamento das frentes do periodo</li>
+            <li>execucao das demandas priorizadas</li>
+            <li>ajustes compativeis com o briefing aprovado</li>
+            <li>coordenacao geral da operacao mensal</li>
+          </ul>
+          <p>
+            3.3. A pauta de cada mes sera definida de comum acordo entre as
+            partes, considerando urgencia, impacto institucional, calendario do
+            escritorio, dependencias de aprovacao e capacidade operacional
+            compativel com o plano contratado.
+          </p>
+          <p>
+            3.4. Demandas nao utilizadas em determinado periodo nao se acumulam
+            automaticamente para os meses seguintes, salvo ajuste expresso entre
+            as partes.
+          </p>
+          <p>
+            3.5. O trabalho podera ser conduzido por mensagem, e-mail, call
+            curta ou ambiente digital compartilhado, conforme conveniencia
+            operacional.
+          </p>
+
+          <h2 class="section-title">4. Obrigacoes do Contratado</h2>
+          <p>Compete ao CONTRATADO:</p>
+          <ul>
+            <li>
+              executar os servicos com zelo tecnico, criterio visual,
+              consistencia institucional e boa-fe profissional
+            </li>
+            <li>
+              organizar a pauta mensal conforme as prioridades alinhadas com a
+              CONTRATANTE
+            </li>
+            <li>
+              produzir, revisar e adaptar os materiais previstos no escopo
+              contratado
+            </li>
+            <li>
+              manter coerencia de marca, linguagem e apresentacao institucional
+              nas frentes sob sua responsabilidade
+            </li>
+            <li>
+              sinalizar riscos, dependencias, ajustes de rota e recomendacoes
+              quando aplicavel
+            </li>
+            <li>
+              preservar o sigilo sobre informacoes nao publicas e acessos
+              disponibilizados
+            </li>
+          </ul>
+          <p>
+            Paragrafo primeiro. O CONTRATADO podera utilizar ferramentas de IA,
+            automacao, templates proprios, bibliotecas e apoio tecnico pontual
+            de parceiros como meios auxiliares de producao e organizacao,
+            permanecendo responsavel pela coordenacao geral, curadoria e revisao
+            final das entregas.
+          </p>
+          <p>
+            Paragrafo segundo. O CONTRATADO atuara com autonomia tecnica e
+            organizacional, sem subordinacao funcional a rotina interna da
+            CONTRATANTE.
+          </p>
+
+          <h2 class="section-title">5. Obrigacoes da Contratante</h2>
+          <p>Compete a CONTRATANTE:</p>
+          <ul>
+            <li>
+              fornecer informacoes, materiais, referencias, acessos e
+              direcionamentos necessarios para a boa execucao do trabalho
+            </li>
+            <li>aprovar, reprovar ou solicitar ajustes em prazo razoavel</li>
+            <li>
+              validar o conteudo final antes de sua publicacao, veiculacao ou
+              impulsionamento
+            </li>
+            <li>
+              manter sob sua governanca as contas, canais, plataformas e ativos
+              institucionais, sempre que possivel
+            </li>
+            <li>
+              disponibilizar, quando necessario, acesso a perfis, contas de
+              anuncio, analytics, site, integracoes e ferramentas relacionadas
+              ao escopo
+            </li>
+            <li>
+              realizar a validacao juridica e tecnica final de qualquer conteudo
+              sensivel, informativo ou relacionado a atividade advocaticia
+            </li>
+          </ul>
+          <p>
+            Paragrafo unico. Atrasos de briefing, aprovacao, liberacao de
+            acessos, envio de materiais ou validacao interna por parte da
+            CONTRATANTE deslocam proporcionalmente os prazos, sem descaracterizar
+            a cobranca do fee do periodo.
+          </p>
+
+          <h2 class="section-title">6. Aprovacao, Revisoes e Publicacao</h2>
+          <p>
+            6.1. Cada demanda contemplara rodadas razoaveis de ajuste,
+            compativeis com a natureza do trabalho e com o briefing aprovado.
+          </p>
+          <p>6.2. Nao se consideram meros ajustes:</p>
+          <ul>
+            <li>
+              mudanca integral de direcao apos aprovacao de conceito, texto ou
+              layout
+            </li>
+            <li>abertura de nova frente fora da pauta definida para o mes</li>
+            <li>refacao integral por alteracao posterior de estrategia</li>
+            <li>
+              ampliacao relevante de volume apos o fechamento da pauta mensal
+            </li>
+          </ul>
+          <p>
+            6.3. Nessas hipoteses, as partes alinharao replanejamento,
+            deslocamento da fila, ajuste de prazo ou eventual contratacao
+            complementar.
+          </p>
+          <p>
+            6.4. A publicacao, impulsionamento, veiculacao ou uso final dos
+            materiais pressupoe aprovacao da CONTRATANTE, que responde pelo
+            conteudo efetivamente publicado em seus canais oficiais.
+          </p>
+          <p>
+            6.5. Salvo oposicao expressa no prazo combinado entre as partes,
+            manifestacoes de aprovacao por e-mail, WhatsApp ou outro meio
+            escrito utilizado na operacao terao validade como aceite da etapa
+            correspondente.
+          </p>
+
+          <div class="page-break"></div>
+
+          <h2 class="section-title">7. Investimento, Vencimento e Reajuste</h2>
+          <p>
+            7.1. Pela prestacao dos servicos previstos neste contrato, a
+            CONTRATANTE pagara ao CONTRATADO o valor mensal fixo de
+            <strong>R$ 2.500,00 (dois mil e quinhentos reais)</strong>.
+          </p>
+          <p>
+            7.2. O vencimento ocorrera todo dia [preencher] de cada mes, por
+            meio de [PIX / transferencia / outro meio].
+          </p>
+          <p>7.3. O fee mensal nao se confunde com:</p>
+          <ul>
+            <li>
+              verba de midia em Google Ads, Meta Ads ou plataformas equivalentes
+            </li>
+            <li>
+              assinaturas de softwares, bancos de imagem, ferramentas,
+              conectores, CRMs, plataformas de IA ou servicos pagos de terceiros
+            </li>
+            <li>servicos extraordinarios nao previstos no escopo recorrente</li>
+          </ul>
+          <p>7.4. Em caso de atraso no pagamento, incidirao:</p>
+          <ul>
+            <li>multa moratoria de 2%</li>
+            <li>juros de 1% ao mes, calculados pro rata die</li>
+          </ul>
+          <p>
+            7.5. Persistindo o inadimplemento por mais de 10 dias, o CONTRATADO
+            podera suspender novas execucoes ate a regularizacao, sem prejuizo
+            da exigibilidade dos valores vencidos.
+          </p>
+          <p>
+            7.6. Permanecendo a relacao contratual por periodo superior a 12
+            meses, os valores poderao ser reajustados anualmente pelo IPCA/IBGE
+            acumulado do periodo ou, na sua indisponibilidade, por indice
+            oficial que o substitua.
+          </p>
+
+          <h2 class="section-title">8. Verba de Midia, Ferramentas e Reembolsos</h2>
+          <p>
+            8.1. Sempre que houver ativacao de campanhas, a verba de midia sera
+            paga diretamente pela CONTRATANTE nas plataformas ou
+            antecipada/reembolsada na forma ajustada entre as partes.
+          </p>
+          <p>
+            8.2. Ferramentas, plataformas, bancos de imagem, servicos de IA,
+            automacao, CRM, integracoes ou quaisquer recursos pagos de terceiros
+            somente serao considerados incluidos mediante previsao expressa.
+          </p>
+          <p>
+            8.3. Despesas extraordinarias aprovadas pela CONTRATANTE serao
+            reembolsadas contra comprovacao ou pagas diretamente por ela.
+          </p>
+
+          <h2 class="section-title">9. Demandas Extraordinarias e Escopo Complementar</h2>
+          <p>
+            9.1. Atividades fora do escopo recorrente poderao ser contratadas a
+            parte, mediante aprovacao expressa entre as partes.
+          </p>
+          <p>9.2. Exemplos tipicos de demanda extraordinaria:</p>
+          <ul>
+            <li>nova landing page ou nova secao estrutural de site</li>
+            <li>sprint tecnico de SEO ou automacao</li>
+            <li>campanha pontual de maior complexidade</li>
+            <li>artigo de blog ou conteudo tecnico de maior densidade</li>
+            <li>
+              fotografia, video, cobertura presencial ou producao audiovisual
+            </li>
+            <li>
+              implementacao de integracoes, dashboards ou operacoes tecnicas
+              fora da rotina mensal
+            </li>
+          </ul>
+
+          <h2 class="section-title">10. Propriedade Intelectual e Uso dos Materiais</h2>
+          <p>
+            10.1. Uma vez adimplidos os valores devidos, a CONTRATANTE podera
+            utilizar os materiais finais produzidos no ambito deste contrato
+            para seus fins institucionais e de comunicacao.
+          </p>
+          <p>10.2. Permanecem sob titularidade do CONTRATADO:</p>
+          <ul>
+            <li>arquivos-fonte e estruturas internas de organizacao</li>
+            <li>
+              templates genericos, componentes de metodo e processos
+              reutilizaveis
+            </li>
+            <li>
+              prompts, rotinas, automacoes, frameworks e estruturas auxiliares
+              de producao desenvolvidos como metodo de trabalho
+            </li>
+          </ul>
+          <p>
+            10.3. O CONTRATADO podera mencionar os trabalhos em portfolio ou
+            comunicacao profissional, apos sua publicacao, salvo restricao
+            expressa da CONTRATANTE por escrito.
+          </p>
+
+          <h2 class="section-title">11. Sigilo, Confidencialidade e Dados</h2>
+          <p>
+            11.1. As partes comprometem-se a manter sigilo sobre informacoes
+            estrategicas, documentos internos, acessos, materiais ainda nao
+            publicados e quaisquer conteudos nao publicos compartilhados durante
+            a vigencia deste contrato.
+          </p>
+          <p>
+            11.2. O CONTRATADO compromete-se a utilizar os acessos e dados da
+            CONTRATANTE exclusivamente para execucao do objeto contratual.
+          </p>
+          <p>
+            11.3. Caso haja tratamento de dados pessoais em contexto
+            operacional, as partes se comprometem a observar a legislacao
+            aplicavel, inclusive a LGPD, dentro dos limites de sua atuacao.
+          </p>
+
+          <h2 class="section-title">12. Autonomia, Ausencia de Exclusividade e Inexistencia de Vinculo</h2>
+          <p>
+            12.1. O presente contrato nao gera sociedade, representacao
+            comercial, exclusividade nem vinculo empregaticio entre as partes.
+          </p>
+          <p>
+            12.2. O CONTRATADO podera atender outros clientes simultaneamente,
+            desde que isso nao inviabilize o cumprimento do escopo contratado.
+          </p>
+          <p>
+            12.3. Tributos, contribuicoes e obrigacoes pessoais do CONTRATADO
+            correrao por sua propria conta, na forma da lei, ressalvadas
+            eventuais retencoes obrigatorias legalmente impostas a CONTRATANTE.
+          </p>
+
+          <h2 class="section-title">13. Prazo, Vigencia e Renovacao</h2>
+          <p>
+            13.1. O presente contrato entra em vigor em [preencher data] e tera
+            vigencia inicial de <strong>90 (noventa) dias</strong>.
+          </p>
+          <p>
+            13.2. O prazo inicial foi definido pelas partes como janela minima
+            recomendada para consolidacao da nova fase de operacao da
+            CONTRATANTE.
+          </p>
+          <p>13.3. Encerrado o periodo inicial, o contrato podera:</p>
+          <ul>
+            <li>ser renovado por novo periodo ajustado entre as partes</li>
+            <li>
+              seguir por prazo indeterminado, mediante continuidade da execucao
+              e dos pagamentos
+            </li>
+          </ul>
+
+          <h2 class="section-title">14. Rescisao</h2>
+          <p>
+            14.1. Durante a vigencia inicial, eventual encerramento antecipado
+            devera ser comunicado por escrito e nao afastara o pagamento do mes
+            ja iniciado, nem das demandas extraordinarias ja aprovadas.
+          </p>
+          <p>
+            14.2. Apos o periodo inicial, o contrato podera ser rescindido por
+            qualquer das partes mediante aviso previo minimo de 30 dias.
+          </p>
+          <p>14.3. Em caso de rescisao:</p>
+          <ul>
+            <li>
+              os materiais ja aprovados e pagos permanecerao disponiveis para
+              uso da CONTRATANTE
+            </li>
+            <li>
+              os acessos concedidos ao CONTRATADO poderao ser revogados pela
+              CONTRATANTE apos a conclusao da transicao
+            </li>
+            <li>
+              demandas em aberto serao tratadas conforme o estagio de execucao,
+              o adimplemento existente e o que tiver sido efetivamente aprovado
+            </li>
+          </ul>
+          <p>
+            14.4. O inadimplemento relevante, a quebra de sigilo ou a violacao
+            grave das clausulas contratuais autorizam rescisao imediata pela
+            parte inocente, sem prejuizo das medidas cabiveis.
+          </p>
+
+          <h2 class="section-title">15. Limites de Responsabilidade e Compliance</h2>
+          <p>
+            15.1. O CONTRATADO nao garante numero minimo de leads, consultas,
+            contratos fechados, faturamento, posicionamento organico, aprovacao
+            de anuncios ou qualquer resultado especifico.
+          </p>
+          <p>15.2. Resultados dependem, entre outros fatores, de:</p>
+          <ul>
+            <li>mercado e concorrencia</li>
+            <li>verba de midia</li>
+            <li>rapidez de aprovacao</li>
+            <li>qualidade dos ativos e informacoes fornecidos</li>
+            <li>desempenho das plataformas de terceiros</li>
+            <li>consistencia comercial e operacional da propria CONTRATANTE</li>
+          </ul>
+          <p>
+            15.3. O CONTRATADO nao responde pelo merito juridico do conteudo
+            validado ou publicado pela CONTRATANTE, nem por descumprimento de
+            normas eticas da atividade advocaticia quando a publicacao final
+            ocorrer sem sua anuencia tecnica ou em divergencia do material
+            aprovado.
+          </p>
+          <p>
+            15.4. A CONTRATANTE reconhece que a comunicacao de escritorio de
+            advocacia demanda sobriedade, criterio e observancia das normas
+            aplicaveis a atividade, inclusive quanto a vedacao de promessas de
+            resultado.
+          </p>
+
+          <h2 class="section-title">16. Disposicoes Gerais</h2>
+          <p>
+            16.1. Este contrato podera ser complementado por anexos, aditivos,
+            e-mails ou mensagens com aceite expresso, desde que relacionados ao
+            objeto contratual.
+          </p>
+          <p>
+            16.2. A eventual tolerancia de uma parte para com a outra nao
+            implicara renuncia de direito nem alteracao tacita das clausulas
+            aqui previstas.
+          </p>
+          <p>
+            16.3. A nulidade ou inexequibilidade de qualquer disposicao nao
+            prejudicara as demais clausulas do contrato.
+          </p>
+          <p>
+            16.4. As partes reconhecem a validade de assinatura fisica ou
+            eletronica, inclusive por plataforma digital apta a comprovar autoria
+            e integridade.
+          </p>
+
+          <h2 class="section-title">17. Foro</h2>
+          <p>
+            Fica eleito o foro da Comarca de [preencher], com renuncia a
+            qualquer outro, por mais privilegiado que seja, para dirimir
+            eventuais controversias oriundas deste contrato.
+          </p>
+
+          <section class="signature-block">
+            <p>[cidade], [data]</p>
+            <div class="signature-grid">
+              <div class="signature-line">CONTRATANTE</div>
+              <div class="signature-line">CONTRATADO</div>
+              <div class="signature-line">TESTEMUNHA 1</div>
+              <div class="signature-line">TESTEMUNHA 2</div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

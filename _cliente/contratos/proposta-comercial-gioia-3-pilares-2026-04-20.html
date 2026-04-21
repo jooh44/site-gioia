@@ -1,0 +1,1413 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Proposta Comercial — Gioia x Digital Dog</title>
+    <meta
+      name="description"
+      content="Proposta comercial em 3 pilares para a gestão contínua da Gioia e Associados."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&family=Lato:wght@300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #1f1716;
+        --ink-soft: #564744;
+        --garnet: #5e0001;
+        --garnet-deep: #320102;
+        --gold: #c7a15a;
+        --gold-soft: #ead9b6;
+        --paper: #f7f2eb;
+        --paper-strong: #fffdf9;
+        --stone: #e7ddd1;
+        --line: rgba(64, 39, 36, 0.14);
+        --line-strong: rgba(64, 39, 36, 0.24);
+        --shadow-soft: 0 20px 60px rgba(29, 18, 18, 0.08);
+        --shadow-card: 0 24px 70px rgba(31, 23, 22, 0.08);
+        --radius: 28px;
+        --container: 1180px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Lato", sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(199, 161, 90, 0.14), transparent 32%),
+          radial-gradient(circle at top right, rgba(94, 0, 1, 0.08), transparent 38%),
+          var(--paper);
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: url("../brand/assets/texture-leather.png");
+        background-size: 520px;
+        opacity: 0.035;
+        pointer-events: none;
+        mix-blend-mode: multiply;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page-shell {
+        position: relative;
+        z-index: 1;
+      }
+
+      .container {
+        width: min(calc(100% - 2rem), var(--container));
+        margin: 0 auto;
+      }
+
+      .section {
+        padding: 4rem 0;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.7rem;
+        padding: 0.65rem 1rem;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--garnet);
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(14px);
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 0.55rem;
+        height: 0.55rem;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--gold), var(--garnet));
+      }
+
+      .hero {
+        padding: 2rem 0 4rem;
+      }
+
+      .hero-card {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(199, 161, 90, 0.25);
+        border-radius: calc(var(--radius) + 6px);
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.92), rgba(247, 242, 235, 0.97)),
+          rgba(255, 255, 255, 0.92);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+        gap: 2rem;
+        padding: 2rem;
+      }
+
+      .hero-main {
+        position: relative;
+        padding: 1rem;
+      }
+
+      .hero-main::after {
+        content: "";
+        position: absolute;
+        right: -1rem;
+        top: -3rem;
+        width: 360px;
+        aspect-ratio: 1;
+        background: radial-gradient(circle, rgba(199, 161, 90, 0.22), transparent 66%);
+        pointer-events: none;
+      }
+
+      .brand-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .brand-stack {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+        flex-wrap: wrap;
+      }
+
+      .dd-mark {
+        display: grid;
+        gap: 0.2rem;
+      }
+
+      .dd-mark strong,
+      .dd-mark span {
+        display: block;
+      }
+
+      .dd-mark strong {
+        font-size: 0.92rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--ink);
+      }
+
+      .dd-mark span {
+        font-size: 0.72rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(86, 71, 68, 0.7);
+      }
+
+      .divider-dot {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--gold), var(--garnet));
+      }
+
+      .gioia-logo {
+        width: 210px;
+      }
+
+      .proposal-meta {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+
+      .meta-pill {
+        padding: 0.7rem 0.9rem;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.72);
+        font-size: 0.78rem;
+        color: var(--ink-soft);
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        margin: 0;
+        font-family: "EB Garamond", serif;
+        line-height: 0.95;
+        letter-spacing: -0.03em;
+      }
+
+      h1 {
+        max-width: 12ch;
+        margin-top: 1.6rem;
+        font-size: clamp(3rem, 7vw, 6rem);
+        color: var(--ink);
+      }
+
+      .hero-copy {
+        max-width: 60ch;
+        margin-top: 1.5rem;
+        font-size: 1.12rem;
+        line-height: 1.75;
+        color: var(--ink-soft);
+      }
+
+      .hero-highlights {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem;
+        margin-top: 1.8rem;
+      }
+
+      .hero-highlights span {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.85rem 1rem;
+        background: rgba(94, 0, 1, 0.05);
+        border: 1px solid rgba(94, 0, 1, 0.08);
+        border-radius: 999px;
+        color: var(--garnet);
+        font-size: 0.86rem;
+        font-weight: 700;
+      }
+
+      .hero-highlights span::before {
+        content: "";
+        width: 0.45rem;
+        height: 0.45rem;
+        border-radius: 999px;
+        background: var(--gold);
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 0.85rem;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0.95rem 1.25rem;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font-size: 0.86rem;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        text-decoration: none;
+        cursor: pointer;
+        transition:
+          transform 220ms ease,
+          box-shadow 220ms ease,
+          border-color 220ms ease,
+          background-color 220ms ease,
+          color 220ms ease;
+      }
+
+      .button:focus-visible {
+        outline: 3px solid rgba(199, 161, 90, 0.4);
+        outline-offset: 3px;
+      }
+
+      .button-primary {
+        background: linear-gradient(135deg, var(--garnet), var(--garnet-deep));
+        color: #fff9f5;
+        box-shadow: 0 18px 40px rgba(94, 0, 1, 0.18);
+      }
+
+      .button-secondary {
+        background: rgba(255, 255, 255, 0.65);
+        border-color: var(--line-strong);
+        color: var(--ink);
+      }
+
+      .button:hover {
+        transform: translateY(-1px);
+      }
+
+      .hero-side {
+        position: relative;
+        display: grid;
+        align-content: space-between;
+        gap: 1rem;
+        padding: 1.2rem;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background:
+          linear-gradient(180deg, rgba(53, 14, 14, 0.97), rgba(31, 23, 22, 0.96)),
+          rgba(31, 23, 22, 0.95);
+        color: #f7efe5;
+        min-height: 100%;
+      }
+
+      .hero-side::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at top right, rgba(199, 161, 90, 0.18), transparent 36%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+        pointer-events: none;
+      }
+
+      .proposal-stamp {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        gap: 0.7rem;
+      }
+
+      .proposal-stamp small {
+        color: rgba(247, 239, 229, 0.72);
+        font-size: 0.78rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .proposal-stamp strong {
+        font-size: 2rem;
+        line-height: 1;
+      }
+
+      .stats-grid {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        gap: 0.85rem;
+      }
+
+      .stat-card {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 0.85rem;
+        padding: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .stat-card b {
+        display: block;
+        font-size: 1.28rem;
+        font-family: "EB Garamond", serif;
+        color: var(--gold-soft);
+      }
+
+      .stat-card span {
+        display: block;
+        margin-top: 0.15rem;
+        color: rgba(247, 239, 229, 0.76);
+        line-height: 1.5;
+        font-size: 0.95rem;
+      }
+
+      .stat-index {
+        width: 2.4rem;
+        height: 2.4rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 16px;
+        background: linear-gradient(135deg, rgba(199, 161, 90, 0.18), rgba(199, 161, 90, 0.08));
+        border: 1px solid rgba(199, 161, 90, 0.22);
+        color: var(--gold-soft);
+        font-weight: 900;
+      }
+
+      .content-grid {
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      .intro-panel {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.9fr);
+        gap: 1.5rem;
+        align-items: stretch;
+      }
+
+      .panel,
+      .pillar-card,
+      .layer-card,
+      .value-card,
+      .roadmap-step,
+      .breakdown-card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(255, 255, 255, 0.74);
+        box-shadow: var(--shadow-card);
+        backdrop-filter: blur(16px);
+      }
+
+      .panel {
+        padding: 1.6rem;
+      }
+
+      .panel h2,
+      .section-heading h2 {
+        font-size: clamp(2rem, 3.6vw, 3.6rem);
+        margin-top: 1.1rem;
+      }
+
+      .panel p,
+      .section-intro,
+      .card-copy,
+      .body-copy {
+        color: var(--ink-soft);
+        line-height: 1.78;
+        font-size: 1.02rem;
+      }
+
+      .bullet-list {
+        display: grid;
+        gap: 0.8rem;
+        margin: 1.5rem 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .bullet-list li {
+        display: grid;
+        grid-template-columns: 1rem 1fr;
+        gap: 0.85rem;
+        align-items: start;
+        color: var(--ink-soft);
+        line-height: 1.65;
+      }
+
+      .bullet-list li::before {
+        content: "";
+        width: 0.75rem;
+        height: 0.75rem;
+        margin-top: 0.35rem;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--gold), var(--garnet));
+      }
+
+      .confidence-panel {
+        padding: 1.6rem;
+        background:
+          linear-gradient(180deg, rgba(94, 0, 1, 0.96), rgba(46, 12, 11, 0.96)),
+          var(--garnet);
+        color: #fffaf5;
+        border-color: rgba(199, 161, 90, 0.2);
+      }
+
+      .confidence-panel h3 {
+        font-size: 2.1rem;
+      }
+
+      .confidence-panel p,
+      .confidence-panel li {
+        color: rgba(255, 250, 245, 0.8);
+      }
+
+      .confidence-panel .bullet-list li::before {
+        background: var(--gold);
+      }
+
+      .section-heading {
+        display: grid;
+        gap: 0.65rem;
+        margin-bottom: 1.8rem;
+      }
+
+      .pillars-grid,
+      .layers-grid,
+      .value-grid,
+      .breakdown-grid {
+        display: grid;
+        gap: 1.35rem;
+      }
+
+      .pillars-grid,
+      .layers-grid,
+      .value-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .pillar-card,
+      .layer-card,
+      .value-card,
+      .breakdown-card {
+        padding: 1.6rem;
+      }
+
+      .pillar-card {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .pillar-card::after {
+        content: "";
+        position: absolute;
+        inset: auto -1.4rem -1.5rem auto;
+        width: 140px;
+        aspect-ratio: 1;
+        background: radial-gradient(circle, rgba(199, 161, 90, 0.16), transparent 70%);
+        pointer-events: none;
+      }
+
+      .card-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.45rem 0.65rem;
+        border: 1px solid rgba(94, 0, 1, 0.12);
+        border-radius: 999px;
+        background: rgba(94, 0, 1, 0.04);
+        color: var(--garnet);
+        font-size: 0.76rem;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .card-kicker::before {
+        content: "";
+        width: 0.45rem;
+        height: 0.45rem;
+        border-radius: 999px;
+        background: var(--gold);
+      }
+
+      .pillar-card h3,
+      .layer-card h3,
+      .value-card h3,
+      .roadmap-step h3,
+      .breakdown-card h3 {
+        margin-top: 1rem;
+        font-size: 2.1rem;
+      }
+
+      .mini-list {
+        display: grid;
+        gap: 0.65rem;
+        margin: 1.25rem 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .mini-list li {
+        color: var(--ink-soft);
+        line-height: 1.6;
+        padding-bottom: 0.65rem;
+        border-bottom: 1px dashed rgba(64, 39, 36, 0.12);
+      }
+
+      .mini-list li:last-child {
+        padding-bottom: 0;
+        border-bottom: 0;
+      }
+
+      .layer-card {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .layer-card.recommended {
+        border-color: rgba(199, 161, 90, 0.4);
+        background:
+          linear-gradient(180deg, rgba(255, 252, 247, 0.96), rgba(248, 240, 225, 0.84));
+        transform: translateY(-4px);
+      }
+
+      .price {
+        display: flex;
+        align-items: baseline;
+        gap: 0.4rem;
+        font-family: "EB Garamond", serif;
+        color: var(--garnet);
+      }
+
+      .price strong {
+        font-size: clamp(2.5rem, 4vw, 4rem);
+        line-height: 0.95;
+      }
+
+      .price span {
+        font-size: 1rem;
+        color: var(--ink-soft);
+        font-family: "Lato", sans-serif;
+      }
+
+      .price-notes {
+        display: grid;
+        gap: 0.7rem;
+        margin-top: 0.25rem;
+        color: var(--ink-soft);
+        font-size: 0.95rem;
+      }
+
+      .recommendation-band {
+        margin-top: 1.6rem;
+        padding: 1.35rem;
+        border: 1px solid rgba(199, 161, 90, 0.28);
+        border-radius: 24px;
+        background: linear-gradient(135deg, rgba(255, 252, 247, 0.9), rgba(236, 221, 191, 0.4));
+      }
+
+      .recommendation-band strong {
+        display: block;
+        font-size: 1.18rem;
+        color: var(--ink);
+      }
+
+      .recommendation-band p {
+        margin: 0.5rem 0 0;
+        color: var(--ink-soft);
+        line-height: 1.7;
+      }
+
+      .breakdown-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .breakdown-card {
+        min-height: 100%;
+      }
+
+      .breakdown-card strong {
+        display: block;
+        margin-top: 0.9rem;
+        font-size: 1.85rem;
+        font-family: "EB Garamond", serif;
+        color: var(--garnet);
+      }
+
+      .roadmap {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.35rem;
+      }
+
+      .roadmap-step {
+        padding: 1.6rem;
+      }
+
+      .roadmap-step .step-no {
+        display: inline-flex;
+        width: 3rem;
+        height: 3rem;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        background: rgba(94, 0, 1, 0.08);
+        color: var(--garnet);
+        font-weight: 900;
+      }
+
+      .highlight-panel {
+        position: relative;
+        overflow: hidden;
+        padding: 2rem;
+        border: 1px solid rgba(199, 161, 90, 0.28);
+        border-radius: calc(var(--radius) + 4px);
+        background:
+          linear-gradient(135deg, rgba(94, 0, 1, 0.98), rgba(31, 23, 22, 0.96)),
+          var(--garnet);
+        color: #fffaf5;
+      }
+
+      .highlight-panel::after {
+        content: "";
+        position: absolute;
+        right: -5rem;
+        bottom: -5rem;
+        width: 260px;
+        aspect-ratio: 1;
+        background: radial-gradient(circle, rgba(199, 161, 90, 0.24), transparent 68%);
+        pointer-events: none;
+      }
+
+      .highlight-panel h2,
+      .highlight-panel h3 {
+        color: #fffaf5;
+      }
+
+      .highlight-panel .section-intro,
+      .highlight-panel .card-copy,
+      .highlight-panel li,
+      .highlight-panel p {
+        color: rgba(255, 250, 245, 0.82);
+      }
+
+      .highlight-grid {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.9fr);
+        gap: 1.8rem;
+      }
+
+      .package-list {
+        display: grid;
+        gap: 0.8rem;
+        margin-top: 1.4rem;
+      }
+
+      .package-list article {
+        padding: 1rem 1rem 1rem 1.15rem;
+        border-left: 1px solid rgba(199, 161, 90, 0.46);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .package-list article strong {
+        display: block;
+        font-size: 1rem;
+        color: var(--gold-soft);
+      }
+
+      .package-list article span {
+        display: block;
+        margin-top: 0.25rem;
+        line-height: 1.65;
+      }
+
+      .summary-stack {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .summary-box {
+        padding: 1.2rem;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .summary-box small {
+        display: block;
+        font-size: 0.72rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(255, 250, 245, 0.68);
+      }
+
+      .summary-box strong {
+        display: block;
+        margin-top: 0.55rem;
+        font-size: 2rem;
+        font-family: "EB Garamond", serif;
+        color: #fffaf5;
+      }
+
+      .summary-box p {
+        margin: 0.55rem 0 0;
+        line-height: 1.7;
+      }
+
+      .footer-note {
+        padding: 2rem 0 4rem;
+        color: rgba(86, 71, 68, 0.86);
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
+
+      .footer-note .container {
+        border-top: 1px solid var(--line);
+        padding-top: 1.6rem;
+      }
+
+      @media (max-width: 1024px) {
+        .hero-grid,
+        .intro-panel,
+        .highlight-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .pillars-grid,
+        .layers-grid,
+        .value-grid,
+        .roadmap,
+        .breakdown-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .section {
+          padding: 3rem 0;
+        }
+
+        .hero {
+          padding-bottom: 3rem;
+        }
+
+        .hero-grid,
+        .panel,
+        .pillar-card,
+        .layer-card,
+        .value-card,
+        .roadmap-step,
+        .breakdown-card,
+        .highlight-panel {
+          padding: 1.25rem;
+        }
+
+        .brand-row {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .gioia-logo {
+          width: 170px;
+        }
+
+        .hero-copy {
+          font-size: 1rem;
+        }
+
+        .button {
+          width: 100%;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+          transition: none !important;
+        }
+      }
+
+      @media print {
+        body {
+          background: #ffffff;
+        }
+
+        body::before {
+          display: none;
+        }
+
+        .hero-actions {
+          display: none;
+        }
+
+        .hero-card,
+        .panel,
+        .pillar-card,
+        .layer-card,
+        .value-card,
+        .breakdown-card,
+        .roadmap-step,
+        .highlight-panel {
+          box-shadow: none;
+          backdrop-filter: none;
+        }
+
+        .section {
+          padding: 1.8rem 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="container hero-card">
+          <div class="hero-grid">
+            <div class="hero-main">
+              <div class="brand-row">
+                <div class="brand-stack">
+                  <div class="dd-mark" aria-label="Digital Dog Arquitetura Digital">
+                    <strong>Digital Dog</strong>
+                    <span>Arquitetura Digital</span>
+                  </div>
+                  <span class="divider-dot" aria-hidden="true"></span>
+                  <img
+                    class="gioia-logo"
+                    src="../brand/assets/logo-gioia-e-associados.svg"
+                    alt="Gioia e Associados Advocacia"
+                  />
+                </div>
+                <div class="proposal-meta" aria-label="Metadados da proposta">
+                  <span class="meta-pill">Proposta comercial</span>
+                  <span class="meta-pill">20 de abril de 2026</span>
+                  <span class="meta-pill">3 pilares · 3 camadas</span>
+                </div>
+              </div>
+
+              <span class="eyebrow">Arquitetura de crescimento jurídico</span>
+              <h1>Gestão contínua à altura da nova fase da Gioia.</h1>
+              <p class="hero-copy">
+                Esta proposta organiza a continuidade da Gioia em cima da mesma
+                tese que sustenta a Digital Dog: <strong>Marca</strong>,
+                <strong>Marketing</strong> e <strong>Tecnologia</strong> atuando
+                como um único sistema. Não é uma mensalidade para “manter post”.
+                É uma estrutura para consolidar autoridade, rodar aquisição e
+                construir crescimento com inteligência.
+              </p>
+
+              <div class="hero-highlights" aria-label="Pontos centrais">
+                <span>Marca como ativo vivo</span>
+                <span>Marketing com aquisição real</span>
+                <span>Tecnologia para escalar processo</span>
+              </div>
+
+              <div class="hero-actions">
+                <button class="button button-primary" onclick="window.print()">
+                  Imprimir proposta
+                </button>
+                <a class="button button-secondary" href="#camadas">
+                  Ver camadas e investimento
+                </a>
+              </div>
+            </div>
+
+            <aside class="hero-side" aria-label="Resumo executivo da proposta">
+              <div class="proposal-stamp">
+                <small>Leitura executiva</small>
+                <strong>3 pilares. Uma arquitetura.</strong>
+              </div>
+
+              <div class="stats-grid">
+                <article class="stat-card">
+                  <span class="stat-index">01</span>
+                  <div>
+                    <b>Marca</b>
+                    <span
+                      >Consistência, identidade, materiais e governança visual
+                      contínua.</span
+                    >
+                  </div>
+                </article>
+                <article class="stat-card">
+                  <span class="stat-index">02</span>
+                  <div>
+                    <b>Marketing</b>
+                    <span
+                      >Social, distribuição, Google Meu Negócio, mídia e
+                      aquisição.</span
+                    >
+                  </div>
+                </article>
+                <article class="stat-card">
+                  <span class="stat-index">03</span>
+                  <div>
+                    <b>Tecnologia</b>
+                    <span
+                      >Site estratégico, SEO/AIO, automações, IA e growth
+                      ops.</span
+                    >
+                  </div>
+                </article>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="section">
+          <div class="container content-grid">
+            <div class="intro-panel">
+              <article class="panel">
+                <span class="eyebrow">Por que continuar agora</span>
+                <h2>A base já foi criada. O próximo passo é fazer a estrutura operar.</h2>
+                <p class="section-intro">
+                  A Gioia já não está mais na fase de “site novo” ou “logo nova”.
+                  O que existe hoje é uma base institucional aprovada, uma marca
+                  validada e uma oportunidade clara de transformar presença em
+                  sistema de crescimento. O valor desta proposta nasce justamente
+                  dessa virada.
+                </p>
+                <ul class="bullet-list">
+                  <li>
+                    O escritório entrou em uma nova fase de posicionamento e
+                    imagem.
+                  </li>
+                  <li>
+                    A cliente verbalizou intenção de continuidade e contrato
+                    fixo.
+                  </li>
+                  <li>
+                    O projeto pede coerência entre branding, social, aquisição e
+                    estrutura digital.
+                  </li>
+                  <li>
+                    O ganho real está em integrar os pilares, não em comprar
+                    entregas avulsas.
+                  </li>
+                </ul>
+              </article>
+
+              <aside class="panel confidence-panel">
+                <span class="eyebrow">Tese da proposta</span>
+                <h3>O valor deixa de ser “peça” e passa a ser arquitetura.</h3>
+                <p>
+                  O fee se justifica porque a operação não fica restrita a
+                  design ou postagem. Ela conecta:
+                </p>
+                <ul class="bullet-list">
+                  <li>direção de marca</li>
+                  <li>distribuição e captação</li>
+                  <li>infraestrutura digital e automação</li>
+                </ul>
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="section-heading">
+              <span class="eyebrow">Arquitetura em 3 pilares</span>
+              <h2>Os mesmos pilares da Digital Dog, aplicados ao contexto da Gioia.</h2>
+              <p class="section-intro">
+                A proposta fica mais forte porque conversa com o posicionamento
+                público da Digital Dog e, ao mesmo tempo, responde à fase real da
+                Gioia: consolidar a marca, rodar a aquisição e estruturar uma
+                camada tecnológica de crescimento.
+              </p>
+            </div>
+
+            <div class="pillars-grid">
+              <article class="pillar-card">
+                <span class="card-kicker">Pilar da Marca</span>
+                <h3>Consistência institucional.</h3>
+                <p class="card-copy">
+                  Branding contínuo, materiais com coerência, desdobramentos de
+                  identidade, peças institucionais, templates e governança do
+                  sistema visual.
+                </p>
+                <ul class="mini-list">
+                  <li>Gestão do branding contínuo</li>
+                  <li>Peças e materiais com linguagem coerente</li>
+                  <li>Desdobramentos para eventos e necessidades</li>
+                  <li>Ativos vivos no Figma</li>
+                </ul>
+              </article>
+
+              <article class="pillar-card">
+                <span class="card-kicker">Pilar do Marketing</span>
+                <h3>A marca circulando e captando.</h3>
+                <p class="card-copy">
+                  Presença social, GMB, campanhas, tráfego pago e leitura de
+                  distribuição. O marketing entra para fazer a marca operar no
+                  mercado e gerar aquisição.
+                </p>
+                <ul class="mini-list">
+                  <li>Social institucional com intenção</li>
+                  <li>Google Meu Negócio e visibilidade local</li>
+                  <li>Mídia para demanda ativa</li>
+                  <li>Mensuração de aquisição</li>
+                </ul>
+              </article>
+
+              <article class="pillar-card">
+                <span class="card-kicker">Pilar Tecnológico</span>
+                <h3>Presença transformada em sistema.</h3>
+                <p class="card-copy">
+                  Site estratégico, SEO, AIO, automações, IA, integrações e
+                  growth ops. Aqui o digital deixa de ser vitrine e vira
+                  infraestrutura.
+                </p>
+                <ul class="mini-list">
+                  <li>Site estratégico em evolução</li>
+                  <li>SEO e AIO em continuidade</li>
+                  <li>IA aplicada à operação</li>
+                  <li>Automações e engenharia de processo</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="camadas">
+          <div class="container">
+            <div class="section-heading">
+              <span class="eyebrow">Camadas comerciais</span>
+              <h2>As camadas contratam a arquitetura em níveis de profundidade.</h2>
+              <p class="section-intro">
+                Os pilares são a tese. As camadas são a forma de entrada e
+                escalada comercial. Isso deixa a proposta elegante, clara e fácil
+                de justificar.
+              </p>
+            </div>
+
+            <div class="layers-grid">
+              <article class="layer-card">
+                <span class="card-kicker">Camada 1</span>
+                <h3>Pilar da Marca</h3>
+                <div class="price">
+                  <strong>R$ 3.500</strong>
+                  <span>/ mês</span>
+                </div>
+                <p class="card-copy">
+                  Entrada ideal para consolidar a identidade criada e sustentar
+                  a nova fase com coerência visual e materiais institucionais.
+                </p>
+                <ul class="mini-list">
+                  <li>Direção de branding contínua</li>
+                  <li>Materiais institucionais e gráficos</li>
+                  <li>Capas, avatares e ativos visuais</li>
+                  <li>Governança de marca no Figma</li>
+                </ul>
+              </article>
+
+              <article class="layer-card recommended">
+                <span class="card-kicker">Camada 2 · Recomendação principal</span>
+                <h3>Marca + Marketing</h3>
+                <div class="price">
+                  <strong>R$ 5.500</strong>
+                  <span>/ mês</span>
+                </div>
+                <p class="card-copy">
+                  Combinação mais natural para a Gioia hoje: a marca continua
+                  sendo cuidada, mas passa a rodar com distribuição, aquisição e
+                  leitura de performance.
+                </p>
+                <ul class="mini-list">
+                  <li>Inclui todo o Pilar da Marca</li>
+                  <li>Presença social institucional</li>
+                  <li>Google Meu Negócio</li>
+                  <li>Gestão de tráfego pago</li>
+                  <li>Copy, criativos e otimização de captação</li>
+                </ul>
+              </article>
+
+              <article class="layer-card">
+                <span class="card-kicker">Camada 3</span>
+                <h3>Marca + Marketing + Tecnologia</h3>
+                <div class="price">
+                  <strong>R$ 8.500</strong>
+                  <span>/ mês</span>
+                </div>
+                <p class="card-copy">
+                  A proposta premium. Aqui a presença vira uma arquitetura de
+                  growth com site vivo, SEO/AIO, automações, IA e melhoria de
+                  processo.
+                </p>
+                <ul class="mini-list">
+                  <li>Inclui Marca e Marketing</li>
+                  <li>Site estratégico, SEO e AIO</li>
+                  <li>IA aplicada e automações</li>
+                  <li>Growth ops e lead flow</li>
+                  <li>Parceiro técnico sob coordenação</li>
+                </ul>
+              </article>
+            </div>
+
+            <div class="recommendation-band">
+              <strong>Leitura estratégica</strong>
+              <p>
+                A <strong>Camada 2</strong> é a recomendação mais equilibrada
+                para a Gioia hoje, porque já integra branding e aquisição sem
+                exigir, de saída, uma operação full-stack completa. A
+                <strong>Camada 3</strong> permanece como upgrade natural para o
+                momento em que a cliente quiser acelerar tecnologia, IA e
+                processo.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="section-heading">
+              <span class="eyebrow">Separação do investimento</span>
+              <h2>O valor fica claro quando fee, mídia e stack não se misturam.</h2>
+              <p class="section-intro">
+                O fee remunera estratégia, criação, gestão e execução. Mídia é
+                verba de aquisição. Ferramentas e integrações pertencem à camada
+                de infraestrutura. Separar isso é o que protege margem e deixa a
+                proposta profissional.
+              </p>
+            </div>
+
+            <div class="breakdown-grid">
+              <article class="breakdown-card">
+                <span class="card-kicker">Fee mensal</span>
+                <h3>O trabalho intelectual e operacional.</h3>
+                <p class="body-copy">
+                  Direção, criação, gestão contínua, campanhas, leitura de
+                  performance, crescimento da marca e coordenação da operação.
+                </p>
+                <strong>R$ 3.500 · R$ 5.500 · R$ 8.500</strong>
+              </article>
+
+              <article class="breakdown-card">
+                <span class="card-kicker">Verba de mídia</span>
+                <h3>Aceleração de distribuição e captação.</h3>
+                <p class="body-copy">
+                  Google Ads, Meta Ads ou equivalentes. Não faz parte do fee e
+                  deve ser tratada como investimento separado.
+                </p>
+                <strong>R$ 3.000 a R$ 12.000+</strong>
+              </article>
+
+              <article class="breakdown-card">
+                <span class="card-kicker">Ferramentas e stack</span>
+                <h3>Infraestrutura de growth e automação.</h3>
+                <p class="body-copy">
+                  CRM, dashboards, integrações, automações e recursos de IA,
+                  quando necessários para a camada tecnológica.
+                </p>
+                <strong>R$ 300 a R$ 1.500+</strong>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="section-heading">
+              <span class="eyebrow">Justificativa de valor</span>
+              <h2>Por que este ticket faz sentido para a fase atual da Gioia.</h2>
+            </div>
+
+            <div class="value-grid">
+              <article class="value-card">
+                <span class="card-kicker">Não é social media simples</span>
+                <h3>É gestão contínua de marca.</h3>
+                <p class="card-copy">
+                  A proposta sustenta coerência visual, governança, materiais
+                  institucionais e crescimento da linguagem da marca ao longo do
+                  tempo.
+                </p>
+              </article>
+
+              <article class="value-card">
+                <span class="card-kicker">Não é tráfego isolado</span>
+                <h3>É aquisição com contexto.</h3>
+                <p class="card-copy">
+                  Campanha sem marca e sem estrutura vira custo. Aqui, a mídia
+                  entra conectada ao posicionamento, à autoridade e à capacidade
+                  de conversão do escritório.
+                </p>
+              </article>
+
+              <article class="value-card">
+                <span class="card-kicker">Não é tecnologia decorativa</span>
+                <h3>É engenharia de crescimento.</h3>
+                <p class="card-copy">
+                  Site, SEO, AIO, automações e IA deixam de ser itens técnicos
+                  avulsos e passam a operar como sistema de eficiência e escala.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container highlight-panel">
+            <div class="highlight-grid">
+              <div>
+                <span class="eyebrow">Camada recomendada</span>
+                <h2>Marca + Marketing é a proposta ideal para entrar agora.</h2>
+                <p class="section-intro">
+                  Essa é a camada mais equilibrada para a Gioia porque conversa
+                  com o momento real do projeto: a marca já foi criada, o site já
+                  foi estabelecido e o próximo passo é fazer essa base operar em
+                  presença e captação.
+                </p>
+
+                <div class="package-list">
+                  <article>
+                    <strong>Pilar da Marca ativo</strong>
+                    <span
+                      >branding contínuo, materiais institucionais, coerência
+                      visual e governança do sistema.</span
+                    >
+                  </article>
+                  <article>
+                    <strong>Pilar do Marketing ativo</strong>
+                    <span
+                      >social, GMB, campanhas, mídia, copy, distribuição e
+                      leitura de aquisição.</span
+                    >
+                  </article>
+                  <article>
+                    <strong>Tecnologia preparada para escalar depois</strong>
+                    <span
+                      >a Camada 3 já nasce como evolução natural quando houver
+                      apetite para IA, automação e growth ops.</span
+                    >
+                  </article>
+                </div>
+              </div>
+
+              <aside class="summary-stack">
+                <article class="summary-box">
+                  <small>Fee recomendado</small>
+                  <strong>R$ 5.500 / mês</strong>
+                  <p>
+                    remuneração da gestão, criação, direção, social, GMB, mídia
+                    e otimização contínua.
+                  </p>
+                </article>
+
+                <article class="summary-box">
+                  <small>Mídia recomendada</small>
+                  <strong>R$ 3.000 a R$ 6.000 / mês</strong>
+                  <p>
+                    investimento separado para Google Ads e eventuais frentes de
+                    apoio.
+                  </p>
+                </article>
+
+                <article class="summary-box">
+                  <small>Modelo ideal</small>
+                  <strong>Contrato inicial de 3 meses</strong>
+                  <p>
+                    tempo suficiente para consolidar a marca, testar aquisição,
+                    ler performance e decidir o upgrade tecnológico.
+                  </p>
+                </article>
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="container">
+            <div class="section-heading">
+              <span class="eyebrow">Roadmap sugerido</span>
+              <h2>Primeiros 90 dias para justificar o investimento com clareza.</h2>
+            </div>
+
+            <div class="roadmap">
+              <article class="roadmap-step">
+                <span class="step-no">01</span>
+                <h3>Consolidar</h3>
+                <p class="body-copy">
+                  Fechamento do lançamento, alinhamento dos canais, material
+                  institucional, organização visual e ativação consistente da nova
+                  fase da marca.
+                </p>
+              </article>
+
+              <article class="roadmap-step">
+                <span class="step-no">02</span>
+                <h3>Rodar</h3>
+                <p class="body-copy">
+                  Operação de presença e aquisição com social, GMB e campanhas.
+                  O objetivo aqui é transformar visibilidade em canal de demanda.
+                </p>
+              </article>
+
+              <article class="roadmap-step">
+                <span class="step-no">03</span>
+                <h3>Escalar</h3>
+                <p class="body-copy">
+                  Se a resposta do mercado e da operação for positiva, entra a
+                  camada tecnológica com SEO/AIO, IA, automações e growth ops.
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer-note">
+        <div class="container">
+          Esta proposta foi estruturada para sustentar o valor percebido da nova
+          fase da Gioia com a mesma lógica que organiza a Digital Dog:
+          <strong>Marca, Marketing e Tecnologia</strong> operando como um único
+          ecossistema. O fee não se confunde com mídia nem com ferramentas. A
+          arquitetura cresce em camadas, conforme o momento da cliente e a
+          profundidade da operação.
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

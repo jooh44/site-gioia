@@ -14,7 +14,7 @@ export function GioiaLockup({
   className,
 }: GioiaLockupProps) {
   const src =
-    theme === "light" ? "/logo-gioia-navbar-light.svg" : "/logo-gioia-navbar-dark.svg"
+    theme === "light" ? "/logos/logo-gioia-navbar-light.svg" : "/logos/logo-gioia-navbar-dark.svg"
 
   return (
     <span

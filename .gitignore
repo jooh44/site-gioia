@@ -52,6 +52,9 @@ _bmad-output/
 .codex
 .playwright-mcp/
 __prints/
+_tmp/
+Propostagioia/
+*.crdownload
 _cliente/gmb/
 _cliente/textos-site/
 _cliente/seo/
