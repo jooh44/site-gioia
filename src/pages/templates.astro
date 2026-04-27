@@ -14,17 +14,17 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
         <p class="sidebar-kicker">Editor interno</p>
         <h1>Templates jurídicos</h1>
         <p class="sidebar-text">
-          Clique em um campo, escreva e exporte em PDF quando terminar.
+          Preencha os campos principais, ajuste a estrutura do documento e exporte em PDF quando terminar.
         </p>
       </div>
 
       <div class="quick-guide" aria-label="Passos de uso">
         <span>1. Escolha o modelo</span>
-        <span>2. Preencha os campos</span>
-        <span>3. Exporte em PDF</span>
+        <span>2. Preencha os campos essenciais</span>
+        <span>3. Revise e exporte em PDF</span>
       </div>
 
-      <div class="editor-status" data-editor-status>Pronto para editar</div>
+      <div class="editor-status" data-editor-status aria-live="polite">Pronto para editar</div>
 
       <div class="control-group" aria-label="Selecionar modelo">
         <button class="template-choice is-active" type="button" data-template-target="peticao">
@@ -42,29 +42,57 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
       </div>
 
       <div class="action-row">
-        <button class="primary-action" type="button" data-print-document>Exportar PDF</button>
         <button class="secondary-action" type="button" data-undo-change disabled>Desfazer</button>
-        <button class="secondary-action" type="button" data-reset-template>Limpar modelo</button>
       </div>
 
-      <div class="insert-group" aria-label="Inserir conteúdo no documento">
-        <p>Adicionar no documento</p>
-        <button class="insert-action" type="button" data-insert-block="section">Cláusula / seção</button>
-        <button class="insert-action" type="button" data-insert-block="paragraph">Parágrafo</button>
-        <button class="insert-action" type="button" data-insert-block="list-item">Item de pedido / lista</button>
-        <button class="insert-action" type="button" data-insert-block="field">Campo livre no texto</button>
+      <div class="insert-group" aria-label="Estrutura do documento">
+        <div class="section-heading">
+          <p>Estrutura do documento</p>
+          <button class="add-fab" type="button" data-open-insert-menu aria-expanded="false" aria-controls="insert-menu">+</button>
+        </div>
+        <div class="insert-menu" data-insert-menu id="insert-menu" hidden>
+          <button class="insert-action" type="button" data-insert-block="section">Adicionar seção</button>
+          <button class="insert-action" type="button" data-insert-block="paragraph">Adicionar parágrafo</button>
+          <button class="insert-action" type="button" data-insert-block="list-item">Adicionar item de lista</button>
+          <button class="insert-action" type="button" data-insert-block="field">Adicionar campo livre</button>
+        </div>
+      </div>
+
+      <section class="summary-group" aria-label="Resumo do rascunho">
+        <p>Resumo do rascunho</p>
+        <div class="summary-card">
+          <strong data-progress-count>0 de 0 campos preenchidos</strong>
+          <span data-progress-pending>Nenhuma pendência no momento</span>
+        </div>
+      </section>
+
+      <section class="fields-group" aria-label="Campos essenciais">
+        <div class="section-heading">
+          <p>Campos essenciais</p>
+          <button class="ghost-action" type="button" data-review-pending>Revisar pendências</button>
+        </div>
+        <div class="field-list" data-field-list></div>
+      </section>
+
+      <div class="action-row export-row">
+        <button class="primary-action" type="button" data-print-document>Exportar PDF</button>
+      </div>
+
+      <div class="danger-group" aria-label="Ações destrutivas">
+        <p>Ações destrutivas</p>
+        <button class="danger-action" type="button" data-reset-template>Limpar modelo</button>
       </div>
 
       <p class="sidebar-note">
-        Para excluir um bloco, passe o mouse sobre o parágrafo ou cláusula e use o botão Excluir. Os dados ficam salvos apenas neste navegador.
+        Os dados ficam salvos apenas neste navegador. Seções novas são numeradas automaticamente conforme a lógica do modelo ativo.
       </p>
     </aside>
 
     <section class="workspace" aria-label="Documento editável">
       <div class="paper-scale">
         <article class="legal-page is-active" data-template="peticao" aria-label="Template de petição inicial">
-          <img class="watermark watermark-left" src="/brand/assets/simbolo-gioia-e-associados.svg" alt="" aria-hidden="true" />
-          <img class="watermark watermark-right" src="/brand/assets/simbolo-gioia-e-associados.svg" alt="" aria-hidden="true" />
+          <img class="watermark watermark-left" src="/brand/assets/watermark-left-figma.svg" alt="" aria-hidden="true" />
+          <img class="watermark watermark-right" src="/brand/assets/watermark-right-figma.svg" alt="" aria-hidden="true" />
           <header class="brand-header">
             <img class="brand-logo" src="/brand/assets/logo-gioia-versao-garnet.svg" alt="Gioia e Associados Advocacia" />
           </header>
@@ -140,8 +168,8 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
         </article>
 
         <article class="legal-page" data-template="procuracao" aria-label="Template de procuração">
-          <img class="watermark watermark-left" src="/brand/assets/simbolo-gioia-e-associados.svg" alt="" aria-hidden="true" />
-          <img class="watermark watermark-right" src="/brand/assets/simbolo-gioia-e-associados.svg" alt="" aria-hidden="true" />
+          <img class="watermark watermark-left" src="/brand/assets/watermark-left-figma.svg" alt="" aria-hidden="true" />
+          <img class="watermark watermark-right" src="/brand/assets/watermark-right-figma.svg" alt="" aria-hidden="true" />
           <header class="brand-header">
             <img class="brand-logo" src="/brand/assets/logo-gioia-versao-garnet.svg" alt="Gioia e Associados Advocacia" />
           </header>
@@ -185,8 +213,8 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
         </article>
 
         <article class="legal-page" data-template="contrato" aria-label="Template de contrato de honorários">
-          <img class="watermark watermark-left" src="/brand/assets/simbolo-gioia-e-associados.svg" alt="" aria-hidden="true" />
-          <img class="watermark watermark-right" src="/brand/assets/simbolo-gioia-e-associados.svg" alt="" aria-hidden="true" />
+          <img class="watermark watermark-left" src="/brand/assets/watermark-left-figma.svg" alt="" aria-hidden="true" />
+          <img class="watermark watermark-right" src="/brand/assets/watermark-right-figma.svg" alt="" aria-hidden="true" />
           <header class="brand-header">
             <img class="brand-logo" src="/brand/assets/logo-gioia-versao-garnet.svg" alt="Gioia e Associados Advocacia" />
           </header>
@@ -334,7 +362,7 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
     gap: 5px;
     padding: 10px 12px;
     border: 1px solid rgba(94, 0, 1, 0.12);
-    border-radius: 6px;
+    border-radius: 0;
     background: rgba(255, 255, 255, 0.58);
     color: var(--muted);
     font-size: 12px;
@@ -352,7 +380,7 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
     align-items: center;
     justify-content: center;
     border: 1px solid rgba(191, 159, 91, 0.32);
-    border-radius: 6px;
+    border-radius: 0;
     background: rgba(191, 159, 91, 0.10);
     color: var(--garnet);
     font-size: 12px;
@@ -368,7 +396,10 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
 
   .control-group,
   .action-row,
-  .insert-group {
+  .insert-group,
+  .summary-group,
+  .fields-group,
+  .danger-group {
     display: grid;
     gap: 10px;
   }
@@ -376,10 +407,12 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
   .template-choice,
   .primary-action,
   .secondary-action,
-  .insert-action {
+  .insert-action,
+  .ghost-action,
+  .danger-action {
     min-height: 46px;
     border: 1px solid rgba(94, 0, 1, 0.16);
-    border-radius: 6px;
+    border-radius: 0;
     font: inherit;
     cursor: pointer;
     transition: border-color 180ms ease, background 180ms ease, color 180ms ease;
@@ -426,6 +459,136 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
     font-weight: 700;
   }
 
+  .export-row {
+    margin-top: -2px;
+  }
+
+  .summary-group p,
+  .fields-group p,
+  .danger-group p {
+    margin: 0;
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .summary-card {
+    display: grid;
+    gap: 6px;
+    padding: 12px;
+    border: 1px solid rgba(94, 0, 1, 0.12);
+    background: rgba(255, 255, 255, 0.58);
+  }
+
+  .summary-card strong {
+    color: var(--garnet);
+    font-size: 14px;
+  }
+
+  .summary-card span {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .ghost-action {
+    min-height: 34px;
+    padding: 0 10px;
+    background: transparent;
+    color: var(--garnet);
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .field-list {
+    display: grid;
+    gap: 10px;
+  }
+
+  :global(.field-card) {
+    display: grid;
+    gap: 6px;
+    padding: 10px 12px 12px;
+    border: 1px solid rgba(94, 0, 1, 0.12);
+    background: rgba(255, 255, 255, 0.58);
+  }
+
+  :global(.field-meta) {
+    display: grid;
+    gap: 4px;
+  }
+
+  :global(.field-card.is-active) {
+    border-color: var(--garnet);
+    background: rgba(94, 0, 1, 0.04);
+  }
+
+  :global(.field-card.is-pending) {
+    border-left: 3px solid var(--gold);
+    padding-left: 9px;
+  }
+
+  :global(.field-card label) {
+    display: block;
+    color: var(--ink);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
+  :global(.field-card small) {
+    display: block;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  :global(.field-card input),
+  :global(.field-card textarea) {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 42px;
+    margin-top: 2px;
+    border: 1px solid rgba(94, 0, 1, 0.32);
+    border-radius: 0;
+    background: #fff;
+    color: var(--ink);
+    font: inherit;
+    font-size: 13px;
+    line-height: 1.5;
+    padding: 9px 10px;
+    resize: vertical;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.86);
+  }
+
+  :global(.field-card input::placeholder),
+  :global(.field-card textarea::placeholder) {
+    color: rgba(94, 0, 1, 0.62);
+  }
+
+  :global(.field-card input:focus),
+  :global(.field-card textarea:focus),
+  .ghost-action:focus-visible,
+  .template-choice:focus-visible,
+  .primary-action:focus-visible,
+  .secondary-action:focus-visible,
+  .insert-action:focus-visible,
+  .danger-action:focus-visible {
+    outline: 2px solid rgba(191, 159, 91, 0.48);
+    outline-offset: 2px;
+  }
+
   .secondary-action:disabled {
     cursor: not-allowed;
     opacity: 0.42;
@@ -434,6 +597,7 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
   .insert-group {
     padding-top: 14px;
     border-top: 1px solid rgba(94, 0, 1, 0.12);
+    position: relative;
   }
 
   .insert-group p {
@@ -449,6 +613,48 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
     background: rgba(255, 255, 255, 0.72);
     color: var(--garnet);
     font-size: 13px;
+    font-weight: 700;
+    text-align: left;
+    padding: 0 12px;
+  }
+
+  .add-fab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    min-width: 38px;
+    min-height: 38px;
+    border: 1px solid rgba(94, 0, 1, 0.18);
+    border-radius: 999px;
+    background: var(--garnet);
+    color: #fff;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .insert-menu {
+    display: grid;
+    gap: 8px;
+    padding: 10px;
+    border: 1px solid rgba(94, 0, 1, 0.12);
+    background: #fffaf2;
+    box-shadow: 0 10px 24px rgba(31, 15, 8, 0.12);
+  }
+
+  .insert-menu[hidden] {
+    display: none;
+  }
+
+  .danger-group {
+    padding-top: 14px;
+    border-top: 1px solid rgba(94, 0, 1, 0.12);
+  }
+
+  .danger-action {
+    background: rgba(94, 0, 1, 0.06);
+    color: var(--garnet);
     font-weight: 700;
   }
 
@@ -486,19 +692,19 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
 
   .watermark {
     position: absolute;
-    top: 18mm;
-    width: 34mm;
-    opacity: 0.07;
-    filter: grayscale(1);
+    top: 4mm;
+    height: calc(100% - 8mm);
+    width: auto;
+    opacity: 1;
     pointer-events: none;
   }
 
   .watermark-left {
-    left: 8mm;
+    left: 3mm;
   }
 
   .watermark-right {
-    right: 8mm;
+    right: 3mm;
   }
 
   .brand-header {
@@ -574,6 +780,17 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
     text-indent: 8mm;
   }
 
+  :global(.document-body p) {
+    margin: 0 0 3.4mm;
+    text-align: left;
+    text-indent: 8mm;
+  }
+
+  :global(.document-body p.centered-insert) {
+    text-align: center;
+    text-indent: 0;
+  }
+
   .document-body h3 {
     margin: 5mm 0 2.4mm;
     color: var(--garnet);
@@ -583,12 +800,37 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
     text-transform: uppercase;
   }
 
+  :global(.document-body h3) {
+    margin: 5mm 0 2.4mm;
+    color: var(--garnet);
+    font-size: 11.8pt;
+    line-height: 1.25;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  :global(.document-body h3.section-heading-block) {
+    text-align: center;
+    text-transform: uppercase;
+  }
+
   .document-body ol {
     margin: 0 0 4mm 7mm;
     padding: 0;
   }
 
+  :global(.document-body ol) {
+    margin: 0 0 4mm 7mm;
+    padding: 0;
+  }
+
   .document-body li {
+    margin-bottom: 1.6mm;
+    padding-left: 2mm;
+    text-align: justify;
+  }
+
+  :global(.document-body li) {
     margin-bottom: 1.6mm;
     padding-left: 2mm;
     text-align: justify;
@@ -620,6 +862,15 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
     background: rgba(191, 159, 91, 0.18);
     outline: 2px solid rgba(191, 159, 91, 0.30);
     outline-offset: 2px;
+  }
+
+  :global(.editable-field.is-linked-field) {
+    background: rgba(94, 0, 1, 0.06);
+  }
+
+  :global(.section-prefix) {
+    margin-right: 6px;
+    color: var(--garnet);
   }
 
   .signature-grid {
@@ -690,7 +941,7 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
     height: 6.4mm;
     padding: 0 2.2mm;
     border: 1px solid rgba(94, 0, 1, 0.22);
-    border-radius: 6px;
+    border-radius: 0;
     background: #fffaf2;
     color: var(--garnet);
     font-family: Arial, Helvetica, sans-serif;
@@ -706,6 +957,7 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
   .document-body > h3:hover :global(.block-delete),
   .document-body > ol:hover :global(.block-delete),
   .signature-grid:hover :global(.block-delete),
+  :global(.is-selected-block .block-delete),
   :global(.block-delete:focus) {
     opacity: 1;
   }
@@ -795,9 +1047,77 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
   const printButton = document.querySelector("[data-print-document]");
   const resetButton = document.querySelector("[data-reset-template]");
   const undoButton = document.querySelector("[data-undo-change]");
+  const reviewButton = document.querySelector("[data-review-pending]");
+  const openInsertMenuButton = document.querySelector("[data-open-insert-menu]");
+  const insertMenu = document.querySelector("[data-insert-menu]");
   const insertButtons = Array.from(document.querySelectorAll("[data-insert-block]"));
   const status = document.querySelector("[data-editor-status]");
+  const fieldList = document.querySelector("[data-field-list]");
+  const progressCount = document.querySelector("[data-progress-count]");
+  const progressPending = document.querySelector("[data-progress-pending]");
   const storagePrefix = "gioia-template-editor:";
+  const sectionStrategies = {
+    peticao: "roman",
+    procuracao: "plain",
+    contrato: "clause",
+  };
+  const clauseWords = [
+    "Primeira",
+    "Segunda",
+    "Terceira",
+    "Quarta",
+    "Quinta",
+    "Sexta",
+    "Sétima",
+    "Oitava",
+    "Nona",
+    "Décima",
+    "Décima Primeira",
+    "Décima Segunda",
+    "Décima Terceira",
+    "Décima Quarta",
+    "Décima Quinta",
+  ];
+  const essentialFields = {
+    peticao: [
+      { id: "peticao-vara", label: "Vara / Foro / Comarca / Estado", type: "text" },
+      { id: "peticao-processo", label: "Número do processo", type: "text" },
+      { id: "peticao-autora", label: "Nome da parte autora", type: "text" },
+      { id: "peticao-qualificacao", label: "Qualificação da parte autora", type: "textarea", rows: 2 },
+      { id: "peticao-acao", label: "Nome da ação", type: "text" },
+      { id: "peticao-re", label: "Nome da parte ré", type: "text" },
+      { id: "peticao-documento-re", label: "CPF/CNPJ da parte ré", type: "text" },
+      { id: "peticao-endereco-re", label: "Endereço da parte ré", type: "textarea", rows: 2 },
+      { id: "peticao-fatos", label: "Síntese fática", type: "textarea", rows: 4 },
+      { id: "peticao-tutela", label: "Fundamento da tutela", type: "textarea", rows: 4 },
+      { id: "peticao-direito", label: "Fundamentação jurídica", type: "textarea", rows: 4 },
+      { id: "peticao-obrigacao", label: "Pedido principal", type: "textarea", rows: 3 },
+      { id: "peticao-valor", label: "Valor da causa", type: "text" },
+      { id: "peticao-data", label: "Data", type: "text" },
+    ],
+    procuracao: [
+      { id: "proc-outorgante", label: "Nome do outorgante", type: "text" },
+      { id: "proc-qualificacao", label: "Qualificação", type: "textarea", rows: 2 },
+      { id: "proc-rg", label: "RG", type: "text" },
+      { id: "proc-cpf", label: "CPF", type: "text" },
+      { id: "proc-email", label: "E-mail", type: "text" },
+      { id: "proc-endereco", label: "Endereço", type: "textarea", rows: 2 },
+      { id: "proc-referencia", label: "Referência do caso", type: "textarea", rows: 2 },
+      { id: "proc-data", label: "Data", type: "text" },
+    ],
+    contrato: [
+      { id: "contrato-cliente", label: "Nome do cliente", type: "text" },
+      { id: "contrato-qualificacao", label: "Qualificação do cliente", type: "textarea", rows: 2 },
+      { id: "contrato-endereco", label: "Endereço", type: "textarea", rows: 2 },
+      { id: "contrato-objeto", label: "Objeto", type: "textarea", rows: 3 },
+      { id: "contrato-foro", label: "Foro / órgão", type: "text" },
+      { id: "contrato-parte-adversa", label: "Parte adversa", type: "text" },
+      { id: "contrato-honorarios", label: "Honorários", type: "text" },
+      { id: "contrato-quota", label: "Quota litis", type: "textarea", rows: 2 },
+      { id: "contrato-rescisao", label: "Cláusula de rescisão", type: "textarea", rows: 3 },
+      { id: "contrato-data", label: "Data", type: "text" },
+    ],
+  };
   const boundFields = new WeakSet();
   const undoStack = [];
   let lastFocusedEditable = null;
@@ -806,20 +1126,91 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
 
   const getActiveTemplate = () => document.querySelector(".legal-page.is-active");
   const getActiveBody = () => getActiveTemplate()?.querySelector(".document-body");
+  const getFieldById = (id) => document.querySelector(`[data-editable-id="${id}"]`);
   const bodyKey = (template) => `${storagePrefix}body:${template.dataset.template}`;
   const fieldKey = (field) => `${storagePrefix}${field.dataset.editableId}`;
-  const setStatus = (message) => {
+  const panelFieldSelector = (id) => `[data-panel-field="${id}"]`;
+  const getTemplateLabel = (name) => choices.find((choice) => choice.dataset.templateTarget === name)?.querySelector("span")?.textContent || "documento";
+  const sectionPrefixSelector = "[data-section-prefix]";
+  const sectionTitleSelector = "[data-section-title]";
+  const activeEditableSelector = ".editable-field.is-active-field";
+  const panelFieldActiveSelector = "[data-panel-field]";
+  const fixedEndAnchors = {
+    peticao: ["peticao-valor", "peticao-data"],
+    procuracao: ["proc-data"],
+    contrato: ["contrato-data"],
+  };
+
+  const intToRoman = (value) => {
+    const map = [
+      [1000, "M"], [900, "CM"], [500, "D"], [400, "CD"], [100, "C"], [90, "XC"],
+      [50, "L"], [40, "XL"], [10, "X"], [9, "IX"], [5, "V"], [4, "IV"], [1, "I"],
+    ];
+    let remainder = value;
+    let result = "";
+    map.forEach(([arabic, roman]) => {
+      while (remainder >= arabic) {
+        result += roman;
+        remainder -= arabic;
+      }
+    });
+    return result;
+  };
+
+  const getClauseWord = (index) => clauseWords[index - 1] || `${index}ª`;
+  const getSectionPrefix = (templateName, index) => {
+    const strategy = sectionStrategies[templateName];
+    if (strategy === "roman") return `${intToRoman(index)}.`;
+    if (strategy === "clause") return `Cláusula ${getClauseWord(index)} —`;
+    return "";
+  };
+
+  const setStatus = (message, idleMessage = "Rascunho salvo neste navegador") => {
     if (!status) return;
     status.textContent = message;
     window.clearTimeout(statusTimeout);
     statusTimeout = window.setTimeout(() => {
-      status.textContent = "Alterações salvas automaticamente";
-    }, 1400);
+      status.textContent = idleMessage;
+    }, 1600);
+  };
+
+  const closeInsertMenu = () => {
+    if (!insertMenu || !openInsertMenuButton) return;
+    insertMenu.hidden = true;
+    openInsertMenuButton.setAttribute("aria-expanded", "false");
+  };
+
+  const clearDocumentSelectionState = () => {
+    document.querySelectorAll(".is-active-field").forEach((node) => node.classList.remove("is-active-field"));
+    document.querySelectorAll(".is-linked-field").forEach((node) => node.classList.remove("is-linked-field"));
+    document.querySelectorAll(".is-selected-block").forEach((node) => node.classList.remove("is-selected-block"));
+  };
+
+  const openInsertMenu = () => {
+    if (!insertMenu || !openInsertMenuButton) return;
+    insertMenu.hidden = false;
+    openInsertMenuButton.setAttribute("aria-expanded", "true");
+  };
+
+  const toggleInsertMenu = () => {
+    if (!insertMenu || !openInsertMenuButton) return;
+    if (insertMenu.hidden) {
+      openInsertMenu();
+      return;
+    }
+    closeInsertMenu();
   };
 
   const updateUndoButton = () => {
     if (!undoButton) return;
     undoButton.disabled = undoStack.length === 0;
+  };
+
+  const getFieldDisplayValue = (field) => {
+    if (!field) return "";
+    const placeholder = field.dataset.placeholder || "";
+    const value = field.textContent.trim();
+    return value === placeholder.trim() ? "" : value;
   };
 
   const snapshotActiveBody = () => {
@@ -837,27 +1228,9 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
     updateUndoButton();
   };
 
-  const restoreBody = (snapshot) => {
-    const template = document.querySelector(`[data-template="${snapshot.template}"]`);
-    const body = template?.querySelector(".document-body");
-    if (!template || !body) return;
-
-    setTemplate(snapshot.template);
-    body.innerHTML = snapshot.html;
-    body.querySelectorAll("[data-editable-id]").forEach(bindEditable);
-    decorateBlocks(body);
-    window.localStorage.setItem(bodyKey(template), snapshot.html);
-    setStatus("Alteração desfeita");
-  };
-
-  const undoLastChange = () => {
-    const snapshot = undoStack.pop();
-    updateUndoButton();
-    if (!snapshot) {
-      setStatus("Nada para desfazer");
-      return;
-    }
-    restoreBody(snapshot);
+  // Structural undo only: block insertion/removal snapshots the full body state.
+  const snapshotStructuralChange = () => {
+    snapshotActiveBody();
   };
 
   const placeCaretInside = (field) => {
@@ -869,10 +1242,7 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
     selection?.addRange(range);
   };
 
-  const fieldHasPlaceholder = (field, placeholder) => (
-    field.innerHTML.trim() === placeholder.trim()
-  );
-
+  const fieldHasPlaceholder = (field, placeholder) => field.innerHTML.trim() === placeholder.trim();
   const syncEmptyState = (field) => {
     field.classList.toggle("is-empty", !field.textContent.trim());
   };
@@ -885,24 +1255,76 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
     return true;
   };
 
-  const setTemplate = (name) => {
-    choices.forEach((choice) => {
-      choice.classList.toggle("is-active", choice.dataset.templateTarget === name);
-    });
-    templates.forEach((template) => {
-      template.classList.toggle("is-active", template.dataset.template === name);
-    });
-    window.localStorage.setItem(`${storagePrefix}active`, name);
+  const persistEditableValue = (field, placeholder, { restoreOnEmpty = true } = {}) => {
+    if (!field.textContent.trim()) {
+      window.localStorage.removeItem(fieldKey(field));
+      if (restoreOnEmpty) {
+        field.innerHTML = field.dataset.placeholder || placeholder;
+      } else {
+        field.innerHTML = "";
+      }
+      syncEmptyState(field);
+      syncPanelValue(field);
+      saveActiveBody();
+      return;
+    }
+
+    window.localStorage.setItem(fieldKey(field), field.innerHTML);
+    syncEmptyState(field);
+    syncPanelValue(field);
+    if (field.closest("h3")) renumberSections(field.closest(".legal-page")?.dataset.template || getActiveTemplate()?.dataset.template);
+    saveActiveBody();
   };
 
-  const saveActiveBody = () => {
+  const syncPanelValue = (field) => {
+    if (!field?.dataset.editableId) return;
+    const control = document.querySelector(panelFieldSelector(field.dataset.editableId));
+    if (!control) return;
+    const value = getFieldDisplayValue(field);
+    if (control.value !== value) control.value = value;
+  };
+
+  const highlightPanelCard = (fieldId) => {
+    fieldList?.querySelectorAll(".field-card").forEach((card) => {
+      card.classList.toggle("is-active", card.dataset.fieldCard === fieldId);
+    });
+  };
+
+  const refreshPendingState = () => {
+    const template = getActiveTemplate();
+    const configs = essentialFields[template?.dataset.template] || [];
+    const filled = configs.filter(({ id }) => getFieldDisplayValue(getFieldById(id))).length;
+    const pending = configs.length - filled;
+
+    if (progressCount) {
+      progressCount.textContent = `${filled} de ${configs.length} campos preenchidos`;
+    }
+    if (progressPending) {
+      progressPending.textContent = pending > 0
+        ? `${pending} pendência${pending > 1 ? "s" : ""} nos campos essenciais`
+        : "Campos essenciais completos";
+    }
+
+    fieldList?.querySelectorAll(".field-card").forEach((card) => {
+      const field = getFieldById(card.dataset.fieldCard);
+      card.classList.toggle("is-pending", !getFieldDisplayValue(field));
+    });
+  };
+
+  const saveActiveBody = (message = "Rascunho salvo") => {
     const activeTemplate = getActiveTemplate();
     const body = activeTemplate?.querySelector(".document-body");
-    if (!activeTemplate || !body) return;
+    if (!activeTemplate || !body) return false;
     const bodyClone = body.cloneNode(true);
     bodyClone.querySelectorAll(".block-delete").forEach((button) => button.remove());
-    window.localStorage.setItem(bodyKey(activeTemplate), bodyClone.innerHTML);
-    setStatus("Alteração salva");
+    const key = bodyKey(activeTemplate);
+    const nextHtml = bodyClone.innerHTML;
+    const currentHtml = window.localStorage.getItem(key);
+    refreshPendingState();
+    if (currentHtml === nextHtml) return false;
+    window.localStorage.setItem(key, nextHtml);
+    setStatus(message);
+    return true;
   };
 
   const createEditable = (id, placeholder) => {
@@ -929,45 +1351,246 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
     syncEmptyState(field);
 
     field.addEventListener("pointerdown", (event) => {
-      if (!fieldHasPlaceholder(field, placeholder)) return;
-      event.preventDefault();
       lastFocusedEditable = field;
-      field.focus({ preventScroll: true });
-      clearPlaceholder(field, placeholder);
+      if (fieldHasPlaceholder(field, placeholder)) {
+        event.preventDefault();
+        field.focus({ preventScroll: true });
+        clearPlaceholder(field, placeholder);
+      }
     });
 
     field.addEventListener("focus", () => {
       document.querySelectorAll(".is-active-field").forEach((activeField) => {
         activeField.classList.remove("is-active-field");
       });
+      document.querySelectorAll(".is-linked-field").forEach((linkedField) => {
+        linkedField.classList.remove("is-linked-field");
+      });
       lastFocusedEditable = field;
       field.classList.add("is-active-field");
-      clearPlaceholder(field, placeholder);
-      setStatus("Editando campo");
+      field.classList.add("is-linked-field");
+      highlightPanelCard(field.dataset.editableId);
+      setStatus(`Editando: ${field.dataset.panelLabel || "campo"}`);
+    });
+
+    field.addEventListener("beforeinput", (event) => {
+      if (!fieldHasPlaceholder(field, placeholder)) return;
+      const inputType = event.inputType || "";
+      const isInsertion = inputType.startsWith("insert");
+      if (!isInsertion) return;
+
+      event.preventDefault();
+      const insertedText = event.data
+        ?? event.dataTransfer?.getData("text/plain")
+        ?? event.clipboardData?.getData("text/plain")
+        ?? "";
+      field.textContent = insertedText;
+      syncEmptyState(field);
+      placeCaretInside(field);
+      persistEditableValue(field, placeholder);
+    });
+
+    field.addEventListener("click", () => {
+      const block = field.closest("p, h3, ol, .signature-grid");
+      document.querySelectorAll(".is-selected-block").forEach((selected) => selected.classList.remove("is-selected-block"));
+      block?.classList.add("is-selected-block");
     });
 
     field.addEventListener("input", () => {
-      if (field.textContent.trim()) {
-        window.localStorage.setItem(fieldKey(field), field.innerHTML);
-      } else {
-        window.localStorage.removeItem(fieldKey(field));
-      }
-      syncEmptyState(field);
-      saveActiveBody();
+      persistEditableValue(field, placeholder, { restoreOnEmpty: false });
     });
 
     field.addEventListener("blur", () => {
       field.classList.remove("is-active-field");
-      if (!field.textContent.trim()) {
-        field.innerHTML = field.dataset.placeholder || placeholder;
-        window.localStorage.removeItem(fieldKey(field));
-        syncEmptyState(field);
-        saveActiveBody();
-        return;
-      }
-      syncEmptyState(field);
-      saveActiveBody();
+      field.classList.remove("is-linked-field");
+      persistEditableValue(field, placeholder);
     });
+  };
+
+  const createStructuredHeading = (templateName, title, index, idBase) => {
+    const heading = document.createElement("h3");
+    heading.className = "section-heading-block";
+    heading.dataset.blockType = "section";
+    heading.dataset.sectionLevel = "1";
+
+    const prefix = document.createElement("span");
+    prefix.dataset.sectionPrefix = "";
+    prefix.className = "section-prefix";
+    prefix.textContent = getSectionPrefix(templateName, index);
+
+    const titleField = createEditable(`${idBase}-titulo`, "[NOVA SEÇÃO]");
+    titleField.dataset.panelLabel = "Título da seção";
+    titleField.dataset.sectionTitle = "";
+    titleField.textContent = title;
+
+    heading.append(prefix, titleField);
+    return heading;
+  };
+
+  const parseInitialHeading = (templateName, text) => {
+    if (templateName === "peticao") {
+      const match = text.match(/^[IVXLCDM]+\.\s*(.+)$/i);
+      return match ? match[1] : null;
+    }
+    if (templateName === "contrato") {
+      const match = text.match(/^Cláusula\s+.+?\s+—\s+(.+)$/i);
+      return match ? match[1] : null;
+    }
+    return null;
+  };
+
+  const normalizeTemplateSections = (template) => {
+    const body = template?.querySelector(".document-body");
+    if (!body) return;
+    const templateName = template.dataset.template;
+    const strategy = sectionStrategies[templateName];
+    if (strategy === "plain") return;
+
+    const headings = Array.from(body.querySelectorAll(":scope > h3"));
+    headings.forEach((heading) => {
+      if (heading.querySelector(sectionPrefixSelector) && heading.querySelector(sectionTitleSelector)) return;
+
+      const rawText = heading.textContent.trim();
+      const title = parseInitialHeading(templateName, rawText);
+      if (!title) return;
+      const idBase = `normalized-${templateName}-${Math.random().toString(36).slice(2, 8)}`;
+      heading.innerHTML = "";
+      heading.dataset.blockType = "section";
+      heading.dataset.sectionLevel = "1";
+
+      const prefix = document.createElement("span");
+      prefix.dataset.sectionPrefix = "";
+      prefix.className = "section-prefix";
+
+      const titleField = createEditable(`${idBase}-titulo`, "[NOVA SEÇÃO]");
+      titleField.dataset.sectionTitle = "";
+      titleField.dataset.panelLabel = "Título da seção";
+      titleField.textContent = title;
+
+      heading.append(prefix, titleField);
+    });
+
+    renumberSections(templateName);
+  };
+
+  const renumberSections = (templateName) => {
+    const template = document.querySelector(`[data-template="${templateName}"]`);
+    const body = template?.querySelector(".document-body");
+    if (!body) return;
+    const strategy = sectionStrategies[templateName];
+    if (strategy === "plain") return;
+
+    const headings = Array.from(body.querySelectorAll(':scope > h3[data-block-type="section"]'));
+    headings.forEach((heading, index) => {
+      heading.dataset.sectionIndex = String(index + 1);
+      const prefix = heading.querySelector(sectionPrefixSelector);
+      if (prefix) prefix.textContent = getSectionPrefix(templateName, index + 1);
+      const titleField = heading.querySelector(sectionTitleSelector);
+      if (titleField) {
+        titleField.dataset.panelLabel = `${getTemplateLabel(templateName)} · título da seção ${index + 1}`;
+      }
+    });
+  };
+
+  const renderFieldPanel = (templateName) => {
+    if (!fieldList) return;
+    const fields = essentialFields[templateName] || [];
+    fieldList.innerHTML = "";
+
+    fields.forEach((config) => {
+      const card = document.createElement("div");
+      card.className = "field-card";
+      card.dataset.fieldCard = config.id;
+
+      const meta = document.createElement("div");
+      meta.className = "field-meta";
+
+      const label = document.createElement("label");
+      label.htmlFor = `panel-${config.id}`;
+      label.textContent = config.label;
+
+      meta.append(label);
+
+      const control = document.createElement(config.type === "textarea" ? "textarea" : "input");
+      control.id = `panel-${config.id}`;
+      control.dataset.panelField = config.id;
+      if (config.type !== "textarea") control.type = "text";
+      if (config.rows) control.rows = config.rows;
+      control.placeholder = "Preencha aqui";
+
+      const field = getFieldById(config.id);
+      if (field) {
+        field.dataset.panelLabel = config.label;
+        control.value = getFieldDisplayValue(field);
+      }
+
+      control.addEventListener("focus", () => {
+        const targetField = getFieldById(config.id);
+        highlightPanelCard(config.id);
+        targetField?.scrollIntoView({ block: "center", behavior: "smooth" });
+        targetField?.classList.add("is-linked-field");
+      });
+
+      control.addEventListener("input", () => {
+        const targetField = getFieldById(config.id);
+        if (!targetField) return;
+        const value = control.value.trim();
+        if (value) {
+          targetField.textContent = control.value;
+          window.localStorage.setItem(fieldKey(targetField), targetField.innerHTML);
+        } else {
+          targetField.textContent = targetField.dataset.placeholder || "";
+          window.localStorage.removeItem(fieldKey(targetField));
+        }
+        syncEmptyState(targetField);
+        saveActiveBody();
+      });
+
+      control.addEventListener("blur", () => {
+        getFieldById(config.id)?.classList.remove("is-linked-field");
+      });
+
+      card.append(meta, control);
+      fieldList.append(card);
+    });
+
+    refreshPendingState();
+  };
+
+  const setTemplate = (name) => {
+    choices.forEach((choice) => {
+      choice.classList.toggle("is-active", choice.dataset.templateTarget === name);
+    });
+    templates.forEach((template) => {
+      template.classList.toggle("is-active", template.dataset.template === name);
+    });
+    window.localStorage.setItem(`${storagePrefix}active`, name);
+    renderFieldPanel(name);
+    refreshPendingState();
+  };
+
+  const restoreBody = (snapshot) => {
+    const template = document.querySelector(`[data-template="${snapshot.template}"]`);
+    const body = template?.querySelector(".document-body");
+    if (!template || !body) return;
+
+    body.innerHTML = snapshot.html;
+    normalizeTemplateSections(template);
+    body.querySelectorAll("[data-editable-id]").forEach(bindEditable);
+    decorateBlocks(body);
+    setTemplate(snapshot.template);
+    window.localStorage.setItem(bodyKey(template), template.querySelector(".document-body")?.innerHTML || snapshot.html);
+    setStatus("Alteração estrutural desfeita");
+  };
+
+  const undoLastChange = () => {
+    const snapshot = undoStack.pop();
+    updateUndoButton();
+    if (!snapshot) {
+      setStatus("Nada para desfazer");
+      return;
+    }
+    restoreBody(snapshot);
   };
 
   const getReferenceBlock = () => {
@@ -976,48 +1599,82 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
     return lastFocusedEditable.closest("p, h3, ol, li") || body.lastElementChild;
   };
 
+  const getFixedEndAnchor = (templateName) => {
+    const body = getActiveBody();
+    if (!body) return null;
+    const anchorIds = fixedEndAnchors[templateName] || [];
+    for (const id of anchorIds) {
+      const field = body.querySelector(`[data-editable-id="${id}"]`);
+      const block = field?.closest("p, h3, ol, li");
+      if (block) return block;
+    }
+    return null;
+  };
+
+  const shouldUseReferenceBlock = (reference, endAnchor) => {
+    if (!reference || !endAnchor) return Boolean(reference);
+    const position = reference.compareDocumentPosition(endAnchor);
+    const isBeforeEndAnchor = Boolean(position & Node.DOCUMENT_POSITION_FOLLOWING);
+    const isSameNode = reference === endAnchor;
+    return isBeforeEndAnchor && !isSameNode;
+  };
+
   const insertAfterReference = (nodes) => {
     const body = getActiveBody();
-    if (!body) return;
+    const activeTemplate = getActiveTemplate();
+    if (!body || !activeTemplate) return;
 
     const reference = getReferenceBlock();
-    const anchor = reference?.tagName === "LI" ? reference.closest("ol") : reference;
-    nodes.forEach((node, index) => {
-      body.insertBefore(node, anchor?.nextSibling || null);
-      if (index === 0) node.scrollIntoView({ block: "center", behavior: "smooth" });
-    });
+    const normalizedReference = reference?.tagName === "LI" ? reference.closest("ol") : reference;
+    const endAnchor = getFixedEndAnchor(activeTemplate.dataset.template);
+    const anchor = shouldUseReferenceBlock(normalizedReference, endAnchor) ? normalizedReference : null;
+    const fragment = document.createDocumentFragment();
+    nodes.forEach((node) => fragment.append(node));
+    body.insertBefore(fragment, anchor?.nextSibling || endAnchor || null);
+    nodes[0]?.scrollIntoView({ block: "center", behavior: "smooth" });
 
+    renumberSections(activeTemplate.dataset.template);
     decorateBlocks(body);
-    saveActiveBody();
+    saveActiveBody("Estrutura atualizada");
     nodes[0]?.querySelector("[data-editable-id]")?.focus();
   };
 
   const insertBlock = (type) => {
-    snapshotActiveBody();
+    snapshotStructuralChange();
     generatedFieldCount += 1;
     const idBase = `custom-${Date.now()}-${generatedFieldCount}`;
+    const templateName = getActiveTemplate()?.dataset.template || "peticao";
 
     if (type === "field") {
       const field = createEditable(`${idBase}-campo`, "[NOVO CAMPO]");
       const space = document.createTextNode(" ");
-      if (lastFocusedEditable && getActiveBody()?.contains(lastFocusedEditable)) {
+      const endAnchor = getFixedEndAnchor(templateName);
+      const focusedBlock = lastFocusedEditable?.closest("p, h3, ol, li");
+      const inlineAllowed = lastFocusedEditable && getActiveBody()?.contains(lastFocusedEditable) && shouldUseReferenceBlock(focusedBlock, endAnchor);
+      if (inlineAllowed) {
         lastFocusedEditable.insertAdjacentText("afterend", " ");
         lastFocusedEditable.after(field);
       } else {
         const paragraph = document.createElement("p");
+        paragraph.className = "centered-insert";
         paragraph.append(createEditable(`${idBase}-paragrafo`, "[NOVO CAMPO]"));
         insertAfterReference([paragraph]);
         return;
       }
       field.after(space);
-      saveActiveBody();
+      saveActiveBody("Campo livre adicionado");
       field.focus();
       return;
     }
 
     if (type === "section") {
-      const heading = document.createElement("h3");
-      heading.append(createEditable(`${idBase}-titulo`, "[NOVA CLÁUSULA / SEÇÃO]"));
+      const currentSectionCount = getActiveBody()?.querySelectorAll(":scope > h3").length || 0;
+      const heading = createStructuredHeading(
+        templateName,
+        templateName === "contrato" ? "Nova cláusula" : "Nova seção",
+        currentSectionCount + 1,
+        idBase,
+      );
 
       const paragraph = document.createElement("p");
       paragraph.append(createEditable(`${idBase}-texto`, "[DESCREVER CONTEÚDO]"));
@@ -1044,14 +1701,15 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
     item.append(createEditable(`${idBase}-item`, "[NOVO ITEM]"));
     list.append(item);
     decorateBlocks(body);
-    saveActiveBody();
+    saveActiveBody("Novo item adicionado");
     item.querySelector("[data-editable-id]")?.focus();
   };
 
   const removeBlock = (block) => {
     const body = getActiveBody();
-    if (!body || !block) return;
-    snapshotActiveBody();
+    const activeTemplate = getActiveTemplate();
+    if (!body || !block || !activeTemplate) return;
+    snapshotStructuralChange();
 
     if (block.tagName === "H3") {
       let next = block.nextElementSibling;
@@ -1061,17 +1719,26 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
         next = next.nextElementSibling;
         current.remove();
       }
+      renumberSections(activeTemplate.dataset.template);
     } else {
       block.remove();
     }
 
-    saveActiveBody();
+    saveActiveBody("Bloco removido");
   };
 
   const decorateBlocks = (body) => {
     if (!body) return;
     body.querySelectorAll(".block-delete").forEach((button) => button.remove());
     body.querySelectorAll(":scope > p, :scope > h3, :scope > ol").forEach((block) => {
+      if (!block.dataset.blockSelectable) {
+        block.dataset.blockSelectable = "true";
+        block.addEventListener("click", () => {
+          document.querySelectorAll(".is-selected-block").forEach((selected) => selected.classList.remove("is-selected-block"));
+          block.classList.add("is-selected-block");
+        });
+      }
+
       const button = document.createElement("button");
       button.type = "button";
       button.className = "block-delete";
@@ -1091,10 +1758,23 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
       const body = template.querySelector(".document-body");
       const saved = window.localStorage.getItem(bodyKey(template));
       if (body && saved) body.innerHTML = saved;
+      normalizeTemplateSections(template);
       body?.querySelectorAll("[data-editable-id]").forEach(bindEditable);
       decorateBlocks(body);
     });
     document.querySelectorAll("[data-editable-id]").forEach(bindEditable);
+  };
+
+  const reviewPendingFields = () => {
+    const templateName = getActiveTemplate()?.dataset.template;
+    const firstPending = (essentialFields[templateName] || []).find(({ id }) => !getFieldDisplayValue(getFieldById(id)));
+    if (!firstPending) {
+      setStatus("Campos essenciais completos");
+      return;
+    }
+    const control = document.querySelector(panelFieldSelector(firstPending.id));
+    control?.focus();
+    setStatus("Revisando pendências");
   };
 
   choices.forEach((choice) => {
@@ -1105,8 +1785,19 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
   });
 
   printButton?.addEventListener("click", () => {
-    setStatus("Abrindo exportação em PDF");
+    const templateName = getActiveTemplate()?.dataset.template;
+    const pending = (essentialFields[templateName] || []).filter(({ id }) => !getFieldDisplayValue(getFieldById(id)));
+    if (pending.length > 0) {
+      setStatus(`Há ${pending.length} pendência${pending.length > 1 ? "s" : ""} antes da exportação`);
+      reviewPendingFields();
+      return;
+    }
+    setStatus("Visualização pronta para exportação em PDF");
     window.print();
+  });
+
+  reviewButton?.addEventListener("click", () => {
+    reviewPendingFields();
   });
 
   undoButton?.addEventListener("click", () => {
@@ -1122,14 +1813,21 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
   insertButtons.forEach((button) => {
     button.addEventListener("click", () => {
       insertBlock(button.dataset.insertBlock);
-      setStatus("Novo conteúdo adicionado");
+      closeInsertMenu();
     });
   });
 
+  openInsertMenuButton?.addEventListener("click", (event) => {
+    event.stopPropagation();
+    toggleInsertMenu();
+  });
+
   resetButton?.addEventListener("click", () => {
-    const activeTemplate = document.querySelector(".legal-page.is-active");
+    const activeTemplate = getActiveTemplate();
     if (!activeTemplate) return;
-    const body = activeTemplate.querySelector(".document-body");
+    const label = getTemplateLabel(activeTemplate.dataset.template);
+    const confirmed = window.confirm(`Limpar o rascunho de ${label}? Esta ação remove os dados salvos deste navegador.`);
+    if (!confirmed) return;
 
     activeTemplate.querySelectorAll("[data-editable-id]").forEach((field) => {
       window.localStorage.removeItem(fieldKey(field));
@@ -1139,7 +1837,56 @@ const description = "Editor interno de documentos jurídicos da Gioia e Associad
     window.location.reload();
   });
 
+  document.addEventListener("pointerdown", (event) => {
+    const target = event.target;
+    const activeEditable = document.querySelector(activeEditableSelector);
+    const activePanelField = document.activeElement instanceof HTMLElement && document.activeElement.matches(panelFieldActiveSelector)
+      ? document.activeElement
+      : null;
+    const clickedEditableField = target instanceof Element && Boolean(target.closest(".editable-field"));
+    const clickedPanelField = target instanceof Element && Boolean(target.closest(panelFieldActiveSelector));
+    const clickedInsideDocument = target instanceof Element && Boolean(target.closest(".legal-page"));
+    const clickedAllowedDocumentControl = target instanceof Element && Boolean(target.closest(".block-delete"));
+
+    if (
+      clickedInsideDocument &&
+      !clickedEditableField &&
+      !clickedAllowedDocumentControl
+    ) {
+      if (activeEditable instanceof HTMLElement) activeEditable.blur();
+      if (activePanelField) activePanelField.blur();
+      lastFocusedEditable = null;
+      clearDocumentSelectionState();
+      event.preventDefault();
+      window.getSelection()?.removeAllRanges();
+      return;
+    }
+
+    if (activeEditable instanceof HTMLElement) {
+      const clickedInsideEditable = target instanceof Node && activeEditable.contains(target);
+      if (!clickedInsideEditable && !clickedEditableField && !clickedPanelField) {
+        activeEditable.blur();
+        lastFocusedEditable = null;
+      }
+    }
+
+    if (activePanelField && !clickedPanelField && !clickedEditableField) {
+      activePanelField.blur();
+    }
+
+    if (
+      insertMenu &&
+      !insertMenu.hidden &&
+      target instanceof Element &&
+      !target.closest("[data-insert-menu]") &&
+      !target.closest("[data-open-insert-menu]")
+    ) {
+      closeInsertMenu();
+    }
+  });
+
   hydrateTemplateBodies();
   setTemplate(window.localStorage.getItem(`${storagePrefix}active`) || "peticao");
   updateUndoButton();
+  setStatus("Preencha os campos principais para montar o documento", "Rascunho salvo neste navegador");
 </script>
