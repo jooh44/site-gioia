@@ -1,0 +1,1145 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const title = "Editor de Templates Jurídicos | Gioia e Associados";
+const description = "Editor interno de documentos jurídicos da Gioia e Associados.";
+---
+
+<BaseLayout title={title} description={description} canonical="https://gioiaeassociados.com.br/templates" robots="noindex, nofollow">
+  <main class="template-app" data-template-app>
+    <aside class="template-sidebar" aria-label="Controles do editor">
+      <a class="back-link" href="/">Gioia e Associados</a>
+
+      <div>
+        <p class="sidebar-kicker">Editor interno</p>
+        <h1>Templates jurídicos</h1>
+        <p class="sidebar-text">
+          Clique em um campo, escreva e exporte em PDF quando terminar.
+        </p>
+      </div>
+
+      <div class="quick-guide" aria-label="Passos de uso">
+        <span>1. Escolha o modelo</span>
+        <span>2. Preencha os campos</span>
+        <span>3. Exporte em PDF</span>
+      </div>
+
+      <div class="editor-status" data-editor-status>Pronto para editar</div>
+
+      <div class="control-group" aria-label="Selecionar modelo">
+        <button class="template-choice is-active" type="button" data-template-target="peticao">
+          <span>Petição inicial</span>
+          <small>Saúde, cível e urgência</small>
+        </button>
+        <button class="template-choice" type="button" data-template-target="procuracao">
+          <span>Procuração</span>
+          <small>Ad judicia et extra</small>
+        </button>
+        <button class="template-choice" type="button" data-template-target="contrato">
+          <span>Contrato</span>
+          <small>Honorários advocatícios</small>
+        </button>
+      </div>
+
+      <div class="action-row">
+        <button class="primary-action" type="button" data-print-document>Exportar PDF</button>
+        <button class="secondary-action" type="button" data-undo-change disabled>Desfazer</button>
+        <button class="secondary-action" type="button" data-reset-template>Limpar modelo</button>
+      </div>
+
+      <div class="insert-group" aria-label="Inserir conteúdo no documento">
+        <p>Adicionar no documento</p>
+        <button class="insert-action" type="button" data-insert-block="section">Cláusula / seção</button>
+        <button class="insert-action" type="button" data-insert-block="paragraph">Parágrafo</button>
+        <button class="insert-action" type="button" data-insert-block="list-item">Item de pedido / lista</button>
+        <button class="insert-action" type="button" data-insert-block="field">Campo livre no texto</button>
+      </div>
+
+      <p class="sidebar-note">
+        Para excluir um bloco, passe o mouse sobre o parágrafo ou cláusula e use o botão Excluir. Os dados ficam salvos apenas neste navegador.
+      </p>
+    </aside>
+
+    <section class="workspace" aria-label="Documento editável">
+      <div class="paper-scale">
+        <article class="legal-page is-active" data-template="peticao" aria-label="Template de petição inicial">
+          <img class="watermark watermark-left" src="/brand/assets/simbolo-gioia-e-associados.svg" alt="" aria-hidden="true" />
+          <img class="watermark watermark-right" src="/brand/assets/simbolo-gioia-e-associados.svg" alt="" aria-hidden="true" />
+          <header class="brand-header">
+            <img class="brand-logo" src="/brand/assets/logo-gioia-versao-garnet.svg" alt="Gioia e Associados Advocacia" />
+          </header>
+
+          <section class="court-line">
+            EXCELENTÍSSIMO SENHOR DOUTOR JUIZ DE DIREITO DA
+            <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="peticao-vara">[VARA / FORO / COMARCA / ESTADO]</span>
+          </section>
+
+          <div class="badges">
+            <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="peticao-prioridade">PRIORIDADE</span>
+            <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="peticao-segredo">SEGREDO DE JUSTIÇA</span>
+            <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="peticao-urgencia">TUTELA DE URGÊNCIA</span>
+          </div>
+
+          <header class="document-title">
+            <h2>PETIÇÃO INICIAL</h2>
+            <p>Processo nº <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="peticao-processo">[NÚMERO DO PROCESSO, SE JÁ EXISTIR]</span></p>
+          </header>
+
+          <div class="document-body">
+            <p>
+              <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="peticao-autora">[NOME DA PARTE AUTORA]</span>, <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="peticao-qualificacao">[QUALIFICAÇÃO COMPLETA]</span>, neste ato <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="peticao-representacao">[EM NOME PRÓPRIO / REPRESENTADA POR]</span>, por seus advogados infra-assinados, com escritório profissional na <strong>Gioia e Associados Advocacia</strong>, onde recebem intimações e notificações de estilo, vem, com o devido respeito, à presença de Vossa Excelência propor a presente:
+            </p>
+
+            <h3><span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="peticao-acao">[NOME DA AÇÃO]</span></h3>
+
+            <p>
+              em face de <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="peticao-re">[NOME DA PARTE RÉ]</span>, inscrita no <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="peticao-documento-re">[CPF/CNPJ]</span>, com sede/endereço em <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="peticao-endereco-re">[ENDEREÇO COMPLETO]</span>, pelos fatos e fundamentos jurídicos a seguir expostos.
+            </p>
+
+            <h3>I. Síntese Fática</h3>
+            <p><span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="peticao-fatos">[RESUMO CLARO DO CONTEXTO FÁTICO. Descrever origem do problema, tentativas extrajudiciais, documentos anexados e impacto concreto para a parte autora.]</span></p>
+
+            <h3>II. Da Prioridade / Tutela de Urgência</h3>
+            <p><span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="peticao-tutela">[FUNDAMENTOS DA PRIORIDADE OU TUTELA: idade avançada, doença grave, risco iminente, necessidade de home care, negativa de cobertura ou verba alimentar.]</span></p>
+
+            <h3>III. Do Direito</h3>
+            <p><span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="peticao-direito">[BASE LEGAL, JURISPRUDÊNCIA E PRINCÍPIOS APLICÁVEIS. Demonstrar probabilidade do direito e perigo de dano, quando cabível.]</span></p>
+
+            <h3>IV. Dos Pedidos</h3>
+            <ol>
+              <li>O recebimento da presente petição inicial, com a regular citação da parte ré.</li>
+              <li>O deferimento de <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="peticao-pedido-urgencia">[TUTELA DE URGÊNCIA / PRIORIDADE / MEDIDA LIMINAR]</span>, nos termos da fundamentação exposta.</li>
+              <li>A procedência integral da ação, para condenar a parte ré a <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="peticao-obrigacao">[OBRIGAÇÃO PRETENDIDA]</span>.</li>
+              <li>A condenação da parte ré ao pagamento das verbas sucumbenciais e demais cominações legais.</li>
+              <li>A produção de todas as provas admitidas em direito, em especial <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="peticao-provas">[DOCUMENTAL / TESTEMUNHAL / PERICIAL]</span>.</li>
+            </ol>
+
+            <p>Dá-se à causa o valor de <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="peticao-valor">[VALOR DA CAUSA]</span>, para fins legais.</p>
+            <p>Termos em que,<br />pede deferimento.</p>
+            <p>São Paulo, <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="peticao-data">[DATA POR EXTENSO]</span>.</p>
+          </div>
+
+          <section class="signature-grid">
+            <div class="signature-block">
+              <span></span>
+              <strong>CELSO FERNANDO GIOIA</strong>
+              <small>OAB/SP 70.379</small>
+            </div>
+            <div class="signature-block">
+              <span></span>
+              <strong>MARIANA MATHEUS GIOIA</strong>
+              <small>OAB/SP 351.962</small>
+            </div>
+          </section>
+
+          <footer class="office-footer">
+            <strong>Gioia e Associados Advocacia</strong>
+            <span>Rua Barão de Jundiaí, 523, Alto da Lapa, São Paulo - SP, CEP 05073-010</span>
+            <span>(11) 3835-3200 · (11) 9 9334-9907 · contato@gioiaeassociados.com.br</span>
+          </footer>
+        </article>
+
+        <article class="legal-page" data-template="procuracao" aria-label="Template de procuração">
+          <img class="watermark watermark-left" src="/brand/assets/simbolo-gioia-e-associados.svg" alt="" aria-hidden="true" />
+          <img class="watermark watermark-right" src="/brand/assets/simbolo-gioia-e-associados.svg" alt="" aria-hidden="true" />
+          <header class="brand-header">
+            <img class="brand-logo" src="/brand/assets/logo-gioia-versao-garnet.svg" alt="Gioia e Associados Advocacia" />
+          </header>
+
+          <header class="document-title compact">
+            <h2>PROCURAÇÃO AD JUDICIA ET EXTRA</h2>
+            <p>Uso recomendado para outorga de poderes processuais</p>
+          </header>
+
+          <div class="document-body">
+            <p>
+              Pelo presente instrumento particular, <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="proc-outorgante">[NOME COMPLETO DO OUTORGANTE]</span>, <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="proc-qualificacao">[NACIONALIDADE, ESTADO CIVIL, PROFISSÃO]</span>, portador(a) do RG nº <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="proc-rg">[RG]</span> e inscrito(a) no CPF nº <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="proc-cpf">[CPF]</span>, e-mail <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="proc-email">[E-MAIL]</span>, residente e domiciliado(a) em <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="proc-endereco">[ENDEREÇO COMPLETO]</span>, nomeia e constitui como seus procuradores os advogados integrantes de <strong>Gioia e Associados Advocacia</strong>.
+            </p>
+
+            <p>
+              Ficam nomeados, em especial, <strong>CELSO FERNANDO GIOIA</strong>, OAB/SP 70.379, <strong>MARIANA MATHEUS GIOIA</strong>, OAB/SP 351.962, e <strong>FÁBIO DREGER DA SILVA</strong>, OAB/SP 336.451, todos com escritório profissional na Rua Barão de Jundiaí, nº 523, Alto da Lapa, São Paulo/SP, CEP 05073-010, e-mail <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="proc-email-escritorio">[E-MAIL DO ESCRITÓRIO OU RESPONSÁVEL]</span>.
+            </p>
+
+            <p>
+              Outorga-lhes amplos poderes para o foro em geral, com a cláusula <em>ad judicia et extra</em>, para representar o(a) outorgante em qualquer Juízo, Instância ou Tribunal, podendo propor ações, contestar, reconvir, apresentar pedido contraposto, firmar compromissos, receber e dar quitação, transigir, desistir, recorrer, substabelecer, requerer documentos, participar de audiências e praticar todos os demais atos necessários ao fiel desempenho deste mandato.
+            </p>
+
+            <p>Referência específica do caso: <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="proc-referencia">[NÚMERO DO PROCESSO / OBJETO / PARTE ADVERSA / ÓRGÃO]</span>.</p>
+            <p>Esta procuração é firmada para a defesa integral dos interesses do(a) outorgante no caso acima descrito, inclusive perante repartições públicas, autarquias, cartórios, órgãos administrativos e instituições privadas relacionadas ao objeto da demanda.</p>
+            <p>São Paulo, <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="proc-data">[DATA POR EXTENSO]</span>.</p>
+          </div>
+
+          <section class="signature-grid single">
+            <div class="signature-block">
+              <span></span>
+              <strong>[NOME COMPLETO DO OUTORGANTE]</strong>
+              <small>CPF nº [CPF]</small>
+            </div>
+          </section>
+
+          <footer class="office-footer">
+            <strong>Gioia e Associados Advocacia</strong>
+            <span>Rua Barão de Jundiaí, 523, Alto da Lapa, São Paulo - SP, CEP 05073-010</span>
+            <span>(11) 3835-3200 · (11) 9 9334-9907 · contato@gioiaeassociados.com.br</span>
+          </footer>
+        </article>
+
+        <article class="legal-page" data-template="contrato" aria-label="Template de contrato de honorários">
+          <img class="watermark watermark-left" src="/brand/assets/simbolo-gioia-e-associados.svg" alt="" aria-hidden="true" />
+          <img class="watermark watermark-right" src="/brand/assets/simbolo-gioia-e-associados.svg" alt="" aria-hidden="true" />
+          <header class="brand-header">
+            <img class="brand-logo" src="/brand/assets/logo-gioia-versao-garnet.svg" alt="Gioia e Associados Advocacia" />
+          </header>
+
+          <header class="document-title compact">
+            <h2>CONTRATO PARTICULAR DE PRESTAÇÃO DE SERVIÇOS DE ADVOCACIA</h2>
+          </header>
+
+          <div class="document-body">
+            <p>
+              Por este instrumento particular, as partes ao final assinadas, de um lado, como <strong>CONTRATANTE</strong>, <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="contrato-cliente">[NOME COMPLETO DO CLIENTE]</span>, <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="contrato-qualificacao">[QUALIFICAÇÃO COMPLETA]</span>, residente e domiciliado(a) em <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="contrato-endereco">[ENDEREÇO COMPLETO]</span>, e, de outro lado, como <strong>CONTRATADA</strong>, <strong>GIOIA E ASSOCIADOS ADVOCACIA</strong>, com sede na Rua Barão de Jundiaí, nº 523, Alto da Lapa, São Paulo/SP, CEP 05073-010, inscrita na OAB/SP sob nº 2.254 e no CNPJ sob nº 69.108.108/0001-07, neste ato representada por seu sócio-titular, <strong>Celso Fernando Gioia</strong>, têm entre si justo e contratado o seguinte.
+            </p>
+
+            <h3>Cláusula Primeira — Objeto</h3>
+            <p>A CONTRATADA obriga-se a prestar ao(à) CONTRATANTE serviços advocatícios consistentes em <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="contrato-objeto">[DESCREVER A DEMANDA: AÇÃO, DEFESA, RECURSO, CUMPRIMENTO DE SENTENÇA, ETC.]</span>, perante <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="contrato-foro">[FORO / VARA / TRIBUNAL / ÓRGÃO]</span>, em face de <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="contrato-parte-adversa">[PARTE ADVERSA]</span>.</p>
+
+            <h3>Cláusula Segunda — Honorários</h3>
+            <p>Em contraprestação pelos serviços ora ajustados, o(a) CONTRATANTE pagará à CONTRATADA honorários advocatícios no valor de <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="contrato-honorarios">[VALOR FIXO / PERCENTUAL / MODELO HÍBRIDO]</span>.</p>
+            <p>Quando houver cláusula quota litis, registrar de forma objetiva: <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="contrato-quota">[PERCENTUAL SOBRE ACORDO / ALVARÁ / INDENIZAÇÃO / FGTS / VERBAS RESCISÓRIAS / OUTROS DIREITOS]</span>.</p>
+
+            <h3>Cláusula Terceira — Despesas e Custas</h3>
+            <p>As despesas processuais, custas, diligências, cópias, autenticações, taxas, emolumentos, deslocamentos e demais desembolsos necessários à condução da demanda serão de responsabilidade do(a) CONTRATANTE, mediante prévio adiantamento ou posterior reembolso, conforme alinhamento entre as partes.</p>
+
+            <h3>Cláusula Quarta — Obrigações das Partes</h3>
+            <p>Compete ao(à) CONTRATANTE fornecer documentos, informações verdadeiras e subsídios necessários ao regular patrocínio da causa. Compete à CONTRATADA atuar com zelo técnico, observando a legislação aplicável e o Estatuto da Advocacia, sem garantia de resultado, por se tratar de obrigação de meio.</p>
+
+            <h3>Cláusula Quinta — Rescisão</h3>
+            <p>Em caso de revogação de mandato, renúncia, acordo direto, desistência, inadimplemento ou encerramento antecipado da contratação, aplicar-se-á o que estiver definido em <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="contrato-rescisao">[CLÁUSULA ESPECÍFICA DE RESCISÃO / HONORÁRIOS PROPORCIONAIS / TABELA OAB]</span>.</p>
+
+            <p>E, por estarem de acordo, firmam o presente instrumento em duas vias de igual teor e forma, para que produza seus efeitos legais.</p>
+            <p>São Paulo, <span class="editable-field" contenteditable="true" spellcheck="true" data-editable-id="contrato-data">[DATA POR EXTENSO]</span>.</p>
+          </div>
+
+          <section class="signature-grid">
+            <div class="signature-block">
+              <span></span>
+              <strong>[NOME DO(A) CONTRATANTE]</strong>
+              <small>Contratante</small>
+            </div>
+            <div class="signature-block">
+              <span></span>
+              <strong>CELSO FERNANDO GIOIA</strong>
+              <small>Contratada</small>
+            </div>
+          </section>
+          <section class="signature-grid">
+            <div class="signature-block">
+              <span></span>
+              <strong>[TESTEMUNHA 1]</strong>
+              <small>RG: [RG]</small>
+            </div>
+            <div class="signature-block">
+              <span></span>
+              <strong>[TESTEMUNHA 2]</strong>
+              <small>RG: [RG]</small>
+            </div>
+          </section>
+
+          <footer class="office-footer">
+            <strong>Gioia e Associados Advocacia</strong>
+            <span>Rua Barão de Jundiaí, 523, Alto da Lapa, São Paulo - SP, CEP 05073-010</span>
+            <span>(11) 3835-3200 · (11) 9 9334-9907 · contato@gioiaeassociados.com.br</span>
+          </footer>
+        </article>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  :global(body) {
+    background: #e7e1d8;
+  }
+
+  :global(a[aria-label="Falar com a Gioia e Associados no WhatsApp"]) {
+    display: none !important;
+  }
+
+  .template-app {
+    --garnet: #5e0001;
+    --garnet-soft: #7a0b0d;
+    --gold: #bf9f5b;
+    --paper: #fffdf8;
+    --ink: #201c19;
+    --muted: #74695f;
+    min-height: 100dvh;
+    display: grid;
+    grid-template-columns: 340px minmax(0, 1fr);
+    color: var(--ink);
+    background:
+      linear-gradient(90deg, rgba(94, 0, 1, 0.04), transparent 36%),
+      #e7e1d8;
+  }
+
+  .template-sidebar {
+    position: sticky;
+    top: 0;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 24px 26px 30px;
+    border-right: 1px solid rgba(94, 0, 1, 0.14);
+    background: #fffaf2;
+  }
+
+  .back-link {
+    width: fit-content;
+    color: var(--garnet);
+    font-family: var(--font-serif);
+    font-size: 18px;
+    text-decoration: none;
+  }
+
+  .sidebar-kicker {
+    margin: 0 0 8px;
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .template-sidebar h1 {
+    margin: 0;
+    color: var(--garnet);
+    font-family: var(--font-serif);
+    font-size: 31px;
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  .sidebar-text,
+  .sidebar-note {
+    margin: 10px 0 0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .quick-guide {
+    display: grid;
+    gap: 5px;
+    padding: 10px 12px;
+    border: 1px solid rgba(94, 0, 1, 0.12);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.58);
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .quick-guide span {
+    display: flex;
+    align-items: center;
+    min-height: 20px;
+  }
+
+  .editor-status {
+    min-height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(191, 159, 91, 0.32);
+    border-radius: 6px;
+    background: rgba(191, 159, 91, 0.10);
+    color: var(--garnet);
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .sidebar-note {
+    margin-top: 0;
+    padding-top: 14px;
+    border-top: 1px solid rgba(94, 0, 1, 0.12);
+    font-size: 12px;
+  }
+
+  .control-group,
+  .action-row,
+  .insert-group {
+    display: grid;
+    gap: 10px;
+  }
+
+  .template-choice,
+  .primary-action,
+  .secondary-action,
+  .insert-action {
+    min-height: 46px;
+    border: 1px solid rgba(94, 0, 1, 0.16);
+    border-radius: 6px;
+    font: inherit;
+    cursor: pointer;
+    transition: border-color 180ms ease, background 180ms ease, color 180ms ease;
+  }
+
+  .template-choice {
+    display: grid;
+    gap: 2px;
+    padding: 13px 14px;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.68);
+    color: var(--ink);
+  }
+
+  .template-choice span {
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .template-choice small {
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .template-choice.is-active {
+    border-color: var(--garnet);
+    background: var(--garnet);
+    color: #fff;
+  }
+
+  .template-choice.is-active small {
+    color: rgba(255, 255, 255, 0.68);
+  }
+
+  .primary-action {
+    background: var(--garnet);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .secondary-action {
+    background: transparent;
+    color: var(--garnet);
+    font-weight: 700;
+  }
+
+  .secondary-action:disabled {
+    cursor: not-allowed;
+    opacity: 0.42;
+  }
+
+  .insert-group {
+    padding-top: 14px;
+    border-top: 1px solid rgba(94, 0, 1, 0.12);
+  }
+
+  .insert-group p {
+    margin: 0;
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .insert-action {
+    background: rgba(255, 255, 255, 0.72);
+    color: var(--garnet);
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .workspace {
+    overflow: auto;
+    padding: 42px clamp(20px, 5vw, 72px);
+  }
+
+  .paper-scale {
+    width: min(100%, 900px);
+    margin: 0 auto;
+  }
+
+  .legal-page {
+    display: none;
+    position: relative;
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    padding: 18mm 21mm 14mm;
+    overflow: hidden;
+    background: linear-gradient(180deg, #fffefb 0%, var(--paper) 100%);
+    box-shadow: 0 28px 70px rgba(31, 15, 8, 0.24);
+    font-family: "Times New Roman", Georgia, serif;
+  }
+
+  .legal-page.is-active {
+    display: block;
+  }
+
+  .legal-page > *:not(.watermark) {
+    position: relative;
+    z-index: 1;
+  }
+
+  .watermark {
+    position: absolute;
+    top: 18mm;
+    width: 34mm;
+    opacity: 0.07;
+    filter: grayscale(1);
+    pointer-events: none;
+  }
+
+  .watermark-left {
+    left: 8mm;
+  }
+
+  .watermark-right {
+    right: 8mm;
+  }
+
+  .brand-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 14mm;
+  }
+
+  .brand-logo {
+    width: 48mm;
+    height: auto;
+  }
+
+  .court-line {
+    max-width: 150mm;
+    margin: 0 auto 8mm;
+    text-align: center;
+    font-size: 12.8pt;
+    font-weight: 700;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+
+  .badges {
+    display: flex;
+    justify-content: center;
+    gap: 5mm;
+    margin-bottom: 6mm;
+    color: var(--garnet);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 8.5pt;
+    text-transform: uppercase;
+  }
+
+  .document-title {
+    margin-bottom: 6mm;
+    text-align: center;
+  }
+
+  .document-title.compact {
+    margin-bottom: 9mm;
+  }
+
+  .document-title h2 {
+    margin: 0 0 2mm;
+    color: var(--garnet);
+    font-size: 17pt;
+    line-height: 1.15;
+    letter-spacing: 0;
+  }
+
+  .document-title p {
+    margin: 0;
+    color: var(--garnet);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 9.5pt;
+  }
+
+  .document-body {
+    font-size: 11.2pt;
+    line-height: 1.52;
+  }
+
+  .document-body > p,
+  .document-body > h3,
+  .document-body > ol {
+    position: relative;
+  }
+
+  .document-body p {
+    margin: 0 0 3.4mm;
+    text-align: left;
+    text-indent: 8mm;
+  }
+
+  .document-body h3 {
+    margin: 5mm 0 2.4mm;
+    color: var(--garnet);
+    font-size: 11.8pt;
+    line-height: 1.25;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .document-body ol {
+    margin: 0 0 4mm 7mm;
+    padding: 0;
+  }
+
+  .document-body li {
+    margin-bottom: 1.6mm;
+    padding-left: 2mm;
+    text-align: justify;
+  }
+
+  :global(.editable-field) {
+    display: inline;
+    padding: 0 1mm;
+    border-bottom: 1px solid rgba(94, 0, 1, 0.32);
+    color: var(--garnet-soft);
+    font-weight: 700;
+    vertical-align: baseline;
+    outline: none;
+    cursor: text;
+  }
+
+  :global(.editable-field.is-empty) {
+    display: inline-block;
+    min-width: 18mm;
+    min-height: 1.2em;
+  }
+
+  :global(.editable-field:focus) {
+    background: rgba(191, 159, 91, 0.16);
+    border-bottom-color: var(--garnet);
+  }
+
+  :global(.editable-field.is-active-field) {
+    background: rgba(191, 159, 91, 0.18);
+    outline: 2px solid rgba(191, 159, 91, 0.30);
+    outline-offset: 2px;
+  }
+
+  .signature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14mm;
+    margin-top: 10mm;
+  }
+
+  .signature-grid.single {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 92mm;
+    margin-inline: auto;
+  }
+
+  .signature-block {
+    display: grid;
+    gap: 1.5mm;
+    text-align: center;
+    font-size: 10pt;
+  }
+
+  .signature-block span {
+    display: block;
+    height: 1px;
+    background: var(--ink);
+  }
+
+  .signature-block strong {
+    font-size: 10pt;
+  }
+
+  .signature-block small {
+    color: var(--ink);
+    font-size: 9.5pt;
+  }
+
+  .office-footer {
+    z-index: 1;
+    display: grid;
+    gap: 0.8mm;
+    margin-top: 8mm;
+    padding-top: 2mm;
+    border-top: 1px solid rgba(94, 0, 1, 0.24);
+    color: var(--garnet);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 7pt;
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  .office-footer strong {
+    font-size: 7.5pt;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .office-footer span {
+    display: block;
+  }
+
+  :global(.block-delete) {
+    position: absolute;
+    top: -8mm;
+    right: 0;
+    z-index: 4;
+    min-width: 18mm;
+    height: 6.4mm;
+    padding: 0 2.2mm;
+    border: 1px solid rgba(94, 0, 1, 0.22);
+    border-radius: 6px;
+    background: #fffaf2;
+    color: var(--garnet);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity 160ms ease, background 160ms ease;
+  }
+
+  .document-body > p:hover :global(.block-delete),
+  .document-body > h3:hover :global(.block-delete),
+  .document-body > ol:hover :global(.block-delete),
+  .signature-grid:hover :global(.block-delete),
+  :global(.block-delete:focus) {
+    opacity: 1;
+  }
+
+  :global(.block-delete:hover) {
+    background: var(--garnet);
+    color: #fff;
+  }
+
+  @media (max-width: 1100px) {
+    .template-app {
+      grid-template-columns: 1fr;
+    }
+
+    .template-sidebar {
+      position: static;
+      height: auto;
+    }
+
+    .workspace {
+      padding: 22px 10px;
+    }
+
+    .paper-scale {
+      overflow-x: auto;
+    }
+  }
+
+  @media print {
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    :global(html),
+    :global(body) {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 !important;
+      background: #fff !important;
+    }
+
+    :global(body > astro-island),
+    .template-sidebar,
+    .legal-page:not(.is-active) {
+      display: none !important;
+    }
+
+    :global(.block-delete) {
+      display: none !important;
+    }
+
+    .template-app,
+    .workspace,
+    .paper-scale {
+      display: block;
+      width: 210mm;
+      margin: 0;
+      padding: 0;
+      overflow: visible;
+      background: #fff;
+    }
+
+    .legal-page.is-active {
+      display: block;
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0;
+      min-height: 0;
+      padding: 18mm 21mm 14mm;
+      box-shadow: none;
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+
+    :global(.editable-field) {
+      border-bottom-color: transparent;
+      color: var(--ink);
+    }
+  }
+</style>
+
+<script>
+  const app = document.querySelector("[data-template-app]");
+  const choices = Array.from(document.querySelectorAll("[data-template-target]"));
+  const templates = Array.from(document.querySelectorAll("[data-template]"));
+  const printButton = document.querySelector("[data-print-document]");
+  const resetButton = document.querySelector("[data-reset-template]");
+  const undoButton = document.querySelector("[data-undo-change]");
+  const insertButtons = Array.from(document.querySelectorAll("[data-insert-block]"));
+  const status = document.querySelector("[data-editor-status]");
+  const storagePrefix = "gioia-template-editor:";
+  const boundFields = new WeakSet();
+  const undoStack = [];
+  let lastFocusedEditable = null;
+  let generatedFieldCount = 0;
+  let statusTimeout = 0;
+
+  const getActiveTemplate = () => document.querySelector(".legal-page.is-active");
+  const getActiveBody = () => getActiveTemplate()?.querySelector(".document-body");
+  const bodyKey = (template) => `${storagePrefix}body:${template.dataset.template}`;
+  const fieldKey = (field) => `${storagePrefix}${field.dataset.editableId}`;
+  const setStatus = (message) => {
+    if (!status) return;
+    status.textContent = message;
+    window.clearTimeout(statusTimeout);
+    statusTimeout = window.setTimeout(() => {
+      status.textContent = "Alterações salvas automaticamente";
+    }, 1400);
+  };
+
+  const updateUndoButton = () => {
+    if (!undoButton) return;
+    undoButton.disabled = undoStack.length === 0;
+  };
+
+  const snapshotActiveBody = () => {
+    const activeTemplate = getActiveTemplate();
+    const body = activeTemplate?.querySelector(".document-body");
+    if (!activeTemplate || !body) return;
+
+    const bodyClone = body.cloneNode(true);
+    bodyClone.querySelectorAll(".block-delete").forEach((button) => button.remove());
+    undoStack.push({
+      template: activeTemplate.dataset.template,
+      html: bodyClone.innerHTML,
+    });
+    if (undoStack.length > 20) undoStack.shift();
+    updateUndoButton();
+  };
+
+  const restoreBody = (snapshot) => {
+    const template = document.querySelector(`[data-template="${snapshot.template}"]`);
+    const body = template?.querySelector(".document-body");
+    if (!template || !body) return;
+
+    setTemplate(snapshot.template);
+    body.innerHTML = snapshot.html;
+    body.querySelectorAll("[data-editable-id]").forEach(bindEditable);
+    decorateBlocks(body);
+    window.localStorage.setItem(bodyKey(template), snapshot.html);
+    setStatus("Alteração desfeita");
+  };
+
+  const undoLastChange = () => {
+    const snapshot = undoStack.pop();
+    updateUndoButton();
+    if (!snapshot) {
+      setStatus("Nada para desfazer");
+      return;
+    }
+    restoreBody(snapshot);
+  };
+
+  const placeCaretInside = (field) => {
+    const selection = window.getSelection();
+    const range = document.createRange();
+    range.selectNodeContents(field);
+    range.collapse(false);
+    selection?.removeAllRanges();
+    selection?.addRange(range);
+  };
+
+  const fieldHasPlaceholder = (field, placeholder) => (
+    field.innerHTML.trim() === placeholder.trim()
+  );
+
+  const syncEmptyState = (field) => {
+    field.classList.toggle("is-empty", !field.textContent.trim());
+  };
+
+  const clearPlaceholder = (field, placeholder) => {
+    if (!fieldHasPlaceholder(field, placeholder)) return false;
+    field.innerHTML = "";
+    syncEmptyState(field);
+    requestAnimationFrame(() => placeCaretInside(field));
+    return true;
+  };
+
+  const setTemplate = (name) => {
+    choices.forEach((choice) => {
+      choice.classList.toggle("is-active", choice.dataset.templateTarget === name);
+    });
+    templates.forEach((template) => {
+      template.classList.toggle("is-active", template.dataset.template === name);
+    });
+    window.localStorage.setItem(`${storagePrefix}active`, name);
+  };
+
+  const saveActiveBody = () => {
+    const activeTemplate = getActiveTemplate();
+    const body = activeTemplate?.querySelector(".document-body");
+    if (!activeTemplate || !body) return;
+    const bodyClone = body.cloneNode(true);
+    bodyClone.querySelectorAll(".block-delete").forEach((button) => button.remove());
+    window.localStorage.setItem(bodyKey(activeTemplate), bodyClone.innerHTML);
+    setStatus("Alteração salva");
+  };
+
+  const createEditable = (id, placeholder) => {
+    const field = document.createElement("span");
+    field.className = "editable-field";
+    field.contentEditable = "true";
+    field.spellcheck = true;
+    field.dataset.editableId = id;
+    field.dataset.placeholder = placeholder;
+    field.innerHTML = placeholder;
+    bindEditable(field);
+    return field;
+  };
+
+  const bindEditable = (field) => {
+    if (boundFields.has(field)) return;
+    boundFields.add(field);
+
+    const placeholder = field.dataset.placeholder || field.innerHTML;
+    field.dataset.placeholder = placeholder;
+
+    const saved = window.localStorage.getItem(fieldKey(field));
+    if (saved) field.innerHTML = saved;
+    syncEmptyState(field);
+
+    field.addEventListener("pointerdown", (event) => {
+      if (!fieldHasPlaceholder(field, placeholder)) return;
+      event.preventDefault();
+      lastFocusedEditable = field;
+      field.focus({ preventScroll: true });
+      clearPlaceholder(field, placeholder);
+    });
+
+    field.addEventListener("focus", () => {
+      document.querySelectorAll(".is-active-field").forEach((activeField) => {
+        activeField.classList.remove("is-active-field");
+      });
+      lastFocusedEditable = field;
+      field.classList.add("is-active-field");
+      clearPlaceholder(field, placeholder);
+      setStatus("Editando campo");
+    });
+
+    field.addEventListener("input", () => {
+      if (field.textContent.trim()) {
+        window.localStorage.setItem(fieldKey(field), field.innerHTML);
+      } else {
+        window.localStorage.removeItem(fieldKey(field));
+      }
+      syncEmptyState(field);
+      saveActiveBody();
+    });
+
+    field.addEventListener("blur", () => {
+      field.classList.remove("is-active-field");
+      if (!field.textContent.trim()) {
+        field.innerHTML = field.dataset.placeholder || placeholder;
+        window.localStorage.removeItem(fieldKey(field));
+        syncEmptyState(field);
+        saveActiveBody();
+        return;
+      }
+      syncEmptyState(field);
+      saveActiveBody();
+    });
+  };
+
+  const getReferenceBlock = () => {
+    const body = getActiveBody();
+    if (!body || !lastFocusedEditable || !body.contains(lastFocusedEditable)) return body?.lastElementChild;
+    return lastFocusedEditable.closest("p, h3, ol, li") || body.lastElementChild;
+  };
+
+  const insertAfterReference = (nodes) => {
+    const body = getActiveBody();
+    if (!body) return;
+
+    const reference = getReferenceBlock();
+    const anchor = reference?.tagName === "LI" ? reference.closest("ol") : reference;
+    nodes.forEach((node, index) => {
+      body.insertBefore(node, anchor?.nextSibling || null);
+      if (index === 0) node.scrollIntoView({ block: "center", behavior: "smooth" });
+    });
+
+    decorateBlocks(body);
+    saveActiveBody();
+    nodes[0]?.querySelector("[data-editable-id]")?.focus();
+  };
+
+  const insertBlock = (type) => {
+    snapshotActiveBody();
+    generatedFieldCount += 1;
+    const idBase = `custom-${Date.now()}-${generatedFieldCount}`;
+
+    if (type === "field") {
+      const field = createEditable(`${idBase}-campo`, "[NOVO CAMPO]");
+      const space = document.createTextNode(" ");
+      if (lastFocusedEditable && getActiveBody()?.contains(lastFocusedEditable)) {
+        lastFocusedEditable.insertAdjacentText("afterend", " ");
+        lastFocusedEditable.after(field);
+      } else {
+        const paragraph = document.createElement("p");
+        paragraph.append(createEditable(`${idBase}-paragrafo`, "[NOVO CAMPO]"));
+        insertAfterReference([paragraph]);
+        return;
+      }
+      field.after(space);
+      saveActiveBody();
+      field.focus();
+      return;
+    }
+
+    if (type === "section") {
+      const heading = document.createElement("h3");
+      heading.append(createEditable(`${idBase}-titulo`, "[NOVA CLÁUSULA / SEÇÃO]"));
+
+      const paragraph = document.createElement("p");
+      paragraph.append(createEditable(`${idBase}-texto`, "[DESCREVER CONTEÚDO]"));
+
+      insertAfterReference([heading, paragraph]);
+      return;
+    }
+
+    if (type === "paragraph") {
+      const paragraph = document.createElement("p");
+      paragraph.append(createEditable(`${idBase}-paragrafo`, "[NOVO PARÁGRAFO]"));
+      insertAfterReference([paragraph]);
+      return;
+    }
+
+    const body = getActiveBody();
+    if (!body) return;
+    let list = lastFocusedEditable?.closest("ol");
+    if (!list || !body.contains(list)) {
+      list = body.querySelector("ol") || document.createElement("ol");
+      if (!list.parentElement) body.append(list);
+    }
+    const item = document.createElement("li");
+    item.append(createEditable(`${idBase}-item`, "[NOVO ITEM]"));
+    list.append(item);
+    decorateBlocks(body);
+    saveActiveBody();
+    item.querySelector("[data-editable-id]")?.focus();
+  };
+
+  const removeBlock = (block) => {
+    const body = getActiveBody();
+    if (!body || !block) return;
+    snapshotActiveBody();
+
+    if (block.tagName === "H3") {
+      let next = block.nextElementSibling;
+      block.remove();
+      while (next && next.tagName !== "H3") {
+        const current = next;
+        next = next.nextElementSibling;
+        current.remove();
+      }
+    } else {
+      block.remove();
+    }
+
+    saveActiveBody();
+  };
+
+  const decorateBlocks = (body) => {
+    if (!body) return;
+    body.querySelectorAll(".block-delete").forEach((button) => button.remove());
+    body.querySelectorAll(":scope > p, :scope > h3, :scope > ol").forEach((block) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "block-delete";
+      button.setAttribute("aria-label", "Excluir bloco");
+      button.textContent = "Excluir";
+      button.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        removeBlock(block);
+      });
+      block.append(button);
+    });
+  };
+
+  const hydrateTemplateBodies = () => {
+    templates.forEach((template) => {
+      const body = template.querySelector(".document-body");
+      const saved = window.localStorage.getItem(bodyKey(template));
+      if (body && saved) body.innerHTML = saved;
+      body?.querySelectorAll("[data-editable-id]").forEach(bindEditable);
+      decorateBlocks(body);
+    });
+    document.querySelectorAll("[data-editable-id]").forEach(bindEditable);
+  };
+
+  choices.forEach((choice) => {
+    choice.addEventListener("click", () => {
+      setTemplate(choice.dataset.templateTarget);
+      setStatus(`Modelo ativo: ${choice.querySelector("span")?.textContent || "documento"}`);
+    });
+  });
+
+  printButton?.addEventListener("click", () => {
+    setStatus("Abrindo exportação em PDF");
+    window.print();
+  });
+
+  undoButton?.addEventListener("click", () => {
+    undoLastChange();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (!(event.ctrlKey || event.metaKey) || event.key.toLowerCase() !== "z") return;
+    event.preventDefault();
+    undoLastChange();
+  });
+
+  insertButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      insertBlock(button.dataset.insertBlock);
+      setStatus("Novo conteúdo adicionado");
+    });
+  });
+
+  resetButton?.addEventListener("click", () => {
+    const activeTemplate = document.querySelector(".legal-page.is-active");
+    if (!activeTemplate) return;
+    const body = activeTemplate.querySelector(".document-body");
+
+    activeTemplate.querySelectorAll("[data-editable-id]").forEach((field) => {
+      window.localStorage.removeItem(fieldKey(field));
+      field.innerHTML = field.dataset.placeholder || field.textContent || "";
+    });
+    window.localStorage.removeItem(bodyKey(activeTemplate));
+    window.location.reload();
+  });
+
+  hydrateTemplateBodies();
+  setTemplate(window.localStorage.getItem(`${storagePrefix}active`) || "peticao");
+  updateUndoButton();
+</script>
